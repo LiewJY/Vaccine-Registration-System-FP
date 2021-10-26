@@ -18,7 +18,7 @@ public class VaccineRegistrationSystem {
         // TODO code application logic here
         //login code
         // test
-        // hi
+
     }
     
 }
