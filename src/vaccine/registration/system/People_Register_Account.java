@@ -42,6 +42,7 @@ public class People_Register_Account extends javax.swing.JFrame {
         lbl_address = new javax.swing.JLabel();
         txt_address = new javax.swing.JTextField();
         btn_register = new javax.swing.JButton();
+        btn_back_to_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,12 +100,18 @@ public class People_Register_Account extends javax.swing.JFrame {
         btn_register.setText("Register");
         btn_register.setBorder(null);
 
+        btn_back_to_login.setBackground(new java.awt.Color(255, 255, 255));
+        btn_back_to_login.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_back_to_login.setText("Back to Log In");
+
         javax.swing.GroupLayout pnl_register_accountLayout = new javax.swing.GroupLayout(pnl_register_account);
         pnl_register_account.setLayout(pnl_register_accountLayout);
         pnl_register_accountLayout.setHorizontalGroup(
             pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_register_accountLayout.createSequentialGroup()
-                .addGap(440, 440, 440)
+                .addGap(145, 145, 145)
+                .addComponent(btn_back_to_login, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145)
                 .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,7 +119,7 @@ public class People_Register_Account extends javax.swing.JFrame {
                     .addComponent(txt_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lbl_password)
-                        .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_logo, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                         .addComponent(lbl_register_a_new_account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbl_name)
                         .addComponent(txt_name)
@@ -128,7 +135,9 @@ public class People_Register_Account extends javax.swing.JFrame {
             pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_register_accountLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_back_to_login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(lbl_register_a_new_account)
                 .addGap(25, 25, 25)
@@ -164,7 +173,7 @@ public class People_Register_Account extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_register_account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnl_register_account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,6 +221,7 @@ public class People_Register_Account extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_back_to_login;
     private javax.swing.JButton btn_register;
     private javax.swing.JLabel lbl_address;
     private javax.swing.JLabel lbl_ic_passport_number;
