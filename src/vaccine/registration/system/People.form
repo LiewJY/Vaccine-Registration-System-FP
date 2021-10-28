@@ -131,9 +131,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1280, 720]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -163,11 +160,8 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnl_sidenav" pref="721" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="pnl_container" pref="721" max="32767" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-          </Group>
+          <Component id="pnl_sidenav" pref="720" max="32767" attributes="0"/>
+          <Component id="pnl_container" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -194,7 +188,6 @@
               <Component id="pnl_vaccination_appointment" alignment="1" max="32767" attributes="0"/>
               <Component id="pnl_vaccination_status" alignment="1" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                   <Component id="pnl_logout" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -419,11 +412,11 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnl_view_account" alignment="1" pref="721" max="32767" attributes="0"/>
+              <Component id="pnl_view_account" alignment="1" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointment" pref="721" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointment" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -489,7 +482,7 @@
                       <Component id="lbl_view_address" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="btn_edit_account" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                      <EmptySpace pref="99" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -629,7 +622,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnl_editAccount" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txt_edit_nationality" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_edit_ic_passport_number" min="-2" pref="400" max="-2" attributes="0"/>
@@ -651,7 +644,7 @@
                               <Component id="txt_edit_address" min="-2" pref="400" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -705,9 +698,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="334" max="-2" attributes="0"/>
+                          <EmptySpace pref="417" max="32767" attributes="0"/>
                           <Component id="lbl_editAccount" min="-2" pref="400" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="417" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
