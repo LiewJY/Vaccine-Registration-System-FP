@@ -995,10 +995,7 @@ public class People extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancel_editActionPerformed
 
     private void btn_cancel_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_appointmentActionPerformed
-        pnl_view_account.setVisible(false);
-        pnl_edit_account.setVisible(false);
-        pnl_view_vaccination_appointment.setVisible(true);
-        pnl_register_vaccination_appointment.setVisible(false);
+
     }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
 
     /**
