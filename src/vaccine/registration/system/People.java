@@ -340,10 +340,12 @@ public class People extends javax.swing.JFrame {
         lbl_view_name.setBackground(new java.awt.Color(255, 255, 255));
         lbl_view_name.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lbl_view_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_view_name.setText("test");
 
         lbl_view_phone_number.setBackground(new java.awt.Color(255, 255, 255));
         lbl_view_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_view_phone_number.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_view_phone_number.setText("text");
 
         lbl_view_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
         lbl_view_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -482,6 +484,11 @@ public class People extends javax.swing.JFrame {
         btn_cancel_edit.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancel_edit.setText("Cancel");
         btn_cancel_edit.setBorder(null);
+        btn_cancel_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancel_editActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_edit_accountLayout = new javax.swing.GroupLayout(pnl_edit_account);
         pnl_edit_account.setLayout(pnl_edit_accountLayout);
@@ -678,6 +685,11 @@ public class People extends javax.swing.JFrame {
         btn_cancel_appointment.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancel_appointment.setText("Cancel Appointment");
         btn_cancel_appointment.setBorder(null);
+        btn_cancel_appointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancel_appointmentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_view_vaccination_appointmentLayout = new javax.swing.GroupLayout(pnl_view_vaccination_appointment);
         pnl_view_vaccination_appointment.setLayout(pnl_view_vaccination_appointmentLayout);
@@ -685,7 +697,7 @@ public class People extends javax.swing.JFrame {
             pnl_view_vaccination_appointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_vaccinationAppoitment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnl_view_vaccination_appointmentLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(pnl_view_vaccination_appointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_view_vaccination_appointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(pnl_view_vaccination_appointmentLayout.createSequentialGroup()
@@ -724,7 +736,7 @@ public class People extends javax.swing.JFrame {
                         .addComponent(btn_register_appointment, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88)
                         .addComponent(btn_cancel_appointment, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         pnl_view_vaccination_appointmentLayout.setVerticalGroup(
             pnl_view_vaccination_appointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -974,6 +986,20 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(true);
     }//GEN-LAST:event_btn_register_appointmentActionPerformed
+
+    private void btn_cancel_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_editActionPerformed
+        pnl_view_account.setVisible(true);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+    }//GEN-LAST:event_btn_cancel_editActionPerformed
+
+    private void btn_cancel_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_appointmentActionPerformed
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(true);
+        pnl_register_vaccination_appointment.setVisible(false);
+    }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
 
     /**
      * @param args the command line arguments

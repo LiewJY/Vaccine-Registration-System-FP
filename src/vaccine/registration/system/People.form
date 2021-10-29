@@ -542,6 +542,7 @@
                   <Font name="Arial" size="16" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="test"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_view_phone_number">
@@ -553,6 +554,7 @@
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="text"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_view_ic_passport_number">
@@ -876,6 +878,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cancel_editActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -895,7 +900,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnl_vaccinationAppoitment" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
@@ -944,7 +949,7 @@
                               <Component id="btn_cancel_appointment" min="-2" pref="400" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1397,6 +1402,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cancel_appointmentActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
