@@ -98,6 +98,11 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         btn_back_to_login.setBackground(new java.awt.Color(255, 255, 255));
         btn_back_to_login.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_back_to_login.setText("Back to Log In");
+        btn_back_to_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_back_to_loginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_register_accountLayout = new javax.swing.GroupLayout(pnl_register_account);
         pnl_register_account.setLayout(pnl_register_accountLayout);
@@ -178,6 +183,12 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_back_to_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_to_loginActionPerformed
+        Login backToLogin = new Login();
+        backToLogin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_back_to_loginActionPerformed
 
     /**
      * @param args the command line arguments

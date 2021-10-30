@@ -66,6 +66,11 @@ public class Login extends javax.swing.JFrame {
         btn_register.setBackground(new java.awt.Color(255, 255, 255));
         btn_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_register.setText("Register");
+        btn_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_loginLayout = new javax.swing.GroupLayout(pnl_login);
         pnl_login.setLayout(pnl_loginLayout);
@@ -122,6 +127,12 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
+        PeopleRegisterAccount register = new PeopleRegisterAccount();
+        register.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_registerActionPerformed
 
     /**
      * @param args the command line arguments
