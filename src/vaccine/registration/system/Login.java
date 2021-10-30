@@ -54,7 +54,6 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        cbo_user_role.setBackground(new java.awt.Color(255, 255, 255));
         cbo_user_role.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         cbo_user_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select User Role", "Personnel", "People (Citizen / Non-Citizen)" }));
 
@@ -106,7 +105,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
