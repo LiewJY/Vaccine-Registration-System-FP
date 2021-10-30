@@ -20,7 +20,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
-//        pnl_view_people.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }
 
     /**
@@ -197,6 +199,46 @@ public class Personnel extends javax.swing.JFrame {
         cbo_edit_vaccination_appointments_select_vaccine_type = new javax.swing.JComboBox<>();
         btn_edit_people_save1 = new javax.swing.JButton();
         btn_edit_people_cancel1 = new javax.swing.JButton();
+        pnl_view_vaccination_center = new javax.swing.JPanel();
+        pnl_viewVaccinationCenter = new javax.swing.JPanel();
+        lbl_view_vaccination_center = new javax.swing.JLabel();
+        scrpnl_view_vaccination_center = new javax.swing.JScrollPane();
+        tbl_view_vaccination_center = new javax.swing.JTable();
+        lbl_search_vaccination_center = new javax.swing.JLabel();
+        txt_search_vaccination_center = new javax.swing.JTextField();
+        btn_vaccination_center_add = new javax.swing.JButton();
+        btn_vaccination_center_edit = new javax.swing.JButton();
+        btn_vaccination_center_remove = new javax.swing.JButton();
+        pnl_add_center = new javax.swing.JPanel();
+        pnl_addCenter = new javax.swing.JPanel();
+        lbl_add_center = new javax.swing.JLabel();
+        lbl_add_center_id = new javax.swing.JLabel();
+        txt_add_center_id = new javax.swing.JTextField();
+        lbl_add_center_name = new javax.swing.JLabel();
+        txt_add_center_name = new javax.swing.JTextField();
+        lbl_add_center_address = new javax.swing.JLabel();
+        txt_add_center_address = new javax.swing.JTextField();
+        lbl_add_center_contact_number = new javax.swing.JLabel();
+        txt_add_center_contact_number = new javax.swing.JPasswordField();
+        lbl_add_center_vaccine_type = new javax.swing.JLabel();
+        cbo_add_center_select_vaccine_type = new javax.swing.JComboBox<>();
+        btn_add_center_add = new javax.swing.JButton();
+        btn_add_center_cancel = new javax.swing.JButton();
+        pnl_edit_center = new javax.swing.JPanel();
+        pnl_editCenter = new javax.swing.JPanel();
+        lbl_edit_center = new javax.swing.JLabel();
+        lbl_edit_center_id = new javax.swing.JLabel();
+        txt_edit_center_id = new javax.swing.JTextField();
+        lbl_edit_center_name = new javax.swing.JLabel();
+        txt_edit_center_name = new javax.swing.JTextField();
+        lbl_edit_center_address = new javax.swing.JLabel();
+        txt_edit_center_address = new javax.swing.JTextField();
+        lbl_edit_center_contact_number = new javax.swing.JLabel();
+        txt_edit_center_contact_number = new javax.swing.JPasswordField();
+        lbl_edit_center_vaccine_type = new javax.swing.JLabel();
+        cbo_edit_center_select_vaccine_type = new javax.swing.JComboBox<>();
+        btn_edit_center_save = new javax.swing.JButton();
+        btn_edit_center_cancel = new javax.swing.JButton();
 
         pnl_vaccinationStatus.setBackground(new java.awt.Color(136, 178, 219));
 
@@ -381,6 +423,11 @@ public class Personnel extends javax.swing.JFrame {
         lbl_vaccination_center.setForeground(new java.awt.Color(255, 255, 255));
         lbl_vaccination_center.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_vaccination_center.setText("Vaccination Center");
+        lbl_vaccination_center.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_vaccination_centerMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_vaccination_centerLayout = new javax.swing.GroupLayout(pnl_vaccination_center);
         pnl_vaccination_center.setLayout(pnl_vaccination_centerLayout);
@@ -1467,6 +1514,9 @@ public class Personnel extends javax.swing.JFrame {
         ));
         tbl_view_vaccination_appointments.setPreferredSize(new java.awt.Dimension(800, 64));
         scrpnl_view_vaccination_appointments.setViewportView(tbl_view_vaccination_appointments);
+        if (tbl_view_vaccination_appointments.getColumnModel().getColumnCount() > 0) {
+            tbl_view_vaccination_appointments.getColumnModel().getColumn(5).setHeaderValue("Dose");
+        }
 
         lbl_search_vaccination_appointments.setBackground(new java.awt.Color(255, 255, 255));
         lbl_search_vaccination_appointments.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -1565,7 +1615,7 @@ public class Personnel extends javax.swing.JFrame {
                     .addComponent(btn_vaccination_appointments_update, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrpnl_view_vaccination_appointments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnl_register_vaccination_appointments.setBackground(new java.awt.Color(255, 255, 255));
@@ -1803,6 +1853,392 @@ public class Personnel extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnl_view_vaccination_center.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_view_vaccination_center.setPreferredSize(new java.awt.Dimension(960, 720));
+
+        pnl_viewVaccinationCenter.setBackground(new java.awt.Color(136, 178, 219));
+
+        lbl_view_vaccination_center.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_view_vaccination_center.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbl_view_vaccination_center.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_view_vaccination_center.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_view_vaccination_center.setText("Manage Vaccination Center");
+
+        javax.swing.GroupLayout pnl_viewVaccinationCenterLayout = new javax.swing.GroupLayout(pnl_viewVaccinationCenter);
+        pnl_viewVaccinationCenter.setLayout(pnl_viewVaccinationCenterLayout);
+        pnl_viewVaccinationCenterLayout.setHorizontalGroup(
+            pnl_viewVaccinationCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_viewVaccinationCenterLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_view_vaccination_center, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_viewVaccinationCenterLayout.setVerticalGroup(
+            pnl_viewVaccinationCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_viewVaccinationCenterLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbl_view_vaccination_center, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tbl_view_vaccination_center.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tbl_view_vaccination_center.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Address", "Contact Number", "Vaccine Type"
+            }
+        ));
+        tbl_view_vaccination_center.setPreferredSize(new java.awt.Dimension(800, 64));
+        scrpnl_view_vaccination_center.setViewportView(tbl_view_vaccination_center);
+
+        lbl_search_vaccination_center.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_search_vaccination_center.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_search_vaccination_center.setText("Search (Name)");
+
+        txt_search_vaccination_center.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        btn_vaccination_center_add.setBackground(new java.awt.Color(73, 161, 236));
+        btn_vaccination_center_add.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_vaccination_center_add.setForeground(new java.awt.Color(255, 255, 255));
+        btn_vaccination_center_add.setText("Add Center");
+        btn_vaccination_center_add.setBorder(null);
+        btn_vaccination_center_add.setMaximumSize(new java.awt.Dimension(125, 19));
+        btn_vaccination_center_add.setMinimumSize(new java.awt.Dimension(125, 19));
+        btn_vaccination_center_add.setPreferredSize(new java.awt.Dimension(200, 19));
+        btn_vaccination_center_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vaccination_center_addActionPerformed(evt);
+            }
+        });
+
+        btn_vaccination_center_edit.setBackground(new java.awt.Color(73, 161, 236));
+        btn_vaccination_center_edit.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_vaccination_center_edit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_vaccination_center_edit.setText("Edit Selected");
+        btn_vaccination_center_edit.setBorder(null);
+        btn_vaccination_center_edit.setMaximumSize(new java.awt.Dimension(125, 19));
+        btn_vaccination_center_edit.setMinimumSize(new java.awt.Dimension(125, 19));
+        btn_vaccination_center_edit.setPreferredSize(new java.awt.Dimension(200, 19));
+        btn_vaccination_center_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vaccination_center_editActionPerformed(evt);
+            }
+        });
+
+        btn_vaccination_center_remove.setBackground(new java.awt.Color(73, 161, 236));
+        btn_vaccination_center_remove.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_vaccination_center_remove.setForeground(new java.awt.Color(255, 255, 255));
+        btn_vaccination_center_remove.setText("Remove Selected");
+        btn_vaccination_center_remove.setBorder(null);
+        btn_vaccination_center_remove.setPreferredSize(new java.awt.Dimension(200, 19));
+
+        javax.swing.GroupLayout pnl_view_vaccination_centerLayout = new javax.swing.GroupLayout(pnl_view_vaccination_center);
+        pnl_view_vaccination_center.setLayout(pnl_view_vaccination_centerLayout);
+        pnl_view_vaccination_centerLayout.setHorizontalGroup(
+            pnl_view_vaccination_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_viewVaccinationCenter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_view_vaccination_centerLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(pnl_view_vaccination_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrpnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
+                    .addComponent(lbl_search_vaccination_center, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_view_vaccination_centerLayout.createSequentialGroup()
+                        .addGroup(pnl_view_vaccination_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_search_vaccination_center)
+                            .addGroup(pnl_view_vaccination_centerLayout.createSequentialGroup()
+                                .addComponent(btn_vaccination_center_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_vaccination_center_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_vaccination_center_remove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(2, 2, 2)))
+                .addGap(48, 48, 48))
+        );
+        pnl_view_vaccination_centerLayout.setVerticalGroup(
+            pnl_view_vaccination_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_view_vaccination_centerLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(pnl_viewVaccinationCenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(lbl_search_vaccination_center)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_search_vaccination_center, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnl_view_vaccination_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_vaccination_center_add, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vaccination_center_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vaccination_center_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrpnl_view_vaccination_center, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+
+        pnl_add_center.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnl_addCenter.setBackground(new java.awt.Color(136, 178, 219));
+
+        lbl_add_center.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_add_center.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbl_add_center.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_add_center.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_add_center.setText("Add Center");
+
+        javax.swing.GroupLayout pnl_addCenterLayout = new javax.swing.GroupLayout(pnl_addCenter);
+        pnl_addCenter.setLayout(pnl_addCenterLayout);
+        pnl_addCenterLayout.setHorizontalGroup(
+            pnl_addCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_addCenterLayout.createSequentialGroup()
+                .addContainerGap(280, Short.MAX_VALUE)
+                .addComponent(lbl_add_center, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+        pnl_addCenterLayout.setVerticalGroup(
+            pnl_addCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_addCenterLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbl_add_center, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lbl_add_center_id.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_add_center_id.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_add_center_id.setText("Center ID");
+
+        txt_add_center_id.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_add_center_name.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_add_center_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_add_center_name.setText("Name");
+
+        txt_add_center_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_add_center_address.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_add_center_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_add_center_address.setText("Address");
+
+        txt_add_center_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_add_center_contact_number.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_add_center_contact_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_add_center_contact_number.setText("Contact Number");
+
+        txt_add_center_contact_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_add_center_vaccine_type.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_add_center_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_add_center_vaccine_type.setText("Vaccine Type");
+
+        cbo_add_center_select_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        cbo_add_center_select_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
+
+        btn_add_center_add.setBackground(new java.awt.Color(73, 161, 236));
+        btn_add_center_add.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_add_center_add.setForeground(new java.awt.Color(255, 255, 255));
+        btn_add_center_add.setText("Add");
+        btn_add_center_add.setBorder(null);
+
+        btn_add_center_cancel.setBackground(new java.awt.Color(221, 98, 98));
+        btn_add_center_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_add_center_cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_add_center_cancel.setText("Cancel");
+        btn_add_center_cancel.setBorder(null);
+        btn_add_center_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_add_center_cancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_add_centerLayout = new javax.swing.GroupLayout(pnl_add_center);
+        pnl_add_center.setLayout(pnl_add_centerLayout);
+        pnl_add_centerLayout.setHorizontalGroup(
+            pnl_add_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_addCenter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_add_centerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_add_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbo_add_center_select_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_add_center_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_add_center_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_add_center_id, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_add_center_id)
+                    .addComponent(lbl_add_center_name)
+                    .addComponent(lbl_add_center_address)
+                    .addComponent(lbl_add_center_contact_number)
+                    .addComponent(lbl_add_center_vaccine_type)
+                    .addComponent(txt_add_center_contact_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnl_add_centerLayout.createSequentialGroup()
+                        .addComponent(btn_add_center_add, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btn_add_center_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_add_centerLayout.setVerticalGroup(
+            pnl_add_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_add_centerLayout.createSequentialGroup()
+                .addComponent(pnl_addCenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(lbl_add_center_id)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_add_center_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_add_center_name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_add_center_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_add_center_address)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_add_center_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_add_center_contact_number)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_add_center_contact_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_add_center_vaccine_type)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbo_add_center_select_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnl_add_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_add_center_add, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_add_center_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnl_edit_center.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnl_editCenter.setBackground(new java.awt.Color(136, 178, 219));
+
+        lbl_edit_center.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_center.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbl_edit_center.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_edit_center.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_edit_center.setText("Edit Center");
+
+        javax.swing.GroupLayout pnl_editCenterLayout = new javax.swing.GroupLayout(pnl_editCenter);
+        pnl_editCenter.setLayout(pnl_editCenterLayout);
+        pnl_editCenterLayout.setHorizontalGroup(
+            pnl_editCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_editCenterLayout.createSequentialGroup()
+                .addContainerGap(280, Short.MAX_VALUE)
+                .addComponent(lbl_edit_center, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+        pnl_editCenterLayout.setVerticalGroup(
+            pnl_editCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_editCenterLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbl_edit_center, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lbl_edit_center_id.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_center_id.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_center_id.setText("Center ID");
+
+        txt_edit_center_id.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_edit_center_name.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_center_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_center_name.setText("Name");
+
+        txt_edit_center_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_edit_center_address.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_center_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_center_address.setText("Address");
+
+        txt_edit_center_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_edit_center_contact_number.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_center_contact_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_center_contact_number.setText("Contact Number");
+
+        txt_edit_center_contact_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        lbl_edit_center_vaccine_type.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_center_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_center_vaccine_type.setText("Vaccine Type");
+
+        cbo_edit_center_select_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        cbo_edit_center_select_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
+
+        btn_edit_center_save.setBackground(new java.awt.Color(73, 161, 236));
+        btn_edit_center_save.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_edit_center_save.setForeground(new java.awt.Color(255, 255, 255));
+        btn_edit_center_save.setText("Save");
+        btn_edit_center_save.setBorder(null);
+
+        btn_edit_center_cancel.setBackground(new java.awt.Color(221, 98, 98));
+        btn_edit_center_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_edit_center_cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_edit_center_cancel.setText("Cancel");
+        btn_edit_center_cancel.setBorder(null);
+        btn_edit_center_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_edit_center_cancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_edit_centerLayout = new javax.swing.GroupLayout(pnl_edit_center);
+        pnl_edit_center.setLayout(pnl_edit_centerLayout);
+        pnl_edit_centerLayout.setHorizontalGroup(
+            pnl_edit_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_editCenter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_edit_centerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_edit_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbo_edit_center_select_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_center_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_center_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_center_id, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_edit_center_id)
+                    .addComponent(lbl_edit_center_name)
+                    .addComponent(lbl_edit_center_address)
+                    .addComponent(lbl_edit_center_contact_number)
+                    .addComponent(lbl_edit_center_vaccine_type)
+                    .addComponent(txt_edit_center_contact_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnl_edit_centerLayout.createSequentialGroup()
+                        .addComponent(btn_edit_center_save, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btn_edit_center_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_edit_centerLayout.setVerticalGroup(
+            pnl_edit_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_edit_centerLayout.createSequentialGroup()
+                .addComponent(pnl_editCenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(lbl_edit_center_id)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_center_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_center_name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_center_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_center_address)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_center_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_center_contact_number)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_center_contact_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_center_vaccine_type)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbo_edit_center_select_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnl_edit_centerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_edit_center_save, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_edit_center_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnl_containerLayout = new javax.swing.GroupLayout(pnl_container);
         pnl_container.setLayout(pnl_containerLayout);
         pnl_containerLayout.setHorizontalGroup(
@@ -1829,12 +2265,12 @@ public class Personnel extends javax.swing.JFrame {
                 .addComponent(pnl_edit_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnl_containerLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
-                    .addComponent(pnl_register_people, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(0, 0, 0)))
+                .addComponent(pnl_register_people, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_add_center, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnl_edit_center, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
@@ -1847,7 +2283,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_account, javax.swing.GroupLayout.DEFAULT_SIZE, 1159, Short.MAX_VALUE)
+                    .addComponent(pnl_view_account, javax.swing.GroupLayout.DEFAULT_SIZE, 1735, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -1857,7 +2293,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 1158, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 1734, Short.MAX_VALUE)
                     .addGap(1, 1, 1)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -1871,14 +2307,20 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                    .addComponent(pnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.PREFERRED_SIZE, 539, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                    .addGap(0, 0, 0)
+                    .addComponent(pnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
                     .addComponent(pnl_register_people, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(0, 0, 0)
+                    .addComponent(pnl_add_center, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(0, 0, 0)
+                    .addComponent(pnl_edit_center, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -1917,6 +2359,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
 
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
@@ -1931,6 +2376,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
         
     }//GEN-LAST:event_btn_register_appointmentActionPerformed
 
@@ -1945,6 +2393,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
 
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
@@ -1959,6 +2410,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_my_vaccineActionPerformed
 
     private void btn_cancel_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_editActionPerformed
@@ -1972,6 +2426,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_cancel_editActionPerformed
 
     private void lbl_peopleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_peopleMouseClicked
@@ -1985,6 +2442,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_lbl_peopleMouseClicked
 
     private void btn_people_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_people_registerActionPerformed
@@ -1998,6 +2458,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_people_registerActionPerformed
 
     private void btn_register_people_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_people_cancelActionPerformed
@@ -2011,6 +2474,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_register_people_cancelActionPerformed
 
     private void btn_edit_people_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_people_cancelActionPerformed
@@ -2024,6 +2490,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_edit_people_cancelActionPerformed
 
     private void btn_people_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_people_editActionPerformed
@@ -2037,6 +2506,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_people_editActionPerformed
 
     private void pnl_peopleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_peopleMouseClicked
@@ -2050,6 +2522,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_pnl_peopleMouseClicked
 
     private void lbl_vaccination_appointmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentsMouseClicked
@@ -2063,6 +2538,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(true);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_lbl_vaccination_appointmentsMouseClicked
 
     private void btn_vaccination_appointments_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_appointments_registerActionPerformed
@@ -2076,6 +2554,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(true);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_vaccination_appointments_registerActionPerformed
 
     private void btn_register_vaccination_appointments_register_vaccination_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointments_register_vaccination_appointmentActionPerformed
@@ -2089,6 +2570,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(true);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_register_vaccination_appointments_register_vaccination_appointmentActionPerformed
 
     private void btn_edit_people_cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_people_cancel1ActionPerformed
@@ -2102,6 +2586,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(true);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_edit_people_cancel1ActionPerformed
 
     private void btn_vaccination_appointments_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_appointments_editActionPerformed
@@ -2115,6 +2602,9 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments.setVisible(false);
         pnl_register_vaccination_appointments.setVisible(false);
         pnl_edit_vaccination_appointments.setVisible(true);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
     }//GEN-LAST:event_btn_vaccination_appointments_editActionPerformed
 
     private void btn_vaccination_appointments_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_appointments_updateActionPerformed
@@ -2123,6 +2613,86 @@ public class Personnel extends javax.swing.JFrame {
     selected = (String) JOptionPane.showInputDialog(null,"Select Completed Dose: ","Dose number", JOptionPane.QUESTION_MESSAGE, null, dosage, dosage[1]);
     System.out.println(selected);
       }//GEN-LAST:event_btn_vaccination_appointments_updateActionPerformed
+
+    private void lbl_vaccination_centerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_centerMouseClicked
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(true);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
+    }//GEN-LAST:event_lbl_vaccination_centerMouseClicked
+
+    private void btn_vaccination_center_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_center_addActionPerformed
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(true);
+        pnl_edit_center.setVisible(false);
+    }//GEN-LAST:event_btn_vaccination_center_addActionPerformed
+
+    private void btn_add_center_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_center_cancelActionPerformed
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(true);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
+    }//GEN-LAST:event_btn_add_center_cancelActionPerformed
+
+    private void btn_vaccination_center_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_center_editActionPerformed
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(true);
+    }//GEN-LAST:event_btn_vaccination_center_editActionPerformed
+
+    private void btn_edit_center_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_center_cancelActionPerformed
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(true);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
+    }//GEN-LAST:event_btn_edit_center_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2163,9 +2733,13 @@ public class Personnel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_add_center_add;
+    private javax.swing.JButton btn_add_center_cancel;
     private javax.swing.JButton btn_cancel_appointment;
     private javax.swing.JButton btn_cancel_edit;
     private javax.swing.JButton btn_edit_account;
+    private javax.swing.JButton btn_edit_center_cancel;
+    private javax.swing.JButton btn_edit_center_save;
     private javax.swing.JButton btn_edit_people_cancel;
     private javax.swing.JButton btn_edit_people_cancel1;
     private javax.swing.JButton btn_edit_people_save;
@@ -2183,6 +2757,11 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JButton btn_vaccination_appointments_register;
     private javax.swing.JButton btn_vaccination_appointments_remove;
     private javax.swing.JButton btn_vaccination_appointments_update;
+    private javax.swing.JButton btn_vaccination_center_add;
+    private javax.swing.JButton btn_vaccination_center_edit;
+    private javax.swing.JButton btn_vaccination_center_remove;
+    private javax.swing.JComboBox<String> cbo_add_center_select_vaccine_type;
+    private javax.swing.JComboBox<String> cbo_edit_center_select_vaccine_type;
     private javax.swing.JComboBox<String> cbo_edit_vaccination_appointments_select_vaccination_center;
     private javax.swing.JComboBox<String> cbo_edit_vaccination_appointments_select_vaccine_type;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_vaccination_center;
@@ -2191,6 +2770,12 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbo_select_vaccine_type;
     private javax.swing.JLabel lbl_1st_dose_appointment;
     private javax.swing.JLabel lbl_2nd_dose_appointment;
+    private javax.swing.JLabel lbl_add_center;
+    private javax.swing.JLabel lbl_add_center_address;
+    private javax.swing.JLabel lbl_add_center_contact_number;
+    private javax.swing.JLabel lbl_add_center_id;
+    private javax.swing.JLabel lbl_add_center_name;
+    private javax.swing.JLabel lbl_add_center_vaccine_type;
     private javax.swing.JLabel lbl_centerAddress1;
     private javax.swing.JLabel lbl_centerAddress2;
     private javax.swing.JLabel lbl_centerContactNumber1;
@@ -2206,6 +2791,12 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_editAccount;
     private javax.swing.JLabel lbl_editPeople;
     private javax.swing.JLabel lbl_edit_address;
+    private javax.swing.JLabel lbl_edit_center;
+    private javax.swing.JLabel lbl_edit_center_address;
+    private javax.swing.JLabel lbl_edit_center_contact_number;
+    private javax.swing.JLabel lbl_edit_center_id;
+    private javax.swing.JLabel lbl_edit_center_name;
+    private javax.swing.JLabel lbl_edit_center_vaccine_type;
     private javax.swing.JLabel lbl_edit_ic_passport_number;
     private javax.swing.JLabel lbl_edit_name;
     private javax.swing.JLabel lbl_edit_password;
@@ -2242,6 +2833,7 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_register_vaccination_appointments_select_vaccine_type;
     private javax.swing.JLabel lbl_search_people;
     private javax.swing.JLabel lbl_search_vaccination_appointments;
+    private javax.swing.JLabel lbl_search_vaccination_center;
     private javax.swing.JLabel lbl_search_vaccination_status;
     private javax.swing.JLabel lbl_select_date;
     private javax.swing.JLabel lbl_select_vaccination_center;
@@ -2266,11 +2858,16 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_view_people;
     private javax.swing.JLabel lbl_view_phone_number;
     private javax.swing.JLabel lbl_view_vaccination_appointments;
+    private javax.swing.JLabel lbl_view_vaccination_center;
+    private javax.swing.JPanel pnl_addCenter;
+    private javax.swing.JPanel pnl_add_center;
     private javax.swing.JPanel pnl_container;
     private javax.swing.JPanel pnl_editAccount;
+    private javax.swing.JPanel pnl_editCenter;
     private javax.swing.JPanel pnl_editPeople;
     private javax.swing.JPanel pnl_editVaccinationAppointments;
     private javax.swing.JPanel pnl_edit_account;
+    private javax.swing.JPanel pnl_edit_center;
     private javax.swing.JPanel pnl_edit_people;
     private javax.swing.JPanel pnl_edit_vaccination_appointments;
     private javax.swing.JPanel pnl_logout;
@@ -2291,18 +2888,30 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_vaccine_supply;
     private javax.swing.JPanel pnl_viewPeople;
     private javax.swing.JPanel pnl_viewVaccinationAppointments;
+    private javax.swing.JPanel pnl_viewVaccinationCenter;
     private javax.swing.JPanel pnl_view_account;
     private javax.swing.JPanel pnl_view_people;
     private javax.swing.JPanel pnl_view_vaccination_appointment;
     private javax.swing.JPanel pnl_view_vaccination_appointments;
+    private javax.swing.JPanel pnl_view_vaccination_center;
     private javax.swing.JPanel pnl_view_vaccination_status;
     private javax.swing.JScrollPane scrpnl_vaccination_status;
     private javax.swing.JScrollPane scrpnl_view_people;
     private javax.swing.JScrollPane scrpnl_view_vaccination_appointments;
+    private javax.swing.JScrollPane scrpnl_view_vaccination_center;
     private javax.swing.JTable tbl_vaccination_status;
     private javax.swing.JTable tbl_view_people;
     private javax.swing.JTable tbl_view_vaccination_appointments;
+    private javax.swing.JTable tbl_view_vaccination_center;
+    private javax.swing.JTextField txt_add_center_address;
+    private javax.swing.JPasswordField txt_add_center_contact_number;
+    private javax.swing.JTextField txt_add_center_id;
+    private javax.swing.JTextField txt_add_center_name;
     private javax.swing.JTextField txt_edit_address;
+    private javax.swing.JTextField txt_edit_center_address;
+    private javax.swing.JPasswordField txt_edit_center_contact_number;
+    private javax.swing.JTextField txt_edit_center_id;
+    private javax.swing.JTextField txt_edit_center_name;
     private javax.swing.JPasswordField txt_edit_ic_passport_number;
     private javax.swing.JTextField txt_edit_name;
     private javax.swing.JTextField txt_edit_password;
@@ -2326,6 +2935,7 @@ public class Personnel extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txt_register_vaccination_appointments_select_date;
     private javax.swing.JTextField txt_search_people;
     private javax.swing.JTextField txt_search_vaccination_appointments;
+    private javax.swing.JTextField txt_search_vaccination_center;
     private javax.swing.JTextField txt_search_vaccination_status;
     private com.toedter.calendar.JDateChooser txt_select_date;
     // End of variables declaration//GEN-END:variables
