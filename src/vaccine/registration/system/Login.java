@@ -62,6 +62,11 @@ public class Login extends javax.swing.JFrame {
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Log In");
         btn_login.setBorder(null);
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
 
         btn_register.setBackground(new java.awt.Color(255, 255, 255));
         btn_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -133,6 +138,19 @@ public class Login extends javax.swing.JFrame {
         register.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_registerActionPerformed
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        if(cbo_user_role.getSelectedItem() == "Personnel") {
+            Personnel personnel = new Personnel();
+            personnel.setVisible(true);
+            this.dispose();
+        } else if (cbo_user_role.getSelectedItem() == "People (Citizen / Non-Citizen)"){
+            People people = new People();
+            people.setVisible(true);
+            this.dispose();
+        }
+        
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
      * @param args the command line arguments

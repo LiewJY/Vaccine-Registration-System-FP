@@ -187,7 +187,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     private void btn_back_to_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_to_loginActionPerformed
         Login backToLogin = new Login();
         backToLogin.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btn_back_to_loginActionPerformed
 
     /**

@@ -157,7 +157,7 @@
           <Group type="102" attributes="0">
               <Component id="pnl_sidenav" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="pnl_container" pref="908" max="32767" attributes="0"/>
+              <Component id="pnl_container" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -269,40 +269,6 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_my_accountMouseClicked"/>
               </Events>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="pnl_logout">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="62" green="62" red="dd" type="rgb"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbl_logout" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbl_logout" alignment="1" pref="50" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbl_logout">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Log Out"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -458,6 +424,43 @@
             </Component>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JPanel" name="pnl_logout">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="62" green="62" red="dd" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbl_logout" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lbl_logout" alignment="1" pref="50" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lbl_logout">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Log Out"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_logoutMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnl_container">
@@ -477,7 +480,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_account" pref="908" max="32767" attributes="0"/>
+                      <Component id="pnl_view_account" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -491,7 +494,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointment" pref="908" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointment" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -501,10 +504,10 @@
                   <Component id="pnl_edit_vaccination_appointments" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="5" groupAlignment="0" attributes="0">
-                  <Component id="pnl_view_people" pref="908" max="32767" attributes="0"/>
-                  <Component id="pnl_view_vaccination_appointments" pref="908" max="32767" attributes="0"/>
-                  <Component id="pnl_view_vaccination_center" pref="908" max="32767" attributes="0"/>
-                  <Component id="pnl_view_vaccine" pref="908" max="32767" attributes="0"/>
+                  <Component id="pnl_view_people" max="32767" attributes="0"/>
+                  <Component id="pnl_view_vaccination_appointments" max="32767" attributes="0"/>
+                  <Component id="pnl_view_vaccination_center" max="32767" attributes="0"/>
+                  <Component id="pnl_view_vaccine" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="6" groupAlignment="0" attributes="0">
                   <Component id="pnl_register_people" max="32767" attributes="0"/>
@@ -528,7 +531,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_account" pref="2275" max="32767" attributes="0"/>
+                      <Component id="pnl_view_account" pref="2983" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -542,7 +545,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointment" pref="2274" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointment" pref="2982" max="32767" attributes="0"/>
                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -560,13 +563,13 @@
               <Group type="103" rootIndex="5" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_people" pref="620" max="32767" attributes="0"/>
+                      <Component id="pnl_view_people" pref="797" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointments" pref="551" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointments" pref="728" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_center" pref="552" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_center" pref="729" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccine" pref="552" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccine" pref="729" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1089,33 +1092,38 @@
                                       <Component id="lbl_center_address_1" min="-2" pref="400" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lbl_date_1" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                          <Component id="lbl_vaccineType1" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                          <Component id="lbl_time1" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
                                           <Component id="lbl_vaccination_center_1" min="-2" pref="400" max="-2" attributes="0"/>
                                           <Component id="lbl_vaccinationCenter1" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                           <Component id="lbl_centerAddress1" min="-2" pref="400" max="-2" attributes="0"/>
                                           <Component id="lbl_centerContactNumber1" min="-2" pref="400" max="-2" attributes="0"/>
                                           <Component id="lbl_center_contact_number_1" min="-2" pref="400" max="-2" attributes="0"/>
                                           <Component id="lbl_date1" min="-2" pref="400" max="-2" attributes="0"/>
+                                          <Component id="lbl_time_1" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                          <Component id="lbl_vaccineType1" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
                                           <Component id="lbl_vaccine_type_1" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lbl_vaccine_type_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                              <Component id="lbl_vaccineType2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                              <Component id="lbl_date_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                              <Component id="lbl_date2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                              <Component id="lbl_center_contact_number_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                              <Component id="lbl_centerContactNumber2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                              <Component id="lbl_center_address_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                              <Component id="lbl_centerAddress2" min="-2" pref="400" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="lbl_time_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                                  <Component id="lbl_time2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                                  <Component id="lbl_date_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                                  <Component id="lbl_date2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                                  <Component id="lbl_center_contact_number_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                                  <Component id="lbl_centerContactNumber2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                                  <Component id="lbl_center_address_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                                  <Component id="lbl_centerAddress2" min="-2" pref="400" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
+                                          <Component id="lbl_vaccinationCenter2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                          <Component id="lbl_vaccination_center_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="lbl_vaccinationCenter2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
-                                      <Component id="lbl_vaccination_center_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                      <Component id="lbl_vaccine_type_2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
+                                      <Component id="lbl_vaccineType2" alignment="1" min="-2" pref="400" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1133,12 +1141,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnl_vaccinationAppoitment" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbl_1st_dose_appointment" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="lbl_2nd_dose_appointment" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbl_vaccinationCenter2" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="lbl_vaccinationCenter1" min="-2" pref="30" max="-2" attributes="0"/>
@@ -1147,49 +1155,62 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="lbl_vaccination_center_2" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbl_centerAddress2" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbl_center_address_2" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbl_centerContactNumber2" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbl_center_contact_number_2" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbl_date2" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbl_date_2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_time2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_time_2" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="lbl_vaccination_center_1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_centerAddress1" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_center_address_1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_centerContactNumber1" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_center_contact_number_1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_date1" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_date_1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_time1" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbl_time_1" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lbl_vaccineType1" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lbl_vaccine_type_1" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Component id="lbl_vaccineType2" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbl_vaccine_type_2" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lbl_vaccination_center_1" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lbl_centerAddress1" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbl_center_address_1" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lbl_centerContactNumber1" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbl_center_contact_number_1" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lbl_date1" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbl_date_1" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lbl_vaccineType1" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbl_vaccine_type_1" min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <EmptySpace pref="832" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_register_appointment" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btn_cancel_appointment" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="836" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1363,6 +1384,34 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lbl_time1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_time_1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="lbl_vaccineType1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1514,6 +1563,34 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lbl_time2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_time_2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="lbl_vaccineType2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1595,18 +1672,20 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnl_registerVaccinationAppointment" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="280" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_select_time" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="cbo_select_time" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_select_vaccine_type" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_select_date" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_select_date" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="btn_register_vaccination_appointment" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_select_vaccination_center" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="cbo_select_vaccination_center" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_select_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="cbo_select_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_selectVaccineType" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="280" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1618,17 +1697,21 @@
                       <Component id="lbl_select_date" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="txt_select_date" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbl_select_time" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="cbo_select_time" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_select_vaccination_center" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="cbo_select_vaccination_center" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_selectVaccineType" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="cbo_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="btn_register_vaccination_appointment" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1645,9 +1728,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="280" max="32767" attributes="0"/>
                           <Component id="lbl_registerVaccinationAppointment" min="-2" pref="400" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="280" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1697,6 +1780,40 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JComboBox" name="cbo_select_time">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="9">
+                    <StringItem index="0" value="Select Time"/>
+                    <StringItem index="1" value="9:00 AM"/>
+                    <StringItem index="2" value="10:00 AM"/>
+                    <StringItem index="3" value="11:00 AM"/>
+                    <StringItem index="4" value="12:00 PM"/>
+                    <StringItem index="5" value="2:00 PM"/>
+                    <StringItem index="6" value="3:00 PM"/>
+                    <StringItem index="7" value="4:00 PM"/>
+                    <StringItem index="8" value="5:00 PM"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_select_time">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Select Time"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="lbl_select_vaccination_center">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1723,7 +1840,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_select_vaccine_type">
+            <Component class="javax.swing.JLabel" name="lbl_selectVaccineType">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1734,20 +1851,22 @@
                 <Property name="text" type="java.lang.String" value="Select Vaccine Type"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbo_select_vaccine_type">
+            <Component class="javax.swing.JLabel" name="lbl_select_vaccine_type">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Select Vaccine Type"/>
-                  </StringArray>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btn_register_vaccination_appointment">
               <Properties>
@@ -1791,10 +1910,10 @@
                                   <Component id="txt_search_people" max="32767" attributes="0"/>
                                   <Component id="lbl_search_people" pref="688" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btn_people_edit" min="-2" pref="158" max="-2" attributes="0"/>
                                   <Component id="btn_people_register" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
-                                  <Component id="btn_people_edit" alignment="1" min="-2" pref="158" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1978,7 +2097,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edit Selected"/>
+                <Property name="text" type="java.lang.String" value="Edit People"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -2549,14 +2668,14 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="txt_search_vaccination_appointments" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btn_vaccination_appointments_register" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btn_vaccination_appointments_register" min="-2" pref="200" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_vaccination_appointments_edit" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="btn_vaccination_appointments_edit" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_vaccination_appointments_update" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="btn_vaccination_appointments_update" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_vaccination_appointments_remove" max="-2" attributes="0"/>
+                                      <Component id="btn_vaccination_appointments_remove" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2649,11 +2768,13 @@
                       <Font name="Arial" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="4">
-                        <Column editable="true" title="Center" type="java.lang.Object"/>
+                      <Table columnCount="8" rowCount="4">
+                        <Column editable="true" title="ID" type="java.lang.Object"/>
                         <Column editable="true" title="Name" type="java.lang.Object"/>
                         <Column editable="true" title="IC / Passport Number" type="java.lang.Object"/>
                         <Column editable="true" title="Date" type="java.lang.Object"/>
+                        <Column editable="true" title="Date" type="java.lang.Object"/>
+                        <Column editable="true" title="Time" type="java.lang.Object"/>
                         <Column editable="true" title="Vaccine Type" type="java.lang.Object"/>
                         <Column editable="true" title="Dose" type="java.lang.Object"/>
                       </Table>
@@ -2661,7 +2782,7 @@
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title value="ID"/>
+                          <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
@@ -2671,22 +2792,32 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title value="Address"/>
+                          <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title value="Contact Number"/>
+                          <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title value="Vaccine Type"/>
+                          <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title value="Dose"/>
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
@@ -2731,7 +2862,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Register People"/>
+                <Property name="text" type="java.lang.String" value="Register Appointment"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -2760,7 +2891,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edit Selected"/>
+                <Property name="text" type="java.lang.String" value="Edit Appointment"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -2789,7 +2920,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Update Selected"/>
+                <Property name="text" type="java.lang.String" value="Update Appointment"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -2818,7 +2949,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Remove Selected"/>
+                <Property name="text" type="java.lang.String" value="Remove Appointment"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -2843,9 +2974,12 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnl_registerVaccinationAppointments" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_register_vaccination_appointments_select_time" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="cbo_register_vaccination_appointments_select_time" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_register_vaccination_appointments_select_vaccine_type" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_register_vaccination_appointments_ic_passport_number" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_register_vaccination_appointments_ic_passport_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_register_vaccination_appointments_select_date" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
@@ -2853,8 +2987,7 @@
                           <Component id="btn_register_vaccination_appointments_register_vaccination_appointment" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_register_vaccination_appointments_select_vaccination_center" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="cbo_register_vaccination_appointments_select_vaccination_center" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_register_vaccination_appointments_select_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="cbo_register_vaccination_appointments_select_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_registeRVaccinationAppointmentsSelectVaccineType" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -2868,21 +3001,25 @@
                       <Component id="lbl_register_vaccination_appointments_ic_passport_number" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_register_vaccination_appointments_ic_passport_number" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_register_vaccination_appointments_select_date" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="txt_register_vaccination_appointments_select_date" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbl_register_vaccination_appointments_select_time" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="cbo_register_vaccination_appointments_select_time" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_register_vaccination_appointments_select_vaccination_center" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="cbo_register_vaccination_appointments_select_vaccination_center" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_registeRVaccinationAppointmentsSelectVaccineType" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_register_vaccination_appointments_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="cbo_register_vaccination_appointments_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="btn_register_vaccination_appointments_register_vaccination_appointment" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2978,6 +3115,40 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lbl_register_vaccination_appointments_select_time">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Select Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbo_register_vaccination_appointments_select_time">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="9">
+                    <StringItem index="0" value="Select Time"/>
+                    <StringItem index="1" value="9:00 AM"/>
+                    <StringItem index="2" value="10:00 AM"/>
+                    <StringItem index="3" value="11:00 AM"/>
+                    <StringItem index="4" value="12:00 PM"/>
+                    <StringItem index="5" value="2:00 PM"/>
+                    <StringItem index="6" value="3:00 PM"/>
+                    <StringItem index="7" value="4:00 PM"/>
+                    <StringItem index="8" value="5:00 PM"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
             <Component class="javax.swing.JLabel" name="lbl_register_vaccination_appointments_select_vaccination_center">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -3004,7 +3175,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_register_vaccination_appointments_select_vaccine_type">
+            <Component class="javax.swing.JLabel" name="lbl_registeRVaccinationAppointmentsSelectVaccineType">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3015,20 +3186,22 @@
                 <Property name="text" type="java.lang.String" value="Select Vaccine Type"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbo_register_vaccination_appointments_select_vaccine_type">
+            <Component class="javax.swing.JLabel" name="lbl_register_vaccination_appointments_select_vaccine_type">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Select Vaccine Type"/>
-                  </StringArray>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btn_register_vaccination_appointments_register_vaccination_appointment">
               <Properties>
@@ -3068,11 +3241,14 @@
                   <Component id="pnl_editVaccinationAppointments" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_edit_vaccination_appointments_select_time" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="cbo_edit_vaccination_appointments_select_time" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_edit_vaccination_appointments_select_vaccine_type" min="-2" pref="400" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="btn_edit_people_save1" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btn_edit_vaccination_appointments_save" min="-2" pref="180" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="btn_edit_people_cancel1" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="btn_edit_vaccination_appointments_cancel" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txt_edit_vaccination_appointments_ic_passport_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_edit_vaccination_appointments_ic_passport_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
@@ -3080,8 +3256,7 @@
                           <Component id="lbl_edit_vaccination_appointments_select_date" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_edit_vaccination_appointments_select_vaccination_center" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="cbo_edit_vaccination_appointments_select_vaccination_center" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_edit_vaccination_appointments_select_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="cbo_edit_vaccination_appointments_select_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_editVaccinationAppointmentsSelectVaccineType" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -3099,20 +3274,23 @@
                       <Component id="lbl_edit_vaccination_appointments_select_date" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="txt_edit_vaccination_appointments_select_date" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbl_edit_vaccination_appointments_select_time" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="cbo_edit_vaccination_appointments_select_time" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lbl_edit_vaccination_appointments_select_vaccination_center" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="cbo_edit_vaccination_appointments_select_vaccination_center" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_edit_vaccination_appointments_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="cbo_edit_vaccination_appointments_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_edit_people_save1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="btn_edit_people_cancel1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lbl_editVaccinationAppointmentsSelectVaccineType" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lbl_edit_vaccination_appointments_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_edit_vaccination_appointments_save" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btn_edit_vaccination_appointments_cancel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3208,6 +3386,40 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lbl_edit_vaccination_appointments_select_time">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Select Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbo_edit_vaccination_appointments_select_time">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="9">
+                    <StringItem index="0" value="Select Time"/>
+                    <StringItem index="1" value="9:00 AM"/>
+                    <StringItem index="2" value="10:00 AM"/>
+                    <StringItem index="3" value="11:00 AM"/>
+                    <StringItem index="4" value="12:00 PM"/>
+                    <StringItem index="5" value="2:00 PM"/>
+                    <StringItem index="6" value="3:00 PM"/>
+                    <StringItem index="7" value="4:00 PM"/>
+                    <StringItem index="8" value="5:00 PM"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
             <Component class="javax.swing.JLabel" name="lbl_edit_vaccination_appointments_select_vaccination_center">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -3234,7 +3446,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edit_vaccination_appointments_select_vaccine_type">
+            <Component class="javax.swing.JLabel" name="lbl_editVaccinationAppointmentsSelectVaccineType">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3245,22 +3457,24 @@
                 <Property name="text" type="java.lang.String" value="Select Vaccine Type"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbo_edit_vaccination_appointments_select_vaccine_type">
+            <Component class="javax.swing.JLabel" name="lbl_edit_vaccination_appointments_select_vaccine_type">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Select Vaccine Type"/>
-                  </StringArray>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_edit_people_save1">
+            <Component class="javax.swing.JButton" name="btn_edit_vaccination_appointments_save">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ec" green="a1" red="49" type="rgb"/>
@@ -3277,7 +3491,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_edit_people_cancel1">
+            <Component class="javax.swing.JButton" name="btn_edit_vaccination_appointments_cancel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="62" green="62" red="dd" type="rgb"/>
@@ -3294,7 +3508,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_people_cancel1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_vaccination_appointments_cancelActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -3320,13 +3534,13 @@
                           <Component id="lbl_search_vaccination_center" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txt_search_vaccination_center" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btn_vaccination_center_add" max="-2" attributes="0"/>
+                                  <Component id="txt_search_vaccination_center" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btn_vaccination_center_add" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_vaccination_center_edit" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="btn_vaccination_center_edit" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_vaccination_center_remove" max="-2" attributes="0"/>
+                                      <Component id="btn_vaccination_center_remove" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -3523,7 +3737,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edit Selected"/>
+                <Property name="text" type="java.lang.String" value="Edit Center"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -3552,9 +3766,12 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Remove Selected"/>
+                <Property name="text" type="java.lang.String" value="Remove Center"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[125, 19]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 19]"/>
@@ -3577,15 +3794,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbo_add_center_select_vaccine_type" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_add_center_address" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_add_center_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_add_center_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_add_center_id" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_add_center_name" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_add_center_address" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_add_center_contact_number" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_add_center_vaccine_type" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_add_center_contact_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btn_add_center_add" min="-2" pref="180" max="-2" attributes="0"/>
@@ -3602,10 +3815,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnl_addCenter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="lbl_add_center_id" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_add_center_id" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbl_add_center_name" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_add_center_name" min="-2" pref="40" max="-2" attributes="0"/>
@@ -3617,11 +3826,7 @@
                       <Component id="lbl_add_center_contact_number" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_add_center_contact_number" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_add_center_vaccine_type" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbo_add_center_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_add_center_add" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btn_add_center_cancel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -3677,24 +3882,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lbl_add_center_id">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Center ID"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_add_center_id">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="lbl_add_center_name">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -3749,32 +3936,6 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_add_center_vaccine_type">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Vaccine Type"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbo_add_center_select_vaccine_type">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Select Vaccine Type"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JButton" name="btn_add_center_add">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -3825,18 +3986,16 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnl_editCenter" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbo_edit_center_select_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_edit_center_id" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_edit_center_address" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_edit_center_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_edit_center_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_edit_center_id" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_editCenterId" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_center_name" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_center_address" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_center_contact_number" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_edit_center_vaccine_type" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_edit_center_contact_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btn_edit_center_save" min="-2" pref="180" max="-2" attributes="0"/>
@@ -3853,10 +4012,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnl_editCenter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="lbl_edit_center_id" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_editCenterId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_edit_center_id" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lbl_edit_center_id" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="lbl_edit_center_name" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_edit_center_name" min="-2" pref="40" max="-2" attributes="0"/>
@@ -3868,11 +4027,7 @@
                       <Component id="lbl_edit_center_contact_number" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_edit_center_contact_number" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_edit_center_vaccine_type" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbo_edit_center_select_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_edit_center_save" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btn_edit_center_cancel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -3928,7 +4083,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lbl_edit_center_id">
+            <Component class="javax.swing.JLabel" name="lbl_editCenterId">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3939,10 +4094,20 @@
                 <Property name="text" type="java.lang.String" value="Center ID"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_edit_center_id">
+            <Component class="javax.swing.JLabel" name="lbl_edit_center_id">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
                 </Property>
               </Properties>
             </Component>
@@ -3999,32 +4164,6 @@
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edit_center_vaccine_type">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Vaccine Type"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbo_edit_center_select_vaccine_type">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="Select Vaccine Type"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_center_save">
               <Properties>
@@ -4086,13 +4225,13 @@
                           <Component id="lbl_search_vaccine" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txt_search_vaccine" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btn_vaccine_add" max="-2" attributes="0"/>
+                                  <Component id="txt_search_vaccine" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btn_vaccine_add" min="-2" pref="200" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_vacciner_edit" min="-2" pref="151" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_vaccine_remove" max="-2" attributes="0"/>
+                                      <Component id="btn_vaccine_edit" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_vaccine_remove" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -4115,7 +4254,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_vaccine_add" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="btn_vacciner_edit" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btn_vaccine_edit" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btn_vaccine_remove" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -4290,7 +4429,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vaccine_addActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_vacciner_edit">
+            <Component class="javax.swing.JButton" name="btn_vaccine_edit">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ec" green="a1" red="49" type="rgb"/>
@@ -4301,7 +4440,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edit Selected"/>
+                <Property name="text" type="java.lang.String" value="Edit Vaccine"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -4316,7 +4455,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vacciner_editActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vaccine_editActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_vaccine_remove">
@@ -4330,7 +4469,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Remove Selected"/>
+                <Property name="text" type="java.lang.String" value="Remove Vaccine"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -4355,19 +4494,20 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_add_vaccine_second_dose_gap" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_add_vaccine_date" min="-2" pref="400" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_add_vaccine_second_dose_gap" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                                  <Component id="lbl_add_vaccine_second_dose_gap" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="lbl_addVaccineSecondDoseGap" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbo_add_vaccine_center_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_center_name" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txt_add_vaccine_amount" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="cbo_add_vaccine_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                                  <Component id="txt_add_vaccine_lot_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                                  <Component id="lbl_add_vaccine_lot_id" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_add_vaccine_batch_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                                  <Component id="lbl_add_vaccine_batch_id" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_name" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_date" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_expiration_date" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -4390,9 +4530,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnl_addVaccine" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="lbl_add_vaccine_lot_id" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_add_vaccine_batch_id" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_add_vaccine_lot_id" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="txt_add_vaccine_batch_id" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbl_add_vaccine_name" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -4414,9 +4554,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cbo_add_vaccine_center_name" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_add_vaccine_second_dose_gap" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_add_vaccine_second_dose_gap" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="lbl_addVaccineSecondDoseGap" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="lbl_add_vaccine_second_dose_gap" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_add_vaccine_add" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -4473,7 +4613,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lbl_add_vaccine_lot_id">
+            <Component class="javax.swing.JLabel" name="lbl_add_vaccine_batch_id">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -4481,10 +4621,10 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Lot ID"/>
+                <Property name="text" type="java.lang.String" value="Batch ID"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_add_vaccine_lot_id">
+            <Component class="javax.swing.JTextField" name="txt_add_vaccine_batch_id">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -4499,7 +4639,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Name"/>
+                <Property name="text" type="java.lang.String" value="Vaccine Type"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbo_add_vaccine_name">
@@ -4509,7 +4649,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Select Vaccine Name"/>
+                    <StringItem index="0" value="Select Vaccine Type"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -4597,7 +4737,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_add_vaccine_second_dose_gap">
+            <Component class="javax.swing.JLabel" name="lbl_addVaccineSecondDoseGap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -4608,10 +4748,20 @@
                 <Property name="text" type="java.lang.String" value="Second Dose Gap (Weeks)"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txt_add_vaccine_second_dose_gap">
+            <Component class="javax.swing.JLabel" name="lbl_add_vaccine_second_dose_gap">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
                 </Property>
               </Properties>
             </Component>
@@ -4665,22 +4815,23 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnl_editVaccine" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_edit_vaccine_second_dose_gap" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_edit_vaccine_date" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="txt_edit_vaccine_second_dose_gap" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                                  <Component id="lbl_edit_vaccine_second_dose_gap" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lbl_editVaccineSecondDoseGap" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="cbo_edit_vaccine_center_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_center_name" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txt_edit_vaccine_amount" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="cbo_edit_vaccine_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                                  <Component id="txt_edit_vaccine_lot_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                                  <Component id="lbl_edit_vaccine_lot_id" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_edit_vaccine_batch_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                                  <Component id="lbl_edit_vaccine_batch_id" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_name" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_date" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_expiration_date" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -4703,9 +4854,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnl_editVaccine" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="lbl_edit_vaccine_lot_id" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_edit_vaccine_batch_id" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_edit_vaccine_lot_id" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="txt_edit_vaccine_batch_id" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbl_edit_vaccine_name" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -4727,10 +4878,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cbo_edit_vaccine_center_name" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_edit_vaccine_second_dose_gap" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_editVaccineSecondDoseGap" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_edit_vaccine_second_dose_gap" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbl_edit_vaccine_second_dose_gap" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_edit_vaccine_save" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btn_edit_vaccine_cancel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -4786,7 +4937,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lbl_edit_vaccine_lot_id">
+            <Component class="javax.swing.JLabel" name="lbl_edit_vaccine_batch_id">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -4794,10 +4945,10 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Lot ID"/>
+                <Property name="text" type="java.lang.String" value="Batch ID"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_edit_vaccine_lot_id">
+            <Component class="javax.swing.JTextField" name="txt_edit_vaccine_batch_id">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -4812,7 +4963,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Name"/>
+                <Property name="text" type="java.lang.String" value="Vaccine Type"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbo_edit_vaccine_name">
@@ -4822,7 +4973,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Select Vaccine Name"/>
+                    <StringItem index="0" value="Select Vaccine Type"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -4910,7 +5061,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edit_vaccine_second_dose_gap">
+            <Component class="javax.swing.JLabel" name="lbl_editVaccineSecondDoseGap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -4921,10 +5072,20 @@
                 <Property name="text" type="java.lang.String" value="Second Dose Gap (Weeks)"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txt_edit_vaccine_second_dose_gap">
+            <Component class="javax.swing.JLabel" name="lbl_edit_vaccine_second_dose_gap">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="8e" green="8e" red="8e" type="rgb"/>
+                    </LineBorder>
+                  </Border>
                 </Property>
               </Properties>
             </Component>
