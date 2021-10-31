@@ -40,6 +40,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         btn_back_to_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("People Register Account");
         setResizable(false);
 
         pnl_register_account.setBackground(new java.awt.Color(255, 255, 255));
@@ -87,11 +88,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
 
         txt_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-        txt_address.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_addressActionPerformed(evt);
-            }
-        });
 
         lbl_password.setBackground(java.awt.Color.white);
         lbl_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -201,13 +197,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_back_to_loginActionPerformed
 
-    private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_addressActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

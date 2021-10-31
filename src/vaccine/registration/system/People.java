@@ -116,6 +116,7 @@ public class People extends javax.swing.JFrame {
         tbl_vaccination_status = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("People");
 
         pnl_sidenav.setBackground(new java.awt.Color(136, 178, 219));
         pnl_sidenav.setMinimumSize(new java.awt.Dimension(320, 0));
@@ -396,11 +397,6 @@ public class People extends javax.swing.JFrame {
 
         txt_edit_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_edit_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-        txt_edit_nationality.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_edit_nationalityActionPerformed(evt);
-            }
-        });
 
         lbl_edit_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
         lbl_edit_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -541,7 +537,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_vaccination_center_1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccination_center_1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_vaccination_center_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_vaccination_center_1.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_centerAddress1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_centerAddress1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -549,7 +545,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_center_address_1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_center_address_1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_center_address_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_center_address_1.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_centerContactNumber1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_centerContactNumber1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -557,7 +553,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_center_contact_number_1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_center_contact_number_1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_center_contact_number_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_center_contact_number_1.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_date1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_date1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -565,7 +561,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_date_1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_date_1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_date_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_date_1.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_time1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_time1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -573,7 +569,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_time_1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_time_1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_time_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_time_1.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_vaccineType1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccineType1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -581,7 +577,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_vaccine_type_1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccine_type_1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_vaccine_type_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_vaccine_type_1.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_2nd_dose_appointment.setBackground(new java.awt.Color(255, 255, 255));
         lbl_2nd_dose_appointment.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -593,7 +589,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_vaccination_center_2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccination_center_2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_vaccination_center_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_vaccination_center_2.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_centerAddress2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_centerAddress2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -601,7 +597,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_center_address_2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_center_address_2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_center_address_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_center_address_2.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_centerContactNumber2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_centerContactNumber2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -609,7 +605,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_center_contact_number_2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_center_contact_number_2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_center_contact_number_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_center_contact_number_2.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_date2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_date2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -617,7 +613,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_date_2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_date_2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_date_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_date_2.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_time2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_time2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -625,7 +621,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_time_2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_time_2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_time_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_time_2.setForeground(new java.awt.Color(119, 119, 119));
 
         lbl_vaccineType2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccineType2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -633,7 +629,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_vaccine_type_2.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccine_type_2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_vaccine_type_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_vaccine_type_2.setForeground(new java.awt.Color(119, 119, 119));
 
         btn_register_appointment.setBackground(new java.awt.Color(73, 161, 236));
         btn_register_appointment.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -824,17 +820,19 @@ public class People extends javax.swing.JFrame {
 
         lbl_vaccine_type.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_vaccine_type.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        lbl_vaccine_type.setForeground(new java.awt.Color(119, 119, 119));
 
         btn_register_vaccination_appointment_register.setBackground(new java.awt.Color(73, 161, 236));
         btn_register_vaccination_appointment_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_register_vaccination_appointment_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register_vaccination_appointment_register.setText("Register");
+        btn_register_vaccination_appointment_register.setBorder(null);
 
         btn_register_vaccination_appointment_cancel.setBackground(new java.awt.Color(221, 98, 98));
         btn_register_vaccination_appointment_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_register_vaccination_appointment_cancel.setForeground(new java.awt.Color(255, 255, 255));
         btn_register_vaccination_appointment_cancel.setText("Cancel");
+        btn_register_vaccination_appointment_cancel.setBorder(null);
         btn_register_vaccination_appointment_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_register_vaccination_appointment_cancelActionPerformed(evt);
@@ -1028,10 +1026,6 @@ public class People extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_edit_nationalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_edit_nationalityActionPerformed
-        // remove this event
-    }//GEN-LAST:event_txt_edit_nationalityActionPerformed
-
     private void lbl_my_accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_my_accountMouseClicked
         pnl_view_account.setVisible(true);
         pnl_edit_account.setVisible(false);
@@ -1098,9 +1092,6 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_status.setVisible(true);
     }//GEN-LAST:event_lbl_vaccination_statusMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
