@@ -59,35 +59,41 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         lbl_name.setText("Name");
 
         txt_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_phone_number.setBackground(java.awt.Color.white);
         lbl_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_phone_number.setText("Phone Number");
 
         txt_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_phone_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_nationality.setBackground(java.awt.Color.white);
         lbl_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_nationality.setText("Nationality");
 
         txt_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_ic_passport_number.setText("IC / Passport Number");
 
         txt_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_address.setBackground(java.awt.Color.white);
         lbl_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_address.setText("Address");
 
         txt_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_password.setBackground(java.awt.Color.white);
         lbl_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_password.setText("Password");
 
         txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         btn_register.setBackground(new java.awt.Color(73, 161, 236));
         btn_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
