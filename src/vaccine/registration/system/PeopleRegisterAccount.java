@@ -87,6 +87,11 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
 
         txt_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        txt_address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_addressActionPerformed(evt);
+            }
+        });
 
         lbl_password.setBackground(java.awt.Color.white);
         lbl_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -195,6 +200,10 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         backToLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_back_to_loginActionPerformed
+
+    private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_addressActionPerformed
 
     /**
      * @param args the command line arguments

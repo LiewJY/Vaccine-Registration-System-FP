@@ -26,7 +26,7 @@ public class Login extends javax.swing.JFrame {
         lbl_ic_passport_number = new javax.swing.JLabel();
         txt_ic_passport_number = new javax.swing.JTextField();
         lbl_password = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txt_password = new javax.swing.JPasswordField();
         cbo_user_role = new javax.swing.JComboBox<>();
         btn_login = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
@@ -53,8 +53,8 @@ public class Login extends javax.swing.JFrame {
         lbl_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_password.setText("Password");
 
-        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         cbo_user_role.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         cbo_user_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select User Role", "Personnel", "People (Citizen / Non-Citizen)" }));
@@ -95,7 +95,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(lbl_ic_passport_number)
                     .addComponent(txt_ic_passport_number)
                     .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
+                    .addComponent(txt_password))
                 .addContainerGap(312, Short.MAX_VALUE))
         );
         pnl_loginLayout.setVerticalGroup(
@@ -110,14 +110,14 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbl_password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cbo_user_role, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
                 .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,11 +193,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
     private javax.swing.JComboBox<String> cbo_user_role;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lbl_ic_passport_number;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_password;
     private javax.swing.JPanel pnl_login;
     private javax.swing.JTextField txt_ic_passport_number;
+    private javax.swing.JPasswordField txt_password;
     // End of variables declaration//GEN-END:variables
 }
