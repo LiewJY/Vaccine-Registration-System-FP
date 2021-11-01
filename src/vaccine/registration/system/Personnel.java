@@ -47,6 +47,13 @@ public class Personnel extends javax.swing.JFrame {
         txt_search_vaccination_status = new javax.swing.JTextField();
         scrpnl_vaccination_status = new javax.swing.JScrollPane();
         tbl_vaccination_status = new javax.swing.JTable();
+        jDialog_dose = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_select_dose = new javax.swing.JLabel();
+        cbo_select_dose = new javax.swing.JComboBox<>();
+        btn_select_dose_save = new javax.swing.JButton();
+        btn_select_dose_cancel = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         pnl_sidenav = new javax.swing.JPanel();
         lbl_logo = new javax.swing.JLabel();
         pnl_my_account = new javax.swing.JPanel();
@@ -415,6 +422,99 @@ public class Personnel extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(scrpnl_vaccination_status, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(115, Short.MAX_VALUE))
+        );
+
+        jDialog_dose.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_dose.setAlwaysOnTop(true);
+        jDialog_dose.setBackground(new java.awt.Color(255, 255, 255));
+        jDialog_dose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jDialog_dose.setForeground(java.awt.Color.white);
+        jDialog_dose.setModal(true);
+        jDialog_dose.setPreferredSize(new java.awt.Dimension(400, 200));
+        jDialog_dose.setResizable(false);
+        jDialog_dose.setSize(new java.awt.Dimension(400, 200));
+        jDialog_dose.setType(java.awt.Window.Type.POPUP);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbl_select_dose.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_select_dose.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_select_dose.setText("Select Dose");
+
+        cbo_select_dose.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        cbo_select_dose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Dose", "0 Dose", "1 Dose", "2 Dose" }));
+
+        btn_select_dose_save.setBackground(new java.awt.Color(73, 161, 236));
+        btn_select_dose_save.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_select_dose_save.setForeground(new java.awt.Color(255, 255, 255));
+        btn_select_dose_save.setText("Save");
+        btn_select_dose_save.setBorder(null);
+        btn_select_dose_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_select_dose_saveActionPerformed(evt);
+            }
+        });
+
+        btn_select_dose_cancel.setBackground(new java.awt.Color(221, 98, 98));
+        btn_select_dose_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_select_dose_cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_select_dose_cancel.setText("Cancel");
+        btn_select_dose_cancel.setBorder(null);
+        btn_select_dose_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_select_dose_cancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lbl_select_dose, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btn_select_dose_save, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btn_select_dose_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbo_select_dose, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(lbl_select_dose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbo_select_dose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_select_dose_save, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_select_dose_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog_doseLayout = new javax.swing.GroupLayout(jDialog_dose.getContentPane());
+        jDialog_dose.getContentPane().setLayout(jDialog_doseLayout);
+        jDialog_doseLayout.setHorizontalGroup(
+            jDialog_doseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDialog_doseLayout.setVerticalGroup(
+            jDialog_doseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1543,6 +1643,7 @@ public class Personnel extends javax.swing.JFrame {
         );
 
         pnl_edit_people.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_edit_people.setName(""); // NOI18N
 
         pnl_editPeople.setBackground(new java.awt.Color(136, 178, 219));
 
@@ -1735,7 +1836,7 @@ public class Personnel extends javax.swing.JFrame {
 
         lbl_search_vaccination_appointments.setBackground(new java.awt.Color(255, 255, 255));
         lbl_search_vaccination_appointments.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_search_vaccination_appointments.setText("Search People (Name / IC / Passport Number)");
+        lbl_search_vaccination_appointments.setText("Search Appointment (Name / IC / Passport Number)");
 
         txt_search_vaccination_appointments.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_search_vaccination_appointments.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
@@ -3475,7 +3576,7 @@ public class Personnel extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
             .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
 
@@ -3792,10 +3893,13 @@ public class Personnel extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_vaccination_appointments_editActionPerformed
 
     private void btn_vaccination_appointments_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_appointments_updateActionPerformed
-        String[] dosage = { "0 Dose", "1 Dose", "2 Dose"};
-        String selected;      
-        selected = (String) JOptionPane.showInputDialog(null,"Select Completed Dose: ","Dose number", JOptionPane.QUESTION_MESSAGE, null, dosage, dosage[1]);
-        System.out.println(selected);
+//        String[] dosage = { "0 Dose", "1 Dose", "2 Dose"};
+//        String selected;      
+//        selected = (String) JOptionPane.showInputDialog(null,"Select Completed Dose: ","Dose number", JOptionPane.QUESTION_MESSAGE, null, dosage, dosage[0]);
+//        System.out.println(selected);
+        jDialog_dose.setLocationRelativeTo(null);
+        jDialog_dose.setVisible(true);
+        
       }//GEN-LAST:event_btn_vaccination_appointments_updateActionPerformed
 
     private void lbl_vaccination_centerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_centerMouseClicked
@@ -4178,6 +4282,14 @@ public class Personnel extends javax.swing.JFrame {
         pnl_edit_personnel.setVisible(false);
     }//GEN-LAST:event_btn_edit_personnel_cancelActionPerformed
 
+    private void btn_select_dose_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_dose_cancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btn_select_dose_cancelActionPerformed
+
+    private void btn_select_dose_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_dose_saveActionPerformed
+        System.out.println(cbo_select_dose.getSelectedItem());       
+    }//GEN-LAST:event_btn_select_dose_saveActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -4246,6 +4358,8 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JButton btn_register_vaccination_appointments_cancel;
     private javax.swing.JButton btn_register_vaccination_appointments_register;
     private javax.swing.JButton btn_save_edit;
+    private javax.swing.JButton btn_select_dose_cancel;
+    private javax.swing.JButton btn_select_dose_save;
     private javax.swing.JButton btn_vaccination_appointments_edit;
     private javax.swing.JButton btn_vaccination_appointments_register;
     private javax.swing.JButton btn_vaccination_appointments_remove;
@@ -4264,8 +4378,12 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbo_edit_vaccine_name;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_time;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_vaccination_center;
+    private javax.swing.JComboBox<String> cbo_select_dose;
     private javax.swing.JComboBox<String> cbo_select_time;
     private javax.swing.JComboBox<String> cbo_select_vaccination_center;
+    private javax.swing.JDialog jDialog_dose;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_1st_dose_appointment;
     private javax.swing.JLabel lbl_2nd_dose_appointment;
     private javax.swing.JLabel lbl_addVaccineSecondDoseGap;
@@ -4371,6 +4489,7 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_search_vaccination_status;
     private javax.swing.JLabel lbl_search_vaccine;
     private javax.swing.JLabel lbl_select_date;
+    private javax.swing.JLabel lbl_select_dose;
     private javax.swing.JLabel lbl_select_time;
     private javax.swing.JLabel lbl_select_vaccination_center;
     private javax.swing.JLabel lbl_time1;
