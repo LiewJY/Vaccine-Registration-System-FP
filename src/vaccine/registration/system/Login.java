@@ -26,12 +26,13 @@ public class Login extends javax.swing.JFrame {
         lbl_ic_passport_number = new javax.swing.JLabel();
         txt_ic_passport_number = new javax.swing.JTextField();
         lbl_password = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txt_password = new javax.swing.JPasswordField();
         cbo_user_role = new javax.swing.JComboBox<>();
         btn_login = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setResizable(false);
 
         pnl_login.setBackground(new java.awt.Color(255, 255, 255));
@@ -47,14 +48,15 @@ public class Login extends javax.swing.JFrame {
         lbl_ic_passport_number.setText("IC / Passport Number");
 
         txt_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_password.setBackground(new java.awt.Color(255, 255, 255));
         lbl_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_password.setText("Password");
 
-        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
-        cbo_user_role.setBackground(new java.awt.Color(255, 255, 255));
         cbo_user_role.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         cbo_user_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select User Role", "Personnel", "People (Citizen / Non-Citizen)" }));
 
@@ -63,10 +65,20 @@ public class Login extends javax.swing.JFrame {
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Log In");
         btn_login.setBorder(null);
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
 
         btn_register.setBackground(new java.awt.Color(255, 255, 255));
         btn_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_register.setText("Register");
+        btn_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_loginLayout = new javax.swing.GroupLayout(pnl_login);
         pnl_login.setLayout(pnl_loginLayout);
@@ -84,7 +96,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(lbl_ic_passport_number)
                     .addComponent(txt_ic_passport_number)
                     .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPasswordField1))
+                    .addComponent(txt_password))
                 .addContainerGap(312, Short.MAX_VALUE))
         );
         pnl_loginLayout.setVerticalGroup(
@@ -99,7 +111,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbl_password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cbo_user_role, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
@@ -124,9 +136,24 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
+        PeopleRegisterAccount register = new PeopleRegisterAccount();
+        register.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_registerActionPerformed
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        if(cbo_user_role.getSelectedItem() == "Personnel") {
+            Personnel personnel = new Personnel();
+            personnel.setVisible(true);
+            this.dispose();
+        } else if (cbo_user_role.getSelectedItem() == "People (Citizen / Non-Citizen)"){
+            People people = new People();
+            people.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -163,11 +190,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
     private javax.swing.JComboBox<String> cbo_user_role;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lbl_ic_passport_number;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_password;
     private javax.swing.JPanel pnl_login;
     private javax.swing.JTextField txt_ic_passport_number;
+    private javax.swing.JPasswordField txt_password;
     // End of variables declaration//GEN-END:variables
 }

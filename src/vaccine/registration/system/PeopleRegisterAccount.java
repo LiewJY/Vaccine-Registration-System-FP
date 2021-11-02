@@ -28,18 +28,19 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         txt_name = new javax.swing.JTextField();
         lbl_phone_number = new javax.swing.JLabel();
         txt_phone_number = new javax.swing.JTextField();
-        lbl_ic_passport_number = new javax.swing.JLabel();
-        txt_ic_passport_number = new javax.swing.JTextField();
-        lbl_password = new javax.swing.JLabel();
-        txt_password = new javax.swing.JPasswordField();
         lbl_nationality = new javax.swing.JLabel();
         txt_nationality = new javax.swing.JTextField();
+        lbl_ic_passport_number = new javax.swing.JLabel();
+        txt_ic_passport_number = new javax.swing.JPasswordField();
         lbl_address = new javax.swing.JLabel();
         txt_address = new javax.swing.JTextField();
+        lbl_password = new javax.swing.JLabel();
+        txt_password = new javax.swing.JTextField();
         btn_register = new javax.swing.JButton();
         btn_back_to_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("People Register Account");
         setResizable(false);
 
         pnl_register_account.setBackground(new java.awt.Color(255, 255, 255));
@@ -59,35 +60,41 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         lbl_name.setText("Name");
 
         txt_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_phone_number.setBackground(java.awt.Color.white);
         lbl_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_phone_number.setText("Phone Number");
 
         txt_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-
-        lbl_ic_passport_number.setBackground(java.awt.Color.white);
-        lbl_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_ic_passport_number.setText("IC / Passport Number");
-
-        txt_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-
-        lbl_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_password.setText("Password");
-
-        txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_phone_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_nationality.setBackground(java.awt.Color.white);
         lbl_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_nationality.setText("Nationality");
 
         txt_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_ic_passport_number.setText("IC / Passport Number");
+
+        txt_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_address.setBackground(java.awt.Color.white);
         lbl_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_address.setText("Address");
 
         txt_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_password.setBackground(java.awt.Color.white);
+        lbl_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_password.setText("Password");
+
+        txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         btn_register.setBackground(new java.awt.Color(73, 161, 236));
         btn_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -98,6 +105,11 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         btn_back_to_login.setBackground(new java.awt.Color(255, 255, 255));
         btn_back_to_login.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_back_to_login.setText("Back to Log In");
+        btn_back_to_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_back_to_loginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_register_accountLayout = new javax.swing.GroupLayout(pnl_register_account);
         pnl_register_account.setLayout(pnl_register_accountLayout);
@@ -108,22 +120,22 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 .addComponent(btn_back_to_login, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(145, 145, 145)
                 .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_ic_passport_number)
+                    .addComponent(lbl_nationality)
                     .addComponent(txt_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbl_password)
+                        .addComponent(lbl_ic_passport_number)
                         .addComponent(lbl_logo, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                         .addComponent(lbl_register_a_new_account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbl_name)
                         .addComponent(txt_name)
                         .addComponent(lbl_phone_number)
-                        .addComponent(lbl_nationality)
                         .addComponent(lbl_address)
+                        .addComponent(lbl_password)
                         .addComponent(btn_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_address)
-                        .addComponent(txt_password)))
+                        .addComponent(txt_password)
+                        .addComponent(txt_ic_passport_number)))
                 .addContainerGap(440, Short.MAX_VALUE))
         );
         pnl_register_accountLayout.setVerticalGroup(
@@ -144,21 +156,21 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_ic_passport_number)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_nationality)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_ic_passport_number)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_address)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
@@ -179,9 +191,12 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btn_back_to_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_to_loginActionPerformed
+        Login backToLogin = new Login();
+        backToLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_back_to_loginActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -230,10 +245,10 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_register_a_new_account;
     private javax.swing.JPanel pnl_register_account;
     private javax.swing.JTextField txt_address;
-    private javax.swing.JTextField txt_ic_passport_number;
+    private javax.swing.JPasswordField txt_ic_passport_number;
     private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_nationality;
-    private javax.swing.JPasswordField txt_password;
+    private javax.swing.JTextField txt_password;
     private javax.swing.JTextField txt_phone_number;
     // End of variables declaration//GEN-END:variables
 }
