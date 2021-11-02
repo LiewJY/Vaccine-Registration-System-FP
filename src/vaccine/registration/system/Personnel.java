@@ -3893,12 +3893,13 @@ public class Personnel extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_vaccination_appointments_editActionPerformed
 
     private void btn_vaccination_appointments_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_appointments_updateActionPerformed
-//        String[] dosage = { "0 Dose", "1 Dose", "2 Dose"};
-//        String selected;      
-//        selected = (String) JOptionPane.showInputDialog(null,"Select Completed Dose: ","Dose number", JOptionPane.QUESTION_MESSAGE, null, dosage, dosage[0]);
-//        System.out.println(selected);
-        jDialog_dose.setLocationRelativeTo(null);
-        jDialog_dose.setVisible(true);
+        String[] dosage = { "0 Dose", "1 Dose", "2 Dose"};
+        String selected;      
+        selected = (String) JOptionPane.showInputDialog(null,"Select Completed Dose: ","Dose number", JOptionPane.QUESTION_MESSAGE, null, dosage, dosage[0]);
+        System.out.println(selected);
+        //delete below later
+//        jDialog_dose.setLocationRelativeTo(null);
+//        jDialog_dose.setVisible(true);
         
       }//GEN-LAST:event_btn_vaccination_appointments_updateActionPerformed
 
@@ -4283,10 +4284,12 @@ public class Personnel extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_edit_personnel_cancelActionPerformed
 
     private void btn_select_dose_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_dose_cancelActionPerformed
-        this.dispose();
+        //DELETE THIS LATER
+        //this.dispose();
     }//GEN-LAST:event_btn_select_dose_cancelActionPerformed
 
     private void btn_select_dose_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_select_dose_saveActionPerformed
+        //DELETE THIS LATER
         System.out.println(cbo_select_dose.getSelectedItem());       
     }//GEN-LAST:event_btn_select_dose_saveActionPerformed
 
