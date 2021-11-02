@@ -142,6 +142,49 @@ public class Personnel extends javax.swing.JFrame {
         lbl_vaccine_type = new javax.swing.JLabel();
         btn_register_vaccination_appointment_register = new javax.swing.JButton();
         btn_register_vaccination_appointment_cancel = new javax.swing.JButton();
+        pnl_view_personnel = new javax.swing.JPanel();
+        pnl_viewPersonnel = new javax.swing.JPanel();
+        lbl_view_people1 = new javax.swing.JLabel();
+        scrpnl_view_personnel = new javax.swing.JScrollPane();
+        tbl_view_personnel = new javax.swing.JTable();
+        lbl_search_personnel = new javax.swing.JLabel();
+        txt_search_personnel = new javax.swing.JTextField();
+        btn_personnel_register = new javax.swing.JButton();
+        btn_personnel_edit = new javax.swing.JButton();
+        pnl_register_personnel = new javax.swing.JPanel();
+        pnl_registerPersonnel = new javax.swing.JPanel();
+        lbl_registerPersonnel = new javax.swing.JLabel();
+        lbl_register_personnel_name = new javax.swing.JLabel();
+        txt_register_personnel_name = new javax.swing.JTextField();
+        lbl_register_personnel_phone_number = new javax.swing.JLabel();
+        txt_register_personnel_phone_number = new javax.swing.JTextField();
+        lbl_register_personnel_nationaliy = new javax.swing.JLabel();
+        txt_register_personnel_nationality = new javax.swing.JTextField();
+        lbl_register_personnel_ic_passport_number = new javax.swing.JLabel();
+        txt_register_personnel_ic_passport_number = new javax.swing.JPasswordField();
+        lbl_register_personnel_address = new javax.swing.JLabel();
+        txt_register_personnel_address = new javax.swing.JTextField();
+        lbl_register_personnel_password = new javax.swing.JLabel();
+        txt_register_personnel_password = new javax.swing.JTextField();
+        btn_register_personnel_register = new javax.swing.JButton();
+        btn_register_personnel_cancel = new javax.swing.JButton();
+        pnl_edit_personnel = new javax.swing.JPanel();
+        pnl_editPersonnel = new javax.swing.JPanel();
+        lbl_editPersonnel = new javax.swing.JLabel();
+        lbl_edit_personnel_name = new javax.swing.JLabel();
+        txt_edit_personnel_name = new javax.swing.JTextField();
+        lbl_edit_personnel_phone_number = new javax.swing.JLabel();
+        txt_edit_personnel_phone_number = new javax.swing.JTextField();
+        lbl_edit_personnel_nationaliy = new javax.swing.JLabel();
+        txt_edit_personnel_nationality = new javax.swing.JTextField();
+        lbl_edit_personnel_ic_passport_number = new javax.swing.JLabel();
+        txt_edit_personnel_ic_passport_number = new javax.swing.JPasswordField();
+        lbl_edit_personnel_address = new javax.swing.JLabel();
+        txt_edit_personnel_address = new javax.swing.JTextField();
+        lbl_edit_personnel_password = new javax.swing.JLabel();
+        txt_edit_personnel_password = new javax.swing.JTextField();
+        btn_edit_personnel_register = new javax.swing.JButton();
+        btn_edit_personnel_cancel = new javax.swing.JButton();
         pnl_view_people = new javax.swing.JPanel();
         pnl_viewPeople = new javax.swing.JPanel();
         lbl_view_people = new javax.swing.JLabel();
@@ -308,49 +351,6 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_vaccine_second_dose_gap = new javax.swing.JLabel();
         btn_edit_vaccine_save = new javax.swing.JButton();
         btn_edit_vaccine_cancel = new javax.swing.JButton();
-        pnl_view_personnel = new javax.swing.JPanel();
-        pnl_viewPersonnel = new javax.swing.JPanel();
-        lbl_view_people1 = new javax.swing.JLabel();
-        scrpnl_view_personnel = new javax.swing.JScrollPane();
-        tbl_view_personnel = new javax.swing.JTable();
-        lbl_search_personnel = new javax.swing.JLabel();
-        txt_search_personnel = new javax.swing.JTextField();
-        btn_personnel_register = new javax.swing.JButton();
-        btn_personnel_edit = new javax.swing.JButton();
-        pnl_register_personnel = new javax.swing.JPanel();
-        pnl_registerPersonnel = new javax.swing.JPanel();
-        lbl_registerPersonnel = new javax.swing.JLabel();
-        lbl_register_personnel_name = new javax.swing.JLabel();
-        txt_register_personnel_name = new javax.swing.JTextField();
-        lbl_register_personnel_phone_number = new javax.swing.JLabel();
-        txt_register_personnel_phone_number = new javax.swing.JTextField();
-        lbl_register_personnel_nationaliy = new javax.swing.JLabel();
-        txt_register_personnel_nationality = new javax.swing.JTextField();
-        lbl_register_personnel_ic_passport_number = new javax.swing.JLabel();
-        txt_register_personnel_ic_passport_number = new javax.swing.JPasswordField();
-        lbl_register_personnel_address = new javax.swing.JLabel();
-        txt_register_personnel_address = new javax.swing.JTextField();
-        lbl_register_personnel_password = new javax.swing.JLabel();
-        txt_register_personnel_password = new javax.swing.JTextField();
-        btn_register_personnel_register = new javax.swing.JButton();
-        btn_register_personnel_cancel = new javax.swing.JButton();
-        pnl_edit_personnel = new javax.swing.JPanel();
-        pnl_editPersonnel = new javax.swing.JPanel();
-        lbl_editPersonnel = new javax.swing.JLabel();
-        lbl_edit_personnel_name = new javax.swing.JLabel();
-        txt_edit_personnel_name = new javax.swing.JTextField();
-        lbl_edit_personnel_phone_number = new javax.swing.JLabel();
-        txt_edit_personnel_phone_number = new javax.swing.JTextField();
-        lbl_edit_personnel_nationaliy = new javax.swing.JLabel();
-        txt_edit_personnel_nationality = new javax.swing.JTextField();
-        lbl_edit_personnel_ic_passport_number = new javax.swing.JLabel();
-        txt_edit_personnel_ic_passport_number = new javax.swing.JPasswordField();
-        lbl_edit_personnel_address = new javax.swing.JLabel();
-        txt_edit_personnel_address = new javax.swing.JTextField();
-        lbl_edit_personnel_password = new javax.swing.JLabel();
-        txt_edit_personnel_password = new javax.swing.JTextField();
-        btn_edit_personnel_register = new javax.swing.JButton();
-        btn_edit_personnel_cancel = new javax.swing.JButton();
 
         pnl_vaccinationStatus.setBackground(new java.awt.Color(136, 178, 219));
 
@@ -430,7 +430,6 @@ public class Personnel extends javax.swing.JFrame {
         jDialog_dose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jDialog_dose.setForeground(java.awt.Color.white);
         jDialog_dose.setModal(true);
-        jDialog_dose.setPreferredSize(new java.awt.Dimension(400, 200));
         jDialog_dose.setResizable(false);
         jDialog_dose.setSize(new java.awt.Dimension(400, 200));
         jDialog_dose.setType(java.awt.Window.Type.POPUP);
@@ -519,7 +518,6 @@ public class Personnel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Personnel");
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         pnl_sidenav.setBackground(new java.awt.Color(136, 178, 219));
         pnl_sidenav.setMinimumSize(new java.awt.Dimension(320, 0));
@@ -1381,6 +1379,415 @@ public class Personnel extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnl_view_personnel.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_view_personnel.setPreferredSize(new java.awt.Dimension(960, 720));
+
+        pnl_viewPersonnel.setBackground(new java.awt.Color(136, 178, 219));
+
+        lbl_view_people1.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_view_people1.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbl_view_people1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_view_people1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_view_people1.setText("Manage People");
+
+        javax.swing.GroupLayout pnl_viewPersonnelLayout = new javax.swing.GroupLayout(pnl_viewPersonnel);
+        pnl_viewPersonnel.setLayout(pnl_viewPersonnelLayout);
+        pnl_viewPersonnelLayout.setHorizontalGroup(
+            pnl_viewPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_viewPersonnelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_view_people1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_viewPersonnelLayout.setVerticalGroup(
+            pnl_viewPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_viewPersonnelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbl_view_people1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tbl_view_personnel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tbl_view_personnel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Phone Number", "Nationality", "IC / Passport Number", "Address"
+            }
+        ));
+        tbl_view_personnel.setPreferredSize(new java.awt.Dimension(800, 64));
+        scrpnl_view_personnel.setViewportView(tbl_view_personnel);
+        if (tbl_view_personnel.getColumnModel().getColumnCount() > 0) {
+            tbl_view_personnel.getColumnModel().getColumn(1).setHeaderValue("Phone Number");
+            tbl_view_personnel.getColumnModel().getColumn(2).setHeaderValue("Nationality");
+            tbl_view_personnel.getColumnModel().getColumn(4).setHeaderValue("Address");
+        }
+
+        lbl_search_personnel.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_search_personnel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_search_personnel.setText("Search Personnel (Name / IC / Passport Number)");
+
+        txt_search_personnel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_search_personnel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        btn_personnel_register.setBackground(new java.awt.Color(73, 161, 236));
+        btn_personnel_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_personnel_register.setForeground(new java.awt.Color(255, 255, 255));
+        btn_personnel_register.setText("Register Personnel");
+        btn_personnel_register.setBorder(null);
+        btn_personnel_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_personnel_registerActionPerformed(evt);
+            }
+        });
+
+        btn_personnel_edit.setBackground(new java.awt.Color(73, 161, 236));
+        btn_personnel_edit.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_personnel_edit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_personnel_edit.setText("Edit Personnel");
+        btn_personnel_edit.setBorder(null);
+        btn_personnel_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_personnel_editActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_view_personnelLayout = new javax.swing.GroupLayout(pnl_view_personnel);
+        pnl_view_personnel.setLayout(pnl_view_personnelLayout);
+        pnl_view_personnelLayout.setHorizontalGroup(
+            pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_viewPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_view_personnelLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrpnl_view_personnel)
+                    .addGroup(pnl_view_personnelLayout.createSequentialGroup()
+                        .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_search_personnel)
+                            .addComponent(lbl_search_personnel, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_personnel_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_personnel_register, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(47, 47, 47))
+        );
+        pnl_view_personnelLayout.setVerticalGroup(
+            pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_view_personnelLayout.createSequentialGroup()
+                .addComponent(pnl_viewPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_search_personnel)
+                    .addComponent(btn_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_search_personnel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_personnel_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(scrpnl_view_personnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        pnl_register_personnel.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnl_registerPersonnel.setBackground(new java.awt.Color(136, 178, 219));
+
+        lbl_registerPersonnel.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_registerPersonnel.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbl_registerPersonnel.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_registerPersonnel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_registerPersonnel.setText("Register Personnel");
+
+        javax.swing.GroupLayout pnl_registerPersonnelLayout = new javax.swing.GroupLayout(pnl_registerPersonnel);
+        pnl_registerPersonnel.setLayout(pnl_registerPersonnelLayout);
+        pnl_registerPersonnelLayout.setHorizontalGroup(
+            pnl_registerPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_registerPersonnelLayout.createSequentialGroup()
+                .addContainerGap(280, Short.MAX_VALUE)
+                .addComponent(lbl_registerPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+        pnl_registerPersonnelLayout.setVerticalGroup(
+            pnl_registerPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_registerPersonnelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbl_registerPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lbl_register_personnel_name.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_register_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_register_personnel_name.setText("Name");
+
+        txt_register_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_register_personnel_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_register_personnel_phone_number.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_register_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_register_personnel_phone_number.setText("Phone Number");
+
+        txt_register_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_register_personnel_phone_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_register_personnel_nationaliy.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_register_personnel_nationaliy.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_register_personnel_nationaliy.setText("Nationality");
+
+        txt_register_personnel_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_register_personnel_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_register_personnel_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_register_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_register_personnel_ic_passport_number.setText("IC / Passport Number");
+
+        txt_register_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_register_personnel_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_register_personnel_address.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_register_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_register_personnel_address.setText("Address");
+
+        txt_register_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_register_personnel_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_register_personnel_password.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_register_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_register_personnel_password.setText("Password");
+
+        txt_register_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_register_personnel_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        btn_register_personnel_register.setBackground(new java.awt.Color(73, 161, 236));
+        btn_register_personnel_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_register_personnel_register.setForeground(new java.awt.Color(255, 255, 255));
+        btn_register_personnel_register.setText("Register");
+        btn_register_personnel_register.setBorder(null);
+
+        btn_register_personnel_cancel.setBackground(new java.awt.Color(221, 98, 98));
+        btn_register_personnel_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_register_personnel_cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_register_personnel_cancel.setText("Cancel");
+        btn_register_personnel_cancel.setBorder(null);
+        btn_register_personnel_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_register_personnel_cancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_register_personnelLayout = new javax.swing.GroupLayout(pnl_register_personnel);
+        pnl_register_personnel.setLayout(pnl_register_personnelLayout);
+        pnl_register_personnelLayout.setHorizontalGroup(
+            pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_registerPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_register_personnelLayout.createSequentialGroup()
+                .addContainerGap(280, Short.MAX_VALUE)
+                .addGroup(pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_register_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_register_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_register_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_register_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_register_personnel_password)
+                    .addComponent(lbl_register_personnel_name)
+                    .addComponent(lbl_register_personnel_phone_number)
+                    .addComponent(lbl_register_personnel_nationaliy)
+                    .addComponent(lbl_register_personnel_ic_passport_number)
+                    .addComponent(lbl_register_personnel_address)
+                    .addComponent(txt_register_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnl_register_personnelLayout.createSequentialGroup()
+                            .addComponent(btn_register_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_register_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_register_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+        pnl_register_personnelLayout.setVerticalGroup(
+            pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_register_personnelLayout.createSequentialGroup()
+                .addComponent(pnl_registerPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(lbl_register_personnel_name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_register_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_register_personnel_phone_number)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_register_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_register_personnel_nationaliy)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_register_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_register_personnel_ic_passport_number)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_register_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_register_personnel_address)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_register_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_register_personnel_password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_register_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_register_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_register_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        pnl_edit_personnel.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnl_editPersonnel.setBackground(new java.awt.Color(136, 178, 219));
+
+        lbl_editPersonnel.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_editPersonnel.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbl_editPersonnel.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_editPersonnel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_editPersonnel.setText("Edit Personnel");
+
+        javax.swing.GroupLayout pnl_editPersonnelLayout = new javax.swing.GroupLayout(pnl_editPersonnel);
+        pnl_editPersonnel.setLayout(pnl_editPersonnelLayout);
+        pnl_editPersonnelLayout.setHorizontalGroup(
+            pnl_editPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_editPersonnelLayout.createSequentialGroup()
+                .addContainerGap(280, Short.MAX_VALUE)
+                .addComponent(lbl_editPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+        pnl_editPersonnelLayout.setVerticalGroup(
+            pnl_editPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_editPersonnelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbl_editPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lbl_edit_personnel_name.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_personnel_name.setText("Name");
+
+        txt_edit_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_edit_personnel_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_edit_personnel_phone_number.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_personnel_phone_number.setText("Phone Number");
+
+        txt_edit_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_edit_personnel_phone_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_edit_personnel_nationaliy.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_personnel_nationaliy.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_personnel_nationaliy.setText("Nationality");
+
+        txt_edit_personnel_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_edit_personnel_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_edit_personnel_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_personnel_ic_passport_number.setText("IC / Passport Number");
+
+        txt_edit_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_edit_personnel_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_edit_personnel_address.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_personnel_address.setText("Address");
+
+        txt_edit_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_edit_personnel_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        lbl_edit_personnel_password.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_personnel_password.setText("Password");
+
+        txt_edit_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_edit_personnel_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
+        btn_edit_personnel_register.setBackground(new java.awt.Color(73, 161, 236));
+        btn_edit_personnel_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_edit_personnel_register.setForeground(new java.awt.Color(255, 255, 255));
+        btn_edit_personnel_register.setText("Save");
+        btn_edit_personnel_register.setBorder(null);
+
+        btn_edit_personnel_cancel.setBackground(new java.awt.Color(221, 98, 98));
+        btn_edit_personnel_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        btn_edit_personnel_cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_edit_personnel_cancel.setText("Cancel");
+        btn_edit_personnel_cancel.setBorder(null);
+        btn_edit_personnel_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_edit_personnel_cancelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_edit_personnelLayout = new javax.swing.GroupLayout(pnl_edit_personnel);
+        pnl_edit_personnel.setLayout(pnl_edit_personnelLayout);
+        pnl_edit_personnelLayout.setHorizontalGroup(
+            pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnl_editPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnl_edit_personnelLayout.createSequentialGroup()
+                .addContainerGap(280, Short.MAX_VALUE)
+                .addGroup(pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_edit_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_edit_personnel_password)
+                    .addComponent(lbl_edit_personnel_name)
+                    .addComponent(lbl_edit_personnel_phone_number)
+                    .addComponent(lbl_edit_personnel_nationaliy)
+                    .addComponent(lbl_edit_personnel_ic_passport_number)
+                    .addComponent(lbl_edit_personnel_address)
+                    .addComponent(txt_edit_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnl_edit_personnelLayout.createSequentialGroup()
+                            .addComponent(btn_edit_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_edit_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_edit_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+        pnl_edit_personnelLayout.setVerticalGroup(
+            pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_edit_personnelLayout.createSequentialGroup()
+                .addComponent(pnl_editPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(lbl_edit_personnel_name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_personnel_phone_number)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_personnel_nationaliy)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_personnel_ic_passport_number)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_personnel_address)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_personnel_password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_edit_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_edit_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
         pnl_view_people.setBackground(new java.awt.Color(255, 255, 255));
         pnl_view_people.setPreferredSize(new java.awt.Dimension(960, 720));
 
@@ -1828,7 +2235,7 @@ public class Personnel extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "IC / Passport Number", "Date", "Date", "Time", "Vaccine Type", "Dose"
+                "ID", "Name", "IC / Passport Number", "Date", "Time", "Vaccinaton Center", "Vaccine Type", "Dose"
             }
         ));
         tbl_view_vaccination_appointments.setPreferredSize(new java.awt.Dimension(800, 64));
@@ -2613,7 +3020,7 @@ public class Personnel extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Batch ID", "Name", "Date", "Expiration Date", "Amount", "Center Name", "Second Dose Gap (Weeks)"
+                "Batch ID", "Type", "Date", "Expiration Date", "Amount", "Center Name", "Second Dose Gap (Weeks)"
             }
         ));
         tbl_view_vaccine.setPreferredSize(new java.awt.Dimension(800, 64));
@@ -2621,7 +3028,7 @@ public class Personnel extends javax.swing.JFrame {
 
         lbl_search_vaccine.setBackground(new java.awt.Color(255, 255, 255));
         lbl_search_vaccine.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_search_vaccine.setText("Search Vaccine (Name)");
+        lbl_search_vaccine.setText("Search Vaccine (Type)");
 
         txt_search_vaccine.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_search_vaccine.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
@@ -2770,7 +3177,7 @@ public class Personnel extends javax.swing.JFrame {
         lbl_add_vaccine_center_name.setText("Center Name");
 
         cbo_add_vaccine_center_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        cbo_add_vaccine_center_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Center" }));
+        cbo_add_vaccine_center_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccination Center" }));
 
         lbl_addVaccineSecondDoseGap.setBackground(new java.awt.Color(255, 255, 255));
         lbl_addVaccineSecondDoseGap.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -2935,7 +3342,7 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_vaccine_center_name.setText("Center Name");
 
         cbo_edit_vaccine_center_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        cbo_edit_vaccine_center_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Center" }));
+        cbo_edit_vaccine_center_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccination Center" }));
 
         lbl_editVaccineSecondDoseGap.setBackground(new java.awt.Color(255, 255, 255));
         lbl_editVaccineSecondDoseGap.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3030,415 +3437,6 @@ public class Personnel extends javax.swing.JFrame {
                 .addGroup(pnl_edit_vaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_edit_vaccine_save, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_edit_vaccine_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
-        );
-
-        pnl_view_personnel.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_view_personnel.setPreferredSize(new java.awt.Dimension(960, 720));
-
-        pnl_viewPersonnel.setBackground(new java.awt.Color(136, 178, 219));
-
-        lbl_view_people1.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_view_people1.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        lbl_view_people1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_view_people1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_view_people1.setText("Manage People");
-
-        javax.swing.GroupLayout pnl_viewPersonnelLayout = new javax.swing.GroupLayout(pnl_viewPersonnel);
-        pnl_viewPersonnel.setLayout(pnl_viewPersonnelLayout);
-        pnl_viewPersonnelLayout.setHorizontalGroup(
-            pnl_viewPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_viewPersonnelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_view_people1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnl_viewPersonnelLayout.setVerticalGroup(
-            pnl_viewPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_viewPersonnelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lbl_view_people1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tbl_view_personnel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tbl_view_personnel.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Name", "Phone Number", "Nationality", "IC / Passport Number", "Address"
-            }
-        ));
-        tbl_view_personnel.setPreferredSize(new java.awt.Dimension(800, 64));
-        scrpnl_view_personnel.setViewportView(tbl_view_personnel);
-        if (tbl_view_personnel.getColumnModel().getColumnCount() > 0) {
-            tbl_view_personnel.getColumnModel().getColumn(1).setHeaderValue("Phone Number");
-            tbl_view_personnel.getColumnModel().getColumn(2).setHeaderValue("Nationality");
-            tbl_view_personnel.getColumnModel().getColumn(4).setHeaderValue("Address");
-        }
-
-        lbl_search_personnel.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_search_personnel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_search_personnel.setText("Search Personnel (Name / IC / Passport Number)");
-
-        txt_search_personnel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_search_personnel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        btn_personnel_register.setBackground(new java.awt.Color(73, 161, 236));
-        btn_personnel_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        btn_personnel_register.setForeground(new java.awt.Color(255, 255, 255));
-        btn_personnel_register.setText("Register Personnel");
-        btn_personnel_register.setBorder(null);
-        btn_personnel_register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_personnel_registerActionPerformed(evt);
-            }
-        });
-
-        btn_personnel_edit.setBackground(new java.awt.Color(73, 161, 236));
-        btn_personnel_edit.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        btn_personnel_edit.setForeground(new java.awt.Color(255, 255, 255));
-        btn_personnel_edit.setText("Edit Personnel");
-        btn_personnel_edit.setBorder(null);
-        btn_personnel_edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_personnel_editActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnl_view_personnelLayout = new javax.swing.GroupLayout(pnl_view_personnel);
-        pnl_view_personnel.setLayout(pnl_view_personnelLayout);
-        pnl_view_personnelLayout.setHorizontalGroup(
-            pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_viewPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnl_view_personnelLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scrpnl_view_personnel)
-                    .addGroup(pnl_view_personnelLayout.createSequentialGroup()
-                        .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_search_personnel)
-                            .addComponent(lbl_search_personnel, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
-                        .addGap(20, 20, 20)
-                        .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_personnel_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_personnel_register, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(47, 47, 47))
-        );
-        pnl_view_personnelLayout.setVerticalGroup(
-            pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_view_personnelLayout.createSequentialGroup()
-                .addComponent(pnl_viewPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_search_personnel)
-                    .addComponent(btn_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_view_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_search_personnel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_personnel_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(scrpnl_view_personnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        pnl_register_personnel.setBackground(new java.awt.Color(255, 255, 255));
-
-        pnl_registerPersonnel.setBackground(new java.awt.Color(136, 178, 219));
-
-        lbl_registerPersonnel.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_registerPersonnel.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        lbl_registerPersonnel.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_registerPersonnel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_registerPersonnel.setText("Register Personnel");
-
-        javax.swing.GroupLayout pnl_registerPersonnelLayout = new javax.swing.GroupLayout(pnl_registerPersonnel);
-        pnl_registerPersonnel.setLayout(pnl_registerPersonnelLayout);
-        pnl_registerPersonnelLayout.setHorizontalGroup(
-            pnl_registerPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_registerPersonnelLayout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
-                .addComponent(lbl_registerPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-        pnl_registerPersonnelLayout.setVerticalGroup(
-            pnl_registerPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_registerPersonnelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lbl_registerPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        lbl_register_personnel_name.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_register_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_register_personnel_name.setText("Name");
-
-        txt_register_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_register_personnel_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_register_personnel_phone_number.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_register_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_register_personnel_phone_number.setText("Phone Number");
-
-        txt_register_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_register_personnel_phone_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_register_personnel_nationaliy.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_register_personnel_nationaliy.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_register_personnel_nationaliy.setText("Nationality");
-
-        txt_register_personnel_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_register_personnel_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_register_personnel_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_register_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_register_personnel_ic_passport_number.setText("IC / Passport Number");
-
-        txt_register_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_register_personnel_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_register_personnel_address.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_register_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_register_personnel_address.setText("Address");
-
-        txt_register_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_register_personnel_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_register_personnel_password.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_register_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_register_personnel_password.setText("Password");
-
-        txt_register_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_register_personnel_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        btn_register_personnel_register.setBackground(new java.awt.Color(73, 161, 236));
-        btn_register_personnel_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        btn_register_personnel_register.setForeground(new java.awt.Color(255, 255, 255));
-        btn_register_personnel_register.setText("Register");
-        btn_register_personnel_register.setBorder(null);
-
-        btn_register_personnel_cancel.setBackground(new java.awt.Color(221, 98, 98));
-        btn_register_personnel_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        btn_register_personnel_cancel.setForeground(new java.awt.Color(255, 255, 255));
-        btn_register_personnel_cancel.setText("Cancel");
-        btn_register_personnel_cancel.setBorder(null);
-        btn_register_personnel_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_register_personnel_cancelActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnl_register_personnelLayout = new javax.swing.GroupLayout(pnl_register_personnel);
-        pnl_register_personnel.setLayout(pnl_register_personnelLayout);
-        pnl_register_personnelLayout.setHorizontalGroup(
-            pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_registerPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnl_register_personnelLayout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
-                .addGroup(pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_register_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_register_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_register_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_register_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_register_personnel_password)
-                    .addComponent(lbl_register_personnel_name)
-                    .addComponent(lbl_register_personnel_phone_number)
-                    .addComponent(lbl_register_personnel_nationaliy)
-                    .addComponent(lbl_register_personnel_ic_passport_number)
-                    .addComponent(lbl_register_personnel_address)
-                    .addComponent(txt_register_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(pnl_register_personnelLayout.createSequentialGroup()
-                            .addComponent(btn_register_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_register_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txt_register_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-        pnl_register_personnelLayout.setVerticalGroup(
-            pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_register_personnelLayout.createSequentialGroup()
-                .addComponent(pnl_registerPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(lbl_register_personnel_name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_register_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_register_personnel_phone_number)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_register_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_register_personnel_nationaliy)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_register_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_register_personnel_ic_passport_number)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_register_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_register_personnel_address)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_register_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_register_personnel_password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_register_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addGroup(pnl_register_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_register_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_register_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        pnl_edit_personnel.setBackground(new java.awt.Color(255, 255, 255));
-
-        pnl_editPersonnel.setBackground(new java.awt.Color(136, 178, 219));
-
-        lbl_editPersonnel.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_editPersonnel.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        lbl_editPersonnel.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_editPersonnel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_editPersonnel.setText("Edit Personnel");
-
-        javax.swing.GroupLayout pnl_editPersonnelLayout = new javax.swing.GroupLayout(pnl_editPersonnel);
-        pnl_editPersonnel.setLayout(pnl_editPersonnelLayout);
-        pnl_editPersonnelLayout.setHorizontalGroup(
-            pnl_editPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_editPersonnelLayout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
-                .addComponent(lbl_editPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-        pnl_editPersonnelLayout.setVerticalGroup(
-            pnl_editPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_editPersonnelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lbl_editPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        lbl_edit_personnel_name.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_edit_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_edit_personnel_name.setText("Name");
-
-        txt_edit_personnel_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_edit_personnel_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_edit_personnel_phone_number.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_edit_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_edit_personnel_phone_number.setText("Phone Number");
-
-        txt_edit_personnel_phone_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_edit_personnel_phone_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_edit_personnel_nationaliy.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_edit_personnel_nationaliy.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_edit_personnel_nationaliy.setText("Nationality");
-
-        txt_edit_personnel_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_edit_personnel_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_edit_personnel_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_edit_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_edit_personnel_ic_passport_number.setText("IC / Passport Number");
-
-        txt_edit_personnel_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_edit_personnel_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_edit_personnel_address.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_edit_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_edit_personnel_address.setText("Address");
-
-        txt_edit_personnel_address.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_edit_personnel_address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        lbl_edit_personnel_password.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_edit_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_edit_personnel_password.setText("Password");
-
-        txt_edit_personnel_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_edit_personnel_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
-        btn_edit_personnel_register.setBackground(new java.awt.Color(73, 161, 236));
-        btn_edit_personnel_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        btn_edit_personnel_register.setForeground(new java.awt.Color(255, 255, 255));
-        btn_edit_personnel_register.setText("Save");
-        btn_edit_personnel_register.setBorder(null);
-
-        btn_edit_personnel_cancel.setBackground(new java.awt.Color(221, 98, 98));
-        btn_edit_personnel_cancel.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        btn_edit_personnel_cancel.setForeground(new java.awt.Color(255, 255, 255));
-        btn_edit_personnel_cancel.setText("Cancel");
-        btn_edit_personnel_cancel.setBorder(null);
-        btn_edit_personnel_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_edit_personnel_cancelActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnl_edit_personnelLayout = new javax.swing.GroupLayout(pnl_edit_personnel);
-        pnl_edit_personnel.setLayout(pnl_edit_personnelLayout);
-        pnl_edit_personnelLayout.setHorizontalGroup(
-            pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_editPersonnel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnl_edit_personnelLayout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
-                .addGroup(pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_edit_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_edit_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_edit_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_edit_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_edit_personnel_password)
-                    .addComponent(lbl_edit_personnel_name)
-                    .addComponent(lbl_edit_personnel_phone_number)
-                    .addComponent(lbl_edit_personnel_nationaliy)
-                    .addComponent(lbl_edit_personnel_ic_passport_number)
-                    .addComponent(lbl_edit_personnel_address)
-                    .addComponent(txt_edit_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(pnl_edit_personnelLayout.createSequentialGroup()
-                            .addComponent(btn_edit_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_edit_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txt_edit_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-        pnl_edit_personnelLayout.setVerticalGroup(
-            pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_edit_personnelLayout.createSequentialGroup()
-                .addComponent(pnl_editPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(lbl_edit_personnel_name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_edit_personnel_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_edit_personnel_phone_number)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_edit_personnel_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_edit_personnel_nationaliy)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_edit_personnel_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_edit_personnel_ic_passport_number)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_edit_personnel_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_edit_personnel_address)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_edit_personnel_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_edit_personnel_password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_edit_personnel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addGroup(pnl_edit_personnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_edit_personnel_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_edit_personnel_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -3501,7 +3499,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_account, javax.swing.GroupLayout.DEFAULT_SIZE, 2957, Short.MAX_VALUE)
+                    .addComponent(pnl_view_account, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3511,7 +3509,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 2956, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 2930, Short.MAX_VALUE)
                     .addGap(1, 1, 1)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3525,13 +3523,13 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+                    .addComponent(pnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccine, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccine, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3554,7 +3552,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_personnel, javax.swing.GroupLayout.DEFAULT_SIZE, 2957, Short.MAX_VALUE)
+                    .addComponent(pnl_view_personnel, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3576,8 +3574,8 @@ public class Personnel extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-            .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
+            .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
         );
 
         pack();
