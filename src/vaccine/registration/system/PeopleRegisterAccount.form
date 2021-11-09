@@ -49,24 +49,23 @@
                   <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                   <Component id="btn_back_to_login" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txt_address" min="-2" pref="400" max="-2" attributes="0"/>
-                      <Component id="txt_nationality" min="-2" pref="400" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lbl_confirm_password" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_address" pref="400" max="32767" attributes="0"/>
+                      <Component id="txt_nationality" pref="400" max="32767" attributes="0"/>
                       <Component id="lbl_nationality" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_phone_number" min="-2" pref="400" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lbl_ic_passport_number" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_logo" pref="400" max="32767" attributes="0"/>
-                          <Component id="lbl_register_a_new_account" max="32767" attributes="0"/>
-                          <Component id="lbl_name" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_name" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lbl_phone_number" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_address" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_password" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_register" max="32767" attributes="0"/>
-                          <Component id="txt_password" max="32767" attributes="0"/>
-                          <Component id="txt_ic_passport_number" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="txt_phone_number" pref="400" max="32767" attributes="0"/>
+                      <Component id="lbl_ic_passport_number" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_logo" pref="400" max="32767" attributes="0"/>
+                      <Component id="lbl_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_name" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lbl_phone_number" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_address" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_password" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_register" max="32767" attributes="0"/>
+                      <Component id="txt_password" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_confirm_password" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_ic_passport_number" alignment="0" pref="400" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="440" max="32767" attributes="0"/>
               </Group>
@@ -75,14 +74,12 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lbl_logo" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="btn_back_to_login" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="lbl_register_a_new_account" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lbl_name" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txt_name" min="-2" pref="40" max="-2" attributes="0"/>
@@ -98,17 +95,21 @@
                   <Component id="lbl_ic_passport_number" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txt_ic_passport_number" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Component id="lbl_address" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txt_address" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lbl_password" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txt_password" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="txt_password" pref="40" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Component id="lbl_confirm_password" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txt_confirm_password" pref="40" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="btn_register" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -126,18 +127,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/vaccine/registration/system/images/MyVaccine Logo - Blue.png"/>
             </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_register_a_new_account">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="20" style="1"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Register A New Account"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_name">
@@ -223,7 +212,7 @@
             <Property name="text" type="java.lang.String" value="IC / Passport Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="txt_ic_passport_number">
+        <Component class="javax.swing.JTextField" name="txt_ic_passport_number">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="16" style="0"/>
@@ -273,7 +262,32 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_password">
+        <Component class="javax.swing.JPasswordField" name="txt_password">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="16" style="0"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="db" green="db" red="db" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_confirm_password">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="16" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Confirm Password"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txt_confirm_password">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="16" style="0"/>

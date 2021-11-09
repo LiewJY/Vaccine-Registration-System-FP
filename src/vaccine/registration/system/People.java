@@ -56,11 +56,13 @@ public class People extends javax.swing.JFrame {
         lbl_edit_nationality = new javax.swing.JLabel();
         txt_edit_nationality = new javax.swing.JTextField();
         lbl_edit_ic_passport_number = new javax.swing.JLabel();
-        txt_edit_ic_passport_number = new javax.swing.JPasswordField();
+        txt_edit_ic_passport_number = new javax.swing.JTextField();
         lbl_edit_address = new javax.swing.JLabel();
         txt_edit_address = new javax.swing.JTextField();
         lbl_edit_password = new javax.swing.JLabel();
-        txt_edit_password = new javax.swing.JTextField();
+        txt_edit_password = new javax.swing.JPasswordField();
+        lbl_edit_confirm_password = new javax.swing.JLabel();
+        txt_edit_confirm_password = new javax.swing.JPasswordField();
         btn_edit_save = new javax.swing.JButton();
         btn_edit_cancel = new javax.swing.JButton();
         pnl_view_vaccination_appointment = new javax.swing.JPanel();
@@ -129,11 +131,6 @@ public class People extends javax.swing.JFrame {
         lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vaccine/registration/system/images/MyVaccine Logo - White.png"))); // NOI18N
 
         pnl_my_account.setBackground(new java.awt.Color(127, 163, 198));
-        pnl_my_account.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnl_my_accountMouseClicked(evt);
-            }
-        });
 
         lbl_my_account.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
         lbl_my_account.setForeground(new java.awt.Color(255, 255, 255));
@@ -419,6 +416,13 @@ public class People extends javax.swing.JFrame {
         txt_edit_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_edit_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
+        lbl_edit_confirm_password.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_confirm_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_confirm_password.setText("Confirm Password");
+
+        txt_edit_confirm_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_edit_confirm_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
         btn_edit_save.setBackground(new java.awt.Color(73, 161, 236));
         btn_edit_save.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_edit_save.setForeground(new java.awt.Color(255, 255, 255));
@@ -444,23 +448,25 @@ public class People extends javax.swing.JFrame {
             .addGroup(pnl_edit_accountLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_edit_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_edit_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_edit_confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_edit_password)
+                    .addComponent(txt_edit_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_edit_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_edit_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_edit_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_edit_password)
+                    .addComponent(lbl_edit_confirm_password)
                     .addComponent(lbl_edit_name)
                     .addComponent(lbl_edit_phone_number)
                     .addComponent(lbl_edit_nationality)
                     .addComponent(lbl_edit_ic_passport_number)
                     .addComponent(lbl_edit_address)
-                    .addComponent(txt_edit_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_edit_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(pnl_edit_accountLayout.createSequentialGroup()
                             .addComponent(btn_edit_save, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_edit_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txt_edit_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_edit_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_edit_accountLayout.setVerticalGroup(
@@ -483,7 +489,7 @@ public class People extends javax.swing.JFrame {
                 .addComponent(lbl_edit_ic_passport_number)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_edit_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(lbl_edit_address)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_edit_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -491,11 +497,15 @@ public class People extends javax.swing.JFrame {
                 .addComponent(lbl_edit_password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_edit_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_edit_confirm_password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_edit_confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(pnl_edit_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_edit_save, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_edit_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         pnl_view_vaccination_appointment.setBackground(new java.awt.Color(255, 255, 255));
@@ -1042,10 +1052,6 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_status.setVisible(false);
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
-    private void pnl_my_accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_my_accountMouseClicked
-        // remove this event
-    }//GEN-LAST:event_pnl_my_accountMouseClicked
-
     private void lbl_vaccination_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentMouseClicked
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
@@ -1151,6 +1157,7 @@ public class People extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_date_2;
     private javax.swing.JLabel lbl_editAccount;
     private javax.swing.JLabel lbl_edit_address;
+    private javax.swing.JLabel lbl_edit_confirm_password;
     private javax.swing.JLabel lbl_edit_ic_passport_number;
     private javax.swing.JLabel lbl_edit_name;
     private javax.swing.JLabel lbl_edit_nationality;
@@ -1207,10 +1214,11 @@ public class People extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrpnl_vaccination_status;
     private javax.swing.JTable tbl_vaccination_status;
     private javax.swing.JTextField txt_edit_address;
-    private javax.swing.JPasswordField txt_edit_ic_passport_number;
+    private javax.swing.JPasswordField txt_edit_confirm_password;
+    private javax.swing.JTextField txt_edit_ic_passport_number;
     private javax.swing.JTextField txt_edit_name;
     private javax.swing.JTextField txt_edit_nationality;
-    private javax.swing.JTextField txt_edit_password;
+    private javax.swing.JPasswordField txt_edit_password;
     private javax.swing.JTextField txt_edit_phone_number;
     private javax.swing.JTextField txt_search_vaccination_status;
     private com.toedter.calendar.JDateChooser txt_select_date;
