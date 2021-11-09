@@ -105,9 +105,6 @@
               <Color blue="c6" green="a3" red="7f" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnl_my_accountMouseClicked"/>
-          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -509,24 +506,26 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_edit_address" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_edit_ic_passport_number" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_edit_confirm_password" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_edit_password" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_edit_password" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_edit_nationality" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_edit_phone_number" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="txt_edit_name" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_edit_password" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_edit_confirm_password" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_name" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_phone_number" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_nationality" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_ic_passport_number" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_address" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_edit_ic_passport_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="btn_edit_save" min="-2" pref="180" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btn_edit_cancel" min="-2" pref="180" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txt_edit_password" min="-2" pref="400" max="-2" attributes="0"/>
+                              <Component id="txt_edit_address" min="-2" pref="400" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -553,7 +552,7 @@
                       <Component id="lbl_edit_ic_passport_number" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_edit_ic_passport_number" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="lbl_edit_address" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_edit_address" min="-2" pref="40" max="-2" attributes="0"/>
@@ -561,12 +560,16 @@
                       <Component id="lbl_edit_password" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_edit_password" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lbl_edit_confirm_password" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txt_edit_confirm_password" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace pref="63" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_edit_save" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btn_edit_cancel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="106" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -703,7 +706,7 @@
                 <Property name="text" type="java.lang.String" value="IC / Passport Number"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="txt_edit_ic_passport_number">
+            <Component class="javax.swing.JTextField" name="txt_edit_ic_passport_number">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -753,7 +756,32 @@
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_edit_password">
+            <Component class="javax.swing.JPasswordField" name="txt_edit_password">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="db" green="db" red="db" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbl_edit_confirm_password">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Confirm Password"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="txt_edit_confirm_password">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>

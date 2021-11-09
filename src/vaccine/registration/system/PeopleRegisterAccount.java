@@ -23,7 +23,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
 
         pnl_register_account = new javax.swing.JPanel();
         lbl_logo = new javax.swing.JLabel();
-        lbl_register_a_new_account = new javax.swing.JLabel();
         lbl_name = new javax.swing.JLabel();
         txt_name = new javax.swing.JTextField();
         lbl_phone_number = new javax.swing.JLabel();
@@ -31,11 +30,13 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         lbl_nationality = new javax.swing.JLabel();
         txt_nationality = new javax.swing.JTextField();
         lbl_ic_passport_number = new javax.swing.JLabel();
-        txt_ic_passport_number = new javax.swing.JPasswordField();
+        txt_ic_passport_number = new javax.swing.JTextField();
         lbl_address = new javax.swing.JLabel();
         txt_address = new javax.swing.JTextField();
         lbl_password = new javax.swing.JLabel();
-        txt_password = new javax.swing.JTextField();
+        txt_password = new javax.swing.JPasswordField();
+        lbl_confirm_password = new javax.swing.JLabel();
+        txt_confirm_password = new javax.swing.JPasswordField();
         btn_register = new javax.swing.JButton();
         btn_back_to_login = new javax.swing.JButton();
 
@@ -49,11 +50,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         lbl_logo.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         lbl_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vaccine/registration/system/images/MyVaccine Logo - Blue.png"))); // NOI18N
-
-        lbl_register_a_new_account.setBackground(java.awt.Color.white);
-        lbl_register_a_new_account.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        lbl_register_a_new_account.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_register_a_new_account.setText("Register A New Account");
 
         lbl_name.setBackground(java.awt.Color.white);
         lbl_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -96,6 +92,13 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
+        lbl_confirm_password.setBackground(java.awt.Color.white);
+        lbl_confirm_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_confirm_password.setText("Confirm Password");
+
+        txt_confirm_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_confirm_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+
         btn_register.setBackground(new java.awt.Color(73, 161, 236));
         btn_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_register.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,35 +122,33 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 .addGap(145, 145, 145)
                 .addComponent(btn_back_to_login, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(145, 145, 145)
-                .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_confirm_password)
+                    .addComponent(txt_address, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addComponent(txt_nationality, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                     .addComponent(lbl_nationality)
-                    .addComponent(txt_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbl_ic_passport_number)
-                        .addComponent(lbl_logo, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                        .addComponent(lbl_register_a_new_account, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_name)
-                        .addComponent(txt_name)
-                        .addComponent(lbl_phone_number)
-                        .addComponent(lbl_address)
-                        .addComponent(lbl_password)
-                        .addComponent(btn_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_password)
-                        .addComponent(txt_ic_passport_number)))
+                    .addComponent(txt_phone_number, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addComponent(lbl_ic_passport_number)
+                    .addComponent(lbl_logo, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addComponent(lbl_name)
+                    .addComponent(txt_name)
+                    .addComponent(lbl_phone_number)
+                    .addComponent(lbl_address)
+                    .addComponent(lbl_password)
+                    .addComponent(btn_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_password)
+                    .addComponent(txt_confirm_password)
+                    .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
                 .addContainerGap(440, Short.MAX_VALUE))
         );
         pnl_register_accountLayout.setVerticalGroup(
             pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_register_accountLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_back_to_login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(lbl_register_a_new_account)
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,17 +164,21 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 .addComponent(lbl_ic_passport_number)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(lbl_address)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
+                .addComponent(lbl_confirm_password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_confirm_password, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,19 +241,20 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     private javax.swing.JButton btn_back_to_login;
     private javax.swing.JButton btn_register;
     private javax.swing.JLabel lbl_address;
+    private javax.swing.JLabel lbl_confirm_password;
     private javax.swing.JLabel lbl_ic_passport_number;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_nationality;
     private javax.swing.JLabel lbl_password;
     private javax.swing.JLabel lbl_phone_number;
-    private javax.swing.JLabel lbl_register_a_new_account;
     private javax.swing.JPanel pnl_register_account;
     private javax.swing.JTextField txt_address;
-    private javax.swing.JPasswordField txt_ic_passport_number;
+    private javax.swing.JPasswordField txt_confirm_password;
+    private javax.swing.JTextField txt_ic_passport_number;
     private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_nationality;
-    private javax.swing.JTextField txt_password;
+    private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_phone_number;
     // End of variables declaration//GEN-END:variables
 }
