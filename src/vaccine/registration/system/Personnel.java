@@ -1,6 +1,5 @@
 package vaccine.registration.system;
 
-import java.awt.*;
 import javax.swing.*;
 
 public class Personnel extends javax.swing.JFrame {
@@ -3647,7 +3646,7 @@ public class Personnel extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
-            .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
+            .addComponent(pnl_container, javax.swing.GroupLayout.PREFERRED_SIZE, 2931, Short.MAX_VALUE)
         );
 
         pack();
