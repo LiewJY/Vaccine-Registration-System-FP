@@ -136,24 +136,35 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         PeopleRegisterAccount register = new PeopleRegisterAccount();
         register.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_registerActionPerformed
 
+    
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        if(cbo_user_role.getSelectedItem() == "Personnel") {
-            Personnel personnel = new Personnel();
-            personnel.setVisible(true);
-            this.dispose();
-        } else if (cbo_user_role.getSelectedItem() == "People (Citizen / Non-Citizen)"){
-            People people = new People();
-            people.setVisible(true);
-            this.dispose();
+        if (txt_ic_passport_number.getText().equals("") || txt_password.getPassword().length == 0 || cbo_user_role.getSelectedItem().equals("Select User Role")) {
+            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if(cbo_user_role.getSelectedItem() == "Personnel") {
+                JOptionPane.showMessageDialog(null, "You have logged in successfully!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                Personnel personnel = new Personnel();
+                personnel.setVisible(true);
+                this.dispose();
+            } else if (cbo_user_role.getSelectedItem() == "People (Citizen / Non-Citizen)"){
+                JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                People people = new People();
+                people.setVisible(true);
+                this.dispose();
+            } else if (cbo_user_role.getSelectedItem() == "") {
+                JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -186,6 +197,7 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;

@@ -1,6 +1,7 @@
 package vaccine.registration.system;
 
 import java.awt.*;
+import java.util.regex.*;
 import javax.swing.*;
 
 public class PeopleRegisterAccount extends javax.swing.JFrame {
@@ -104,6 +105,11 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         btn_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register.setText("Register");
         btn_register.setBorder(null);
+        btn_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registerActionPerformed(evt);
+            }
+        });
 
         btn_back_to_login.setBackground(new java.awt.Color(255, 255, 255));
         btn_back_to_login.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -196,12 +202,59 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btn_back_to_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_to_loginActionPerformed
         Login backToLogin = new Login();
         backToLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_back_to_loginActionPerformed
 
+    
+    private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
+        String name = txt_name.getText();
+        String phone_number = txt_phone_number.getText();
+        String nationality = txt_nationality.getText();
+        String ic_passport_number = txt_ic_passport_number.getText();
+        String address = txt_address.getText();
+        String password = new String(txt_password.getPassword());
+        String confirm_password = new String(txt_confirm_password.getPassword());
+        
+        // Name input validation
+        String name_pattern_type = "^[a-zA-Z. ]{1,50}$";
+        Pattern name_pattern = Pattern.compile(name_pattern_type);
+        Matcher name_matcher = name_pattern.matcher(txt_name.getText());
+
+        // Phone number input validation
+        String phone_number_pattern_type = "^[0-9]{10,11}$";
+        Pattern phone_number_pattern = Pattern.compile(phone_number_pattern_type);
+        Matcher phone_number_matcher = phone_number_pattern.matcher(txt_phone_number.getText());
+        
+        // Nationality input validation
+        String nationality_pattern_type = "^[a-zA-Z. ]{1,50}$";
+        Pattern nationality_pattern = Pattern.compile(nationality_pattern_type);
+        Matcher nationality_matcher = nationality_pattern.matcher(txt_nationality.getText());
+        
+        // IC / Passport number input validation
+        String ic_passport_number_pattern_type = "^[0-9]{12,20}$";
+        Pattern ic_passport_number_pattern = Pattern.compile(ic_passport_number_pattern_type);
+        Matcher ic_passport_number_matcher = ic_passport_number_pattern.matcher(txt_ic_passport_number.getText());
+        
+        if (txt_name.getText().equals("") || txt_phone_number.getText().equals("") || txt_nationality.getText().equals("") || txt_ic_passport_number.getText().equals("") || txt_address.getText().equals("") || txt_password.getPassword().length == 0 || txt_confirm_password.getPassword().length == 0) {
+           JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!name_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!phone_number_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!nationality_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Nationality!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!ic_passport_number_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 12 to 20 for IC / Passport Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            // Try catach block
+        }
+    }//GEN-LAST:event_btn_registerActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -237,6 +290,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back_to_login;
     private javax.swing.JButton btn_register;

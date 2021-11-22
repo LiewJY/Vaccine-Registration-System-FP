@@ -87,7 +87,7 @@
                       <Component id="btn_login" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="btn_register" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                  <EmptySpace pref="80" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
