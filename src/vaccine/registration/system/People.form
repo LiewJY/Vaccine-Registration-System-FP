@@ -334,7 +334,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace pref="280" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn_edit_account" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_view_address" min="-2" pref="400" max="-2" attributes="0"/>
@@ -343,7 +343,7 @@
                           <Component id="lbl_view_name" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_view_ic_passport_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace pref="280" max="32767" attributes="0"/>
                   </Group>
                   <Component id="pnl_myAccount" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -364,7 +364,7 @@
                       <Component id="lbl_view_address" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="btn_edit_account" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="131" max="32767" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -381,9 +381,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="334" max="32767" attributes="0"/>
+                          <EmptySpace pref="280" max="32767" attributes="0"/>
                           <Component id="lbl_myAccount" min="-2" pref="400" max="-2" attributes="0"/>
-                          <EmptySpace pref="334" max="32767" attributes="0"/>
+                          <EmptySpace pref="280" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -811,6 +811,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_saveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_cancel">
               <Properties>
@@ -1376,6 +1379,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cancel_appointmentActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1615,6 +1621,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_register_vaccination_appointment_registerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_register_vaccination_appointment_cancel">
               <Properties>
