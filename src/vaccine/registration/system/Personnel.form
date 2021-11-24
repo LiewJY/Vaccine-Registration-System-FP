@@ -754,7 +754,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_account" pref="3006" max="32767" attributes="0"/>
+                      <Component id="pnl_view_account" pref="2976" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -768,7 +768,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointment" pref="3005" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointment" pref="2975" max="32767" attributes="0"/>
                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -786,13 +786,13 @@
               <Group type="103" rootIndex="5" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_people" pref="796" max="32767" attributes="0"/>
+                      <Component id="pnl_view_people" pref="787" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointments" pref="735" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointments" pref="728" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_center" pref="738" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_center" pref="731" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccine" pref="737" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccine" pref="730" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -821,7 +821,7 @@
               <Group type="103" rootIndex="8" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_personnel" pref="3006" max="32767" attributes="0"/>
+                      <Component id="pnl_view_personnel" pref="2976" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -3634,6 +3634,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_register_people_registerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_register_people_cancel">
               <Properties>
@@ -3975,6 +3978,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_people_saveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_people_cancel">
               <Properties>
@@ -4316,6 +4322,9 @@
                   <Dimension value="[200, 19]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vaccination_appointments_removeActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -4595,6 +4604,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_register_vaccination_appointments_registerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_register_vaccination_appointments_cancel">
               <Properties>
@@ -4893,6 +4905,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_vaccination_appointments_saveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_vaccination_appointments_cancel">
               <Properties>
@@ -5187,6 +5202,9 @@
                   <Dimension value="[200, 19]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vaccination_center_removeActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -5383,6 +5401,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_center_addActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_add_center_cancel">
               <Properties>
@@ -5629,6 +5650,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_center_saveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_center_cancel">
               <Properties>
@@ -5932,6 +5956,9 @@
                   <Dimension value="[200, 19]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_vaccine_removeActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -6260,6 +6287,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_vaccine_addActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_add_vaccine_cancel">
               <Properties>
@@ -6608,6 +6638,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_vaccine_saveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_vaccine_cancel">
               <Properties>

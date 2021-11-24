@@ -1051,7 +1051,7 @@ public class People extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    // My account tab
+    // My account side bar tab
     private void lbl_my_accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_my_accountMouseClicked
         pnl_view_account.setVisible(true);
         pnl_edit_account.setVisible(false);
@@ -1071,7 +1071,7 @@ public class People extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
     
-    // Vaccination appointment tab
+    // Vaccination appointment side bar tab
     private void lbl_vaccination_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentMouseClicked
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
@@ -1119,7 +1119,7 @@ public class People extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_register_vaccination_appointment_cancelActionPerformed
 
     
-    // Vaccination status tab
+    // Vaccination status side bar tab
     private void lbl_vaccination_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_statusMouseClicked
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
@@ -1170,7 +1170,7 @@ public class People extends javax.swing.JFrame {
         } else if (!edit_ic_passport_number_matcher.matches()) {
             JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 12 to 20 for IC / Passport Number!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            // Try catch block for file I/O
+            // Call file I/O method
             
             pnl_view_account.setVisible(true);
             pnl_edit_account.setVisible(false);
@@ -1185,14 +1185,14 @@ public class People extends javax.swing.JFrame {
     private void btn_register_vaccination_appointment_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_registerActionPerformed
         try {
             SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
-            String date = date_format.format(txt_select_date.getDate());
-            String time = cbo_select_time.getSelectedItem().toString();
-            String vaccination_center = cbo_select_vaccination_center.getSelectedItem().toString();
+            String select_date = date_format.format(txt_select_date.getDate());
+            String select_time = cbo_select_time.getSelectedItem().toString();
+            String select_vaccination_center = cbo_select_vaccination_center.getSelectedItem().toString();
             
             if (cbo_select_time.getSelectedItem().equals("Select Time") || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Try catch block for file I/O
+                // Call file I/O method
                 
                 pnl_view_account.setVisible(false);
                 pnl_edit_account.setVisible(false);
