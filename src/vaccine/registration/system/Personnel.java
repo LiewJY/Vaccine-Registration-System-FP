@@ -327,8 +327,8 @@ public class Personnel extends javax.swing.JFrame {
         lbl_add_vaccine = new javax.swing.JLabel();
         lbl_add_vaccine_batch_id = new javax.swing.JLabel();
         txt_add_vaccine_batch_id = new javax.swing.JTextField();
-        lbl_add_vaccine_name = new javax.swing.JLabel();
-        cbo_add_vaccine_name = new javax.swing.JComboBox<>();
+        lbl_add_vaccine_type = new javax.swing.JLabel();
+        cbo_add_vaccine_type = new javax.swing.JComboBox<>();
         lbl_add_vaccine_date = new javax.swing.JLabel();
         txt_add_vaccine_date = new com.toedter.calendar.JDateChooser();
         lbl_add_vaccine_expiration_date = new javax.swing.JLabel();
@@ -346,8 +346,8 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_vaccine = new javax.swing.JLabel();
         lbl_edit_vaccine_batch_id = new javax.swing.JLabel();
         txt_edit_vaccine_batch_id = new javax.swing.JTextField();
-        lbl_edit_vaccine_name = new javax.swing.JLabel();
-        cbo_edit_vaccine_name = new javax.swing.JComboBox<>();
+        lbl_edit_vaccine_type = new javax.swing.JLabel();
+        cbo_edit_vaccine_type = new javax.swing.JComboBox<>();
         lbl_edit_vaccine_date = new javax.swing.JLabel();
         txt_edit_vaccine_date = new com.toedter.calendar.JDateChooser();
         lbl_edit_vaccine_expiration_date = new javax.swing.JLabel();
@@ -3259,12 +3259,12 @@ public class Personnel extends javax.swing.JFrame {
         txt_add_vaccine_batch_id.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_add_vaccine_batch_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
-        lbl_add_vaccine_name.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_add_vaccine_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_add_vaccine_name.setText("Vaccine Type");
+        lbl_add_vaccine_type.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_add_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_add_vaccine_type.setText("Vaccine Type");
 
-        cbo_add_vaccine_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        cbo_add_vaccine_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
+        cbo_add_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        cbo_add_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
 
         lbl_add_vaccine_date.setBackground(new java.awt.Color(255, 255, 255));
         lbl_add_vaccine_date.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3342,10 +3342,10 @@ public class Personnel extends javax.swing.JFrame {
                         .addGroup(pnl_add_vaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbo_add_vaccine_center_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_add_vaccine_center_name)
-                            .addComponent(cbo_add_vaccine_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_add_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_add_vaccine_batch_id, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_add_vaccine_batch_id)
-                            .addComponent(lbl_add_vaccine_name)
+                            .addComponent(lbl_add_vaccine_type)
                             .addComponent(lbl_add_vaccine_date)
                             .addComponent(lbl_add_vaccine_expiration_date)
                             .addComponent(lbl_add_vaccine_amount)
@@ -3365,9 +3365,9 @@ public class Personnel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_add_vaccine_batch_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_add_vaccine_name)
+                .addComponent(lbl_add_vaccine_type)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbo_add_vaccine_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbo_add_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(lbl_add_vaccine_date)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3429,12 +3429,12 @@ public class Personnel extends javax.swing.JFrame {
         txt_edit_vaccine_batch_id.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_edit_vaccine_batch_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
-        lbl_edit_vaccine_name.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_edit_vaccine_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_edit_vaccine_name.setText("Vaccine Type");
+        lbl_edit_vaccine_type.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_edit_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lbl_edit_vaccine_type.setText("Vaccine Type");
 
-        cbo_edit_vaccine_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        cbo_edit_vaccine_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
+        cbo_edit_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        cbo_edit_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
 
         lbl_edit_vaccine_date.setBackground(new java.awt.Color(255, 255, 255));
         lbl_edit_vaccine_date.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3512,10 +3512,10 @@ public class Personnel extends javax.swing.JFrame {
                         .addGroup(pnl_edit_vaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbo_edit_vaccine_center_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_edit_vaccine_center_name)
-                            .addComponent(cbo_edit_vaccine_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_edit_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_edit_vaccine_batch_id, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_edit_vaccine_batch_id)
-                            .addComponent(lbl_edit_vaccine_name)
+                            .addComponent(lbl_edit_vaccine_type)
                             .addComponent(lbl_edit_vaccine_date)
                             .addComponent(lbl_edit_vaccine_expiration_date)
                             .addComponent(lbl_edit_vaccine_amount)
@@ -3535,9 +3535,9 @@ public class Personnel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_edit_vaccine_batch_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_edit_vaccine_name)
+                .addComponent(lbl_edit_vaccine_type)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbo_edit_vaccine_name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbo_edit_vaccine_type, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(lbl_edit_vaccine_date)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3624,7 +3624,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_account, javax.swing.GroupLayout.DEFAULT_SIZE, 2976, Short.MAX_VALUE)
+                    .addComponent(pnl_view_account, javax.swing.GroupLayout.DEFAULT_SIZE, 3006, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3634,7 +3634,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 2975, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 3005, Short.MAX_VALUE)
                     .addGap(1, 1, 1)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3648,13 +3648,13 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                    .addComponent(pnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_vaccine, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+                    .addComponent(pnl_view_vaccine, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3677,7 +3677,7 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
                     .addGap(0, 0, 0)
-                    .addComponent(pnl_view_personnel, javax.swing.GroupLayout.DEFAULT_SIZE, 2976, Short.MAX_VALUE)
+                    .addComponent(pnl_view_personnel, javax.swing.GroupLayout.DEFAULT_SIZE, 3006, Short.MAX_VALUE)
                     .addGap(0, 0, 0)))
             .addGroup(pnl_containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_containerLayout.createSequentialGroup()
@@ -3700,7 +3700,7 @@ public class Personnel extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
-            .addComponent(pnl_container, javax.swing.GroupLayout.PREFERRED_SIZE, 2931, Short.MAX_VALUE)
+            .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 2931, Short.MAX_VALUE)
         );
 
         pack();
@@ -4836,6 +4836,10 @@ public class Personnel extends javax.swing.JFrame {
             
             if (txt_add_vaccine_batch_id.getText().equals("") || cbo_add_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_add_vaccine_amount.getText().equals("") || cbo_add_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (!add_vaccine_batch_id_matcher.matches()) {
+                JOptionPane.showMessageDialog(null, "Please fill in alphabet and number only with length \nnot more than 6 for Vaccine Batch ID!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (!add_vaccine_amount_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 1 to 5 for Vaccine Type!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                 // Call file I/O method
                 
@@ -4877,17 +4881,21 @@ public class Personnel extends javax.swing.JFrame {
             String edit_vaccine_center_name = cbo_edit_vaccine_center_name.getSelectedItem().toString();
             
             // Batch ID input validation
-            String add_vaccine_batch_id_pattern_type = "^[0-9A-Z]{6,6}$";
-            Pattern add_vaccine_batch_id_pattern = Pattern.compile(add_vaccine_batch_id_pattern_type);
-            Matcher add_vaccine_batch_id_matcher = add_vaccine_batch_id_pattern.matcher(txt_add_vaccine_batch_id.getText());
+            String edit_vaccine_batch_id_pattern_type = "^[0-9A-Z]{6,6}$";
+            Pattern edit_vaccine_batch_id_pattern = Pattern.compile(edit_vaccine_batch_id_pattern_type);
+            Matcher edit_vaccine_batch_id_matcher = edit_vaccine_batch_id_pattern.matcher(txt_edit_vaccine_batch_id.getText());
 
             // Amount input validation
-            String add_vaccine_amount_pattern_type = "^[0-9]{1,5}$";
-            Pattern add_vaccine_amount_pattern = Pattern.compile(add_vaccine_amount_pattern_type);
-            Matcher add_vaccine_amount_matcher = add_vaccine_amount_pattern.matcher(txt_add_vaccine_amount.getText());
+            String edit_vaccine_amount_pattern_type = "^[0-9]{1,5}$";
+            Pattern edit_vaccine_amount_pattern = Pattern.compile(edit_vaccine_amount_pattern_type);
+            Matcher edit_vaccine_amount_matcher = edit_vaccine_amount_pattern.matcher(txt_edit_vaccine_amount.getText());
             
             if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_edit_vaccine_amount.getText().equals("") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (!edit_vaccine_batch_id_matcher.matches()) {
+                JOptionPane.showMessageDialog(null, "Please fill in alphabet and number only with length \nnot more than 6 for Vaccine Batch ID!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (!edit_vaccine_amount_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 1 to 5 for Vaccine Type!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                 // Call file I/O method
                 
@@ -5000,11 +5008,11 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JButton btn_vaccine_edit;
     private javax.swing.JButton btn_vaccine_remove;
     private javax.swing.JComboBox<String> cbo_add_vaccine_center_name;
-    private javax.swing.JComboBox<String> cbo_add_vaccine_name;
+    private javax.swing.JComboBox<String> cbo_add_vaccine_type;
     private javax.swing.JComboBox<String> cbo_edit_vaccination_appointments_select_time;
     private javax.swing.JComboBox<String> cbo_edit_vaccination_appointments_select_vaccination_center;
     private javax.swing.JComboBox<String> cbo_edit_vaccine_center_name;
-    private javax.swing.JComboBox<String> cbo_edit_vaccine_name;
+    private javax.swing.JComboBox<String> cbo_edit_vaccine_type;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_time;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_vaccination_center;
     private javax.swing.JComboBox<String> cbo_select_dose;
@@ -5026,8 +5034,8 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_add_vaccine_center_name;
     private javax.swing.JLabel lbl_add_vaccine_date;
     private javax.swing.JLabel lbl_add_vaccine_expiration_date;
-    private javax.swing.JLabel lbl_add_vaccine_name;
     private javax.swing.JLabel lbl_add_vaccine_second_dose_gap;
+    private javax.swing.JLabel lbl_add_vaccine_type;
     private javax.swing.JLabel lbl_centerAddress1;
     private javax.swing.JLabel lbl_centerAddress2;
     private javax.swing.JLabel lbl_centerContactNumber1;
@@ -5083,8 +5091,8 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_edit_vaccine_center_name;
     private javax.swing.JLabel lbl_edit_vaccine_date;
     private javax.swing.JLabel lbl_edit_vaccine_expiration_date;
-    private javax.swing.JLabel lbl_edit_vaccine_name;
     private javax.swing.JLabel lbl_edit_vaccine_second_dose_gap;
+    private javax.swing.JLabel lbl_edit_vaccine_type;
     private javax.swing.JLabel lbl_logo;
     private javax.swing.JLabel lbl_logout;
     private javax.swing.JLabel lbl_myAccount;

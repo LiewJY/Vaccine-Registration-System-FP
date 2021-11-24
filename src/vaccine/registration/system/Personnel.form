@@ -754,7 +754,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_account" pref="2976" max="32767" attributes="0"/>
+                      <Component id="pnl_view_account" pref="3006" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -768,7 +768,7 @@
               <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointment" pref="2975" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointment" pref="3005" max="32767" attributes="0"/>
                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -786,13 +786,13 @@
               <Group type="103" rootIndex="5" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_people" pref="787" max="32767" attributes="0"/>
+                      <Component id="pnl_view_people" pref="794" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointments" pref="728" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointments" pref="737" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_center" pref="731" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_center" pref="738" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccine" pref="730" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccine" pref="737" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -821,7 +821,7 @@
               <Group type="103" rootIndex="8" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_personnel" pref="2976" max="32767" attributes="0"/>
+                      <Component id="pnl_view_personnel" pref="3006" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -5987,10 +5987,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbo_add_vaccine_center_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_center_name" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbo_add_vaccine_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                                  <Component id="cbo_add_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="txt_add_vaccine_batch_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_batch_id" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_add_vaccine_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_add_vaccine_type" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_date" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_expiration_date" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_add_vaccine_amount" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -6016,9 +6016,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_add_vaccine_batch_id" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_add_vaccine_name" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_add_vaccine_type" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbo_add_vaccine_name" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="cbo_add_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="lbl_add_vaccine_date" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -6120,7 +6120,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_add_vaccine_name">
+            <Component class="javax.swing.JLabel" name="lbl_add_vaccine_type">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -6131,7 +6131,7 @@
                 <Property name="text" type="java.lang.String" value="Vaccine Type"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbo_add_vaccine_name">
+            <Component class="javax.swing.JComboBox" name="cbo_add_vaccine_type">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -6338,10 +6338,10 @@
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="cbo_edit_vaccine_center_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_center_name" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbo_edit_vaccine_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                                  <Component id="cbo_edit_vaccine_type" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="txt_edit_vaccine_batch_id" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_batch_id" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_edit_vaccine_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_edit_vaccine_type" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_date" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_expiration_date" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_edit_vaccine_amount" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -6367,9 +6367,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_edit_vaccine_batch_id" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_edit_vaccine_name" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_edit_vaccine_type" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbo_edit_vaccine_name" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="cbo_edit_vaccine_type" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="lbl_edit_vaccine_date" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -6471,7 +6471,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_edit_vaccine_name">
+            <Component class="javax.swing.JLabel" name="lbl_edit_vaccine_type">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -6482,7 +6482,7 @@
                 <Property name="text" type="java.lang.String" value="Vaccine Type"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbo_edit_vaccine_name">
+            <Component class="javax.swing.JComboBox" name="cbo_edit_vaccine_type">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
