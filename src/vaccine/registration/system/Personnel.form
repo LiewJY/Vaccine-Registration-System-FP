@@ -331,8 +331,8 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnl_sidenav" pref="720" max="32767" attributes="0"/>
-          <Component id="pnl_container" alignment="0" pref="720" max="32767" attributes="0"/>
+          <Component id="pnl_sidenav" pref="793" max="32767" attributes="0"/>
+          <Component id="pnl_container" alignment="0" pref="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -384,7 +384,7 @@
                   <Component id="pnl_vaccination_center" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="pnl_vaccine" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="pnl_logout" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>

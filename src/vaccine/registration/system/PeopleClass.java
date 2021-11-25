@@ -10,8 +10,11 @@ package vaccine.registration.system;
  * @author liewj
  */
 public class PeopleClass {
-    int People_ID, Phone_Number;
-    String Name, Nationality, Address, Password;
+    protected int People_ID, Phone_Number;
+    protected String Name, Nationality, Address, Password;
     
+    PeopleClass(){
+        Name = "";
+    }
     
 }

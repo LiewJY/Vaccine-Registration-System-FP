@@ -9,6 +9,14 @@ package vaccine.registration.system;
  *
  * @author liewj
  */
-public class CtizenClass {
+public class CitizenClass extends PeopleClass {
+    int IC_Number;
     
+    CitizenClass() {
+        IC_Number = 0;
+    }
+    
+    public void Register_Account(){
+    
+    }
 }

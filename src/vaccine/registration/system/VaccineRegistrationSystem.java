@@ -6,6 +6,9 @@ public class VaccineRegistrationSystem {
     public static void main(String[] args) {
         Login login = new Login();
         login.setVisible(true); 
+
+ CitizenClass a = new CitizenClass();
+ 
     }
     
 }
