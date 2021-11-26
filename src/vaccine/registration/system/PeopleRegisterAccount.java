@@ -1,8 +1,10 @@
 package vaccine.registration.system;
 
 import java.awt.*;
+import java.util.*;
 import java.util.regex.*;
 import javax.swing.*;
+
 
 public class PeopleRegisterAccount extends javax.swing.JFrame {
 
@@ -10,7 +12,27 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     // People Register Account form
     public PeopleRegisterAccount() {
         initComponents();
+        // Populate country in nationality
+        DefaultComboBoxModel cbo = new DefaultComboBoxModel();
+        for (String rowValue : getCountries()) {
+            cbo.addElement(rowValue);
+        }
+        cbo_nationality.setModel(cbo);
+        cbo_nationality.setSelectedIndex(-1);
     }
+    
+    // Get all country listing
+    public String[] getCountries() {
+        String[] countries = new String[Locale.getISOCountries().length];
+        String[] countryCodes = Locale.getISOCountries();
+        for (int i = 0; i < countryCodes.length; i++) {
+            Locale obj = new Locale("", countryCodes[i]);
+            countries[i] = obj.getDisplayCountry();
+        }
+        Arrays.sort(countries); 
+        return countries;
+    }
+    
     
 
     // UI
@@ -25,7 +47,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         lbl_phone_number = new javax.swing.JLabel();
         txt_phone_number = new javax.swing.JTextField();
         lbl_nationality = new javax.swing.JLabel();
-        txt_nationality = new javax.swing.JTextField();
+        cbo_nationality = new javax.swing.JComboBox<>();
         lbl_ic_passport_number = new javax.swing.JLabel();
         txt_ic_passport_number = new javax.swing.JTextField();
         lbl_address = new javax.swing.JLabel();
@@ -66,8 +88,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         lbl_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_nationality.setText("Nationality");
 
-        txt_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        cbo_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         lbl_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_ic_passport_number.setText("IC / Passport Number");
@@ -127,7 +148,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 .addGroup(pnl_register_accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbl_confirm_password)
                     .addComponent(txt_address, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                    .addComponent(txt_nationality, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                     .addComponent(lbl_nationality)
                     .addComponent(txt_phone_number, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                     .addComponent(lbl_ic_passport_number)
@@ -140,7 +160,8 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                     .addComponent(btn_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt_password)
                     .addComponent(txt_confirm_password)
-                    .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
+                    .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addComponent(cbo_nationality, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(440, Short.MAX_VALUE))
         );
         pnl_register_accountLayout.setVerticalGroup(
@@ -161,8 +182,8 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_nationality)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbo_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(lbl_ic_passport_number)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,14 +230,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     
     // Register account button
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
-        String name = txt_name.getText();
-        String phone_number = txt_phone_number.getText();
-        String nationality = txt_nationality.getText();
-        String ic_passport_number = txt_ic_passport_number.getText();
-        String address = txt_address.getText();
-        String password = new String(txt_password.getPassword());
-        String confirm_password = new String(txt_confirm_password.getPassword());
-        
         // Name input validation
         String name_pattern_type = "^[a-zA-Z. ]{1,50}$";
         Pattern name_pattern = Pattern.compile(name_pattern_type);
@@ -227,28 +240,50 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         Pattern phone_number_pattern = Pattern.compile(phone_number_pattern_type);
         Matcher phone_number_matcher = phone_number_pattern.matcher(txt_phone_number.getText());
         
-        // Nationality input validation
-        String nationality_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern nationality_pattern = Pattern.compile(nationality_pattern_type);
-        Matcher nationality_matcher = nationality_pattern.matcher(txt_nationality.getText());
-        
         // IC / Passport number input validation
         String ic_passport_number_pattern_type = "^[0-9]{12,20}$";
         Pattern ic_passport_number_pattern = Pattern.compile(ic_passport_number_pattern_type);
         Matcher ic_passport_number_matcher = ic_passport_number_pattern.matcher(txt_ic_passport_number.getText());
         
-        if (txt_name.getText().equals("") || txt_phone_number.getText().equals("") || txt_nationality.getText().equals("") || txt_ic_passport_number.getText().equals("") || txt_address.getText().equals("") || txt_password.getPassword().length == 0 || txt_confirm_password.getPassword().length == 0) {
+        if (txt_name.getText().equals("") || txt_phone_number.getText().equals("") || cbo_nationality.getSelectedItem() == "" || txt_ic_passport_number.getText().equals("") || txt_address.getText().equals("") || txt_password.getPassword().length == 0 || txt_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!name_matcher.matches()) {
             JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!phone_number_matcher.matches()) {
             JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!nationality_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Nationality!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if (cbo_nationality.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Please Select your nationality", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!ic_passport_number_matcher.matches()) {
             JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 12 to 20 for IC / Passport Number!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            // Try catch block for file I/O
+            if(cbo_nationality.getSelectedItem() == "Malaysia") {
+                CitizenClass citizen = new CitizenClass();
+                citizen.calculatePeople_ID();
+                citizen.setName(txt_name.getText());
+                citizen.setPhone_Number(txt_phone_number.getText());
+                citizen.setNationality(cbo_nationality.getSelectedItem().toString());
+                citizen.setAddress(txt_address.getText());
+                citizen.setPassword(txt_password.getText());
+                citizen.setIC_Number(txt_ic_passport_number.getText()); 
+                citizen.Register_Account();
+                this.dispose();
+                Login login = new Login();
+                login.setVisible(true);
+                
+            } else {
+                NonCitizenClass non_citizen = new NonCitizenClass();
+                non_citizen.calculatePeople_ID();
+                non_citizen.setName(txt_name.getText());
+                non_citizen.setPhone_Number(txt_phone_number.getText());
+                non_citizen.setNationality(cbo_nationality.getSelectedItem().toString());
+                non_citizen.setAddress(txt_address.getText());
+                non_citizen.setPassword(txt_password.getText());
+                non_citizen.setPassport_Number(txt_ic_passport_number.getText()); 
+                non_citizen.Register_Account();
+                this.dispose();
+                Login login = new Login();
+                login.setVisible(true);
+            }
             
         }
     }//GEN-LAST:event_btn_registerActionPerformed
@@ -294,6 +329,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back_to_login;
     private javax.swing.JButton btn_register;
+    private javax.swing.JComboBox<String> cbo_nationality;
     private javax.swing.JLabel lbl_address;
     private javax.swing.JLabel lbl_confirm_password;
     private javax.swing.JLabel lbl_ic_passport_number;
@@ -307,7 +343,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_confirm_password;
     private javax.swing.JTextField txt_ic_passport_number;
     private javax.swing.JTextField txt_name;
-    private javax.swing.JTextField txt_nationality;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_phone_number;
     // End of variables declaration//GEN-END:variables
