@@ -7,6 +7,7 @@ package vaccine.registration.system;
 
 import java.io.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +16,7 @@ import java.util.*;
 public class PeopleClass {
     protected int People_ID;
     protected String Phone_Number, Name, Nationality, Address, Password;
+    protected boolean Auth = false;
     
     PeopleClass() {
         People_ID = 1;
@@ -60,16 +62,19 @@ public class PeopleClass {
     public void setPassword(String password) {
         Password = password;
     }
+    public boolean getAuth() {
+        return Auth;
+    }
     
     public void calculatePeople_ID() {
         String line;
         String[] line_array;
         String lastLine;
         try {
-            FileReader people = new FileReader("People.txt");
-            BufferedReader buffered_reader = new BufferedReader(people);
+            FileReader people_file = new FileReader("People.txt");
+            BufferedReader people = new BufferedReader(people_file);
 
-            while ((line = buffered_reader.readLine()) != null) 
+            while ((line = people.readLine()) != null) 
             {
                 System.out.println(line);
                 lastLine = line;
@@ -82,6 +87,7 @@ public class PeopleClass {
         }
     }
     
+   
 
     
 }

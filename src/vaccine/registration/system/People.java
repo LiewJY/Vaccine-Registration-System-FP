@@ -1058,6 +1058,12 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
+        CitizenClass citizen_class = new CitizenClass();
+        lbl_view_name.setText(citizen_class.getName());
+        lbl_view_phone_number.setText(citizen_class.getName());
+        lbl_view_nationality.setText(citizen_class.getName());
+        lbl_view_ic_passport_number.setText(citizen_class.getName());
+        lbl_view_address.setText(citizen_class.getName());
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
     

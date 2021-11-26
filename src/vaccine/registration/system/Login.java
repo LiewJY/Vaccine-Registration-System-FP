@@ -1,6 +1,7 @@
 package vaccine.registration.system;
 
 import java.awt.*;
+import java.io.*;
 import javax.swing.*;
 
 public class Login extends javax.swing.JFrame {
@@ -54,7 +55,7 @@ public class Login extends javax.swing.JFrame {
         txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         cbo_user_role.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        cbo_user_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select User Role", "Personnel", "People (Citizen / Non-Citizen)" }));
+        cbo_user_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select User Role", "Personnel", "People (Citizen)", "People (Non-Citizen)" }));
 
         btn_login.setBackground(new java.awt.Color(73, 161, 236));
         btn_login.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -114,7 +115,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,15 +148,49 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if(cbo_user_role.getSelectedItem() == "Personnel") {
-                JOptionPane.showMessageDialog(null, "You have logged in successfully!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                Personnel personnel = new Personnel();
-                personnel.setVisible(true);
-                this.dispose();
-            } else if (cbo_user_role.getSelectedItem() == "People (Citizen / Non-Citizen)"){
-                JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                People people = new People();
-                people.setVisible(true);
-                this.dispose();
+//                Personnel personnel = new Personnel();
+//                personnel.setIC_Number(txt_ic_passport_number.getText());
+//                personnel.setPassword(txt_password.getText());
+//                personnel.login();
+//                boolean personnel = personnel.getAuth();
+//                if (personnel == true) {
+//                    JOptionPane.showMessageDialog(null, "You have logged in successfully!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+//                    Personnel personnel = new Personnel();
+//                    personnel.setVisible(true);
+//                    this.dispose();
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+//                }
+            // citizen
+            } else if (cbo_user_role.getSelectedItem() == "People (Citizen)"){
+                CitizenClass citizen_class = new CitizenClass();
+                citizen_class.setIC_Number(txt_ic_passport_number.getText());
+                citizen_class.setPassword(txt_password.getText());
+                citizen_class.login();
+                boolean citizen = citizen_class.getAuth();
+                if (citizen == true) {
+                    JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    People people = new People();
+                    people.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                }
+            // non- citizen
+            } else if (cbo_user_role.getSelectedItem() == "People (Non-Citizen)"){
+                NonCitizenClass noncitizen_class = new NonCitizenClass();
+                noncitizen_class.setPassport_Number(txt_ic_passport_number.getText());
+                noncitizen_class.setPassword(txt_password.getText());
+                noncitizen_class.login();
+                boolean non_citizen = noncitizen_class.getAuth();
+                if (non_citizen == true) {
+                    JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    People people = new People();
+                    people.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                }
             } else if (cbo_user_role.getSelectedItem() == "") {
                 JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
