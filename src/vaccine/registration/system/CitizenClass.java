@@ -74,7 +74,7 @@ public class CitizenClass extends PeopleClass {
                 }
             }
         } catch (IOException f) {
-            JOptionPane.showMessageDialog(null, "Failed to login! Something went wrong, please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            f.printStackTrace();
         }
     }
     public void View_Account() {
