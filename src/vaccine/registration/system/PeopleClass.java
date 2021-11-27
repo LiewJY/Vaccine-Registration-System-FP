@@ -19,6 +19,9 @@ public class PeopleClass {
     // for login function (no need to be in class diagram)
     protected boolean Auth = false;
     protected boolean Citizen;
+    // for register function (no need to be in class diagram)
+    boolean Success_Register = false;
+
     
     PeopleClass() {
         People_ID = 1;
@@ -71,6 +74,10 @@ public class PeopleClass {
     }
     public boolean getCitizen() {
         return Citizen;
+    }
+    // for register function (no need to be in class diagram)
+    public boolean getSuccess_Register() {
+        return Success_Register;
     }
     
     
