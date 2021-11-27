@@ -1,6 +1,8 @@
 package vaccine.registration.system;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -109,8 +111,10 @@ public class Personnel extends javax.swing.JFrame {
         pnl_edit_personnel.setVisible(false);
     }
     public void View_People(){
-        btn_people_edit.enable(false);
+        // disable button no selected row
+        btn_people_edit.setEnabled(false);
         //load data
+        
         // Set column
         personnel_class.View_People();
         String columns[] = {"People ID", "Name", "Phone Number", "Nationality" , "IC / Passport Number", "Address", "Password"};
@@ -120,7 +124,7 @@ public class Personnel extends javax.swing.JFrame {
         //remove password col
         tbl_view_people.removeColumn(tbl_view_people.getColumnModel().getColumn(0));
         tbl_view_people.removeColumn(tbl_view_people.getColumnModel().getColumn(5));
-        tbl_view_people.setEnabled(false);
+        //tbl_view_people.setEnabled(false);
 
         
         tbl_view_people.setModel(people_table_model);
@@ -130,6 +134,27 @@ public class Personnel extends javax.swing.JFrame {
             String[] data = personnel_class.getPeople_Data().get(i).split("//");
             people_table_model.addRow(data);
         }
+        
+        // get data of selected row
+//        tbl_view_people.addMouseListener(new MouseAdapter() {
+//            public void mouseClicked(MouseEvent e) {
+//                btn_people_edit.setEnabled(true);
+//                
+//                int rows = tbl_view_people.getSelectedRow();
+//                int row = tbl_view_people.convertRowIndexToModel(rows);
+//                System.out.println(people_table_model.getValueAt(row, 1).toString());
+//                //tbl_view_people.setBackground(Color.BLUE);
+//                
+//            }
+//            
+//        });
+//        
+        
+        
+        
+        
+        
+        
         // hide pannel
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
@@ -346,6 +371,7 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_people__phone_number = new javax.swing.JLabel();
         txt_edit_people_phone_number = new javax.swing.JTextField();
         lbl_edit_people_nationaliy = new javax.swing.JLabel();
+        cbo_edit_people_nationality = new javax.swing.JComboBox<>();
         lbl_edit_people_ic_passport_number = new javax.swing.JLabel();
         txt_edit_people_ic_passport_number = new javax.swing.JTextField();
         lbl_edit_people_address = new javax.swing.JLabel();
@@ -356,7 +382,6 @@ public class Personnel extends javax.swing.JFrame {
         txt_edit_people_confirm_password = new javax.swing.JPasswordField();
         btn_edit_people_save = new javax.swing.JButton();
         btn_edit_people_cancel = new javax.swing.JButton();
-        cbo_register_people_nationality1 = new javax.swing.JComboBox<>();
         pnl_view_vaccination_appointments = new javax.swing.JPanel();
         pnl_viewVaccinationAppointments = new javax.swing.JPanel();
         lbl_view_vaccination_appointments = new javax.swing.JLabel();
@@ -2294,6 +2319,8 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_people_nationaliy.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_people_nationaliy.setText("Nationality");
 
+        cbo_edit_people_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
         lbl_edit_people_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
         lbl_edit_people_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_people_ic_passport_number.setText("IC / Passport Number");
@@ -2344,17 +2371,15 @@ public class Personnel extends javax.swing.JFrame {
             }
         });
 
-        cbo_register_people_nationality1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-
         javax.swing.GroupLayout pnl_edit_peopleLayout = new javax.swing.GroupLayout(pnl_edit_people);
         pnl_edit_people.setLayout(pnl_edit_peopleLayout);
         pnl_edit_peopleLayout.setHorizontalGroup(
             pnl_edit_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_editPeople, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnl_edit_peopleLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_edit_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cbo_register_people_nationality1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbo_edit_people_nationality, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_edit_peopleLayout.createSequentialGroup()
                         .addComponent(btn_edit_people_save, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
@@ -2372,7 +2397,7 @@ public class Personnel extends javax.swing.JFrame {
                     .addComponent(txt_edit_people_password)
                     .addComponent(lbl_edit_people_confirm_password, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_edit_people_ic_passport_number))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_edit_peopleLayout.setVerticalGroup(
             pnl_edit_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2389,7 +2414,7 @@ public class Personnel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_edit_people_nationaliy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbo_register_people_nationality1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbo_edit_people_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_edit_people_ic_passport_number)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -4045,8 +4070,8 @@ public class Personnel extends javax.swing.JFrame {
         for (String rowValue : getCountries()) {
             cbo.addElement(rowValue);
         }
-        cbo_register_people_nationality.setModel(cbo);
-        cbo_register_people_nationality.setSelectedIndex(-1); 
+        cbo_edit_people_nationality.setModel(cbo);
+        cbo_edit_people_nationality.setSelectedIndex(-1); 
         
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
@@ -4666,13 +4691,13 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save edit people button
     private void btn_edit_people_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_people_saveActionPerformed
-        if (txt_edit_people_name.getText().equals("") || txt_edit_people_phone_number.getText().equals("") || cbo_register_people_nationality1.getSelectedItem() == "" || txt_edit_people_ic_passport_number.getText().equals("") || txt_edit_people_address.getText().equals("") || txt_edit_people_password.getPassword().length == 0 || txt_edit_people_confirm_password.getPassword().length == 0) {
+        if (txt_edit_people_name.getText().equals("") || txt_edit_people_phone_number.getText().equals("") || cbo_edit_people_nationality.getSelectedItem() == "" || txt_edit_people_ic_passport_number.getText().equals("") || txt_edit_people_address.getText().equals("") || txt_edit_people_password.getPassword().length == 0 || txt_edit_people_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateName(txt_edit_people_name.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validatePhoneNumber(txt_edit_people_phone_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
-        }else if (cbo_register_people_nationality1.getSelectedIndex() == -1) {
+        }else if (cbo_edit_people_nationality.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Please Select your nationality", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_edit_people_password.getText().matches(txt_edit_people_confirm_password.getText())) {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -5034,7 +5059,7 @@ public class Personnel extends javax.swing.JFrame {
         //working
         txt_edit_people_name.setText(people_table_model.getValueAt(row, 0).toString());
         txt_edit_people_phone_number.setText(people_table_model.getValueAt(row, 0).toString());
-        cbo_register_people_nationality1.setSelectedItem(people_table_model.getValueAt(row, 3).toString());
+        cbo_edit_people_nationality.setSelectedItem(people_table_model.getValueAt(row, 3).toString());
         txt_edit_people_ic_passport_number.setText(people_table_model.getValueAt(row, 0).toString());
         txt_edit_people_address.setText(people_table_model.getValueAt(row, 0).toString());
         txt_edit_people_password.setText(people_table_model.getValueAt(row, 0).toString());
@@ -5130,12 +5155,12 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JButton btn_vaccine_remove;
     private javax.swing.JComboBox<String> cbo_add_vaccine_center_name;
     private javax.swing.JComboBox<String> cbo_add_vaccine_type;
+    private javax.swing.JComboBox<String> cbo_edit_people_nationality;
     private javax.swing.JComboBox<String> cbo_edit_vaccination_appointments_select_time;
     private javax.swing.JComboBox<String> cbo_edit_vaccination_appointments_select_vaccination_center;
     private javax.swing.JComboBox<String> cbo_edit_vaccine_center_name;
     private javax.swing.JComboBox<String> cbo_edit_vaccine_type;
     private javax.swing.JComboBox<String> cbo_register_people_nationality;
-    private javax.swing.JComboBox<String> cbo_register_people_nationality1;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_time;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_vaccination_center;
     private javax.swing.JComboBox<String> cbo_select_dose;

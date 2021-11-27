@@ -35,7 +35,6 @@ public class NonCitizenClass extends PeopleClass{
                 }
                 if(Success_Save == true) {
                     //Insert data (not match)
-                    register_noncitizen.print("\n");
                     register_noncitizen.append(People_ID + "//");
                     register_noncitizen.append(Name + "//");
                     register_noncitizen.append(Phone_Number + "//");
@@ -43,6 +42,7 @@ public class NonCitizenClass extends PeopleClass{
                     register_noncitizen.append(Passport_Number + "//");
                     register_noncitizen.append(Address + "//");
                     register_noncitizen.append(Password + "//");
+                    register_noncitizen.print("\n");
                     register_noncitizen.close();
                 }
             } catch (IOException c) {

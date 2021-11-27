@@ -1129,8 +1129,8 @@ public class People extends javax.swing.JFrame {
             txt_edit_nationality.setText(noncitizen_class.getNationality());
             txt_edit_ic_passport_number.setText(noncitizen_class.getPassport_Number());
             txt_edit_address.setText(noncitizen_class.getAddress());
-            txt_edit_password.setText(citizen_class.getPassword());
-            txt_edit_confirm_password.setText(citizen_class.getPassword());
+            txt_edit_password.setText(noncitizen_class.getPassword());
+            txt_edit_confirm_password.setText(noncitizen_class.getPassword());
         }
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(true);

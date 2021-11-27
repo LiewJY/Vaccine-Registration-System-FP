@@ -11,7 +11,7 @@ public class ValidationClass {
     private boolean Validate = false;
     public boolean validateName(String name) {
         // Name input validation
-        String name_pattern_type = "^[a-zA-Z. ]{1,50}$";
+        String name_pattern_type = "^[a-zA-Z. ]{12,50}$";
         Pattern name_pattern = Pattern.compile(name_pattern_type);
         Matcher name_matcher = name_pattern.matcher(name);
         if(!name_matcher.matches()){
@@ -36,7 +36,7 @@ public class ValidationClass {
     }
         public boolean validateICPassportNumber(String ic_passport_number) {
         // Phone number input validation
-        String ic_passport_number_pattern_type = "^[A-Za-z0-9_.]+$";
+        String ic_passport_number_pattern_type = "^[A-Z0-9]{1,50}$";
         Pattern ic_passport_number_pattern = Pattern.compile(ic_passport_number_pattern_type);
         Matcher ic_passport_number_matcher = ic_passport_number_pattern.matcher(ic_passport_number);
         

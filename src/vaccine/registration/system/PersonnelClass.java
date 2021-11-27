@@ -171,7 +171,6 @@ public class PersonnelClass {
                     line_array = line.split("//");
                     if (line_array[0].equals(String.valueOf(Personnel_ID))) {
                         //Insert data
-                         System.out.println("www");
                         temp_data.add(Personnel_ID + "//" 
                                 + Name + "//" 
                                 + Phone_Number + "//" 
