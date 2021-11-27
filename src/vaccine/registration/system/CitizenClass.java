@@ -1,12 +1,12 @@
 package vaccine.registration.system;
 
 import java.io.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class CitizenClass extends PeopleClass {
-    String IC_Number;
-
-    
+   private String IC_Number;
+   
     CitizenClass() {
         IC_Number = "";
     }
@@ -20,24 +20,22 @@ public class CitizenClass extends PeopleClass {
 
     
     public void Register_Account() {
+        String line;
+        String[] line_array;
         try (PrintWriter register_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", true)))) {
             try { 
                 FileReader people_file = new FileReader("People.txt");
                 BufferedReader people = new BufferedReader(people_file);
-
-                String line;
-                String[] line_array;
-
                 // Check whether input ic and password is existing and matched in text file
                 while ((line = people.readLine()) != null) {
                     line_array = line.split("//");
                     if (!line_array[4].equals(IC_Number)) {
-                        Success_Register = true;
+                        Success_Save = true;
                     } else {
-                        Success_Register = false;
+                        Success_Save = false;
                     }
                 }
-                if(Success_Register == true) {
+                if(Success_Save == true) {
                     //Insert data (not match)
                     register_citizen.print("\n");
                     register_citizen.append(People_ID + "//");
@@ -57,13 +55,11 @@ public class CitizenClass extends PeopleClass {
         }
     }
     public void Login_Account() {
+        String line;
+        String[] line_array;
         try { 
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
-
-            String line;
-            String[] line_array;
-
             // Check whether input ic and password is existing and matched in text file
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
@@ -78,13 +74,11 @@ public class CitizenClass extends PeopleClass {
         }
     }
     public void View_Account() {
+        String line;
+        String[] line_array;
         try { 
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
-
-            String line;
-            String[] line_array;
-
             // Check whether input ic and password is existing and matched in text file\
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
@@ -100,5 +94,44 @@ public class CitizenClass extends PeopleClass {
             v.printStackTrace();
         }
     }
+    public void Edit_Account() {
+            String line;
+            String[] line_array;
+            ArrayList<String> temp_data = new ArrayList<>();
+            try { 
+                FileReader people_file = new FileReader("People.txt");
+                BufferedReader people = new BufferedReader(people_file);
+                //edit line
+                 while ((line = people.readLine()) != null) {
+                    line_array = line.split("//");
+                    if (line_array[0].equals(String.valueOf(People_ID))) {
+                        //Insert data
+                         System.out.println("www");
+                        temp_data.add(People_ID + "//" 
+                                + Name + "//" 
+                                + Phone_Number + "//" 
+                                + Nationality + "//" 
+                                + IC_Number + "//" 
+                                + Address + "//" 
+                                + Password + "//");
+                    } else {
+                        temp_data.add(line);
+                    }
+                }
+                people_file.close();
+               } catch (IOException c) {
+                c.printStackTrace();
+            }
+        try (PrintWriter edit_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt")))) {
+            for (String new_data : temp_data) {
+                edit_citizen.println(new_data);
+            }
+            edit_citizen.close();
+            Success_Save = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+   
     
 }

@@ -45,6 +45,7 @@ public class Login extends javax.swing.JFrame {
         lbl_ic_passport_number.setText("IC / Passport Number");
 
         txt_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_ic_passport_number.setText("1");
         txt_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_password.setBackground(new java.awt.Color(255, 255, 255));
@@ -52,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         lbl_password.setText("Password");
 
         txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_password.setText("1");
         txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         cbo_user_role.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -148,19 +150,18 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if(cbo_user_role.getSelectedItem() == "Personnel") {
-//                Personnel personnel = new Personnel();
-//                personnel.setIC_Number(txt_ic_passport_number.getText());
-//                personnel.setPassword(txt_password.getText());
-//                personnel.Login_Account();
-//                boolean personnel = personnel.getAuth();
-//                if (personnel == true) {
-//                    JOptionPane.showMessageDialog(null, "You have logged in successfully!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-//                    Personnel personnel = new Personnel();
-//                    personnel.setVisible(true);
-//                    this.dispose();
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
-//                }
+                PersonnelClass personnel_class = new PersonnelClass();
+                personnel_class.setIC_Number(txt_ic_passport_number.getText());
+                personnel_class.setPassword(txt_password.getText());
+                personnel_class.Login_Account();
+                boolean personnel = personnel_class.getAuth();
+                if (personnel == true) {
+                    JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    new Personnel(personnel_class.getPersonnel_ID()).setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                }
             // citizen
             } else if (cbo_user_role.getSelectedItem() == "People (Citizen)"){
                 CitizenClass citizen_class = new CitizenClass();

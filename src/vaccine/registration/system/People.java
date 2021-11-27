@@ -10,6 +10,7 @@ public class People extends javax.swing.JFrame {
     
     CitizenClass citizen_class = new CitizenClass();
     NonCitizenClass noncitizen_class = new NonCitizenClass();
+    PeopleClass people_class = new PeopleClass();
     boolean citizenship;
     
     // People form
@@ -25,13 +26,12 @@ public class People extends javax.swing.JFrame {
     
     public People(int people_id, boolean citizen) {
         initComponents();
-        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
-        System.out.println(people_id + " " +  citizen);
         if (citizen == true){
             citizen_class.setPeople_ID(people_id);
             citizenship = true;
@@ -1096,23 +1096,17 @@ public class People extends javax.swing.JFrame {
     
     // My account side bar tab
     private void lbl_my_accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_my_accountMouseClicked
+        View();
         pnl_view_account.setVisible(true);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
-        View();
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
     
     // Edit account button
     private void btn_edit_accountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_accountActionPerformed
-        pnl_view_account.setVisible(false);
-        pnl_edit_account.setVisible(true);
-        pnl_view_vaccination_appointment.setVisible(false);
-        pnl_register_vaccination_appointment.setVisible(false);
-        pnl_view_vaccination_status.setVisible(false);
-        
         //view data
         if (citizenship == true){
             citizen_class.View_Account();
@@ -1129,7 +1123,12 @@ public class People extends javax.swing.JFrame {
             txt_edit_ic_passport_number.setText(noncitizen_class.getPassport_Number());
             txt_edit_address.setText(noncitizen_class.getAddress());
         }
-       
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(true);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_vaccination_status.setVisible(false);
+        
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
     
@@ -1193,24 +1192,12 @@ public class People extends javax.swing.JFrame {
     
     // Save edit account button
     private void btn_edit_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_saveActionPerformed
-
-        
-        // Name input validation
-        String edit_name_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern edit_name_pattern = Pattern.compile(edit_name_pattern_type);
-        Matcher edit_name_matcher = edit_name_pattern.matcher(txt_edit_name.getText());
-
-        // Phone number input validation
-        String edit_phone_number_pattern_type = "^[0-9]{10,11}$";
-        Pattern edit_phone_number_pattern = Pattern.compile(edit_phone_number_pattern_type);
-        Matcher edit_phone_number_matcher = edit_phone_number_pattern.matcher(txt_edit_phone_number.getText());
-      
         if (txt_edit_name.getText().equals("") || txt_edit_phone_number.getText().equals("") || txt_edit_address.getText().equals("") || txt_edit_password.getPassword().length == 0 || txt_edit_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_name_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_phone_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (people_class.validation(txt_edit_name.getText(), txt_edit_phone_number.getText()).equals("name")) {
+            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (people_class.validation(txt_edit_name.getText(), txt_edit_phone_number.getText()).equals("phone_number")) {
+            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_edit_password.getText().matches(txt_edit_confirm_password.getText())) {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -1253,16 +1240,7 @@ public class People extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-
+            }         
         }
     }//GEN-LAST:event_btn_edit_saveActionPerformed
 
@@ -1278,8 +1256,6 @@ public class People extends javax.swing.JFrame {
             if (cbo_select_time.getSelectedItem().equals("Select Time") || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Call file I/O method
-                
                 pnl_view_account.setVisible(false);
                 pnl_edit_account.setVisible(false);
                 pnl_view_vaccination_appointment.setVisible(true);

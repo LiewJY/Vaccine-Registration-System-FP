@@ -1,10 +1,11 @@
 package vaccine.registration.system;
 
 import java.io.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class NonCitizenClass extends PeopleClass{
-    String Passport_Number;
+    private String Passport_Number;
     
     NonCitizenClass() {
         Passport_Number = "";
@@ -16,25 +17,23 @@ public class NonCitizenClass extends PeopleClass{
     public void setPassport_Number(String passport_number) {
         Passport_Number = passport_number;
     }
-        public void Register_Account() {
+    public void Register_Account() {
+        String line;
+        String[] line_array;
         try (PrintWriter register_noncitizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", true)))) {
             try { 
                 FileReader people_file = new FileReader("People.txt");
                 BufferedReader people = new BufferedReader(people_file);
-
-                String line;
-                String[] line_array;
-
                 // Check whether input ic and password is existing and matched in text file
                 while ((line = people.readLine()) != null) {
                     line_array = line.split("//");
                     if (!line_array[4].equals(Passport_Number)) {
-                        Success_Register = true;
+                        Success_Save = true;
                     } else {
-                        Success_Register = false;
+                        Success_Save = false;
                     }
                 }
-                if(Success_Register == true) {
+                if(Success_Save == true) {
                     //Insert data (not match)
                     register_noncitizen.print("\n");
                     register_noncitizen.append(People_ID + "//");
@@ -55,13 +54,11 @@ public class NonCitizenClass extends PeopleClass{
     }
     
     public void Login_Account() {
+        String line;
+        String[] line_array;
         try { 
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
-
-            String line;
-            String[] line_array;
-
             // Check whether input ic and password is existing and matched in text file
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
@@ -72,17 +69,15 @@ public class NonCitizenClass extends PeopleClass{
                 }
             }
         } catch (IOException f) {
-            JOptionPane.showMessageDialog(null, "Failed to login! Something went wrong, please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            f.printStackTrace();        
         }
     }
     public void View_Account() {
+        String line;
+        String[] line_array;
         try { 
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
-
-            String line;
-            String[] line_array;
-
             // Check whether input ic and password is existing and matched in text file\
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
@@ -98,6 +93,43 @@ public class NonCitizenClass extends PeopleClass{
             v.printStackTrace();
         }
     }
-    
+    public void Edit_Account() {
+            String line;
+            String[] line_array;
+            ArrayList<String> temp_data = new ArrayList<>();
+            try { 
+                FileReader people_file = new FileReader("People.txt");
+                BufferedReader people = new BufferedReader(people_file);
+                //edit line
+                 while ((line = people.readLine()) != null) {
+                    line_array = line.split("//");
+                    if (line_array[0].equals(String.valueOf(People_ID))) {
+                        //Insert data
+                         System.out.println("www");
+                        temp_data.add(People_ID + "//" 
+                                + Name + "//" 
+                                + Phone_Number + "//" 
+                                + Nationality + "//" 
+                                + Passport_Number + "//" 
+                                + Address + "//" 
+                                + Password + "//");
+                    } else {
+                        temp_data.add(line);
+                    }
+                }
+                people_file.close();
+               } catch (IOException c) {
+                c.printStackTrace();
+            }
+        try (PrintWriter edit_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt")))) {
+            for (String new_data : temp_data) {
+                edit_citizen.println(new_data);
+            }
+            edit_citizen.close();
+            Success_Save = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
 }

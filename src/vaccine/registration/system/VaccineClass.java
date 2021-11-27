@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vaccine.registration.system;
 
-/**
- *
- * @author liewj
- */
+import java.util.Date;
+
+
 public class VaccineClass {
-    
+    private int Vaccine_Batch_ID, Amount, Second_Dose_Gap;
+    private String Vaccine_Type;
+    private Date date, Expiration_Date;
 }

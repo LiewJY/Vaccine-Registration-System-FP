@@ -3279,6 +3279,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_search_peopleKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_people_register">
               <Properties>

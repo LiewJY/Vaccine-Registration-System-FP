@@ -7,6 +7,8 @@ import javax.swing.*;
 
 
 public class PeopleRegisterAccount extends javax.swing.JFrame {
+    // for validation
+    PeopleClass people_class = new PeopleClass();
 
     
     // People Register Account form
@@ -230,31 +232,17 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     
     // Register account button
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
-        // Name input validation
-        String name_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern name_pattern = Pattern.compile(name_pattern_type);
-        Matcher name_matcher = name_pattern.matcher(txt_name.getText());
-
-        // Phone number input validation
-        String phone_number_pattern_type = "^[0-9]{10,11}$";
-        Pattern phone_number_pattern = Pattern.compile(phone_number_pattern_type);
-        Matcher phone_number_matcher = phone_number_pattern.matcher(txt_phone_number.getText());
-        
-        // IC / Passport number input validation
-        String ic_passport_number_pattern_type = "^[0-9]{12,20}$";
-        Pattern ic_passport_number_pattern = Pattern.compile(ic_passport_number_pattern_type);
-        Matcher ic_passport_number_matcher = ic_passport_number_pattern.matcher(txt_ic_passport_number.getText());
-        
+           
         if (txt_name.getText().equals("") || txt_phone_number.getText().equals("") || cbo_nationality.getSelectedItem() == "" || txt_ic_passport_number.getText().equals("") || txt_address.getText().equals("") || txt_password.getPassword().length == 0 || txt_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!name_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!phone_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (people_class.validation(txt_name.getText(), txt_phone_number.getText()).equals("name")) {
+            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (people_class.validation(txt_name.getText(), txt_phone_number.getText()).equals("phone_number")) {
+            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
         }else if (cbo_nationality.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Please Select your nationality", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!ic_passport_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 12 to 20 for IC / Passport Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_password.getText().matches(txt_confirm_password.getText())) {
+            JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if(cbo_nationality.getSelectedItem() == "Malaysia") {
                 CitizenClass citizen = new CitizenClass();
@@ -266,7 +254,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 citizen.setPassword(txt_password.getText());
                 citizen.setIC_Number(txt_ic_passport_number.getText()); 
                 citizen.Register_Account();
-                if(citizen.getSuccess_Register() == true) {
+                if(citizen.getSuccess_Save() == true) {
                     this.dispose();
                     Login login = new Login();
                     login.setVisible(true);
@@ -283,7 +271,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 non_citizen.setPassword(txt_password.getText());
                 non_citizen.setPassport_Number(txt_ic_passport_number.getText()); 
                 non_citizen.Register_Account();
-                if(non_citizen.getSuccess_Register() == true) {
+                if(non_citizen.getSuccess_Save() == true) {
                     this.dispose();
                     Login login = new Login();
                     login.setVisible(true);

@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import org.apache.commons.io.input.ReversedLinesFileReader;
-
 
 public class VaccineRegistrationSystem {
     

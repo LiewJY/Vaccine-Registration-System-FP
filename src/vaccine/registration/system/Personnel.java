@@ -1,12 +1,17 @@
 package vaccine.registration.system;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import javax.swing.*;
 import java.text.*;
 import java.util.regex.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class Personnel extends javax.swing.JFrame {
-
+    PeopleClass people_class = new PeopleClass();
     PersonnelClass personnel_class = new PersonnelClass();
     // Personnel form
     public Personnel() {
@@ -1950,6 +1955,11 @@ public class Personnel extends javax.swing.JFrame {
 
         txt_search_people.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_search_people.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        txt_search_people.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_peopleKeyReleased(evt);
+            }
+        });
 
         btn_people_register.setBackground(new java.awt.Color(73, 161, 236));
         btn_people_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3883,6 +3893,23 @@ public class Personnel extends javax.swing.JFrame {
     
     // People side bar tab
     private void lbl_peopleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_peopleMouseClicked
+        // Set column
+        personnel_class.View_People();
+        System.out.println("aa");
+        String columns[] = {"People ID", "Name", "Phone Number", "Nationality" , "IC / Passport Number", "Address"};
+        DefaultTableModel people_table_model = (DefaultTableModel)tbl_view_people.getModel();
+        people_table_model.setColumnIdentifiers(columns);
+        tbl_view_people.setModel(people_table_model);
+
+        people_table_model.setRowCount(0);
+
+        // Loop and display data
+        for (int i = 0; i < personnel_class.getPeople_Data().size(); i++) {
+            String[] data = personnel_class.getPeople_Data().get(i).split("//");
+            people_table_model.addRow(data);
+        }
+
+        
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
@@ -4978,22 +5005,13 @@ public class Personnel extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_edit_vaccine_saveActionPerformed
     // save in personnel edit
     private void btn_save_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_editActionPerformed
- // Name input validation
-        String edit_name_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern edit_name_pattern = Pattern.compile(edit_name_pattern_type);
-        Matcher edit_name_matcher = edit_name_pattern.matcher(txt_edit_name.getText());
 
-        // Phone number input validation
-        String edit_phone_number_pattern_type = "^[0-9]{10,11}$";
-        Pattern edit_phone_number_pattern = Pattern.compile(edit_phone_number_pattern_type);
-        Matcher edit_phone_number_matcher = edit_phone_number_pattern.matcher(txt_edit_phone_number.getText());
-      
         if (txt_edit_name.getText().equals("") || txt_edit_phone_number.getText().equals("") || txt_edit_address.getText().equals("") || txt_edit_password.getPassword().length == 0 || txt_edit_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_name_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_phone_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (people_class.validation(txt_edit_name.getText(), txt_edit_phone_number.getText()).equals("name")) {
+            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (people_class.validation(txt_edit_name.getText(), txt_edit_phone_number.getText()).equals("phone_number")) {
+            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_edit_password.getText().matches(txt_edit_confirm_password.getText())) {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -5014,6 +5032,14 @@ public class Personnel extends javax.swing.JFrame {
             }
         }    
     }//GEN-LAST:event_btn_save_editActionPerformed
+
+   
+    private void txt_search_peopleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_peopleKeyReleased
+        DefaultTableModel people_table_model = (DefaultTableModel) tbl_view_people.getModel();
+        TableRowSorter<DefaultTableModel> search_people = new TableRowSorter<DefaultTableModel>(people_table_model);
+        tbl_view_people.setRowSorter(search_people);
+        search_people.setRowFilter(RowFilter.regexFilter(txt_search_people.getText()));
+    }//GEN-LAST:event_txt_search_peopleKeyReleased
 
     
     // Main method
