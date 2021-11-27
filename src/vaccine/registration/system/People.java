@@ -39,10 +39,25 @@ public class People extends javax.swing.JFrame {
             noncitizen_class.setPeople_ID(people_id);
             citizenship = false;
         }
-        
-//        System.out.println(citizen_class.getPeople_ID());
-//        System.out.println(noncitizen_class.getPeople_ID());
-        //System.out.println(citizen_class.getCitizen());
+    }
+    
+    public void View(){
+        //insert data
+        if (citizenship == true){
+            citizen_class.View_Account();
+            lbl_view_name.setText(citizen_class.getName());
+            lbl_view_phone_number.setText(citizen_class.getPhone_Number());
+            lbl_view_nationality.setText(citizen_class.getNationality());
+            lbl_view_ic_passport_number.setText(citizen_class.getIC_Number());
+            lbl_view_address.setText(citizen_class.getAddress());
+        } else {
+            noncitizen_class.View_Account();
+            lbl_view_name.setText(noncitizen_class.getName());
+            lbl_view_phone_number.setText(noncitizen_class.getPhone_Number());
+            lbl_view_nationality.setText(noncitizen_class.getNationality());
+            lbl_view_ic_passport_number.setText(noncitizen_class.getPassport_Number());
+            lbl_view_address.setText(noncitizen_class.getAddress());       
+        }
     }
 
 
@@ -417,6 +432,7 @@ public class People extends javax.swing.JFrame {
         lbl_edit_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_nationality.setText("Nationality");
 
+        txt_edit_nationality.setEditable(false);
         txt_edit_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_edit_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
@@ -424,6 +440,7 @@ public class People extends javax.swing.JFrame {
         lbl_edit_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_ic_passport_number.setText("IC / Passport Number");
 
+        txt_edit_ic_passport_number.setEditable(false);
         txt_edit_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_edit_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
@@ -1084,24 +1101,7 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
-       
-
-        if (citizenship == true){
-            citizen_class.View_Account();
-            lbl_view_name.setText(citizen_class.getName());
-            lbl_view_phone_number.setText(citizen_class.getPhone_Number());
-            lbl_view_nationality.setText(citizen_class.getNationality());
-            lbl_view_ic_passport_number.setText(citizen_class.getIC_Number());
-            lbl_view_address.setText(citizen_class.getAddress());
-        } else {
-            noncitizen_class.View_Account();
-            lbl_view_name.setText(noncitizen_class.getName());
-            lbl_view_phone_number.setText(noncitizen_class.getPhone_Number());
-            lbl_view_nationality.setText(noncitizen_class.getNationality());
-            lbl_view_ic_passport_number.setText(noncitizen_class.getPassport_Number());
-            lbl_view_address.setText(noncitizen_class.getAddress());       
-        }
-
+        View();
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
     
@@ -1112,6 +1112,24 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
+        
+        //view data
+        if (citizenship == true){
+            citizen_class.View_Account();
+            txt_edit_name.setText(citizen_class.getName());
+            txt_edit_phone_number.setText(citizen_class.getPhone_Number());
+            txt_edit_nationality.setText(citizen_class.getNationality());
+            txt_edit_ic_passport_number.setText(citizen_class.getIC_Number());
+            txt_edit_address.setText(citizen_class.getAddress());
+        } else {
+            noncitizen_class.View_Account();
+            txt_edit_name.setText(noncitizen_class.getName());
+            txt_edit_phone_number.setText(noncitizen_class.getPhone_Number());
+            txt_edit_nationality.setText(noncitizen_class.getNationality());
+            txt_edit_ic_passport_number.setText(noncitizen_class.getPassport_Number());
+            txt_edit_address.setText(noncitizen_class.getAddress());
+        }
+       
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
     
@@ -1175,13 +1193,7 @@ public class People extends javax.swing.JFrame {
     
     // Save edit account button
     private void btn_edit_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_saveActionPerformed
-        String edit_name = txt_edit_name.getText();
-        String edit_phone_number = txt_edit_phone_number.getText();
-        String edit_nationality = txt_edit_nationality.getText();
-        String edit_ic_passport_number = txt_edit_ic_passport_number.getText();
-        String edit_address = txt_edit_address.getText();
-        String edit_password = new String(txt_edit_password.getPassword());
-        String edit_confirm_password = new String(txt_edit_confirm_password.getPassword());
+
         
         // Name input validation
         String edit_name_pattern_type = "^[a-zA-Z. ]{1,50}$";
@@ -1192,35 +1204,65 @@ public class People extends javax.swing.JFrame {
         String edit_phone_number_pattern_type = "^[0-9]{10,11}$";
         Pattern edit_phone_number_pattern = Pattern.compile(edit_phone_number_pattern_type);
         Matcher edit_phone_number_matcher = edit_phone_number_pattern.matcher(txt_edit_phone_number.getText());
-        
-        // Nationality input validation
-        String edit_nationality_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern edit_nationality_pattern = Pattern.compile(edit_nationality_pattern_type);
-        Matcher edit_nationality_matcher = edit_nationality_pattern.matcher(txt_edit_nationality.getText());
-        
-        // IC / Passport number input validation
-        String edit_ic_passport_number_pattern_type = "^[0-9]{12,20}$";
-        Pattern edit_ic_passport_number_pattern = Pattern.compile(edit_ic_passport_number_pattern_type);
-        Matcher edit_ic_passport_number_matcher = edit_ic_passport_number_pattern.matcher(txt_edit_ic_passport_number.getText());
-        
-        if (txt_edit_name.getText().equals("") || txt_edit_phone_number.getText().equals("") || txt_edit_nationality.getText().equals("") || txt_edit_ic_passport_number.getText().equals("") || txt_edit_address.getText().equals("") || txt_edit_password.getPassword().length == 0 || txt_edit_confirm_password.getPassword().length == 0) {
+      
+        if (txt_edit_name.getText().equals("") || txt_edit_phone_number.getText().equals("") || txt_edit_address.getText().equals("") || txt_edit_password.getPassword().length == 0 || txt_edit_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!edit_name_matcher.matches()) {
             JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!edit_phone_number_matcher.matches()) {
             JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_nationality_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Nationality!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_ic_passport_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 12 to 20 for IC / Passport Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_edit_password.getText().matches(txt_edit_confirm_password.getText())) {
+            JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            // Call file I/O method
+            if(txt_edit_nationality.getText().equals("Malaysia")) {
+                citizen_class.setName(txt_edit_name.getText());
+                citizen_class.setPhone_Number(txt_edit_phone_number.getText());
+                citizen_class.setNationality(txt_edit_nationality.getText());
+                citizen_class.setAddress(txt_edit_address.getText());
+                citizen_class.setPassword(txt_edit_password.getText());
+                citizen_class.setIC_Number(txt_edit_ic_passport_number.getText()); 
+                citizen_class.Edit_Account();
+                if(citizen_class.getSuccess_Save() == true) {
+                    View();
+                    pnl_view_account.setVisible(true);
+                    pnl_edit_account.setVisible(false);
+                    pnl_view_vaccination_appointment.setVisible(false);
+                    pnl_register_vaccination_appointment.setVisible(false);
+                    pnl_view_vaccination_status.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                noncitizen_class.calculatePeople_ID();
+                noncitizen_class.setName(txt_edit_name.getText());
+                noncitizen_class.setPhone_Number(txt_edit_phone_number.getText());
+                noncitizen_class.setNationality(txt_edit_nationality.getText());
+                noncitizen_class.setAddress(txt_edit_address.getText());
+                noncitizen_class.setPassword(txt_edit_password.getText());
+                noncitizen_class.setPassport_Number(txt_edit_ic_passport_number.getText()); 
+                noncitizen_class.Edit_Account();
+                if(noncitizen_class.getSuccess_Save() == true) {
+                    View();
+                    pnl_view_account.setVisible(true);
+                    pnl_edit_account.setVisible(false);
+                    pnl_view_vaccination_appointment.setVisible(false);
+                    pnl_register_vaccination_appointment.setVisible(false);
+                    pnl_view_vaccination_status.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
             
-            pnl_view_account.setVisible(true);
-            pnl_edit_account.setVisible(false);
-            pnl_view_vaccination_appointment.setVisible(false);
-            pnl_register_vaccination_appointment.setVisible(false);
-            pnl_view_vaccination_status.setVisible(false);
+            
+            
+            
+            
+            
+            
+            
+
         }
     }//GEN-LAST:event_btn_edit_saveActionPerformed
 
