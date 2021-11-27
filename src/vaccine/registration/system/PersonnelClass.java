@@ -199,10 +199,10 @@ public class PersonnelClass {
     
     public void View_People() {
         String line;
+        People_Data = new ArrayList<>();
         try {
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
-            People_Data = new ArrayList<>();
         while ((line = people.readLine()) != null) {
            People_Data.add(line);
         }

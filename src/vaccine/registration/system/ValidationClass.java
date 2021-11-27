@@ -11,7 +11,7 @@ public class ValidationClass {
     private boolean Validate = false;
     public boolean validateName(String name) {
         // Name input validation
-        String name_pattern_type = "^[a-zA-Z. ]{12,50}$";
+        String name_pattern_type = "^[a-zA-Z. ]{1,50}$";
         Pattern name_pattern = Pattern.compile(name_pattern_type);
         Matcher name_matcher = name_pattern.matcher(name);
         if(!name_matcher.matches()){
