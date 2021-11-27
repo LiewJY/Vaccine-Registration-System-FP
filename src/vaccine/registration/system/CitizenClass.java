@@ -106,7 +106,6 @@ public class CitizenClass extends PeopleClass {
                     line_array = line.split("//");
                     if (line_array[0].equals(String.valueOf(People_ID))) {
                         //Insert data
-                         System.out.println("www");
                         temp_data.add(People_ID + "//" 
                                 + Name + "//" 
                                 + Phone_Number + "//" 

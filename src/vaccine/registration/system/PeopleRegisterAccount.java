@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class PeopleRegisterAccount extends javax.swing.JFrame {
     // for validation
-    PeopleClass people_class = new PeopleClass();
+    ValidationClass validation_class = new ValidationClass();
 
     
     // People Register Account form
@@ -33,6 +33,12 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         }
         Arrays.sort(countries); 
         return countries;
+    }
+    
+    public void viewLogin() {
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
     }
     
     
@@ -224,9 +230,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     
     // Back to login button
     private void btn_back_to_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_to_loginActionPerformed
-        Login backToLogin = new Login();
-        backToLogin.setVisible(true);
-        this.dispose();
+        viewLogin();
     }//GEN-LAST:event_btn_back_to_loginActionPerformed
 
     
@@ -235,10 +239,12 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
            
         if (txt_name.getText().equals("") || txt_phone_number.getText().equals("") || cbo_nationality.getSelectedItem() == "" || txt_ic_passport_number.getText().equals("") || txt_address.getText().equals("") || txt_password.getPassword().length == 0 || txt_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (people_class.validation(txt_name.getText(), txt_phone_number.getText()).equals("name")) {
-            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (people_class.validation(txt_name.getText(), txt_phone_number.getText()).equals("phone_number")) {
-            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateName(txt_name.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validatePhoneNumber(txt_phone_number.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateICPassportNumber(txt_ic_passport_number.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("ic_passport_number"), "Warning", JOptionPane.WARNING_MESSAGE);
         }else if (cbo_nationality.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Please Select your nationality", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_password.getText().matches(txt_confirm_password.getText())) {
@@ -255,9 +261,8 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 citizen.setIC_Number(txt_ic_passport_number.getText()); 
                 citizen.Register_Account();
                 if(citizen.getSuccess_Save() == true) {
-                    this.dispose();
-                    Login login = new Login();
-                    login.setVisible(true);
+                    viewLogin();
+                    JOptionPane.showMessageDialog(null, "Account Created.", "Success", JOptionPane.INFORMATION_MESSAGE);                   
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -272,14 +277,12 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 non_citizen.setPassport_Number(txt_ic_passport_number.getText()); 
                 non_citizen.Register_Account();
                 if(non_citizen.getSuccess_Save() == true) {
-                    this.dispose();
-                    Login login = new Login();
-                    login.setVisible(true);
+                    viewLogin();
+                    JOptionPane.showMessageDialog(null, "Account Created.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            
         }
     }//GEN-LAST:event_btn_registerActionPerformed
 

@@ -6,12 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import javax.swing.*;
 import java.text.*;
+import java.util.Arrays;
+import java.util.Locale;
 import java.util.regex.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 
 public class Personnel extends javax.swing.JFrame {
-    PeopleClass people_class = new PeopleClass();
+    ValidationClass validation_class = new ValidationClass();
     PersonnelClass personnel_class = new PersonnelClass();
     // Personnel form
     public Personnel() {
@@ -61,7 +64,22 @@ public class Personnel extends javax.swing.JFrame {
         pnl_edit_personnel.setVisible(false);
         personnel_class.setPersonnel_ID(personnel_id);
     }
-    public void View(){
+    // Get all country listing
+    public String[] getCountries() {
+        String[] countries = new String[Locale.getISOCountries().length];
+        String[] countryCodes = Locale.getISOCountries();
+        for (int i = 0; i < countryCodes.length; i++) {
+            Locale obj = new Locale("", countryCodes[i]);
+            countries[i] = obj.getDisplayCountry();
+        }
+        Arrays.sort(countries); 
+        return countries;
+    }
+    
+    
+    
+    //View + hide pannel
+    public void View_Personnel(){
         //insert data
         personnel_class.View_Account();
         lbl_view_name.setText(personnel_class.getName());
@@ -69,8 +87,6 @@ public class Personnel extends javax.swing.JFrame {
         lbl_view_nationality.setText(personnel_class.getNationality());
         lbl_view_ic_passport_number.setText(personnel_class.getIC_Number());
         lbl_view_address.setText(personnel_class.getAddress());
-    }
-    public void View_Personnel_Profile(){
         // hide pannel
         pnl_view_account.setVisible(true);
         pnl_edit_account.setVisible(false);
@@ -91,6 +107,50 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_personnel.setVisible(false);
         pnl_register_personnel.setVisible(false);
         pnl_edit_personnel.setVisible(false);
+    }
+    public void View_People(){
+        btn_people_edit.enable(false);
+        //load data
+        // Set column
+        personnel_class.View_People();
+        String columns[] = {"People ID", "Name", "Phone Number", "Nationality" , "IC / Passport Number", "Address", "Password"};
+
+        DefaultTableModel people_table_model = (DefaultTableModel)tbl_view_people.getModel();
+        people_table_model.setColumnIdentifiers(columns);
+        //remove password col
+        tbl_view_people.removeColumn(tbl_view_people.getColumnModel().getColumn(0));
+        tbl_view_people.removeColumn(tbl_view_people.getColumnModel().getColumn(5));
+        tbl_view_people.setEnabled(false);
+
+        
+        tbl_view_people.setModel(people_table_model);
+        people_table_model.setRowCount(0);
+        // Loop and display data
+        for (int i = 0; i < personnel_class.getPeople_Data().size(); i++) {
+            String[] data = personnel_class.getPeople_Data().get(i).split("//");
+            people_table_model.addRow(data);
+        }
+        // hide pannel
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(true);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
+        pnl_view_vaccine.setVisible(false);
+        pnl_add_vaccine.setVisible(false);
+        pnl_edit_vaccine.setVisible(false);
+        pnl_view_personnel.setVisible(false);
+        pnl_register_personnel.setVisible(false);
+        pnl_edit_personnel.setVisible(false);
+        
     }
 
 
@@ -267,7 +327,7 @@ public class Personnel extends javax.swing.JFrame {
         lbl_register_people_phone_number = new javax.swing.JLabel();
         txt_register_people_phone_number = new javax.swing.JTextField();
         lbl_register_people_nationaliy = new javax.swing.JLabel();
-        txt_register_people_nationality = new javax.swing.JTextField();
+        cbo_register_people_nationality = new javax.swing.JComboBox<>();
         lbl_register_people_ic_passport_number = new javax.swing.JLabel();
         txt_register_people_ic_passport_number = new javax.swing.JTextField();
         lbl_register_people_address = new javax.swing.JLabel();
@@ -286,7 +346,6 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_people__phone_number = new javax.swing.JLabel();
         txt_edit_people_phone_number = new javax.swing.JTextField();
         lbl_edit_people_nationaliy = new javax.swing.JLabel();
-        txt_edit_people_nationality = new javax.swing.JTextField();
         lbl_edit_people_ic_passport_number = new javax.swing.JLabel();
         txt_edit_people_ic_passport_number = new javax.swing.JTextField();
         lbl_edit_people_address = new javax.swing.JLabel();
@@ -297,6 +356,7 @@ public class Personnel extends javax.swing.JFrame {
         txt_edit_people_confirm_password = new javax.swing.JPasswordField();
         btn_edit_people_save = new javax.swing.JButton();
         btn_edit_people_cancel = new javax.swing.JButton();
+        cbo_register_people_nationality1 = new javax.swing.JComboBox<>();
         pnl_view_vaccination_appointments = new javax.swing.JPanel();
         pnl_viewVaccinationAppointments = new javax.swing.JPanel();
         lbl_view_vaccination_appointments = new javax.swing.JLabel();
@@ -1942,6 +2002,11 @@ public class Personnel extends javax.swing.JFrame {
             }
         ));
         tbl_view_people.setPreferredSize(new java.awt.Dimension(800, 64));
+        tbl_view_people.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_view_peopleMouseClicked(evt);
+            }
+        });
         scrpnl_view_people.setViewportView(tbl_view_people);
         if (tbl_view_people.getColumnModel().getColumnCount() > 0) {
             tbl_view_people.getColumnModel().getColumn(1).setHeaderValue("Phone Number");
@@ -2064,8 +2129,7 @@ public class Personnel extends javax.swing.JFrame {
         lbl_register_people_nationaliy.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_register_people_nationaliy.setText("Nationality");
 
-        txt_register_people_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_register_people_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        cbo_register_people_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         lbl_register_people_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
         lbl_register_people_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -2124,22 +2188,22 @@ public class Personnel extends javax.swing.JFrame {
             .addComponent(pnl_registerPeople, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnl_register_peopleLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnl_register_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_register_people_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_register_people_confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_register_people_password)
-                    .addComponent(txt_register_people_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_register_people_confirm_password)
-                    .addComponent(txt_register_people_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_register_people_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_register_people_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_register_people_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_register_people_name)
-                    .addComponent(lbl_register_people_phone_number)
-                    .addComponent(lbl_register_people_nationaliy)
-                    .addComponent(lbl_register_people_ic_passport_number)
-                    .addComponent(lbl_register_people_address)
-                    .addGroup(pnl_register_peopleLayout.createSequentialGroup()
+                .addGroup(pnl_register_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(cbo_register_people_nationality, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_register_people_ic_passport_number)
+                    .addComponent(txt_register_people_confirm_password)
+                    .addComponent(lbl_register_people_password, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_register_people_password)
+                    .addComponent(lbl_register_people_confirm_password, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_register_people_address)
+                    .addComponent(txt_register_people_phone_number)
+                    .addComponent(txt_register_people_name)
+                    .addComponent(lbl_register_people_name, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_register_people_phone_number, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_register_people_nationaliy, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_register_people_ic_passport_number, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_register_people_address, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_register_peopleLayout.createSequentialGroup()
                         .addComponent(btn_register_people_register, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_register_people_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2160,8 +2224,8 @@ public class Personnel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_register_people_nationaliy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_register_people_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbo_register_people_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(lbl_register_people_ic_passport_number)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_register_people_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2230,9 +2294,6 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_people_nationaliy.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_people_nationaliy.setText("Nationality");
 
-        txt_edit_people_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_edit_people_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
-
         lbl_edit_people_ic_passport_number.setBackground(new java.awt.Color(255, 255, 255));
         lbl_edit_people_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_people_ic_passport_number.setText("IC / Passport Number");
@@ -2283,33 +2344,35 @@ public class Personnel extends javax.swing.JFrame {
             }
         });
 
+        cbo_register_people_nationality1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
         javax.swing.GroupLayout pnl_edit_peopleLayout = new javax.swing.GroupLayout(pnl_edit_people);
         pnl_edit_people.setLayout(pnl_edit_peopleLayout);
         pnl_edit_peopleLayout.setHorizontalGroup(
             pnl_edit_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_editPeople, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnl_edit_peopleLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnl_edit_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_edit_peopleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnl_edit_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(cbo_register_people_nationality1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnl_edit_peopleLayout.createSequentialGroup()
                         .addComponent(btn_edit_people_save, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(btn_edit_people_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_edit_people_address, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_edit_people_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_edit_people_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_edit_people_name, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_edit_people_name)
-                    .addComponent(lbl_edit_people__phone_number)
-                    .addComponent(lbl_edit_people_nationaliy)
-                    .addComponent(lbl_edit_people_ic_passport_number)
-                    .addComponent(lbl_edit_people_address)
-                    .addComponent(txt_edit_people_confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_edit_people_password)
-                    .addComponent(txt_edit_people_password, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_edit_people_confirm_password)
-                    .addComponent(txt_edit_people_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txt_edit_people_address)
+                    .addComponent(txt_edit_people_phone_number)
+                    .addComponent(txt_edit_people_name)
+                    .addComponent(lbl_edit_people_name, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_edit_people__phone_number, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_edit_people_nationaliy, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_edit_people_ic_passport_number, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_edit_people_address, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_edit_people_confirm_password)
+                    .addComponent(lbl_edit_people_password, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_edit_people_password)
+                    .addComponent(lbl_edit_people_confirm_password, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_edit_people_ic_passport_number))
+                .addContainerGap())
         );
         pnl_edit_peopleLayout.setVerticalGroup(
             pnl_edit_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2325,9 +2388,9 @@ public class Personnel extends javax.swing.JFrame {
                 .addComponent(txt_edit_people_phone_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_edit_people_nationaliy)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_edit_people_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbo_register_people_nationality1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_edit_people_ic_passport_number)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_edit_people_ic_passport_number, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3782,8 +3845,7 @@ public class Personnel extends javax.swing.JFrame {
     
     // 
     private void lbl_my_accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_my_accountMouseClicked
-        View();
-        View_Personnel_Profile();
+        View_Personnel();
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
     
@@ -3893,47 +3955,19 @@ public class Personnel extends javax.swing.JFrame {
     
     // People side bar tab
     private void lbl_peopleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_peopleMouseClicked
-        // Set column
-        personnel_class.View_People();
-        System.out.println("aa");
-        String columns[] = {"People ID", "Name", "Phone Number", "Nationality" , "IC / Passport Number", "Address"};
-        DefaultTableModel people_table_model = (DefaultTableModel)tbl_view_people.getModel();
-        people_table_model.setColumnIdentifiers(columns);
-        tbl_view_people.setModel(people_table_model);
-
-        people_table_model.setRowCount(0);
-
-        // Loop and display data
-        for (int i = 0; i < personnel_class.getPeople_Data().size(); i++) {
-            String[] data = personnel_class.getPeople_Data().get(i).split("//");
-            people_table_model.addRow(data);
-        }
-
-        
-        pnl_view_account.setVisible(false);
-        pnl_edit_account.setVisible(false);
-        pnl_view_vaccination_appointment.setVisible(false);
-        pnl_register_vaccination_appointment.setVisible(false);
-        pnl_view_people.setVisible(true);
-        pnl_register_people.setVisible(false);
-        pnl_edit_people.setVisible(false);
-        pnl_view_vaccination_appointments.setVisible(false);
-        pnl_register_vaccination_appointments.setVisible(false);
-        pnl_edit_vaccination_appointments.setVisible(false);
-        pnl_view_vaccination_center.setVisible(false);
-        pnl_add_center.setVisible(false);
-        pnl_edit_center.setVisible(false);
-        pnl_view_vaccine.setVisible(false);
-        pnl_add_vaccine.setVisible(false);
-        pnl_edit_vaccine.setVisible(false);
-        pnl_view_personnel.setVisible(false);
-        pnl_register_personnel.setVisible(false);
-        pnl_edit_personnel.setVisible(false);
+        View_People();
     }//GEN-LAST:event_lbl_peopleMouseClicked
 
-    
     // Register people button
     private void btn_people_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_people_registerActionPerformed
+        // Populate country in nationality
+        DefaultComboBoxModel cbo = new DefaultComboBoxModel();
+        for (String rowValue : getCountries()) {
+            cbo.addElement(rowValue);
+        }
+        cbo_register_people_nationality.setModel(cbo);
+        cbo_register_people_nationality.setSelectedIndex(-1); 
+        
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
@@ -4006,6 +4040,14 @@ public class Personnel extends javax.swing.JFrame {
     
     // Edit people button
     private void btn_people_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_people_editActionPerformed
+        // Populate country in nationality
+        DefaultComboBoxModel cbo = new DefaultComboBoxModel();
+        for (String rowValue : getCountries()) {
+            cbo.addElement(rowValue);
+        }
+        cbo_register_people_nationality.setModel(cbo);
+        cbo_register_people_nationality.setSelectedIndex(-1); 
+        
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
@@ -4025,6 +4067,8 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_personnel.setVisible(false);
         pnl_register_personnel.setVisible(false);
         pnl_edit_personnel.setVisible(false);
+        
+        
     }//GEN-LAST:event_btn_people_editActionPerformed
 
     
@@ -4569,132 +4613,75 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save register people button
     private void btn_register_people_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_people_registerActionPerformed
-        String register_people_name = txt_register_people_name.getText();
-        String register_people_phone_number = txt_register_people_phone_number.getText();
-        String register_people_nationality = txt_register_people_nationality.getText();
-        String register_people_ic_passport_number = txt_register_people_ic_passport_number.getText();
-        String register_people_address = txt_register_people_address.getText();
-        String register_people_password = new String(txt_register_people_password.getPassword());
-        String register_people_confirm_password = new String(txt_register_people_confirm_password.getPassword());
-        
-        // Name input validation
-        String register_people_name_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern register_people_name_pattern = Pattern.compile(register_people_name_pattern_type);
-        Matcher register_people_name_matcher = register_people_name_pattern.matcher(txt_register_people_name.getText());
-
-        // Phone number input validation
-        String register_people_phone_number_pattern_type = "^[0-9]{10,11}$";
-        Pattern register_people_phone_number_pattern = Pattern.compile(register_people_phone_number_pattern_type);
-        Matcher register_people_phone_number_matcher = register_people_phone_number_pattern.matcher(txt_register_people_phone_number.getText());
-        
-        // Nationality input validation
-        String register_people_nationality_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern register_people_nationality_pattern = Pattern.compile(register_people_nationality_pattern_type);
-        Matcher register_people_nationality_matcher = register_people_nationality_pattern.matcher(txt_register_people_nationality.getText());
-        
-        // IC / Passport number input validation
-        String register_people_ic_passport_number_pattern_type = "^[0-9]{12,20}$";
-        Pattern register_people_ic_passport_number_pattern = Pattern.compile(register_people_ic_passport_number_pattern_type);
-        Matcher register_people_ic_passport_number_matcher = register_people_ic_passport_number_pattern.matcher(txt_register_people_ic_passport_number.getText());
-        
-        if (txt_register_people_name.getText().equals("") || txt_register_people_phone_number.getText().equals("") || txt_register_people_nationality.getText().equals("") || txt_register_people_ic_passport_number.getText().equals("") || txt_register_people_address.getText().equals("") || txt_register_people_password.getPassword().length == 0 || txt_register_people_confirm_password.getPassword().length == 0) {
+        if (txt_register_people_name.getText().equals("") || txt_register_people_phone_number.getText().equals("") 
+                || cbo_register_people_nationality.getSelectedItem() == "" || txt_register_people_ic_passport_number.getText().equals("") 
+                || txt_register_people_address.getText().equals("") || txt_register_people_password.getPassword().length == 0 
+                || txt_register_people_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!register_people_name_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!register_people_phone_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!register_people_nationality_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Nationality!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!register_people_ic_passport_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 12 to 20 for IC / Passport Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateName(txt_register_people_name.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validatePhoneNumber(txt_register_people_phone_number.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if (cbo_register_people_nationality.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Please Select your nationality", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_register_people_password.getText().matches(txt_register_people_confirm_password.getText())) {
+            JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            // Call file I/O method
-            
-            pnl_view_account.setVisible(false);
-            pnl_edit_account.setVisible(false);
-            pnl_view_vaccination_appointment.setVisible(false);
-            pnl_register_vaccination_appointment.setVisible(false);
-            pnl_view_people.setVisible(true);
-            pnl_register_people.setVisible(false);
-            pnl_edit_people.setVisible(false);
-            pnl_view_vaccination_appointments.setVisible(false);
-            pnl_register_vaccination_appointments.setVisible(false);
-            pnl_edit_vaccination_appointments.setVisible(false);
-            pnl_view_vaccination_center.setVisible(false);
-            pnl_add_center.setVisible(false);
-            pnl_edit_center.setVisible(false);
-            pnl_view_vaccine.setVisible(false);
-            pnl_add_vaccine.setVisible(false);
-            pnl_edit_vaccine.setVisible(false);
-            pnl_view_personnel.setVisible(false);
-            pnl_register_personnel.setVisible(false);
-            pnl_edit_personnel.setVisible(false);
+            if(cbo_register_people_nationality.getSelectedItem() == "Malaysia") {
+                CitizenClass citizen = new CitizenClass();
+                citizen.calculatePeople_ID();
+                citizen.setName(txt_register_people_name.getText());
+                citizen.setPhone_Number(txt_register_people_phone_number.getText());
+                citizen.setNationality(cbo_register_people_nationality.getSelectedItem().toString());
+                citizen.setAddress(txt_register_people_address.getText());
+                citizen.setPassword(txt_register_people_password.getText());
+                citizen.setIC_Number(txt_register_people_ic_passport_number.getText()); 
+                citizen.Register_Account();
+                if(citizen.getSuccess_Save() == true) {
+                    JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    View_People();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                NonCitizenClass non_citizen = new NonCitizenClass();
+                non_citizen.calculatePeople_ID();
+                non_citizen.setName(txt_register_people_name.getText());
+                non_citizen.setPhone_Number(txt_register_people_phone_number.getText());
+                non_citizen.setNationality(cbo_register_people_nationality.getSelectedItem().toString());
+                non_citizen.setAddress(txt_register_people_address.getText());
+                non_citizen.setPassword(txt_register_people_password.getText());
+                non_citizen.setPassport_Number(txt_register_people_ic_passport_number.getText()); 
+                non_citizen.Register_Account();
+                if(non_citizen.getSuccess_Save() == true) {
+                    JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    View_People();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
     }//GEN-LAST:event_btn_register_people_registerActionPerformed
 
     
     // Save edit people button
     private void btn_edit_people_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_people_saveActionPerformed
-        String edit_people_name = txt_edit_people_name.getText();
-        String edit_people_phone_number = txt_edit_people_phone_number.getText();
-        String edit_people_nationality = txt_edit_people_nationality.getText();
-        String edit_people_ic_passport_number = txt_edit_people_ic_passport_number.getText();
-        String edit_people_address = txt_edit_people_address.getText();
-        String edit_people_password = new String(txt_edit_people_password.getPassword());
-        String edit_people_confirm_password = new String(txt_edit_people_confirm_password.getPassword());
-        
-        // Name input validation
-        String edit_people_name_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern edit_people_name_pattern = Pattern.compile(edit_people_name_pattern_type);
-        Matcher edit_people_name_matcher = edit_people_name_pattern.matcher(txt_edit_people_name.getText());
-
-        // Phone number input validation
-        String edit_people_phone_number_pattern_type = "^[0-9]{10,11}$";
-        Pattern edit_people_phone_number_pattern = Pattern.compile(edit_people_phone_number_pattern_type);
-        Matcher edit_people_phone_number_matcher = edit_people_phone_number_pattern.matcher(txt_edit_people_phone_number.getText());
-        
-        // Nationality input validation
-        String edit_people_nationality_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern edit_people_nationality_pattern = Pattern.compile(edit_people_nationality_pattern_type);
-        Matcher edit_people_nationality_matcher = edit_people_nationality_pattern.matcher(txt_edit_people_nationality.getText());
-        
-        // IC / Passport number input validation
-        String edit_people_ic_passport_number_pattern_type = "^[0-9]{12,20}$";
-        Pattern edit_people_ic_passport_number_pattern = Pattern.compile(edit_people_ic_passport_number_pattern_type);
-        Matcher edit_people_ic_passport_number_matcher = edit_people_ic_passport_number_pattern.matcher(txt_edit_people_ic_passport_number.getText());
-        
-        if (txt_edit_people_name.getText().equals("") || txt_edit_people_phone_number.getText().equals("") || txt_edit_people_nationality.getText().equals("") || txt_edit_people_ic_passport_number.getText().equals("") || txt_edit_people_address.getText().equals("") || txt_edit_people_password.getPassword().length == 0 || txt_edit_people_confirm_password.getPassword().length == 0) {
+        if (txt_edit_people_name.getText().equals("") || txt_edit_people_phone_number.getText().equals("") || cbo_register_people_nationality1.getSelectedItem() == "" || txt_edit_people_ic_passport_number.getText().equals("") || txt_edit_people_address.getText().equals("") || txt_edit_people_password.getPassword().length == 0 || txt_edit_people_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_people_name_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_people_phone_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_people_nationality_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Nationality!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!edit_people_ic_passport_number_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 12 to 20 for IC / Passport Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateName(txt_edit_people_name.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validatePhoneNumber(txt_edit_people_phone_number.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
+        }else if (cbo_register_people_nationality1.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Please Select your nationality", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_edit_people_password.getText().matches(txt_edit_people_confirm_password.getText())) {
+            JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+ 
             // Call file I/O method
+            //working
             
-            pnl_view_account.setVisible(false);
-            pnl_edit_account.setVisible(false);
-            pnl_view_vaccination_appointment.setVisible(false);
-            pnl_register_vaccination_appointment.setVisible(false);
-            pnl_view_people.setVisible(true);
-            pnl_register_people.setVisible(false);
-            pnl_edit_people.setVisible(false);
-            pnl_view_vaccination_appointments.setVisible(false);
-            pnl_register_vaccination_appointments.setVisible(false);
-            pnl_edit_vaccination_appointments.setVisible(false);
-            pnl_view_vaccination_center.setVisible(false);
-            pnl_add_center.setVisible(false);
-            pnl_edit_center.setVisible(false);
-            pnl_view_vaccine.setVisible(false);
-            pnl_add_vaccine.setVisible(false);
-            pnl_edit_vaccine.setVisible(false);
-            pnl_view_personnel.setVisible(false);
-            pnl_register_personnel.setVisible(false);
-            pnl_edit_personnel.setVisible(false);
+
         }
     }//GEN-LAST:event_btn_edit_people_saveActionPerformed
 
@@ -5008,10 +4995,10 @@ public class Personnel extends javax.swing.JFrame {
 
         if (txt_edit_name.getText().equals("") || txt_edit_phone_number.getText().equals("") || txt_edit_address.getText().equals("") || txt_edit_password.getPassword().length == 0 || txt_edit_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (people_class.validation(txt_edit_name.getText(), txt_edit_phone_number.getText()).equals("name")) {
-            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (people_class.validation(txt_edit_name.getText(), txt_edit_phone_number.getText()).equals("phone_number")) {
-            JOptionPane.showMessageDialog(null, people_class.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateName(txt_edit_name.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validatePhoneNumber(txt_edit_phone_number.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_edit_password.getText().matches(txt_edit_confirm_password.getText())) {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -5024,8 +5011,8 @@ public class Personnel extends javax.swing.JFrame {
 
             personnel_class.Edit_Account();
             if(personnel_class.getSuccess_Save() == true) {
-                View();
-                View_Personnel_Profile();
+                View_Personnel();
+                //View_Personnel_Pannel();
                 JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -5040,6 +5027,23 @@ public class Personnel extends javax.swing.JFrame {
         tbl_view_people.setRowSorter(search_people);
         search_people.setRowFilter(RowFilter.regexFilter(txt_search_people.getText()));
     }//GEN-LAST:event_txt_search_peopleKeyReleased
+
+    private void tbl_view_peopleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_view_peopleMouseClicked
+        int row = tbl_view_people.getSelectedRow();
+        DefaultTableModel people_table_model = (DefaultTableModel)tbl_view_people.getModel();
+        //working
+        txt_edit_people_name.setText(people_table_model.getValueAt(row, 0).toString());
+        txt_edit_people_phone_number.setText(people_table_model.getValueAt(row, 0).toString());
+        cbo_register_people_nationality1.setSelectedItem(people_table_model.getValueAt(row, 3).toString());
+        txt_edit_people_ic_passport_number.setText(people_table_model.getValueAt(row, 0).toString());
+        txt_edit_people_address.setText(people_table_model.getValueAt(row, 0).toString());
+        txt_edit_people_password.setText(people_table_model.getValueAt(row, 0).toString());
+        txt_edit_people_confirm_password.setText(people_table_model.getValueAt(row, 0).toString());
+
+
+        
+        
+    }//GEN-LAST:event_tbl_view_peopleMouseClicked
 
     
     // Main method
@@ -5130,6 +5134,8 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbo_edit_vaccination_appointments_select_vaccination_center;
     private javax.swing.JComboBox<String> cbo_edit_vaccine_center_name;
     private javax.swing.JComboBox<String> cbo_edit_vaccine_type;
+    private javax.swing.JComboBox<String> cbo_register_people_nationality;
+    private javax.swing.JComboBox<String> cbo_register_people_nationality1;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_time;
     private javax.swing.JComboBox<String> cbo_register_vaccination_appointments_select_vaccination_center;
     private javax.swing.JComboBox<String> cbo_select_dose;
@@ -5361,7 +5367,6 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_edit_people_confirm_password;
     private javax.swing.JTextField txt_edit_people_ic_passport_number;
     private javax.swing.JTextField txt_edit_people_name;
-    private javax.swing.JTextField txt_edit_people_nationality;
     private javax.swing.JPasswordField txt_edit_people_password;
     private javax.swing.JTextField txt_edit_people_phone_number;
     private javax.swing.JTextField txt_edit_personnel_address;
@@ -5382,7 +5387,6 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_register_people_confirm_password;
     private javax.swing.JTextField txt_register_people_ic_passport_number;
     private javax.swing.JTextField txt_register_people_name;
-    private javax.swing.JTextField txt_register_people_nationality;
     private javax.swing.JPasswordField txt_register_people_password;
     private javax.swing.JTextField txt_register_people_phone_number;
     private javax.swing.JTextField txt_register_personnel_address;

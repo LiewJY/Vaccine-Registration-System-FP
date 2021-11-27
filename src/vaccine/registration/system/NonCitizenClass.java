@@ -105,7 +105,6 @@ public class NonCitizenClass extends PeopleClass{
                     line_array = line.split("//");
                     if (line_array[0].equals(String.valueOf(People_ID))) {
                         //Insert data
-                         System.out.println("www");
                         temp_data.add(People_ID + "//" 
                                 + Name + "//" 
                                 + Phone_Number + "//" 
@@ -121,11 +120,11 @@ public class NonCitizenClass extends PeopleClass{
                } catch (IOException c) {
                 c.printStackTrace();
             }
-        try (PrintWriter edit_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt")))) {
-            for (String new_data : temp_data) {
-                edit_citizen.println(new_data);
+        try (PrintWriter edit_noncitizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt")))) {
+            for (String new1_data : temp_data) {
+                edit_noncitizen.println(new1_data);
             }
-            edit_citizen.close();
+            edit_noncitizen.close();
             Success_Save = true;
         } catch (IOException e) {
             e.printStackTrace();

@@ -81,38 +81,7 @@ public class PeopleClass {
     public boolean getSuccess_Save() {
         return Success_Save;
     }
-    
-    // validation
-    private String validate = "", message = "";
-    public String validation(String name, String phone_number) {
-        // Name input validation
-        String edit_name_pattern_type = "^[a-zA-Z. ]{1,50}$";
-        Pattern edit_name_pattern = Pattern.compile(edit_name_pattern_type);
-        Matcher edit_name_matcher = edit_name_pattern.matcher(name);
 
-        // Phone number input validation
-        String edit_phone_number_pattern_type = "^[0-9]{10,11}$";
-        Pattern edit_phone_number_pattern = Pattern.compile(edit_phone_number_pattern_type);
-        Matcher edit_phone_number_matcher = edit_phone_number_pattern.matcher(phone_number);
-        
-        validate = "";
-        if(!edit_name_matcher.matches()){
-            validate = "name";
-        } else if (!edit_phone_number_matcher.matches()){
-            validate = "phone_number";
-        }
-        return validate;
-    }
-    public String getMessage() {
-        message = switch (validate) {
-            case "name" -> "Please fill in alphabet only with length \nnot more than 50 for Name!";
-            case "phone_number" -> "Please fill in number only with \nlength 10 to 11 for Phone Number!";
-            default -> "";
-        };
-        return message;
-    }
-    
-    
     public void calculatePeople_ID() {
         String line;
         String[] line_array;

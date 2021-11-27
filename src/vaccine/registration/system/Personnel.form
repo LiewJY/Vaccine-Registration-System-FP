@@ -3252,6 +3252,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_view_peopleMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3338,16 +3341,16 @@
                   <Component id="pnl_registerPeople" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_register_people_ic_passport_number" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_register_people_confirm_password" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="cbo_register_people_nationality" max="32767" attributes="0"/>
+                          <Component id="txt_register_people_ic_passport_number" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txt_register_people_confirm_password" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbl_register_people_password" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_register_people_password" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_register_people_password" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbl_register_people_confirm_password" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_register_people_address" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_register_people_nationality" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_register_people_phone_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_register_people_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_register_people_address" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txt_register_people_phone_number" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txt_register_people_name" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbl_register_people_name" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_register_people_phone_number" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_register_people_nationaliy" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3378,8 +3381,8 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbl_register_people_nationaliy" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_register_people_nationality" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbo_register_people_nationality" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="lbl_register_people_ic_passport_number" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_register_people_ic_passport_number" min="-2" pref="40" max="-2" attributes="0"/>
@@ -3512,19 +3515,18 @@
                 <Property name="text" type="java.lang.String" value="Nationality"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_register_people_nationality">
+            <Component class="javax.swing.JComboBox" name="cbo_register_people_nationality">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="db" green="db" red="db" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_register_people_ic_passport_number">
               <Properties>
@@ -3681,29 +3683,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnl_editPeople" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="cbo_register_people_nationality1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="btn_edit_people_save" min="-2" pref="180" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="btn_edit_people_cancel" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txt_edit_people_address" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_edit_people_nationality" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_edit_people_phone_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="txt_edit_people_name" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_edit_people_address" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txt_edit_people_phone_number" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txt_edit_people_name" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbl_edit_people_name" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_people__phone_number" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_people_nationaliy" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_people_ic_passport_number" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_edit_people_address" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_edit_people_confirm_password" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_edit_people_confirm_password" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbl_edit_people_password" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_edit_people_password" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_edit_people_password" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbl_edit_people_confirm_password" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_edit_people_ic_passport_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="txt_edit_people_ic_passport_number" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3721,9 +3723,9 @@
                       <Component id="txt_edit_people_phone_number" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbl_edit_people_nationaliy" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_edit_people_nationality" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbo_register_people_nationality1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_edit_people_ic_passport_number" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_edit_people_ic_passport_number" min="-2" pref="40" max="-2" attributes="0"/>
@@ -3854,20 +3856,6 @@
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nationality"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_edit_people_nationality">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="16" style="0"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="db" green="db" red="db" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_edit_people_ic_passport_number">
@@ -4009,6 +3997,19 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_people_cancelActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbo_register_people_nationality1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
