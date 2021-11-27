@@ -7,12 +7,67 @@ import java.util.regex.*;
 
 public class Personnel extends javax.swing.JFrame {
 
-
+    PersonnelClass personnel_class = new PersonnelClass();
     // Personnel form
     public Personnel() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
+        pnl_view_vaccine.setVisible(false);
+        pnl_add_vaccine.setVisible(false);
+        pnl_edit_vaccine.setVisible(false);
+        pnl_view_personnel.setVisible(false);
+        pnl_register_personnel.setVisible(false);
+        pnl_edit_personnel.setVisible(false);
+    }
+    public Personnel(int personnel_id) {
+        initComponents();
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
+        pnl_view_vaccine.setVisible(false);
+        pnl_add_vaccine.setVisible(false);
+        pnl_edit_vaccine.setVisible(false);
+        pnl_view_personnel.setVisible(false);
+        pnl_register_personnel.setVisible(false);
+        pnl_edit_personnel.setVisible(false);
+        personnel_class.setPersonnel_ID(personnel_id);
+    }
+    public void View(){
+        //insert data
+        personnel_class.View_Account();
+        lbl_view_name.setText(personnel_class.getName());
+        lbl_view_phone_number.setText(personnel_class.getPhone_Number());
+        lbl_view_nationality.setText(personnel_class.getNationality());
+        lbl_view_ic_passport_number.setText(personnel_class.getIC_Number());
+        lbl_view_address.setText(personnel_class.getAddress());
+    }
+    public void View_Personnel_Profile(){
+        // hide pannel
+        pnl_view_account.setVisible(true);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
@@ -895,6 +950,7 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_nationality.setText("Nationality");
 
+        txt_edit_nationality.setEditable(false);
         txt_edit_nationality.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_edit_nationality.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
@@ -902,6 +958,7 @@ public class Personnel extends javax.swing.JFrame {
         lbl_edit_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lbl_edit_ic_passport_number.setText("IC / Passport Number");
 
+        txt_edit_ic_passport_number.setEditable(false);
         txt_edit_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_edit_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
@@ -931,6 +988,11 @@ public class Personnel extends javax.swing.JFrame {
         btn_save_edit.setForeground(new java.awt.Color(255, 255, 255));
         btn_save_edit.setText("Save");
         btn_save_edit.setBorder(null);
+        btn_save_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_save_editActionPerformed(evt);
+            }
+        });
 
         btn_cancel_edit.setBackground(new java.awt.Color(221, 98, 98));
         btn_cancel_edit.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3700,7 +3762,7 @@ public class Personnel extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
-            .addComponent(pnl_container, javax.swing.GroupLayout.PREFERRED_SIZE, 793, Short.MAX_VALUE)
+            .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
         );
 
         pack();
@@ -3710,25 +3772,8 @@ public class Personnel extends javax.swing.JFrame {
     
     // 
     private void lbl_my_accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_my_accountMouseClicked
-        pnl_view_account.setVisible(true);
-        pnl_edit_account.setVisible(false);
-        pnl_view_vaccination_appointment.setVisible(false);
-        pnl_register_vaccination_appointment.setVisible(false);
-        pnl_view_people.setVisible(false);
-        pnl_register_people.setVisible(false);
-        pnl_edit_people.setVisible(false);
-        pnl_view_vaccination_appointments.setVisible(false);
-        pnl_register_vaccination_appointments.setVisible(false);
-        pnl_edit_vaccination_appointments.setVisible(false);
-        pnl_view_vaccination_center.setVisible(false);
-        pnl_add_center.setVisible(false);
-        pnl_edit_center.setVisible(false);
-        pnl_view_vaccine.setVisible(false);
-        pnl_add_vaccine.setVisible(false);
-        pnl_edit_vaccine.setVisible(false);
-        pnl_view_personnel.setVisible(false);
-        pnl_register_personnel.setVisible(false);
-        pnl_edit_personnel.setVisible(false);
+        View();
+        View_Personnel_Profile();
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
     
@@ -3758,6 +3803,14 @@ public class Personnel extends javax.swing.JFrame {
     
     // 
     private void btn_edit_accountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_accountActionPerformed
+        //view data
+        personnel_class.View_Account();
+        txt_edit_name.setText(personnel_class.getName());
+        txt_edit_phone_number.setText(personnel_class.getPhone_Number());
+        txt_edit_nationality.setText(personnel_class.getNationality());
+        txt_edit_ic_passport_number.setText(personnel_class.getIC_Number());
+        txt_edit_address.setText(personnel_class.getAddress());
+        
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(true);
         pnl_view_vaccination_appointment.setVisible(false);
@@ -4923,6 +4976,44 @@ public class Personnel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btn_edit_vaccine_saveActionPerformed
+    // save in personnel edit
+    private void btn_save_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_editActionPerformed
+ // Name input validation
+        String edit_name_pattern_type = "^[a-zA-Z. ]{1,50}$";
+        Pattern edit_name_pattern = Pattern.compile(edit_name_pattern_type);
+        Matcher edit_name_matcher = edit_name_pattern.matcher(txt_edit_name.getText());
+
+        // Phone number input validation
+        String edit_phone_number_pattern_type = "^[0-9]{10,11}$";
+        Pattern edit_phone_number_pattern = Pattern.compile(edit_phone_number_pattern_type);
+        Matcher edit_phone_number_matcher = edit_phone_number_pattern.matcher(txt_edit_phone_number.getText());
+      
+        if (txt_edit_name.getText().equals("") || txt_edit_phone_number.getText().equals("") || txt_edit_address.getText().equals("") || txt_edit_password.getPassword().length == 0 || txt_edit_confirm_password.getPassword().length == 0) {
+           JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!edit_name_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in alphabet only with length \nnot more than 50 for Name!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!edit_phone_number_matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 10 to 11 for Phone Number!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_edit_password.getText().matches(txt_edit_confirm_password.getText())) {
+            JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            personnel_class.setName(txt_edit_name.getText());
+            personnel_class.setPhone_Number(txt_edit_phone_number.getText());
+            personnel_class.setNationality(txt_edit_nationality.getText());
+            personnel_class.setAddress(txt_edit_address.getText());
+            personnel_class.setPassword(txt_edit_password.getText());
+            personnel_class.setIC_Number(txt_edit_ic_passport_number.getText());
+
+            personnel_class.Edit_Account();
+            if(personnel_class.getSuccess_Save() == true) {
+                View();
+                View_Personnel_Profile();
+                JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }    
+    }//GEN-LAST:event_btn_save_editActionPerformed
 
     
     // Main method
