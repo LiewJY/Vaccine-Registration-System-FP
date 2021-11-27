@@ -8,6 +8,10 @@ import java.util.regex.*;
 public class People extends javax.swing.JFrame {
 
     
+    CitizenClass citizen_class = new CitizenClass();
+    NonCitizenClass noncitizen_class = new NonCitizenClass();
+    boolean citizenship;
+    
     // People form
     public People() {
         initComponents();
@@ -18,9 +22,31 @@ public class People extends javax.swing.JFrame {
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
     }
+    
+    public People(int people_id, boolean citizen) {
+        initComponents();
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_vaccination_status.setVisible(false);
+        System.out.println(people_id + " " +  citizen);
+        if (citizen == true){
+            citizen_class.setPeople_ID(people_id);
+            citizenship = true;
+        } else {
+            noncitizen_class.setPeople_ID(people_id);
+            citizenship = false;
+        }
+        
+//        System.out.println(citizen_class.getPeople_ID());
+//        System.out.println(noncitizen_class.getPeople_ID());
+        //System.out.println(citizen_class.getCitizen());
+    }
 
 
-    // UI
+    // UIW
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1058,12 +1084,24 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
-        CitizenClass citizen_class = new CitizenClass();
-        lbl_view_name.setText(citizen_class.getName());
-        lbl_view_phone_number.setText(citizen_class.getName());
-        lbl_view_nationality.setText(citizen_class.getName());
-        lbl_view_ic_passport_number.setText(citizen_class.getName());
-        lbl_view_address.setText(citizen_class.getName());
+       
+
+        if (citizenship == true){
+            citizen_class.View_Account();
+            lbl_view_name.setText(citizen_class.getName());
+            lbl_view_phone_number.setText(citizen_class.getPhone_Number());
+            lbl_view_nationality.setText(citizen_class.getNationality());
+            lbl_view_ic_passport_number.setText(citizen_class.getIC_Number());
+            lbl_view_address.setText(citizen_class.getAddress());
+        } else {
+            noncitizen_class.View_Account();
+            lbl_view_name.setText(noncitizen_class.getName());
+            lbl_view_phone_number.setText(noncitizen_class.getPhone_Number());
+            lbl_view_nationality.setText(noncitizen_class.getNationality());
+            lbl_view_ic_passport_number.setText(noncitizen_class.getPassport_Number());
+            lbl_view_address.setText(noncitizen_class.getAddress());       
+        }
+
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
     

@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
 public class PeopleClass {
     protected int People_ID;
     protected String Phone_Number, Name, Nationality, Address, Password;
+    // for login function (no need to be in class diagram)
     protected boolean Auth = false;
+    protected boolean Citizen;
     
     PeopleClass() {
         People_ID = 1;
@@ -62,9 +64,15 @@ public class PeopleClass {
     public void setPassword(String password) {
         Password = password;
     }
+    
+    // for login function (no need to be in class diagram)
     public boolean getAuth() {
         return Auth;
     }
+    public boolean getCitizen() {
+        return Citizen;
+    }
+    
     
     public void calculatePeople_ID() {
         String line;

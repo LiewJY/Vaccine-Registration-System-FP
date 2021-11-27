@@ -36,7 +36,7 @@ public class NonCitizenClass extends PeopleClass{
         }
     }
     
-        public void login() {
+    public void Login_Account() {
         try { 
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
@@ -47,15 +47,39 @@ public class NonCitizenClass extends PeopleClass{
             // Check whether input ic and password is existing and matched in text file
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
-                if (line_array[4].equals(Passport_Number) && line_array[6].equals(Password)) {
+                if (!line_array[3].equals("Malaysia") && line_array[4].equals(Passport_Number) && line_array[6].equals(Password)) {
+                    People_ID = Integer.parseInt(line_array[0]);
                     Auth = true;
+                    Citizen = false;
                 }
             }
         } catch (IOException f) {
             JOptionPane.showMessageDialog(null, "Failed to login! Something went wrong, please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+    public void View_Account() {
+        try { 
+            FileReader people_file = new FileReader("People.txt");
+            BufferedReader people = new BufferedReader(people_file);
+
+            String line;
+            String[] line_array;
+
+            // Check whether input ic and password is existing and matched in text file\
+            while ((line = people.readLine()) != null) {
+                line_array = line.split("//");
+                if (line_array[0].equals(String.valueOf(People_ID))) {
+                    Name = line_array[1];
+                    Phone_Number = line_array[2];
+                    Nationality = line_array[3];
+                    Passport_Number = line_array[4];
+                    Address = line_array[5];
+                }
+            }
+        } catch (IOException f) {
+            JOptionPane.showMessageDialog(null, "Failed to login! Something went wrong, please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
     
 }

@@ -151,7 +151,7 @@ public class Login extends javax.swing.JFrame {
 //                Personnel personnel = new Personnel();
 //                personnel.setIC_Number(txt_ic_passport_number.getText());
 //                personnel.setPassword(txt_password.getText());
-//                personnel.login();
+//                personnel.Login_Account();
 //                boolean personnel = personnel.getAuth();
 //                if (personnel == true) {
 //                    JOptionPane.showMessageDialog(null, "You have logged in successfully!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
@@ -166,12 +166,11 @@ public class Login extends javax.swing.JFrame {
                 CitizenClass citizen_class = new CitizenClass();
                 citizen_class.setIC_Number(txt_ic_passport_number.getText());
                 citizen_class.setPassword(txt_password.getText());
-                citizen_class.login();
+                citizen_class.Login_Account();
                 boolean citizen = citizen_class.getAuth();
                 if (citizen == true) {
                     JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                    People people = new People();
-                    people.setVisible(true);
+                    new People(citizen_class.getPeople_ID(), citizen_class.getCitizen()).setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
@@ -181,12 +180,11 @@ public class Login extends javax.swing.JFrame {
                 NonCitizenClass noncitizen_class = new NonCitizenClass();
                 noncitizen_class.setPassport_Number(txt_ic_passport_number.getText());
                 noncitizen_class.setPassword(txt_password.getText());
-                noncitizen_class.login();
+                noncitizen_class.Login_Account();
                 boolean non_citizen = noncitizen_class.getAuth();
                 if (non_citizen == true) {
                     JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                    People people = new People();
-                    people.setVisible(true);
+                    new People(noncitizen_class.getPeople_ID(), noncitizen_class.getCitizen()).setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
