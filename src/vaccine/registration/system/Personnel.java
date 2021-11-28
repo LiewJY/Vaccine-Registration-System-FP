@@ -14,6 +14,11 @@ import java.util.regex.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Personnel extends javax.swing.JFrame {
     ValidationClass validation_class = new ValidationClass();
@@ -21,14 +26,24 @@ public class Personnel extends javax.swing.JFrame {
     CitizenClass citizen_class = new CitizenClass();
     NonCitizenClass noncitizen_class = new NonCitizenClass();
     CenterClass center_class = new CenterClass();
+    VaccineClass vaccine_class = new VaccineClass();
     
     // this is used for passing string (name) of item that is going to be deleted
     
     //private String delete_center_name;
     
+    // for formatting date
+    SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
+    Date date = new Date(); 
+   
+    
+    
+    
+    
     
     // Personnel form
     public Personnel() {
+        lbl_add_vaccine_second_dose_gap.setText("Aa");
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         pnl_view_account.setVisible(false);
@@ -279,19 +294,19 @@ public class Personnel extends javax.swing.JFrame {
     
     // for center to have id
     private class Center {
-        private String id, description;
-        public Center(String id, String description) {
+        private String id, name;
+        public Center(String id, String name) {
             this.id = id;
-            this.description = description;
+            this.name = name;
         }
         public String getId() {
             return id;
         }
-        public String getDescription() {
-            return description;
+        public String getName() {
+            return name;
         }
         public String toString() {
-            return description;
+            return name;
         }
     }
     public void View_Vaccine() {
@@ -311,7 +326,82 @@ public class Personnel extends javax.swing.JFrame {
         }
         cbo_add_vaccine_center_name.setModel(cbo_add_model);
         cbo_edit_vaccine_center_name.setModel(cbo_edit_model);
+        
         // put data into table
+        
+        // disable button no selected row
+        btn_vaccine_edit.setEnabled(false);
+        btn_vaccine_remove.setEnabled(false);
+
+        //load data
+        vaccine_class.View_Vaccine();
+        // Set column
+        
+        
+        String columns[] = {"ID", "Batch ID","Type", "Date", "Expiration Date", "Amount", "Second Dose Gap (weeks)", "Center ID", "Center Name"};
+
+        DefaultTableModel vaccine_table_model = (DefaultTableModel)tbl_view_vaccine.getModel();
+        vaccine_table_model.setColumnIdentifiers(columns);
+        //remove id col
+        tbl_view_vaccine.removeColumn(tbl_view_vaccine.getColumnModel().getColumn(0));
+        tbl_view_vaccine.removeColumn(tbl_view_vaccine.getColumnModel().getColumn(6));
+
+        
+        tbl_view_vaccine.setModel(vaccine_table_model);
+        vaccine_table_model.setRowCount(0);
+        // Loop and display data
+        for (int i = 0; i < vaccine_class.getVaccine_Data().size(); i++) {
+            String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
+            vaccine_table_model.addRow(data);
+        }
+        
+        // get data of selected row
+        tbl_view_vaccine.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                btn_vaccine_edit.setEnabled(true);
+                btn_vaccine_remove.setEnabled(true);
+
+                int rows = tbl_view_vaccine.getSelectedRow();
+                int row = tbl_view_vaccine.convertRowIndexToModel(rows);
+                // for deleting
+               vaccine_class.setVaccine_ID(Integer.parseInt(vaccine_table_model.getValueAt(row, 0).toString()));
+//                vaccine_class.setCenter_Name(vaccine_table_model.getValueAt(row, 1).toString());
+//                
+                
+                // populte to edit pannel
+                txt_edit_vaccine_batch_id.setText(vaccine_table_model.getValueAt(row, 1).toString());
+                cbo_edit_vaccine_type.setSelectedItem(vaccine_table_model.getValueAt(row, 2).toString());
+                Date date = null;
+                try {
+                    date = date_format.parse(vaccine_table_model.getValueAt(row, 3).toString());
+                    txt_edit_vaccine_date.setDate(date);
+                    
+                    date = date_format.parse(vaccine_table_model.getValueAt(row, 4).toString());
+                    txt_edit_vaccine_expiration_date.setDate(date);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+               // txt_edit_vaccine_date.setDate();
+
+
+
+            //txt_edit_vaccine_expiration_date.setDate(date_format.parse(vaccine_table_model.getValueAt(row, 3).toString()));
+                
+                txt_edit_vaccine_amount.setText(vaccine_table_model.getValueAt(row, 5).toString());
+                lbl_edit_vaccine_second_dose_gap.setText(vaccine_table_model.getValueAt(row, 6).toString());
+                cbo_edit_vaccine_center_name.setSelectedItem(vaccine_table_model.getValueAt(row, 8).toString());
+
+            }
+            
+        });
+        
+        
+        
+        
+        
+        
+        
         
         // hide
         pnl_view_account.setVisible(false);
@@ -830,6 +920,7 @@ public class Personnel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Personnel");
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         pnl_sidenav.setBackground(new java.awt.Color(136, 178, 219));
         pnl_sidenav.setMinimumSize(new java.awt.Dimension(320, 0));
@@ -3454,6 +3545,11 @@ public class Personnel extends javax.swing.JFrame {
 
     txt_search_vaccine.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
     txt_search_vaccine.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+    txt_search_vaccine.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            txt_search_vaccineKeyReleased(evt);
+        }
+    });
 
     btn_vaccine_add.setBackground(new java.awt.Color(73, 161, 236));
     btn_vaccine_add.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3576,7 +3672,12 @@ public class Personnel extends javax.swing.JFrame {
     lbl_add_vaccine_type.setText("Vaccine Type");
 
     cbo_add_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-    cbo_add_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
+    cbo_add_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type", "Sinovac", "Pfizer", "AstraZeneca" }));
+    cbo_add_vaccine_type.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cbo_add_vaccine_typeActionPerformed(evt);
+        }
+    });
 
     lbl_add_vaccine_date.setBackground(new java.awt.Color(255, 255, 255));
     lbl_add_vaccine_date.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3746,7 +3847,12 @@ public class Personnel extends javax.swing.JFrame {
     lbl_edit_vaccine_type.setText("Vaccine Type");
 
     cbo_edit_vaccine_type.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-    cbo_edit_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type" }));
+    cbo_edit_vaccine_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccine Type", "Sinovac", "Pfizer", "AstraZeneca" }));
+    cbo_edit_vaccine_type.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cbo_edit_vaccine_typeActionPerformed(evt);
+        }
+    });
 
     lbl_edit_vaccine_date.setBackground(new java.awt.Color(255, 255, 255));
     lbl_edit_vaccine_date.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -3775,6 +3881,11 @@ public class Personnel extends javax.swing.JFrame {
 
     cbo_edit_vaccine_center_name.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
     cbo_edit_vaccine_center_name.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccination Center" }));
+    cbo_edit_vaccine_center_name.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cbo_edit_vaccine_center_nameActionPerformed(evt);
+        }
+    });
 
     lbl_editVaccineSecondDoseGap.setBackground(new java.awt.Color(255, 255, 255));
     lbl_editVaccineSecondDoseGap.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -4012,7 +4123,7 @@ public class Personnel extends javax.swing.JFrame {
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
-        .addComponent(pnl_container, javax.swing.GroupLayout.PREFERRED_SIZE, 793, Short.MAX_VALUE)
+        .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
     );
 
     pack();
@@ -4926,7 +5037,7 @@ public class Personnel extends javax.swing.JFrame {
     // Remove vaccination center button
     private void btn_vaccination_center_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_center_removeActionPerformed
         int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove the record with name " 
-                + center_class.getCenter_Name() + center_class.getCenter_ID() , "Warning", JOptionPane.YES_NO_OPTION);
+                + center_class.getCenter_Name(), "Warning", JOptionPane.YES_NO_OPTION);
         
         if (return_value == JOptionPane.YES_OPTION) {
             center_class.Remove_Center();
@@ -4969,7 +5080,6 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save edit vaccination center button
     private void btn_edit_center_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_center_saveActionPerformed
-        //working
         if (txt_edit_center_name.getText().equals("") || txt_edit_center_address.getText().equals("") || txt_edit_center_contact_number.getText().equals("")) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateName(txt_edit_center_name.getText()) == true) {
@@ -4994,124 +5104,90 @@ public class Personnel extends javax.swing.JFrame {
     
     // Remove vaccine button
     private void btn_vaccine_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccine_removeActionPerformed
-        
+        int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove the record." ,"Warning", JOptionPane.YES_NO_OPTION);
+        if (return_value == JOptionPane.YES_OPTION) {
+            
+            vaccine_class.Remove_Vaccine();
+            if(vaccine_class.getSuccess_Save() == true) {
+                View_Vaccine();
+                JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to save.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    	else if (return_value == JOptionPane.NO_OPTION) {
+            
+        }  
     }//GEN-LAST:event_btn_vaccine_removeActionPerformed
 
     
     // Save add vaccine button
     private void btn_add_vaccine_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_vaccine_addActionPerformed
         // working
-        
-        try {
-            SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
-            String add_vaccine_batch_id = txt_add_vaccine_batch_id.getText();
-            String add_vaccine_type = cbo_add_vaccine_type.getSelectedItem().toString();
-            String add_vaccine_date = date_format.format(txt_add_vaccine_date.getDate());
-            String add_vaccine_expiration_date = date_format.format(txt_add_vaccine_expiration_date.getDate());
-            String add_vaccine_amount = txt_add_vaccine_amount.getText();
-            String add_vaccine_center_name = cbo_add_vaccine_center_name.getSelectedItem().toString();
-            
-            // Batch ID input validation
-            String add_vaccine_batch_id_pattern_type = "^[0-9A-Z]{6,6}$";
-            Pattern add_vaccine_batch_id_pattern = Pattern.compile(add_vaccine_batch_id_pattern_type);
-            Matcher add_vaccine_batch_id_matcher = add_vaccine_batch_id_pattern.matcher(txt_add_vaccine_batch_id.getText());
-
-            // Amount input validation
-            String add_vaccine_amount_pattern_type = "^[0-9]{1,5}$";
-            Pattern add_vaccine_amount_pattern = Pattern.compile(add_vaccine_amount_pattern_type);
-            Matcher add_vaccine_amount_matcher = add_vaccine_amount_pattern.matcher(txt_add_vaccine_amount.getText());
-            
-            if (txt_add_vaccine_batch_id.getText().equals("") || cbo_add_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_add_vaccine_amount.getText().equals("") || cbo_add_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")) {
-                JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else if (!add_vaccine_batch_id_matcher.matches()) {
-                JOptionPane.showMessageDialog(null, "Please fill in alphabet and number only with length \nnot more than 6 for Vaccine Batch ID!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else if (!add_vaccine_amount_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 1 to 5 for Vaccine Type!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-                // Call file I/O method
-                
-                pnl_view_account.setVisible(false);
-                pnl_edit_account.setVisible(false);
-                pnl_view_vaccination_appointment.setVisible(false);
-                pnl_register_vaccination_appointment.setVisible(false);
-                pnl_view_people.setVisible(false);
-                pnl_register_people.setVisible(false);
-                pnl_edit_people.setVisible(false);
-                pnl_view_vaccination_appointments.setVisible(false);
-                pnl_register_vaccination_appointments.setVisible(false);
-                pnl_edit_vaccination_appointments.setVisible(false);
-                pnl_view_vaccination_center.setVisible(false);
-                pnl_add_center.setVisible(false);
-                pnl_edit_center.setVisible(false);
-                pnl_view_vaccine.setVisible(true);
-                pnl_add_vaccine.setVisible(false);
-                pnl_edit_vaccine.setVisible(false);
-                pnl_view_personnel.setVisible(false);
-                pnl_register_personnel.setVisible(false);
-                pnl_edit_personnel.setVisible(false);
-            }
-        } catch (Exception e) {
+        // add -- block older date
+//        txt_add_vaccine_date.getJCalendar().setMinSelectableDate(new Date());
+//        txt_add_vaccine_expiration_date.getJCalendar().setMinSelectableDate(new Date());
+        System.out.println(new Date());
+        if (txt_add_vaccine_batch_id.getText().equals("") || cbo_add_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_add_vaccine_amount.getText().equals("") || cbo_add_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
+                || txt_add_vaccine_date.getDate() == null ||  txt_add_vaccine_expiration_date.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_add_vaccine_date.getDate().after(date)) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_add_vaccine_expiration_date.getDate().after(date)) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateVaccineBatchID(txt_add_vaccine_batch_id.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateVaccineAmount(txt_add_vaccine_amount.getText()) == true) {
+        JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_amount"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            vaccine_class.calcualte_Vaccine_ID();
+            vaccine_class.setVaccine_Batch_ID(txt_add_vaccine_batch_id.getText());
+            vaccine_class.setVaccine_Type(cbo_add_vaccine_type.getSelectedItem().toString());
+            vaccine_class.setdate(date_format.format(txt_add_vaccine_date.getDate()));
+            vaccine_class.setExpiration_Date(date_format.format(txt_add_vaccine_expiration_date.getDate()));
+            vaccine_class.setAmount(Integer.parseInt(txt_add_vaccine_amount.getText()));           
+            vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_add_vaccine_second_dose_gap.getText()));
+            Center selected_item = (Center) cbo_add_vaccine_center_name.getSelectedItem();
+            vaccine_class.Add_Vaccine(selected_item.getId() ,selected_item.getName());
+            if(vaccine_class.getSuccess_Save() == true) {
+                JOptionPane.showMessageDialog(null, "Vaccine addded successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                View_Vaccine();
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to add vaccine, a record with same batch number, location and date exist.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btn_add_vaccine_addActionPerformed
 
     
     // Save edit vaccine button
     private void btn_edit_vaccine_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_vaccine_saveActionPerformed
-//       Center selected_item = (Center) cbo_edit_vaccine_center_name.getSelectedItem();
-//        System.out.println(selected_item.getId());
-// working
-        
-        try {
-            SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
-            String edit_vaccine_batch_id = txt_edit_vaccine_batch_id.getText();
-            String edit_vaccine_type = cbo_edit_vaccine_type.getSelectedItem().toString();
-            String edit_vaccine_date = date_format.format(txt_edit_vaccine_date.getDate());
-            String edit_vaccine_expiration_date = date_format.format(txt_edit_vaccine_expiration_date.getDate());
-            String edit_vaccine_amount = txt_edit_vaccine_amount.getText();
-            String edit_vaccine_center_name = cbo_edit_vaccine_center_name.getSelectedItem().toString();
-            
-            // Batch ID input validation
-            String edit_vaccine_batch_id_pattern_type = "^[0-9A-Z]{6,6}$";
-            Pattern edit_vaccine_batch_id_pattern = Pattern.compile(edit_vaccine_batch_id_pattern_type);
-            Matcher edit_vaccine_batch_id_matcher = edit_vaccine_batch_id_pattern.matcher(txt_edit_vaccine_batch_id.getText());
-
-            // Amount input validation
-            String edit_vaccine_amount_pattern_type = "^[0-9]{1,5}$";
-            Pattern edit_vaccine_amount_pattern = Pattern.compile(edit_vaccine_amount_pattern_type);
-            Matcher edit_vaccine_amount_matcher = edit_vaccine_amount_pattern.matcher(txt_edit_vaccine_amount.getText());
-            
-            if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_edit_vaccine_amount.getText().equals("") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")) {
-                JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else if (!edit_vaccine_batch_id_matcher.matches()) {
-                JOptionPane.showMessageDialog(null, "Please fill in alphabet and number only with length \nnot more than 6 for Vaccine Batch ID!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else if (!edit_vaccine_amount_matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please fill in number only with \nlength 1 to 5 for Vaccine Type!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-                // Call file I/O method
-                
-                pnl_view_account.setVisible(false);
-                pnl_edit_account.setVisible(false);
-                pnl_view_vaccination_appointment.setVisible(false);
-                pnl_register_vaccination_appointment.setVisible(false);
-                pnl_view_people.setVisible(false);
-                pnl_register_people.setVisible(false);
-                pnl_edit_people.setVisible(false);
-                pnl_view_vaccination_appointments.setVisible(false);
-                pnl_register_vaccination_appointments.setVisible(false);
-                pnl_edit_vaccination_appointments.setVisible(false);
-                pnl_view_vaccination_center.setVisible(false);
-                pnl_add_center.setVisible(false);
-                pnl_edit_center.setVisible(false);
-                pnl_view_vaccine.setVisible(true);
-                pnl_add_vaccine.setVisible(false);
-                pnl_edit_vaccine.setVisible(false);
-                pnl_view_personnel.setVisible(false);
-                pnl_register_personnel.setVisible(false);
-                pnl_edit_personnel.setVisible(false);
-            }
-        } catch (Exception e) {
+        System.out.println(new Date());
+        if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_edit_vaccine_amount.getText().equals("") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
+                || txt_edit_vaccine_date.getDate() == null ||  txt_edit_vaccine_expiration_date.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_edit_vaccine_date.getDate().after(date)) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (!txt_edit_vaccine_expiration_date.getDate().after(date)) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateVaccineBatchID(txt_edit_vaccine_batch_id.getText()) == true) {
+            JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (validation_class.validateVaccineAmount(txt_edit_vaccine_amount.getText()) == true) {
+        JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_amount"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            vaccine_class.setVaccine_Batch_ID(txt_edit_vaccine_batch_id.getText());
+            vaccine_class.setVaccine_Type(cbo_edit_vaccine_type.getSelectedItem().toString());
+            vaccine_class.setdate(date_format.format(txt_edit_vaccine_date.getDate()));
+            vaccine_class.setExpiration_Date(date_format.format(txt_edit_vaccine_expiration_date.getDate()));
+            vaccine_class.setAmount(Integer.parseInt(txt_edit_vaccine_amount.getText()));           
+            vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_edit_vaccine_second_dose_gap.getText()));
+            Center selected_item = (Center) cbo_edit_vaccine_center_name.getSelectedItem();
+            vaccine_class.Edit_Vaccine(selected_item.getId() ,selected_item.getName());
+            if(vaccine_class.getSuccess_Save() == true) {
+                JOptionPane.showMessageDialog(null, "Vaccine updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                View_Vaccine();
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to update vaccine.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btn_edit_vaccine_saveActionPerformed
     // save in personnel edit
@@ -5162,6 +5238,39 @@ public class Personnel extends javax.swing.JFrame {
         tbl_view_vaccination_center.setRowSorter(search_center);
         search_center.setRowFilter(RowFilter.regexFilter(txt_search_vaccination_center.getText()));
     }//GEN-LAST:event_txt_search_vaccination_centerKeyReleased
+
+    private void cbo_add_vaccine_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_add_vaccine_typeActionPerformed
+        if (cbo_add_vaccine_type.getSelectedItem() == "Sinovac") {
+            lbl_add_vaccine_second_dose_gap.setText("2");
+        } else if (cbo_add_vaccine_type.getSelectedItem() == "Pfizer") {
+            lbl_add_vaccine_second_dose_gap.setText("2");
+        } else if (cbo_add_vaccine_type.getSelectedItem() == "AstraZeneca") {
+            lbl_add_vaccine_second_dose_gap.setText("12");
+        } else {
+            lbl_add_vaccine_second_dose_gap.setText("");
+        }    }//GEN-LAST:event_cbo_add_vaccine_typeActionPerformed
+
+    private void cbo_edit_vaccine_center_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_edit_vaccine_center_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_edit_vaccine_center_nameActionPerformed
+
+    private void cbo_edit_vaccine_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_edit_vaccine_typeActionPerformed
+        if (cbo_edit_vaccine_type.getSelectedItem() == "Sinovac") {
+            lbl_edit_vaccine_second_dose_gap.setText("2");
+        } else if (cbo_edit_vaccine_type.getSelectedItem() == "Pfizer") {
+            lbl_edit_vaccine_second_dose_gap.setText("2");
+        } else if (cbo_edit_vaccine_type.getSelectedItem() == "AstraZeneca") {
+            lbl_edit_vaccine_second_dose_gap.setText("12");
+        } else {
+            lbl_edit_vaccine_second_dose_gap.setText("");
+        }      }//GEN-LAST:event_cbo_edit_vaccine_typeActionPerformed
+
+    private void txt_search_vaccineKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_vaccineKeyReleased
+        DefaultTableModel vaccine_table_model = (DefaultTableModel) tbl_view_vaccine.getModel();
+        TableRowSorter<DefaultTableModel> search_vaccine = new TableRowSorter<DefaultTableModel>(vaccine_table_model);
+        tbl_view_vaccine.setRowSorter(search_vaccine);
+        search_vaccine.setRowFilter(RowFilter.regexFilter(txt_search_vaccine.getText()));
+    }//GEN-LAST:event_txt_search_vaccineKeyReleased
 
     
     // Main method

@@ -34,7 +34,7 @@ public class ValidationClass {
         }
         return Validate;
     }
-        public boolean validateICPassportNumber(String ic_passport_number) {
+    public boolean validateICPassportNumber(String ic_passport_number) {
         // Phone number input validation
         String ic_passport_number_pattern_type = "^[A-Z0-9]{1,50}$";
         Pattern ic_passport_number_pattern = Pattern.compile(ic_passport_number_pattern_type);
@@ -47,11 +47,41 @@ public class ValidationClass {
         }
         return Validate;
     }
+    public boolean validateVaccineBatchID(String vaccine_batch_id) {
+            // Batch ID input validation
+            String vaccine_batch_id_pattern_type = "^[0-9A-Z]{6,6}$";
+            Pattern vaccine_batch_id_pattern = Pattern.compile(vaccine_batch_id_pattern_type);
+            Matcher vaccine_batch_id_matcher = vaccine_batch_id_pattern.matcher(vaccine_batch_id);
+        
+        if(!vaccine_batch_id_matcher.matches()){
+            Validate = true;
+        } else {
+            Validate = false;
+        }
+        return Validate;
+    }
+    public boolean validateVaccineAmount(String vaccine_amount) {
+            // Amount input validation
+            String vaccine_amount_pattern_type = "^[0-9]{1,5}$";
+            Pattern vaccine_amount_pattern = Pattern.compile(vaccine_amount_pattern_type);
+            Matcher vaccine_amount_matcher = vaccine_amount_pattern.matcher(vaccine_amount);
+        
+        if(!vaccine_amount_matcher.matches()){
+            Validate = true;
+        } else {
+            Validate = false;
+        }
+        return Validate;
+    }
     public String validationMessage(String type) {
         Message = switch (type) {
             case "name" -> "Please fill in alphabet only with length \nnot more than 50 for Name!";
             case "phone_number" -> "Please fill in number only with \nlength 10 to 11 for Phone Number!";
             case "ic_passport_number" -> "Please fill in alphabet and \nnumbers onnly for IC / Passport Number!";
+            case "vaccine_batch_id"-> "Please fill in alphabet and number only with length \nnot more than 6 for Vaccine Batch ID!";
+            case "vaccine_amount"->"Please fill in number only with \\nlength 1 to 5 for Vaccine Type!";
+            case "date"->"Please select a date that is today or after today!";
+            case ""->"";
             default -> "";
         };
         return Message;
