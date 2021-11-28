@@ -200,15 +200,20 @@ public class Personnel extends javax.swing.JFrame {
         pnl_edit_personnel.setVisible(false);
     }
     
+
+    public void getCenters() {
+
+    }
+    
     public void View_Center() {
         // disable button no selected row
         btn_vaccination_center_edit.setEnabled(false);
         btn_vaccination_center_remove.setEnabled(false);
 
         //load data
-        
-        // Set column
         center_class.View_Center();
+        // Set column
+        
         
         String columns[] = {"Center ID", "Center Name", "Center Address", "Contact Number"};
 
@@ -271,6 +276,65 @@ public class Personnel extends javax.swing.JFrame {
         pnl_register_personnel.setVisible(false);
         pnl_edit_personnel.setVisible(false);
     }
+    
+    // for center to have id
+    private class Center {
+        private String id, description;
+        public Center(String id, String description) {
+            this.id = id;
+            this.description = description;
+        }
+        public String getId() {
+            return id;
+        }
+        public String getDescription() {
+            return description;
+        }
+        public String toString() {
+            return description;
+        }
+    }
+    public void View_Vaccine() {
+        
+        // populate the center dropdowns
+        center_class.View_Center();
+        cbo_add_vaccine_center_name.removeAllItems();
+        cbo_edit_vaccine_center_name.removeAllItems();
+
+        DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel)cbo_add_vaccine_center_name.getModel();
+        DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_edit_vaccine_center_name.getModel();
+
+        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
+            String[] data = center_class.getCenter_Data().get(i).split("//");
+            cbo_add_model.addElement(new Center(data[0], data[1]));
+            cbo_edit_model.addElement(new Center(data[0], data[1]));
+        }
+        cbo_add_vaccine_center_name.setModel(cbo_add_model);
+        cbo_edit_vaccine_center_name.setModel(cbo_edit_model);
+        // put data into table
+        
+        // hide
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_people.setVisible(false);
+        pnl_register_people.setVisible(false);
+        pnl_edit_people.setVisible(false);
+        pnl_view_vaccination_appointments.setVisible(false);
+        pnl_register_vaccination_appointments.setVisible(false);
+        pnl_edit_vaccination_appointments.setVisible(false);
+        pnl_view_vaccination_center.setVisible(false);
+        pnl_add_center.setVisible(false);
+        pnl_edit_center.setVisible(false);
+        pnl_view_vaccine.setVisible(true);
+        pnl_add_vaccine.setVisible(false);
+        pnl_edit_vaccine.setVisible(false);
+        pnl_view_personnel.setVisible(false);
+        pnl_register_personnel.setVisible(false);
+        pnl_edit_personnel.setVisible(false);
+}
+
 
 
     // UI
@@ -766,7 +830,6 @@ public class Personnel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Personnel");
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         pnl_sidenav.setBackground(new java.awt.Color(136, 178, 219));
         pnl_sidenav.setMinimumSize(new java.awt.Dimension(320, 0));
@@ -3380,7 +3443,8 @@ public class Personnel extends javax.swing.JFrame {
         new String [] {
             "Batch ID", "Type", "Date", "Expiration Date", "Amount", "Center Name", "Second Dose Gap (Weeks)"
         }
-    ));
+    ) {public boolean isCellEditable(int row, int column){return false;}}
+    );
     tbl_view_vaccine.setPreferredSize(new java.awt.Dimension(800, 64));
     scrpnl_view_vaccine.setViewportView(tbl_view_vaccine);
 
@@ -3948,7 +4012,7 @@ public class Personnel extends javax.swing.JFrame {
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
-        .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+        .addComponent(pnl_container, javax.swing.GroupLayout.PREFERRED_SIZE, 793, Short.MAX_VALUE)
     );
 
     pack();
@@ -4360,25 +4424,7 @@ public class Personnel extends javax.swing.JFrame {
     
     // Vaccine side bar tab
     private void lbl_vaccineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccineMouseClicked
-        pnl_view_account.setVisible(false);
-        pnl_edit_account.setVisible(false);
-        pnl_view_vaccination_appointment.setVisible(false);
-        pnl_register_vaccination_appointment.setVisible(false);
-        pnl_view_people.setVisible(false);
-        pnl_register_people.setVisible(false);
-        pnl_edit_people.setVisible(false);
-        pnl_view_vaccination_appointments.setVisible(false);
-        pnl_register_vaccination_appointments.setVisible(false);
-        pnl_edit_vaccination_appointments.setVisible(false);
-        pnl_view_vaccination_center.setVisible(false);
-        pnl_add_center.setVisible(false);
-        pnl_edit_center.setVisible(false);
-        pnl_view_vaccine.setVisible(true);
-        pnl_add_vaccine.setVisible(false);
-        pnl_edit_vaccine.setVisible(false);
-        pnl_view_personnel.setVisible(false);
-        pnl_register_personnel.setVisible(false);
-        pnl_edit_personnel.setVisible(false);
+        View_Vaccine();
     }//GEN-LAST:event_lbl_vaccineMouseClicked
 
     
@@ -4954,6 +5000,8 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save add vaccine button
     private void btn_add_vaccine_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_vaccine_addActionPerformed
+        // working
+        
         try {
             SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
             String add_vaccine_batch_id = txt_add_vaccine_batch_id.getText();
@@ -5010,6 +5058,10 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save edit vaccine button
     private void btn_edit_vaccine_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_vaccine_saveActionPerformed
+//       Center selected_item = (Center) cbo_edit_vaccine_center_name.getSelectedItem();
+//        System.out.println(selected_item.getId());
+// working
+        
         try {
             SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
             String edit_vaccine_batch_id = txt_edit_vaccine_batch_id.getText();

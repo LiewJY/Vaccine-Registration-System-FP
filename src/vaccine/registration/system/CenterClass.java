@@ -16,6 +16,7 @@ public class CenterClass {
     // for add function (no need to be in class diagram)
     protected boolean Success_Save = false;
     protected ArrayList<String> Center_Data = new ArrayList<>();
+    protected ArrayList<String> Get_Center = new ArrayList<>();
     
     CenterClass() {
         Center_ID = 1;
@@ -52,10 +53,10 @@ public class CenterClass {
     public ArrayList<String> getCenter_Data() {
         return Center_Data;
     }
-    
-    
-    
-    
+//    public ArrayList<String> getCenter() {
+//        return Get_Center;
+//    }
+ 
     public void calculateCenter_ID() {
         String line;
         String[] line_array;
