@@ -142,6 +142,7 @@ public class AppointmentClass {
                     //System.out.println("id + 1  get " + people_class.getPeople_ID());
                     count = count + 1;
                 } else {
+                    count = 1;
                     //System.out.println("else  get " + people_class.getPeople_ID());
                 }
             }
@@ -163,7 +164,7 @@ public class AppointmentClass {
                 System.out.println(line);
                 if (line_array[3].equals(date)) {
                     avaliable_location.add(line);
-                    System.out.println("added");
+                    System.out.println("added" +line_array[3] );
                 } else {
 
                 }

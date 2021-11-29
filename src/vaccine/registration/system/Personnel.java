@@ -309,8 +309,8 @@ public class Personnel extends javax.swing.JFrame {
         for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
             String[] data = center_class.getCenter_Data().get(i).split("//");
             
-            center_id_to_name.add(new Center(data[0], data[1], data[4]));
-            System.out.println(data[0] + "  " +  data[1]);
+            center_id_to_name.add(new Center(data[0], data[1], data[2]));
+            //System.out.println(data[0] + "  " +  data[1]);
         }
     }
     
@@ -400,8 +400,8 @@ public class Personnel extends javax.swing.JFrame {
 
         for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
             String[] data = center_class.getCenter_Data().get(i).split("//");
-            cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
-            cbo_edit_model.addElement(new Center(data[0], data[1], data[4]));
+            cbo_add_model.addElement(new Center(data[0], data[1], data[2]));
+            cbo_edit_model.addElement(new Center(data[0], data[1], data[2]));
         }
         cbo_add_vaccine_center_name.setModel(cbo_add_model);
         cbo_edit_vaccine_center_name.setModel(cbo_edit_model);
@@ -507,29 +507,28 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
         pnl_edit_personnel.setVisible(false);
 }
     public void View_Appointment() {
-        //working
-         // populate the center dropdowns
-        center_class.View_Center();
-        cbo_register_vaccination_appointments_select_vaccination_center.removeAllItems();
-        cbo_edit_vaccination_appointments_select_vaccination_center.removeAllItems();
-
-        DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel)cbo_register_vaccination_appointments_select_vaccination_center.getModel();
-        DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_edit_vaccination_appointments_select_vaccination_center.getModel();
-
-        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
-            String[] data = center_class.getCenter_Data().get(i).split("//");
-            cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
-            cbo_edit_model.addElement(new Center(data[0], data[1], data[4]));
-        }
-        cbo_register_vaccination_appointments_select_vaccination_center.setModel(cbo_add_model);
-        cbo_edit_vaccination_appointments_select_vaccination_center.setModel(cbo_edit_model);
-        
+//        // populate the center dropdowns
+//        center_class.View_Center();
+//        cbo_register_vaccination_appointments_select_vaccination_center.removeAllItems();
+//        cbo_edit_vaccination_appointments_select_vaccination_center.removeAllItems();
+//
+//        DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel)cbo_register_vaccination_appointments_select_vaccination_center.getModel();
+//        DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_edit_vaccination_appointments_select_vaccination_center.getModel();
+//
+//        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
+//            String[] data = center_class.getCenter_Data().get(i).split("//");
+//            cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
+//            cbo_edit_model.addElement(new Center(data[0], data[1], data[4]));
+//        }
+//        cbo_register_vaccination_appointments_select_vaccination_center.setModel(cbo_add_model);
+//        cbo_edit_vaccination_appointments_select_vaccination_center.setModel(cbo_edit_model);
+//        
         // put data into table
         
         // disable button no selected row
-                btn_vaccination_appointments_edit.setEnabled(false);
-                btn_vaccination_appointments_update.setEnabled(false);
-                btn_vaccination_appointments_remove.setEnabled(false);
+        btn_vaccination_appointments_edit.setEnabled(false);
+        btn_vaccination_appointments_update.setEnabled(false);
+        btn_vaccination_appointments_remove.setEnabled(false);
 
         //load data
         appointment_class.View_Appointment();
@@ -617,7 +616,8 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                appointment_class.setAppointnment_ID(Integer.parseInt(appointment_table_model.getValueAt(row, 0).toString()));
                
                //for update
-                people_class.setPeople_ID(Integer.parseInt(appointment_table_model.getValueAt(row, 1).toString()));
+               // people_class.setPeople_ID(Integer.parseInt(appointment_table_model.getValueAt(row, 1).toString()));
+                
                 //vac id
                 appointment_class.setAppointment_Time(appointment_table_model.getValueAt(row, 5).toString());
                 
@@ -639,10 +639,6 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             }
             
         });
-        
-        
-        
-        
         //hide pannel 
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
@@ -663,10 +659,6 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
         pnl_view_personnel.setVisible(false);
         pnl_register_personnel.setVisible(false);
         pnl_edit_personnel.setVisible(false);
-        
-        
-        
-        
         
     }
     
@@ -3150,6 +3142,11 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
 
     cbo_register_vaccination_appointments_select_vaccination_center.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
     cbo_register_vaccination_appointments_select_vaccination_center.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccination Center" }));
+    cbo_register_vaccination_appointments_select_vaccination_center.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed(evt);
+        }
+    });
 
     lbl_registerVaccinationAppointmentsVaccineType.setBackground(new java.awt.Color(255, 255, 255));
     lbl_registerVaccinationAppointmentsVaccineType.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -5181,6 +5178,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                 non_citizen.setPassword(txt_register_people_password.getText());
                 non_citizen.setPassport_Number(txt_register_people_ic_passport_number.getText()); 
                 non_citizen.Register_Account();
+                
                 if(non_citizen.getSuccess_Save() == true) {
                     JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_People();
@@ -5273,6 +5271,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             } else { 
 
                 appointment_class.calculateAppointnment_ID();
+                appointment_class.Add_Dose();
 
                 //set vaccine id
                 Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
@@ -5282,6 +5281,8 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                 appointment_class.Add_Dose();
                 appointment_class.setStatus("Pending");
                 appointment_class.Add_Appointment();
+                
+                
                 if(appointment_class.getSuccess_Save() == true) {
                     JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Appointment();
@@ -5548,7 +5549,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
                 String[] data = center_class.getCenter_Data().get(i).split("//");
                 if(data[4].equals("Sinovac")) {
-                    cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
+                    cbo_add_model.addElement(new Center(data[0], data[1], data[2]));
                 }
             }
             cbo_add_vaccine_center_name.setModel(cbo_add_model);
@@ -5565,7 +5566,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
                 String[] data = center_class.getCenter_Data().get(i).split("//");
                 if(data[4].equals("Pfizer")) {
-                    cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
+                    cbo_add_model.addElement(new Center(data[0], data[1], data[2]));
                 }
             }
             cbo_add_vaccine_center_name.setModel(cbo_add_model);
@@ -5583,7 +5584,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
                 String[] data = center_class.getCenter_Data().get(i).split("//");
                 if(data[4].equals("AstraZeneca")) {
-                    cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
+                    cbo_add_model.addElement(new Center(data[0], data[1], data[2]));
                 }
             }
             cbo_add_vaccine_center_name.setModel(cbo_add_model);
@@ -5609,7 +5610,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
                 String[] data = center_class.getCenter_Data().get(i).split("//");
                 if(data[4].equals("Sinovac")) {
-                    cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
+                    cbo_add_model.addElement(new Center(data[0], data[1], data[2]));
                 }
             }
             cbo_edit_vaccine_center_name.setModel(cbo_add_model); 
@@ -5626,7 +5627,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
                 String[] data = center_class.getCenter_Data().get(i).split("//");
                 if(data[4].equals("Pfizer")) {
-                    cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
+                    cbo_add_model.addElement(new Center(data[0], data[1], data[2]));
                 }
             }
             cbo_edit_vaccine_center_name.setModel(cbo_add_model);
@@ -5643,7 +5644,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
                 String[] data = center_class.getCenter_Data().get(i).split("//");
                 if(data[4].equals("AstraZeneca")) {
-                    cbo_add_model.addElement(new Center(data[0], data[1], data[4]));
+                    cbo_add_model.addElement(new Center(data[0], data[1], data[2]));
                 }
             }
             cbo_edit_vaccine_center_name.setModel(cbo_add_model);
@@ -5674,28 +5675,28 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             
             appointment_class.Show_Locations(date_format.format(txt_register_vaccination_appointments_select_date.getDate()));
             cbo_register_vaccination_appointments_select_vaccination_center.removeAllItems();
-                
                 center_class.View_Center();
                 DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_register_vaccination_appointments_select_vaccination_center.getModel();
                 for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
                     String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
-                    String temp = "";
-                    for (int s = 0; s < center_class.getCenter_Data().size(); s++) {
-                        String[] name = center_class.getCenter_Data().get(i).split("//");
-                        if (data[7].equals(name[0])){
+
+                    String temp = "", ww;
+                    ww = data[7];
+                    for(int a = 0; a < center_class.getCenter_Data().size(); a++) {
+                        String[] name = center_class.getCenter_Data().get(a).split("//");
+                        //temp = name[1];
+                        System.out.println("ww  " + ww + "name[0]  "  +name[0]);
+                        if (name[0].equals(ww)) {
                             temp = name[1];
+                            System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
                         }
-                    }
-                    //System.out.println("cc" + data[7]);
-                    
-                    cbo_edit_model.addElement(new Center(data[7], temp, data[4]));
-                    
+                    }                  
+                    //System.out.println("outside  , location id " + data[7] + "  " + temp + "  " + data[2]);
+                    cbo_edit_model.addElement(new Center(data[7], temp, data[2]));
+
                 }
                 cbo_register_vaccination_appointments_select_vaccination_center.setModel(cbo_edit_model);
-            
-            
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_register_vaccination_appointments_select_datePropertyChange
 
     private void txt_edit_vaccination_appointments_select_datePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_edit_vaccination_appointments_select_datePropertyChange
@@ -5706,32 +5707,45 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             
             appointment_class.Show_Locations(date_format.format(txt_edit_vaccination_appointments_select_date.getDate()));
             cbo_edit_vaccination_appointments_select_vaccination_center.removeAllItems();
-                
                 center_class.View_Center();
                 DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_edit_vaccination_appointments_select_vaccination_center.getModel();
                 for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
                     String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
+
                     String temp = "";
-                    for (int s = 0; s < center_class.getCenter_Data().size(); s++) {
+                    for(String a : center_class.getCenter_Data()) {
                         String[] name = center_class.getCenter_Data().get(i).split("//");
-                        if (data[7].equals(name[0])){
+                        //temp = name[1];
+                        if (data[7].equals(1)) {
                             temp = name[1];
+                            System.out.println("indise if, print  name"  +temp);
                         }
-                    }
-                    //System.out.println("cc" + data[7]);
-                    
-                    cbo_edit_model.addElement(new Center(data[7], temp, data[4]));
-                    
+                    }                  
+                    System.out.println("outside  , location id " + data[7] + "  " + temp + "  " + data[2]);
+                    cbo_edit_model.addElement(new Center(data[7], temp, data[2]));
+
                 }
                 cbo_edit_vaccination_appointments_select_vaccination_center.setModel(cbo_edit_model);
-            
-            
         }
     }//GEN-LAST:event_txt_edit_vaccination_appointments_select_datePropertyChange
 
     private void cbo_add_center_vaccine_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_add_center_vaccine_typeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_add_center_vaccine_typeActionPerformed
+
+    private void cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed
+        Center_ID_and_Details();
+        Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
+        lbl_register_vaccination_appointments_vaccine_type.setText(selected_item.getType());
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed
 
     
     // Main method

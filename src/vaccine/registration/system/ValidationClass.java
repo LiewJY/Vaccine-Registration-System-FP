@@ -78,7 +78,7 @@ public class ValidationClass {
             case "name" -> "Please fill in alphabet only with length \nnot more than 50 for Name!";
             case "phone_number" -> "Please fill in number only with \nlength 10 to 11 for Phone Number!";
             case "ic_passport_number" -> "Please fill in alphabet and \nnumbers only for IC / Passport Number!";
-            case "vaccine_batch_id"-> "Please fill in alphabet and number only with length \nnot more than 6 for Vaccine Batch ID!";
+            case "vaccine_batch_id"-> "Please fill in alphabet and number only with length \n of 6 for Vaccine Batch ID!";
             case "vaccine_amount"->"Please fill in number only with \nlength 1 to 5 for Vaccine Type!";
             case "date"->"Please select a date that is today or after today!";
             case ""->"";

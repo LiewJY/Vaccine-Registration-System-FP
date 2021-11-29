@@ -1208,7 +1208,7 @@ public class People extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validatePhoneNumber(txt_edit_phone_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (validation_class.validateICPassportNumber(txt_edit_confirm_password.getText()) == true) {
+        } else if (validation_class.validateICPassportNumber(txt_edit_ic_passport_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("ic_passport_number"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_edit_password.getText().matches(txt_edit_confirm_password.getText())) {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
