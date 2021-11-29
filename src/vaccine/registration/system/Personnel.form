@@ -4489,6 +4489,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="txt_register_vaccination_appointments_select_datePropertyChange"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_register_vaccination_appointments_select_time">
               <Properties>
