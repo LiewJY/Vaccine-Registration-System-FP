@@ -30,6 +30,7 @@ public class Personnel extends javax.swing.JFrame {
     CenterClass center_class = new CenterClass();
     VaccineClass vaccine_class = new VaccineClass();
     AppointmentClass appointment_class = new AppointmentClass();
+    PeopleClass people_class = new PeopleClass();
    
     // for formatting date
     SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
@@ -381,6 +382,7 @@ public class Personnel extends javax.swing.JFrame {
 
     }
     
+    
     public void View_Vaccine() {
         
         // populate the center dropdowns
@@ -520,8 +522,9 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
         // put data into table
         
         // disable button no selected row
-        btn_vaccine_edit.setEnabled(false);
-        btn_vaccine_remove.setEnabled(false);
+                btn_vaccination_appointments_edit.setEnabled(false);
+                btn_vaccination_appointments_update.setEnabled(false);
+                btn_vaccination_appointments_remove.setEnabled(false);
 
         //load data
         appointment_class.View_Appointment();
@@ -597,45 +600,40 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
         
         
         // get data of selected row
-//        tbl_view_vaccine.addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                btn_vaccine_edit.setEnabled(true);
-//                btn_vaccine_remove.setEnabled(true);
-//
-//                int rows = tbl_view_vaccine.getSelectedRow();
-//                int row = tbl_view_vaccine.convertRowIndexToModel(rows);
-//                // for deleting
-//               vaccine_class.setVaccine_ID(Integer.parseInt(vaccine_table_model.getValueAt(row, 0).toString()));
-////                vaccine_class.setCenter_Name(vaccine_table_model.getValueAt(row, 1).toString());
-////                
-//                
-//                // populte to edit pannel
-//                txt_edit_vaccine_batch_id.setText(vaccine_table_model.getValueAt(row, 1).toString());
-//                cbo_edit_vaccine_type.setSelectedItem(vaccine_table_model.getValueAt(row, 2).toString());
-//                Date date = null;
-//                try {
-//                    date = date_format.parse(vaccine_table_model.getValueAt(row, 3).toString());
-//                    txt_edit_vaccine_date.setDate(date);
-//                    
-//                    date = date_format.parse(vaccine_table_model.getValueAt(row, 4).toString());
-//                    txt_edit_vaccine_expiration_date.setDate(date);
-//                } catch (ParseException ex) {
-//                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//                
-//               // txt_edit_vaccine_date.setDate();
-//
-//
-//
-//            //txt_edit_vaccine_expiration_date.setDate(date_format.parse(vaccine_table_model.getValueAt(row, 3).toString()));
-//                
-//                txt_edit_vaccine_amount.setText(vaccine_table_model.getValueAt(row, 5).toString());
-//                lbl_edit_vaccine_second_dose_gap.setText(vaccine_table_model.getValueAt(row, 6).toString());
-//                cbo_edit_vaccine_center_name.setSelectedItem(vaccine_table_model.getValueAt(row, 8).toString());
-//
-//            }
-//            
-//        });
+        tbl_view_vaccination_appointments.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                btn_vaccination_appointments_edit.setEnabled(true);
+                btn_vaccination_appointments_update.setEnabled(true);
+                btn_vaccination_appointments_remove.setEnabled(true);
+
+                int rows = tbl_view_vaccination_appointments.getSelectedRow();
+                int row = tbl_view_vaccination_appointments.convertRowIndexToModel(rows);
+                // for deleting
+               appointment_class.setAppointnment_ID(Integer.parseInt(appointment_table_model.getValueAt(row, 0).toString()));
+               
+               //for update
+                people_class.setPeople_ID(Integer.parseInt(appointment_table_model.getValueAt(row, 1).toString()));
+                //vac id
+                appointment_class.setAppointment_Time(appointment_table_model.getValueAt(row, 5).toString());
+                
+                
+                
+                
+                // populte to edit pannel
+                txt_edit_vaccination_appointments_ic_passport_number.setText(appointment_table_model.getValueAt(row, 3).toString());
+                Date date = null;
+                try {
+                    date = date_format.parse(appointment_table_model.getValueAt(row, 4).toString());
+                    txt_edit_vaccination_appointments_select_date.setDate(date);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                cbo_edit_vaccination_appointments_select_time.setSelectedItem(appointment_table_model.getValueAt(row, 5).toString());
+
+                cbo_edit_vaccination_appointments_select_vaccination_center.setSelectedItem(appointment_table_model.getValueAt(row, 6).toString());
+            }
+            
+        });
         
         
         
@@ -4682,10 +4680,13 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
     
     // Update vaccination appointment button
     private void btn_vaccination_appointments_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_appointments_updateActionPerformed
-        String[] dosage = { "0 Dose", "1 Dose", "2 Dose"};
+        //working
+        
+        String[] dosage = { "Pending", "Completed"};
         String selected;      
-        selected = (String) JOptionPane.showInputDialog(null,"Select Completed Dose: ","Dose number", JOptionPane.QUESTION_MESSAGE, null, dosage, dosage[0]);
-        System.out.println(selected);
+        selected = (String) JOptionPane.showInputDialog(null,"Select Status: ","Status", JOptionPane.QUESTION_MESSAGE, null, dosage, dosage[0]);
+        appointment_class.Update_Appointment_Status(selected);
+        View_Appointment();
        
       }//GEN-LAST:event_btn_vaccination_appointments_updateActionPerformed
 
@@ -5184,13 +5185,25 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
     
     // Remove vaccination appointment button
     private void btn_vaccination_appointments_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_appointments_removeActionPerformed
-        
+        int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove the record." ,"Warning", JOptionPane.YES_NO_OPTION);
+        if (return_value == JOptionPane.YES_OPTION) {
+            
+            appointment_class.Remove_Appointment();
+            if(appointment_class.getSuccess_Save() == true) {
+                View_Appointment();
+                JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to save.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    	else if (return_value == JOptionPane.NO_OPTION) { 
+        }
+                    
     }//GEN-LAST:event_btn_vaccination_appointments_removeActionPerformed
 
     
     // Save register vaccination appointment button
     private void btn_register_vaccination_appointments_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointments_registerActionPerformed
-// register working
         if (txt_register_vaccination_appointments_ic_passport_number.getText().equals("") || cbo_register_vaccination_appointments_select_time.getSelectedItem().equals("Select Time") || cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         }else{
@@ -5212,6 +5225,12 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                 appointment_class.Add_Dose();
                 appointment_class.setStatus("Pending");
                 appointment_class.Add_Appointment();
+                if(appointment_class.getSuccess_Save() == true) {
+                    JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    View_Appointment();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to register.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
 
             }
         }
@@ -5221,41 +5240,35 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
     
     // Save edit vaccination appointment button
     private void btn_edit_vaccination_appointments_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_vaccination_appointments_saveActionPerformed
-// edit working
-        try {
-            SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
-            String edit_vaccination_appointments_ic_passport_number = txt_edit_vaccination_appointments_ic_passport_number.getText();
-            String edit_vaccination_appointments_select_date = date_format.format(txt_edit_vaccination_appointments_select_date.getDate());
-            String edit_vaccination_appointments_select_time = cbo_edit_vaccination_appointments_select_time.getSelectedItem().toString();
-            String edit_vaccination_appointments_select_vaccination_center = cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem().toString();
-            
-            if (txt_edit_vaccination_appointments_ic_passport_number.getText().equals("") || cbo_edit_vaccination_appointments_select_time.getSelectedItem().equals("Select Time") || cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")) {
-                JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-                // Call file I/O method
-                
-                pnl_view_account.setVisible(false);
-                pnl_edit_account.setVisible(false);
-                pnl_view_vaccination_appointment.setVisible(false);
-                pnl_register_vaccination_appointment.setVisible(false);
-                pnl_view_people.setVisible(false);
-                pnl_register_people.setVisible(false);
-                pnl_edit_people.setVisible(false);
-                pnl_view_vaccination_appointments.setVisible(true);
-                pnl_register_vaccination_appointments.setVisible(false);
-                pnl_edit_vaccination_appointments.setVisible(false);
-                pnl_view_vaccination_center.setVisible(false);
-                pnl_add_center.setVisible(false);
-                pnl_edit_center.setVisible(false);
-                pnl_view_vaccine.setVisible(false);
-                pnl_add_vaccine.setVisible(false);
-                pnl_edit_vaccine.setVisible(false);
-                pnl_view_personnel.setVisible(false);
-                pnl_register_personnel.setVisible(false);
-                pnl_edit_personnel.setVisible(false);
-            }
-        } catch (Exception e) {
+        //working
+        if (txt_edit_vaccination_appointments_ic_passport_number.getText().equals("") || cbo_edit_vaccination_appointments_select_time.getSelectedItem().equals("Select Time") || cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }else{
+
+            appointment_class.Check_Exist(txt_edit_vaccination_appointments_ic_passport_number.getText());
+            if (appointment_class.getExist() == false) {
+                JOptionPane.showMessageDialog(null, "Cannot find people!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if(!txt_edit_vaccination_appointments_select_date.getDate().after(date)) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+            } else { 
+
+
+                //set vaccine id
+                Center selected_item = (Center) cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem();
+                appointment_class.Add_Vaccine_Id(date_format.format(txt_edit_vaccination_appointments_select_date.getDate()), selected_item.getId());
+
+                appointment_class.setAppointment_Time(cbo_edit_vaccination_appointments_select_time.getSelectedItem().toString());
+                appointment_class.Add_Dose();
+                appointment_class.setStatus("Pending");
+                appointment_class.Update_Appointment();
+                if(appointment_class.getSuccess_Save() == true) {
+                    JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    View_Appointment();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to register.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
         }
     }//GEN-LAST:event_btn_edit_vaccination_appointments_saveActionPerformed
 
@@ -5505,7 +5518,6 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
     }//GEN-LAST:event_txt_search_vaccination_appointmentsKeyReleased
 
     private void txt_register_vaccination_appointments_select_datePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_register_vaccination_appointments_select_datePropertyChange
-//working
         if (txt_register_vaccination_appointments_select_date.getDate() == null) {
             cbo_register_vaccination_appointments_select_vaccination_center.setEnabled(false);
         } else {

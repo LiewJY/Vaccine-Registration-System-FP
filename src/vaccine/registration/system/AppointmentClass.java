@@ -245,6 +245,135 @@ public class AppointmentClass {
     }
     
     
+        public void Remove_Appointment() {
+            String line;
+            String[] line_array;
+            ArrayList<String> temp_data = new ArrayList<>();
+            try { 
+                FileReader vaccine_file = new FileReader("Appointment.txt");
+                BufferedReader vaccine = new BufferedReader(vaccine_file);
+                //edit line
+                 while ((line = vaccine.readLine()) != null) {
+                    line_array = line.split("//");
+                    if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
+                        //do nothing
+                    } else {
+                        temp_data.add(line);
+                    }
+                }
+                vaccine_file.close();
+               } catch (IOException c) {
+                c.printStackTrace();
+            }
+        try (PrintWriter edit_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
+            for (String new_data : temp_data) {
+                edit_vaccine.println(new_data);
+            }
+            edit_vaccine.close();
+            Success_Save = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+        
+        public void Update_Appointment() {
+            String line;
+            String[] line_array;
+            ArrayList<String> temp_data = new ArrayList<>();
+            try { 
+                FileReader appointment_file = new FileReader("Appointment.txt");
+                BufferedReader vaccine = new BufferedReader(appointment_file);
+                //edit line
+                 while ((line = vaccine.readLine()) != null) {
+                    line_array = line.split("//");
+                    if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
+                        //Insert data
+                        temp_data.add(Appointnment_ID + "//" 
+                                + people_class.getPeople_ID()  + "//" 
+                                + Vaccine_ID  + "//" 
+                                + Appointment_Time  + "//" 
+                                + Dose_Numeber   + "//" 
+                                + Status   + "//");
+                    } else {
+                        temp_data.add(line);
+                    }
+                }
+                appointment_file.close();
+               } catch (IOException c) {
+                c.printStackTrace();
+            }
+        try (PrintWriter edit_appointment = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
+            for (String new_data : temp_data) {
+                edit_appointment.println(new_data);
+            }
+            edit_appointment.close();
+            Success_Save = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+        
+        public void Update_Appointment_Status(String status) {
+            String line;
+            String[] line_array;
+            ArrayList<String> temp_data = new ArrayList<>();
+            try { 
+                FileReader appointment_file = new FileReader("Appointment.txt");
+                BufferedReader vaccine = new BufferedReader(appointment_file);
+                //edit line
+                 while ((line = vaccine.readLine()) != null) {
+                    line_array = line.split("//");
+                    if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
+                        
+                        //Insert data
+                        temp_data.add(Appointnment_ID + "//" 
+                                + line_array[1]  + "//" 
+                                + line_array[2]  + "//" 
+                                + line_array[3]  + "//" 
+                                + line_array[4]   + "//" 
+                                + status   + "//");
+                    } else {
+                        temp_data.add(line);
+                    }
+                }
+                appointment_file.close();
+               } catch (IOException c) {
+                c.printStackTrace();
+            }
+        try (PrintWriter edit_appointment = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
+            for (String new_data : temp_data) {
+                edit_appointment.println(new_data);
+            }
+            edit_appointment.close();
+            Success_Save = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
     
     
