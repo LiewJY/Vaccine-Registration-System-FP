@@ -97,12 +97,9 @@ public class VaccineClass {
         }
     }
 
-    CenterClass center_class = new CenterClass();
-    public void Add_Vaccine(String id, String name) {
+    public void Add_Vaccine(String center_id) {
         String line;
         String[] line_array;
-        center_class.setCenter_ID(Integer.parseInt(id));
-        center_class.setCenter_Name(name);
         try (PrintWriter add_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Vaccine.txt", true)))) {
             try { 
                 FileReader vaccine_file = new FileReader("Vaccine.txt");
@@ -110,7 +107,7 @@ public class VaccineClass {
                 // Check ID
                 while ((line = vaccine.readLine()) != null) {
                     line_array = line.split("//");
-                    if (!line_array[0].equals(Vaccine_Batch_ID) && !line_array[2].equals(Vaccine_Type) && !line_array[6].equals(center_class.getCenter_ID()) ){
+                    if (!line_array[0].equals(Vaccine_Batch_ID) && !line_array[2].equals(Vaccine_Type) && !line_array[6].equals(center_id) ){
                         Success_Save = true;
                     } else {
                         Success_Save = false;
@@ -128,8 +125,7 @@ public class VaccineClass {
                     add_vaccine.append(Amount + "//");
                     add_vaccine.append(Second_Dose_Gap + "//");
                     // add center id and name for the txt file
-                    add_vaccine.append(center_class.getCenter_ID() + "//");
-                    add_vaccine.append(center_class.getCenter_Name() + "//");
+                    add_vaccine.append(center_id + "//");
                     add_vaccine.print("\n");
                     add_vaccine.close();
                 }
@@ -158,11 +154,9 @@ public class VaccineClass {
         
     }
     
-        public void Edit_Vaccine(String id, String name) {
+    public void Edit_Vaccine(String center_id) {
             String line;
             String[] line_array;
-            center_class.setCenter_ID(Integer.parseInt(id));
-            center_class.setCenter_Name(name);
             ArrayList<String> temp_data = new ArrayList<>();
             try { 
                 FileReader vaccine_file = new FileReader("Vaccine.txt");
@@ -179,8 +173,7 @@ public class VaccineClass {
                                 + Expiration_Date   + "//" 
                                 + Amount   + "//" 
                                 + Second_Dose_Gap   + "//" 
-                                + center_class.getCenter_ID()   + "//" 
-                                + center_class.getCenter_Name()   + "//");
+                                + center_id   + "//");
                     } else {
                         temp_data.add(line);
                     }
@@ -200,7 +193,7 @@ public class VaccineClass {
         }
     }
         
-            public void Remove_Vaccine() {
+    public void Remove_Vaccine() {
             String line;
             String[] line_array;
             ArrayList<String> temp_data = new ArrayList<>();

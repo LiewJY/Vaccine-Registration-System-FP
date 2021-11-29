@@ -14,6 +14,11 @@ public class VaccineRegistrationSystem {
     public static void main(String[] args) {
         Login login = new Login();
         login.setVisible(true); 
+//        Personnel aa = new Personnel();
+//        aa.Center_ID_to_Name();
+        
+//        AppointmentClass appoitnment_class = new AppointmentClass();
+//        appoitnment_class.calculateAppoitnment_ID();
     }
 }
       

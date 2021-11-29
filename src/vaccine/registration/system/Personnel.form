@@ -4117,17 +4117,8 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
                     </Property>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="4">
-                        <Column editable="true" title="ID" type="java.lang.Object"/>
-                        <Column editable="true" title="Name" type="java.lang.Object"/>
-                        <Column editable="true" title="IC / Passport Number" type="java.lang.Object"/>
-                        <Column editable="true" title="Date" type="java.lang.Object"/>
-                        <Column editable="true" title="Time" type="java.lang.Object"/>
-                        <Column editable="true" title="Vaccinaton Center" type="java.lang.Object"/>
-                        <Column editable="true" title="Vaccine Type" type="java.lang.Object"/>
-                        <Column editable="true" title="Dose" type="java.lang.Object"/>
-                      </Table>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null, null, null, null, null},&#xa;        {null, null, null, null, null, null, null, null},&#xa;        {null, null, null, null, null, null, null, null},&#xa;        {null, null, null, null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;ID&quot;, &quot;Name&quot;, &quot;IC / Passport Number&quot;, &quot;Date&quot;, &quot;Time&quot;, &quot;Vaccinaton Center&quot;, &quot;Vaccine Type&quot;, &quot;Dose&quot;&#xa;    }&#xa;)&#xa;{public boolean isCellEditable(int row, int column){return false;}}&#xa;&#xa;" type="code"/>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
@@ -4207,6 +4198,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_search_vaccination_appointmentsKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_vaccination_appointments_register">
               <Properties>
