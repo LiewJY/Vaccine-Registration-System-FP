@@ -1,3 +1,3 @@
-1//CenterA//AddressA//1111111111//
-2//CenterB//AddressB//2222222222//
-3//CenterC//AddressC//3333333333//
+1//CenterA//AddressA//1111111111//Pfizer//
+2//CenterB//AddressB//2222222222//Pfizer//
+3//CenterC//AddressC//3333333333//Sinovac//

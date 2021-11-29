@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class CenterClass {
-    private String Center_Name, Center_Address, Center_Contact_Number;
+    private String Center_Name, Center_Address, Center_Contact_Number, Vaccine_Type;
     private int Center_ID;
     // for add function (no need to be in class diagram)
     protected boolean Success_Save = false;
@@ -44,6 +44,12 @@ public class CenterClass {
     }
     public void setCenter_Contact_Number(String center_contact_number) {
         Center_Contact_Number = center_contact_number;
+    }
+    public String getVaccine_Type() {
+        return Vaccine_Type;
+    }
+    public void setVaccine_Type(String vaccine_type) {
+        Vaccine_Type = vaccine_type;
     }
     // for save (add and edit) function (no need to be in class diagram)
     public boolean getSuccess_Save() {
@@ -99,6 +105,7 @@ public class CenterClass {
                     add_center.append(Center_Name + "//");
                     add_center.append(Center_Address + "//");
                     add_center.append(Center_Contact_Number + "//");
+                    add_center.append(Vaccine_Type + "//");
                     add_center.print("\n");
                     add_center.close();
                 }
@@ -142,7 +149,8 @@ public class CenterClass {
                         temp_data.add(Center_ID + "//" 
                                 + Center_Name + "//" 
                                 + Center_Address + "//" 
-                                + Center_Contact_Number + "//");
+                                + Center_Contact_Number + "//" 
+                                + line_array[4] + "//");
                     } else {
                         temp_data.add(line);
                     }

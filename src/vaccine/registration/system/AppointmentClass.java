@@ -292,8 +292,8 @@ public class AppointmentClass {
                                 + people_class.getPeople_ID()  + "//" 
                                 + Vaccine_ID  + "//" 
                                 + Appointment_Time  + "//" 
-                                + Dose_Numeber   + "//" 
-                                + Status   + "//");
+                                + line_array[4]   + "//" 
+                                + line_array[5]   + "//");
                     } else {
                         temp_data.add(line);
                     }

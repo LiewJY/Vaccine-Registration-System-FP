@@ -1176,6 +1176,7 @@ public class People extends javax.swing.JFrame {
         Login login = new Login();
         login.setVisible(true);
         this.dispose();
+        JOptionPane.showMessageDialog(null, "Logout Success.", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_lbl_logoutMouseClicked
 
     
