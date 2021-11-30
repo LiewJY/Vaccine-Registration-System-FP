@@ -22,15 +22,18 @@ public class NonCitizenClass extends PeopleClass{
         String[] line_array;
         try (PrintWriter register_noncitizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", true)))) {
             try { 
+                Success_Save = false;
                 FileReader people_file = new FileReader("People.txt");
                 BufferedReader people = new BufferedReader(people_file);
                 // Check whether input ic and password is existing and matched in text file
                 while ((line = people.readLine()) != null) {
                     line_array = line.split("//");
-                    if (!line_array[4].equals(Passport_Number)) {
-                        Success_Save = true;
-                    } else {
+                    System.out.println(line_array[4]);
+                    if (line_array[4].equals(Passport_Number)) {
                         Success_Save = false;
+                        break; 
+                    } else {
+                        Success_Save = true;
                     }
                 }
                 if(Success_Save == true) {

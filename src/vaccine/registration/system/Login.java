@@ -156,7 +156,7 @@ public class Login extends javax.swing.JFrame {
                 personnel_class.Login_Account();
                 boolean personnel = personnel_class.getAuth();
                 if (personnel == true) {
-                    //JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new Personnel(personnel_class.getPersonnel_ID()).setVisible(true);
                     this.dispose();
                 } else {

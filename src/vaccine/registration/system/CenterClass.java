@@ -144,6 +144,7 @@ public class CenterClass {
                 //edit line
                  while ((line = center.readLine()) != null) {
                     line_array = line.split("//");
+                    
                     if (line_array[0].equals(String.valueOf(Center_ID))) {
                         //Insert data
                         temp_data.add(Center_ID + "//" 

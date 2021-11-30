@@ -11,7 +11,7 @@ import java.util.Date;
 
 
 public class VaccineClass {
-    private int  Vaccine_ID, Amount, Second_Dose_Gap;
+    private int  Vaccine_ID, Second_Dose_Gap;
     private String Vaccine_Batch_ID, Vaccine_Type;
     private String date, Expiration_Date;
     
@@ -34,12 +34,6 @@ public class VaccineClass {
     }
     public void setVaccine_Batch_ID(String vaccine_batch_id) {
         Vaccine_Batch_ID = vaccine_batch_id;
-    }
-    public int getAmount() {
-        return Amount;
-    }
-    public void setAmount(int amount) {
-        Amount = amount;
     }
     public int getSecond_Dose_Gap() {
         return Second_Dose_Gap;
@@ -122,7 +116,7 @@ public class VaccineClass {
                     add_vaccine.append(Vaccine_Type + "//");
                     add_vaccine.append(date + "//");
                     add_vaccine.append(Expiration_Date + "//");
-                    add_vaccine.append(Amount + "//");
+                    //add_vaccine.append(Amount + "//");
                     add_vaccine.append(Second_Dose_Gap + "//");
                     // add center id and name for the txt file
                     add_vaccine.append(center_id + "//");
@@ -145,7 +139,6 @@ public class VaccineClass {
             BufferedReader center = new BufferedReader(vaccine_file);
         while ((line = center.readLine()) != null) {
             Vaccine_Data.add(line);
-            
         }
         vaccine_file.close();
         }catch (IOException e) {
@@ -171,7 +164,7 @@ public class VaccineClass {
                                 + Vaccine_Type  + "//" 
                                 + date  + "//" 
                                 + Expiration_Date   + "//" 
-                                + Amount   + "//" 
+                                //+ Amount   + "//" 
                                 + Second_Dose_Gap   + "//" 
                                 + center_id   + "//");
                     } else {
