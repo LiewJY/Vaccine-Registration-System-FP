@@ -59,10 +59,7 @@ public class CenterClass {
     public ArrayList<String> getCenter_Data() {
         return Center_Data;
     }
-//    public ArrayList<String> getCenter() {
-//        return Get_Center;
-//    }
- 
+
     public void calculateCenter_ID() {
         String line;
         String[] line_array;
@@ -93,10 +90,11 @@ public class CenterClass {
                 // Check whether input ic and password is existing and matched in text file
                 while ((line = center.readLine()) != null) {
                     line_array = line.split("//");
-                    if (!line_array[2].equals(Center_Name)){
-                        Success_Save = true;
-                    } else {
+                    if (line_array[2].equals(Center_Name)){
                         Success_Save = false;
+                        break;
+                    } else {
+                        Success_Save = true;
                     }
                 }
                 if(Success_Save == true) {
@@ -144,30 +142,38 @@ public class CenterClass {
                 //edit line
                  while ((line = center.readLine()) != null) {
                     line_array = line.split("//");
-                    
-                    if (line_array[0].equals(String.valueOf(Center_ID))) {
-                        //Insert data
-                        temp_data.add(Center_ID + "//" 
-                                + Center_Name + "//" 
-                                + Center_Address + "//" 
-                                + Center_Contact_Number + "//" 
-                                + line_array[4] + "//");
+                    if (line_array[2].equals(Center_Name)){
+                        Success_Save = false;
+                        break;
                     } else {
-                        temp_data.add(line);
+                        Success_Save = true;
+                    }
+                    if(Success_Save == true) {
+                        if (line_array[0].equals(String.valueOf(Center_ID))) {
+                            //Insert data
+                            temp_data.add(Center_ID + "//" 
+                                    + Center_Name + "//" 
+                                    + Center_Address + "//" 
+                                    + Center_Contact_Number + "//" 
+                                    + line_array[4] + "//");
+                        } else {
+                            temp_data.add(line);
+                        }
                     }
                 }
                 center_file.close();
                } catch (IOException c) {
                 c.printStackTrace();
             }
-        try (PrintWriter edit_center = new PrintWriter(new BufferedWriter(new FileWriter("Center.txt")))) {
-            for (String new_data : temp_data) {
-                edit_center.println(new_data);
+        if(Success_Save == true) {
+            try (PrintWriter edit_center = new PrintWriter(new BufferedWriter(new FileWriter("Center.txt")))) {
+                for (String new_data : temp_data) {
+                    edit_center.println(new_data);
+                }
+                edit_center.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            edit_center.close();
-            Success_Save = true;
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
     
@@ -205,63 +211,8 @@ public class CenterClass {
         }
     }
         
-//        public void Remove_Center() {
-//        File old_file = new File("Center.txt");
-//        File new_file = new File("Center_temp.txt");
-//        
-//        String line;
-//        String line_array[];
-//        
-//        try {
-//            FileWriter file_writer = new FileWriter(new_file, true);
-//            BufferedWriter buffered_writer = new BufferedWriter(file_writer);
-//            PrintWriter print_writer = new PrintWriter(buffered_writer);
-//            
-//            FileReader file_reader = new FileReader("Center.txt");
-//            BufferedReader buffered_reader = new BufferedReader(file_reader);
-//            
-//            while ((line = buffered_reader.readLine()) != null) {
-//                line_array = line.split("//d");
-//                
-//                // If input ID equals to line_array[0], the line will be ignored, other lines will be written to a new text file
-//                if (!(line_array[0].equalsIgnoreCase(String.valueOf(Center_ID)))) {
-//                    print_writer.println(line);
-//                }
-//            }
-//            
-//            print_writer.flush();
-//            print_writer.close();
-//            file_reader.close();
-//            buffered_reader.close();
-//            buffered_writer.close();
-//            file_writer.close();
-//            
-//            old_file.delete();
-//            File file = new File("Center.txt");
-//            new_file.renameTo(file);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//        
-//        
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 }

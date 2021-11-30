@@ -101,14 +101,15 @@ public class VaccineClass {
                 // Check ID
                 while ((line = vaccine.readLine()) != null) {
                     line_array = line.split("//");
-                    if (!line_array[0].equals(Vaccine_Batch_ID) && !line_array[2].equals(Vaccine_Type) && !line_array[6].equals(center_id) && !line_array[4].equals(date) ){
-                        Success_Save = true;
-                    } else {
+                    if (line_array[0].equals(Vaccine_Batch_ID) && line_array[2].equals(Vaccine_Type) && line_array[6].equals(center_id) && line_array[4].equals(date) ){
                         Success_Save = false;
+                        break;
+                    } else {
+                        Success_Save = true;
                     }
                 }
                 
-                Success_Save = true;
+                //Success_Save = true;
                 if(Success_Save == true) {                   
                     //Insert data (not match)
                     add_vaccine.append(Vaccine_ID + "//");
@@ -156,31 +157,40 @@ public class VaccineClass {
                 //edit line
                  while ((line = vaccine.readLine()) != null) {
                     line_array = line.split("//");
-                    if (line_array[0].equals(String.valueOf(Vaccine_ID))) {
-                        //Insert data
-                        temp_data.add(Vaccine_ID + "//" 
-                                + Vaccine_Batch_ID  + "//" 
-                                + Vaccine_Type  + "//" 
-                                + date  + "//" 
-                                + Expiration_Date   + "//" 
-                                + Second_Dose_Gap   + "//" 
-                                + center_id   + "//");
+                    if (line_array[0].equals(Vaccine_Batch_ID) && line_array[2].equals(Vaccine_Type) && line_array[6].equals(center_id) && line_array[4].equals(date) ){
+                        Success_Save = false;
+                        break;
                     } else {
-                        temp_data.add(line);
+                        Success_Save = true;
+                    }
+                    if(Success_Save == true) {
+                        if (line_array[0].equals(String.valueOf(Vaccine_ID))) {
+                            //Insert data
+                            temp_data.add(Vaccine_ID + "//" 
+                                    + Vaccine_Batch_ID  + "//" 
+                                    + Vaccine_Type  + "//" 
+                                    + date  + "//" 
+                                    + Expiration_Date   + "//" 
+                                    + Second_Dose_Gap   + "//" 
+                                    + center_id   + "//");
+                        } else {
+                            temp_data.add(line);
+                        }
                     }
                 }
                 vaccine_file.close();
                } catch (IOException c) {
                 c.printStackTrace();
             }
-        try (PrintWriter edit_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Vaccine.txt")))) {
-            for (String new_data : temp_data) {
-                edit_vaccine.println(new_data);
+        if(Success_Save == true) {
+            try (PrintWriter edit_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Vaccine.txt")))) {
+                for (String new_data : temp_data) {
+                    edit_vaccine.println(new_data);
+                }
+                edit_vaccine.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            edit_vaccine.close();
-            Success_Save = true;
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
         

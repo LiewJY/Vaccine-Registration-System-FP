@@ -5127,7 +5127,7 @@ public class Personnel extends javax.swing.JFrame {
                     View_People();
                     JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to save edit. \nPossible error: \n A record with the same IC number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
              } else {
                 noncitizen_class.setName(txt_edit_people_name.getText());
@@ -5141,7 +5141,7 @@ public class Personnel extends javax.swing.JFrame {
                     View_People();
                     JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to save edit.\nPossible error: \n A record with the same Passport number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
              }
         }
@@ -5304,7 +5304,7 @@ public class Personnel extends javax.swing.JFrame {
                 View_Center();
                 JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to save edit. \nPossible error: \n- Same center name exist.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_edit_center_saveActionPerformed
@@ -5387,7 +5387,7 @@ public class Personnel extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Vaccine updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                 View_Vaccine();
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to update vaccine.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n-A record with same batch number, location and date exist", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_edit_vaccine_saveActionPerformed

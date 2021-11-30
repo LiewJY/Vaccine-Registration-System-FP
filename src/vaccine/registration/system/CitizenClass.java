@@ -30,7 +30,6 @@ public class CitizenClass extends PeopleClass {
                 // Check whether input ic and password is existing and matched in text file
                 while ((line = people.readLine()) != null) {
                     line_array = line.split("//");
-                    System.out.println(line_array[4]);
                     if (line_array[4].equals(IC_Number)) {
                         Success_Save = false;
                         break; 
@@ -98,15 +97,22 @@ public class CitizenClass extends PeopleClass {
         }
     }
     public void Edit_Account() {
-            String line;
-            String[] line_array;
-            ArrayList<String> temp_data = new ArrayList<>();
-            try { 
-                FileReader people_file = new FileReader("People.txt");
-                BufferedReader people = new BufferedReader(people_file);
-                //edit line
-                 while ((line = people.readLine()) != null) {
-                    line_array = line.split("//");
+        String line;
+        String[] line_array;
+        ArrayList<String> temp_data = new ArrayList<>();
+        try { 
+            FileReader people_file = new FileReader("People.txt");
+            BufferedReader people = new BufferedReader(people_file);
+            //edit line
+             while ((line = people.readLine()) != null) {
+                line_array = line.split("//");
+                if (line_array[4].equals(IC_Number)) {
+                    Success_Save = false;
+                    break; 
+                } else {
+                    Success_Save = true;
+                }
+                if(Success_Save == true) {
                     if (line_array[0].equals(String.valueOf(People_ID))) {
                         //Insert data
                         temp_data.add(People_ID + "//" 
@@ -120,18 +126,20 @@ public class CitizenClass extends PeopleClass {
                         temp_data.add(line);
                     }
                 }
-                people_file.close();
-               } catch (IOException c) {
-                c.printStackTrace();
             }
-        try (PrintWriter edit_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt")))) {
-            for (String new_data : temp_data) {
-                edit_citizen.println(new_data);
+            people_file.close();
+           } catch (IOException c) {
+            c.printStackTrace();
+        }
+        if(Success_Save == true) {
+            try (PrintWriter edit_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt")))) {
+                for (String new_data : temp_data) {
+                    edit_citizen.println(new_data);
+                }
+                edit_citizen.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            edit_citizen.close();
-            Success_Save = true;
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
    
