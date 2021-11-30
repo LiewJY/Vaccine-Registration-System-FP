@@ -101,7 +101,7 @@ public class VaccineClass {
                 // Check ID
                 while ((line = vaccine.readLine()) != null) {
                     line_array = line.split("//");
-                    if (!line_array[0].equals(Vaccine_Batch_ID) && !line_array[2].equals(Vaccine_Type) && !line_array[6].equals(center_id) ){
+                    if (!line_array[0].equals(Vaccine_Batch_ID) && !line_array[2].equals(Vaccine_Type) && !line_array[6].equals(center_id) && !line_array[4].equals(date) ){
                         Success_Save = true;
                     } else {
                         Success_Save = false;
