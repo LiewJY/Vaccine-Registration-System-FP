@@ -372,8 +372,8 @@ public class Personnel extends javax.swing.JFrame {
         // Loop and add data
         for (int i = 0; i <  vaccine_class.getVaccine_Data().size(); i++) {
             String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
-            vaccine_id_and_details.add(new VaccineDetails(data[0],data[3],data[2],data[7]));
-            System.out.println(data[0] + "  " +  data[1] + "  " +  data[7]);
+            vaccine_id_and_details.add(new VaccineDetails(data[0],data[3],data[2],data[6]));
+            System.out.println(data[0] + "  " +  data[1] + "  " +  data[6]);
         }
 
     }
@@ -407,7 +407,7 @@ public class Personnel extends javax.swing.JFrame {
         vaccine_class.View_Vaccine();
         // Set column
         
-        String columns[] = {"ID", "Batch ID","Type", "Date", "Expiration Date", "Amount", "Second Dose Gap (weeks)", "Center Name"};
+        String columns[] = {"ID", "Batch ID","Type", "Date", "Expiration Date", "Second Dose Gap (weeks)", "Center Name"};
 
         DefaultTableModel vaccine_table_model = (DefaultTableModel)tbl_view_vaccine.getModel();
         vaccine_table_model.setColumnIdentifiers(columns);
@@ -421,8 +421,8 @@ public class Personnel extends javax.swing.JFrame {
         for (int i = 0; i < vaccine_class.getVaccine_Data().size(); i++) {
             String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
             for (Center center: center_id_to_name) {
-                if(center.getId().equals(data[7])) {
-                    data[7] = center.getName();
+                if(center.getId().equals(data[6])) {
+                    data[6] = center.getName();
                 }
             }
             vaccine_table_model.addRow(data);
@@ -455,16 +455,8 @@ public class Personnel extends javax.swing.JFrame {
                     Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-               // txt_edit_vaccine_date.setDate();
-
-
-
-            //txt_edit_vaccine_expiration_date.setDate(date_format.parse(vaccine_table_model.getValueAt(row, 3).toString()));
-                
-                txt_edit_vaccine_amount.setText(vaccine_table_model.getValueAt(row, 5).toString());
-                lbl_edit_vaccine_second_dose_gap.setText(vaccine_table_model.getValueAt(row, 6).toString());
-                cbo_edit_vaccine_center_name.setSelectedItem(vaccine_table_model.getValueAt(row, 7).toString());
-System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
+                lbl_edit_vaccine_second_dose_gap.setText(vaccine_table_model.getValueAt(row, 5).toString());
+                cbo_edit_vaccine_center_name.setSelectedItem(vaccine_table_model.getValueAt(row, 6).toString());
             }
             
         });
@@ -533,7 +525,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
        tbl_view_vaccination_appointments.removeColumn(tbl_view_vaccination_appointments.getColumnModel().getColumn(0));
        tbl_view_vaccination_appointments.removeColumn(tbl_view_vaccination_appointments.getColumnModel().getColumn(0));
                   
-        tbl_view_vaccine.setModel(appointment_table_model);
+        tbl_view_vaccination_appointments.setModel(appointment_table_model);
         appointment_table_model.setRowCount(0);
         // Loop and display data
         Center_ID_and_Details();
@@ -5337,7 +5329,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
 //        txt_add_vaccine_date.getJCalendar().setMinSelectableDate(new Date());
 //        txt_add_vaccine_expiration_date.getJCalendar().setMinSelectableDate(new Date());
         System.out.println(new Date());
-        if (txt_add_vaccine_batch_id.getText().equals("") || cbo_add_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_add_vaccine_amount.getText().equals("") || cbo_add_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
+        if (txt_add_vaccine_batch_id.getText().equals("") || cbo_add_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || cbo_add_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
                 || txt_add_vaccine_date.getDate() == null ||  txt_add_vaccine_expiration_date.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_add_vaccine_date.getDate().after(date)) {
@@ -5346,15 +5338,12 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateVaccineBatchID(txt_add_vaccine_batch_id.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (validation_class.validateVaccineAmount(txt_add_vaccine_amount.getText()) == true) {
-        JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_amount"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
+        }  else {
             vaccine_class.calcualte_Vaccine_ID();
             vaccine_class.setVaccine_Batch_ID(txt_add_vaccine_batch_id.getText());
             vaccine_class.setVaccine_Type(cbo_add_vaccine_type.getSelectedItem().toString());
             vaccine_class.setdate(date_format.format(txt_add_vaccine_date.getDate()));
             vaccine_class.setExpiration_Date(date_format.format(txt_add_vaccine_expiration_date.getDate()));
-            //vaccine_class.setAmount(Integer.parseInt(txt_add_vaccine_amount.getText()));           
             vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_add_vaccine_second_dose_gap.getText()));
             Center selected_item = (Center) cbo_add_vaccine_center_name.getSelectedItem();
             vaccine_class.Add_Vaccine(selected_item.getId());
@@ -5371,7 +5360,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
     // Save edit vaccine button
     private void btn_edit_vaccine_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_vaccine_saveActionPerformed
         System.out.println(new Date());
-        if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || txt_edit_vaccine_amount.getText().equals("") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
+        if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
                 || txt_edit_vaccine_date.getDate() == null ||  txt_edit_vaccine_expiration_date.getDate() == null || cbo_edit_vaccine_center_name.getSelectedItem().equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_edit_vaccine_date.getDate().after(date)) {
@@ -5380,14 +5369,11 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateVaccineBatchID(txt_edit_vaccine_batch_id.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (validation_class.validateVaccineAmount(txt_edit_vaccine_amount.getText()) == true) {
-        JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_amount"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             vaccine_class.setVaccine_Batch_ID(txt_edit_vaccine_batch_id.getText());
             vaccine_class.setVaccine_Type(cbo_edit_vaccine_type.getSelectedItem().toString());
             vaccine_class.setdate(date_format.format(txt_edit_vaccine_date.getDate()));
             vaccine_class.setExpiration_Date(date_format.format(txt_edit_vaccine_expiration_date.getDate()));
-            //vaccine_class.setAmount(Integer.parseInt(txt_edit_vaccine_amount.getText()));           
             vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_edit_vaccine_second_dose_gap.getText()));
             Center selected_item = (Center) cbo_edit_vaccine_center_name.getSelectedItem();
             vaccine_class.Edit_Vaccine(selected_item.getId());
@@ -5593,7 +5579,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                     String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
 
                     String temp = "", ww;
-                    ww = data[7];
+                    ww = data[6];
                     for(int a = 0; a < center_class.getCenter_Data().size(); a++) {
                         String[] name = center_class.getCenter_Data().get(a).split("//");
                         //temp = name[1];
@@ -5603,8 +5589,8 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                             System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
                         }
                     }                  
-                    //System.out.println("outside  , location id " + data[7] + "  " + temp + "  " + data[2]);
-                    cbo_edit_model.addElement(new Center(data[7], temp, data[2]));
+                    //System.out.println("outside  , location id " + data[6] + "  " + temp + "  " + data[2]);
+                    cbo_edit_model.addElement(new Center(data[6], temp, data[2]));
 
                 }
                 cbo_register_vaccination_appointments_select_vaccination_center.setModel(cbo_edit_model);
@@ -5625,7 +5611,7 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                     String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
 
                     String temp = "", ww;
-                    ww = data[7];
+                    ww = data[6];
                     for(int a = 0; a < center_class.getCenter_Data().size(); a++) {
                         String[] name = center_class.getCenter_Data().get(a).split("//");
                         //temp = name[1];
@@ -5635,8 +5621,8 @@ System.out.println(vaccine_table_model.getValueAt(row, 7).toString());
                             System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
                         }
                     }                    
-                    //System.out.println("outside  , location id " + data[7] + "  " + temp + "  " + data[2]);
-                    cbo_edit_model.addElement(new Center(data[7], temp, data[2]));
+                    //System.out.println("outside  , location id " + data[6] + "  " + temp + "  " + data[2]);
+                    cbo_edit_model.addElement(new Center(data[6], temp, data[2]));
 
                 }
                 cbo_edit_vaccination_appointments_select_vaccination_center.setModel(cbo_edit_model);

@@ -116,7 +116,6 @@ public class VaccineClass {
                     add_vaccine.append(Vaccine_Type + "//");
                     add_vaccine.append(date + "//");
                     add_vaccine.append(Expiration_Date + "//");
-                    //add_vaccine.append(Amount + "//");
                     add_vaccine.append(Second_Dose_Gap + "//");
                     // add center id and name for the txt file
                     add_vaccine.append(center_id + "//");
@@ -164,7 +163,6 @@ public class VaccineClass {
                                 + Vaccine_Type  + "//" 
                                 + date  + "//" 
                                 + Expiration_Date   + "//" 
-                                //+ Amount   + "//" 
                                 + Second_Dose_Gap   + "//" 
                                 + center_id   + "//");
                     } else {
