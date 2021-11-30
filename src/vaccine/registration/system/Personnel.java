@@ -379,9 +379,7 @@ public class Personnel extends javax.swing.JFrame {
         // Loop and add data
         for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
             String[] data = center_class.getCenter_Data().get(i).split("//");
-            
             center_id_to_name.add(new Center(data[0], data[1], data[2]));
-            //System.out.println(data[0] + "  " +  data[1]);
         }
     }
     
@@ -5218,7 +5216,7 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save edit vaccine button
     private void btn_edit_vaccine_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_vaccine_saveActionPerformed
-        if (cbo_add_vaccine_center_name.getSelectedIndex() == -1) {
+        if (cbo_edit_vaccine_center_name.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "The selected type of vaccine does not have a center. \nPlease select another type of vaccine.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else { 
             if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")

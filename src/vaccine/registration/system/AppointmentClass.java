@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class AppointmentClass {
     private String Appointment_Time, Status;
     private int Appointnment_ID, Dose_Numeber;
+    
     // for add function (no need to be in class diagram)
     protected boolean Success_Save = false;
     protected boolean Exist = false;
@@ -53,7 +54,7 @@ public class AppointmentClass {
     public boolean getSuccess_Save() {
         return Success_Save;
     }
-        public boolean getExist() {
+    public boolean getExist() {
         return Exist;
     }
     public int getCount() {
@@ -66,7 +67,6 @@ public class AppointmentClass {
     public ArrayList<String> getAvaliableLocation() {
         return avaliable_location;
     }
-    
     public void calculateAppointnment_ID() {
         String line;
         String[] line_array;
@@ -88,9 +88,6 @@ public class AppointmentClass {
             e.printStackTrace();
         }
     }
-    
-
-    
     PeopleClass people_class = new PeopleClass();
     public void View_Appointment() {
         String line;
@@ -175,7 +172,6 @@ public class AppointmentClass {
         }
                     
     }
-    
     public void Add_Vaccine_Id(String date, String center_id) {
         String line;
         String[] line_array;
@@ -200,11 +196,6 @@ public class AppointmentClass {
             c.printStackTrace();
         }
     }
-                    
-    
-
-     
-    //PeopleClass people_class = new PeopleClass();
     public void Add_Appointment() {
         String line;
         String[] line_array;
@@ -246,113 +237,109 @@ public class AppointmentClass {
             e.printStackTrace();
         }
     }
-    
-    
-        public void Remove_Appointment() {
-            String line;
-            String[] line_array;
-            ArrayList<String> temp_data = new ArrayList<>();
-            try { 
-                FileReader vaccine_file = new FileReader("Appointment.txt");
-                BufferedReader vaccine = new BufferedReader(vaccine_file);
-                //edit line
-                 while ((line = vaccine.readLine()) != null) {
-                    line_array = line.split("//");
-                    if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
-                        //do nothing
-                    } else {
-                        temp_data.add(line);
-                    }
+    public void Remove_Appointment() {
+        String line;
+        String[] line_array;
+        ArrayList<String> temp_data = new ArrayList<>();
+        try { 
+            FileReader vaccine_file = new FileReader("Appointment.txt");
+            BufferedReader vaccine = new BufferedReader(vaccine_file);
+            //edit line
+             while ((line = vaccine.readLine()) != null) {
+                line_array = line.split("//");
+                if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
+                    //do nothing
+                } else {
+                    temp_data.add(line);
                 }
-                vaccine_file.close();
-               } catch (IOException c) {
-                c.printStackTrace();
             }
-        try (PrintWriter edit_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
-            for (String new_data : temp_data) {
-                edit_vaccine.println(new_data);
-            }
-            edit_vaccine.close();
-            Success_Save = true;
-        } catch (IOException e) {
-            e.printStackTrace();
+            vaccine_file.close();
+           } catch (IOException c) {
+            c.printStackTrace();
         }
+    try (PrintWriter edit_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
+        for (String new_data : temp_data) {
+            edit_vaccine.println(new_data);
+        }
+        edit_vaccine.close();
+        Success_Save = true;
+    } catch (IOException e) {
+        e.printStackTrace();
     }
-        
-        public void Update_Appointment() {
-            String line;
-            String[] line_array;
-            ArrayList<String> temp_data = new ArrayList<>();
-            try { 
-                FileReader appointment_file = new FileReader("Appointment.txt");
-                BufferedReader vaccine = new BufferedReader(appointment_file);
-                //edit line
-                 while ((line = vaccine.readLine()) != null) {
-                    line_array = line.split("//");
-                    if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
-                        //Insert data
-                        temp_data.add(Appointnment_ID + "//" 
-                                + people_class.getPeople_ID()  + "//" 
-                                + Vaccine_ID  + "//" 
-                                + Appointment_Time  + "//" 
-                                + line_array[4]   + "//" 
-                                + line_array[5]   + "//");
-                    } else {
-                        temp_data.add(line);
-                    }
+}
+    public void Update_Appointment() {
+        String line;
+        String[] line_array;
+        ArrayList<String> temp_data = new ArrayList<>();
+        try { 
+            FileReader appointment_file = new FileReader("Appointment.txt");
+            BufferedReader vaccine = new BufferedReader(appointment_file);
+            //edit line
+             while ((line = vaccine.readLine()) != null) {
+                line_array = line.split("//");
+                if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
+                    //Insert data
+                    temp_data.add(Appointnment_ID + "//" 
+                            + people_class.getPeople_ID()  + "//" 
+                            + Vaccine_ID  + "//" 
+                            + Appointment_Time  + "//" 
+                            + line_array[4]   + "//" 
+                            + line_array[5]   + "//");
+                } else {
+                    temp_data.add(line);
                 }
-                appointment_file.close();
-               } catch (IOException c) {
-                c.printStackTrace();
             }
-        try (PrintWriter edit_appointment = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
-            for (String new_data : temp_data) {
-                edit_appointment.println(new_data);
-            }
-            edit_appointment.close();
-            Success_Save = true;
-        } catch (IOException e) {
-            e.printStackTrace();
+            appointment_file.close();
+           } catch (IOException c) {
+            c.printStackTrace();
         }
+    try (PrintWriter edit_appointment = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
+        for (String new_data : temp_data) {
+            edit_appointment.println(new_data);
+        }
+        edit_appointment.close();
+        Success_Save = true;
+    } catch (IOException e) {
+        e.printStackTrace();
     }
-        
-        public void Update_Appointment_Status(String status) {
-            String line;
-            String[] line_array;
-            ArrayList<String> temp_data = new ArrayList<>();
-            try { 
-                FileReader appointment_file = new FileReader("Appointment.txt");
-                BufferedReader vaccine = new BufferedReader(appointment_file);
-                //edit line
-                 while ((line = vaccine.readLine()) != null) {
-                    line_array = line.split("//");
-                    if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
-                        
-                        //Insert data
-                        temp_data.add(Appointnment_ID + "//" 
-                                + line_array[1]  + "//" 
-                                + line_array[2]  + "//" 
-                                + line_array[3]  + "//" 
-                                + line_array[4]   + "//" 
-                                + status   + "//");
-                    } else {
-                        temp_data.add(line);
-                    }
+}
+    public void Update_Appointment_Status(String status) {
+        String line;
+        String[] line_array;
+        ArrayList<String> temp_data = new ArrayList<>();
+        try { 
+            FileReader appointment_file = new FileReader("Appointment.txt");
+            BufferedReader vaccine = new BufferedReader(appointment_file);
+            //edit line
+             while ((line = vaccine.readLine()) != null) {
+                line_array = line.split("//");
+                if (line_array[0].equals(String.valueOf(Appointnment_ID))) {
+
+                    //Insert data
+                    temp_data.add(Appointnment_ID + "//" 
+                            + line_array[1]  + "//" 
+                            + line_array[2]  + "//" 
+                            + line_array[3]  + "//" 
+                            + line_array[4]   + "//" 
+                            + status   + "//");
+                } else {
+                    temp_data.add(line);
                 }
-                appointment_file.close();
-               } catch (IOException c) {
-                c.printStackTrace();
             }
-        try (PrintWriter edit_appointment = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
-            for (String new_data : temp_data) {
-                edit_appointment.println(new_data);
-            }
-            edit_appointment.close();
-            Success_Save = true;
-        } catch (IOException e) {
-            e.printStackTrace();
+            appointment_file.close();
+           } catch (IOException c) {
+            c.printStackTrace();
         }
+    try (PrintWriter edit_appointment = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
+        for (String new_data : temp_data) {
+            edit_appointment.println(new_data);
+        }
+        edit_appointment.close();
+        Success_Save = true;
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
     
     
     

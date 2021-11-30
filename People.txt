@@ -1,9 +1,3 @@
-1//NameA//1111111111//Malaysia//1//Addressa//1//
-2//NameB//1212121212//Malaysia//33//AddressB//2//
-3//NameC//3333333333//Algeria//55//AddressC//3//
-4//NameD//4444444444//Algeria//1//AddressD//4//
-5//NameE//5555555566//Algeria//5//AddressE//5//
-6//qwqw//1222222222//Albania//1//12//12//
-7//fff//1111111111//American Samoa//009//12//12//
-8//aaaa//1111111111//Albania//2//1//1//
-9//qqqqq//12345678900//Mauritania//331//12//12//
+2//NameB//1212121212//Malaysia//3//AddressB//2//
+3//NameD//3333333333//Cape Verde//12//address 3//3//
+4//Name c//1111222221//Malaysia//12//aaaasd//12//

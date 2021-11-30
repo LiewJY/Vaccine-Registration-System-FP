@@ -1,9 +1,13 @@
 package vaccine.registration.system;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import java.text.*;
+import java.util.ArrayList;
 import java.util.regex.*;
+import javax.swing.table.DefaultTableModel;
 
 public class People extends javax.swing.JFrame {
 
@@ -11,6 +15,7 @@ public class People extends javax.swing.JFrame {
     CitizenClass citizen_class = new CitizenClass();
     NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
+    CenterClass center_class = new CenterClass();
 
     boolean citizenship;
     
@@ -60,6 +65,39 @@ public class People extends javax.swing.JFrame {
             lbl_view_address.setText(noncitizen_class.getAddress());       
         }
     }
+    
+    public void View_Center() {
+        //load data
+        center_class.View_Center();
+        // Set column
+        String columns[] = {"Center ID", "Center Name", "Center Address", "Contact Number", "Vaccine Type"};
+
+        DefaultTableModel center_table_model = (DefaultTableModel)tbl_vaccination_status.getModel();
+        center_table_model.setColumnIdentifiers(columns);
+        //remove id col
+        tbl_vaccination_status.removeColumn(tbl_vaccination_status.getColumnModel().getColumn(0));
+
+        
+        tbl_vaccination_status.setModel(center_table_model);
+        center_table_model.setRowCount(0);
+        // Loop and display data
+        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
+            String[] data = center_class.getCenter_Data().get(i).split("//");
+            center_table_model.addRow(data);
+        }
+        
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(false);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_vaccination_status.setVisible(true);
+        
+
+        
+
+    }
+    
+
 
 
     // UIW
@@ -1197,11 +1235,7 @@ public class People extends javax.swing.JFrame {
     
     // Vaccination status side bar tab
     private void lbl_vaccination_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_statusMouseClicked
-        pnl_view_account.setVisible(false);
-        pnl_edit_account.setVisible(false);
-        pnl_view_vaccination_appointment.setVisible(false);
-        pnl_register_vaccination_appointment.setVisible(false);
-        pnl_view_vaccination_status.setVisible(true);
+        View_Center();
     }//GEN-LAST:event_lbl_vaccination_statusMouseClicked
 
     

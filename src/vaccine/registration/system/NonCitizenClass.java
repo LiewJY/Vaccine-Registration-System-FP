@@ -89,6 +89,7 @@ public class NonCitizenClass extends PeopleClass{
                     Nationality = line_array[3];
                     Passport_Number = line_array[4];
                     Address = line_array[5];
+                    Password = line_array[6];
                 }
             }
         } catch (IOException v) {
