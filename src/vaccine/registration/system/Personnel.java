@@ -92,6 +92,7 @@ public class Personnel extends javax.swing.JFrame {
 
         //register people
         txt_register_people_name.setText("");
+        txt_register_people_phone_number.setText("");
         cbo_register_people_nationality.setSelectedIndex(-1);
         txt_register_people_ic_passport_number.setText("");
         txt_register_people_address.setText("");
@@ -4487,6 +4488,7 @@ public class Personnel extends javax.swing.JFrame {
 
     // Register people button
     private void btn_people_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_people_registerActionPerformed
+        cbo_register_people_nationality.setSelectedIndex(-1);
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
@@ -4577,7 +4579,7 @@ public class Personnel extends javax.swing.JFrame {
     
     // Cancel edit vaccination appointment button
     private void btn_edit_vaccination_appointments_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_vaccination_appointments_cancelActionPerformed
-        View_Vaccine();
+        View_Appointment();
     }//GEN-LAST:event_btn_edit_vaccination_appointments_cancelActionPerformed
 
     
@@ -5115,7 +5117,7 @@ public class Personnel extends javax.swing.JFrame {
             center_class.setVaccine_Type(cbo_add_center_vaccine_type.getSelectedItem().toString());
             center_class.Add_Center();
             if(center_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Center addded successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Center added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                 View_Center();
             } else {
                 JOptionPane.showMessageDialog(null, "Failed to add center, center with the same name exist.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -5169,68 +5171,75 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save add vaccine button
     private void btn_add_vaccine_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_vaccine_addActionPerformed
-        // add -- block older date
-//        txt_add_vaccine_date.getJCalendar().setMinSelectableDate(new Date());
-//        txt_add_vaccine_expiration_date.getJCalendar().setMinSelectableDate(new Date());
-        System.out.println(new Date());
-        if (txt_add_vaccine_batch_id.getText().equals("") || cbo_add_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || cbo_add_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
-                || txt_add_vaccine_date.getDate() == null ||  txt_add_vaccine_expiration_date.getDate() == null
-                || cbo_add_vaccine_center_name.getSelectedItem().equals("")) {
-            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (txt_add_vaccine_date.getDate().compareTo(date) <0) {
-            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (txt_add_vaccine_expiration_date.getDate().compareTo(date) <0) {
-            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (cbo_add_vaccine_center_name.getSelectedItem().equals("")) {
-            JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (validation_class.validateVaccineBatchID(txt_add_vaccine_batch_id.getText()) == true) {
-            JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
-        }  else {
-            vaccine_class.calcualte_Vaccine_ID();
-            vaccine_class.setVaccine_Batch_ID(txt_add_vaccine_batch_id.getText());
-            vaccine_class.setVaccine_Type(cbo_add_vaccine_type.getSelectedItem().toString());
-            vaccine_class.setdate(date_format.format(txt_add_vaccine_date.getDate()));
-            vaccine_class.setExpiration_Date(date_format.format(txt_add_vaccine_expiration_date.getDate()));
-            vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_add_vaccine_second_dose_gap.getText()));
-            Center selected_item = (Center) cbo_add_vaccine_center_name.getSelectedItem();
-            vaccine_class.Add_Vaccine(selected_item.getId());
-            if(vaccine_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Vaccine addded successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-                View_Vaccine();
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to add vaccine, a record with same batch number, location and date exist.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (cbo_add_vaccine_center_name.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "The selected type of vaccine does not have a center. \nPlease select another type of vaccine.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (txt_add_vaccine_batch_id.getText().equals("") || cbo_add_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || cbo_add_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
+                    || txt_add_vaccine_date.getDate() == null ||  txt_add_vaccine_expiration_date.getDate() == null
+                    || cbo_add_vaccine_center_name.getSelectedItem().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (txt_add_vaccine_date.getDate().compareTo(date) <0) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (txt_add_vaccine_expiration_date.getDate().compareTo(date) <0) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (cbo_add_vaccine_center_name.getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (validation_class.validateVaccineBatchID(txt_add_vaccine_batch_id.getText()) == true) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
+            }  else {
+                vaccine_class.calcualte_Vaccine_ID();
+                vaccine_class.setVaccine_Batch_ID(txt_add_vaccine_batch_id.getText());
+                vaccine_class.setVaccine_Type(cbo_add_vaccine_type.getSelectedItem().toString());
+                vaccine_class.setdate(date_format.format(txt_add_vaccine_date.getDate()));
+                vaccine_class.setExpiration_Date(date_format.format(txt_add_vaccine_expiration_date.getDate()));
+                vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_add_vaccine_second_dose_gap.getText()));
+                Center selected_item = (Center) cbo_add_vaccine_center_name.getSelectedItem();
+                vaccine_class.Add_Vaccine(selected_item.getId());
+                if(vaccine_class.getSuccess_Save() == true) {
+                    JOptionPane.showMessageDialog(null, "Vaccine addded successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    View_Vaccine();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to add vaccine, a record with same batch number, location and date exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
+        
+        
+
     }//GEN-LAST:event_btn_add_vaccine_addActionPerformed
 
     
     // Save edit vaccine button
     private void btn_edit_vaccine_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_vaccine_saveActionPerformed
-        System.out.println(new Date());
-        if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
-                || txt_edit_vaccine_date.getDate() == null ||  txt_edit_vaccine_expiration_date.getDate() == null || cbo_edit_vaccine_center_name.getSelectedItem().equals("")) {
-            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (txt_edit_vaccine_date.getDate().compareTo(date) <0) {
-            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (txt_edit_vaccine_expiration_date.getDate().compareTo(date) <0) {
-            JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (validation_class.validateVaccineBatchID(txt_edit_vaccine_batch_id.getText()) == true) {
-            JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            vaccine_class.setVaccine_Batch_ID(txt_edit_vaccine_batch_id.getText());
-            vaccine_class.setVaccine_Type(cbo_edit_vaccine_type.getSelectedItem().toString());
-            vaccine_class.setdate(date_format.format(txt_edit_vaccine_date.getDate()));
-            vaccine_class.setExpiration_Date(date_format.format(txt_edit_vaccine_expiration_date.getDate()));
-            vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_edit_vaccine_second_dose_gap.getText()));
-            Center selected_item = (Center) cbo_edit_vaccine_center_name.getSelectedItem();
-            vaccine_class.Edit_Vaccine(selected_item.getId());
-            if(vaccine_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Vaccine updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-                View_Vaccine();
+        if (cbo_add_vaccine_center_name.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "The selected type of vaccine does not have a center. \nPlease select another type of vaccine.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else { 
+            if (txt_edit_vaccine_batch_id.getText().equals("") || cbo_edit_vaccine_type.getSelectedItem().equals("Select Vaccine Type") || cbo_edit_vaccine_center_name.getSelectedItem().equals("Select Vaccination Center")
+                    || txt_edit_vaccine_date.getDate() == null ||  txt_edit_vaccine_expiration_date.getDate() == null || cbo_edit_vaccine_center_name.getSelectedItem().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (txt_edit_vaccine_date.getDate().compareTo(date) <0) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (txt_edit_vaccine_expiration_date.getDate().compareTo(date) <0) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (validation_class.validateVaccineBatchID(txt_edit_vaccine_batch_id.getText()) == true) {
+                JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n-A record with same batch number, location and date exist", "Error", JOptionPane.ERROR_MESSAGE);
+                vaccine_class.setVaccine_Batch_ID(txt_edit_vaccine_batch_id.getText());
+                vaccine_class.setVaccine_Type(cbo_edit_vaccine_type.getSelectedItem().toString());
+                vaccine_class.setdate(date_format.format(txt_edit_vaccine_date.getDate()));
+                vaccine_class.setExpiration_Date(date_format.format(txt_edit_vaccine_expiration_date.getDate()));
+                vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_edit_vaccine_second_dose_gap.getText()));
+                Center selected_item = (Center) cbo_edit_vaccine_center_name.getSelectedItem();
+                vaccine_class.Edit_Vaccine(selected_item.getId());
+                if(vaccine_class.getSuccess_Save() == true) {
+                    JOptionPane.showMessageDialog(null, "Vaccine updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    View_Vaccine();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n-A record with same batch number, location and date exist", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
+       
     }//GEN-LAST:event_btn_edit_vaccine_saveActionPerformed
     // save in personnel edit
     private void btn_save_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_editActionPerformed
@@ -5482,9 +5491,7 @@ public class Personnel extends javax.swing.JFrame {
     private void cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed
         Center_ID_and_Details();
         Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
-        lbl_register_vaccination_appointments_vaccine_type.setText(selected_item.getType());
-        
-        
+        lbl_register_vaccination_appointments_vaccine_type.setText(selected_item.getType());        
     }//GEN-LAST:event_cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed
 
     private void cbo_edit_vaccination_appointments_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_edit_vaccination_appointments_select_vaccination_centerActionPerformed

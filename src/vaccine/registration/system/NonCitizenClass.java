@@ -109,9 +109,11 @@ public class NonCitizenClass extends PeopleClass{
                 if (line_array[4].equals(Passport_Number)) {
                     count = count + 1;
                     if(count > 1) {
+                        System.out.println(count + "inside");
                         Success_Save = false;
                         break;
                     }
+                    System.out.println(count + "outside");
                  } else {
                     Success_Save = true;
                 }
