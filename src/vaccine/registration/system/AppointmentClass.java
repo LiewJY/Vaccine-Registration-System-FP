@@ -139,11 +139,11 @@ public class AppointmentClass {
             while ((line = vaccine.readLine()) != null) {
                 line_array = line.split("//");
                 if (line_array[1].equals(String.valueOf(people_class.getPeople_ID()))){
-                    //System.out.println("id + 1  get " + people_class.getPeople_ID());
+                    System.out.println("id + 1  get " + people_class.getPeople_ID());
                     count = count + 1;
                 } else {
                     count = 1;
-                    //System.out.println("else  get " + people_class.getPeople_ID());
+                    System.out.println("else  get " + people_class.getPeople_ID());
                 }
             }
             Dose_Numeber = count;
@@ -187,7 +187,7 @@ public class AppointmentClass {
              while ((line = vaccine.readLine()) != null) {
                 line_array = line.split("//");
                 System.out.println(line);
-                if (line_array[3].equals(date) && line_array[7].equals(center_id)) {
+                if (line_array[3].equals(date) && line_array[6].equals(center_id)) {
                     avaliable_location.add(line);
                     Vaccine_ID = line_array[0];
                     System.out.println("added id" + line + "  " + Vaccine_ID);
@@ -223,10 +223,11 @@ public class AppointmentClass {
                         Success_Save = false;
                     }
                 }
-                
-                Success_Save = true;
 
-                if(Success_Save == true) {                   
+                if(Success_Save == true) {
+                    if(Dose_Numeber > 2){
+                        Success_Save = false;
+                    } else {
                     //Insert data (not match)
                     add_appointment.append(Appointnment_ID + "//");
                     add_appointment.append(people_class.getPeople_ID() + "//");
@@ -236,6 +237,7 @@ public class AppointmentClass {
                     add_appointment.append(Status + "//");
                     add_appointment.print("\n");
                     add_appointment.close();
+                    }
                 }
             } catch (IOException c) {
                 c.printStackTrace();

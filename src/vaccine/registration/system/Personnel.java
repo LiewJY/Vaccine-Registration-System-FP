@@ -5191,7 +5191,7 @@ public class Personnel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Appointment();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to register.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to register. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
