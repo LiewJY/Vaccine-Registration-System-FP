@@ -23,6 +23,7 @@ public class PeopleClass {
     protected boolean Citizen;
     // for register function (no need to be in class diagram)
     protected boolean Success_Save = false;
+    protected int count;
 
     
     PeopleClass() {

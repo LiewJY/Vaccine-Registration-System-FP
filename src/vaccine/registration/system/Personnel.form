@@ -6032,7 +6032,7 @@
                       <Component id="lbl_add_vaccine_expiration_date" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txt_add_vaccine_expiration_date" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbl_add_vaccine_center_name" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cbo_add_vaccine_center_name" min="-2" pref="40" max="-2" attributes="0"/>

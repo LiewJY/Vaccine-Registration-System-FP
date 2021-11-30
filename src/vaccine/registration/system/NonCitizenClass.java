@@ -103,12 +103,16 @@ public class NonCitizenClass extends PeopleClass{
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
             //edit line
+                count = 0;
              while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
                 if (line_array[4].equals(Passport_Number)) {
-                    Success_Save = false;
-                    break; 
-                } else {
+                    count = count + 1;
+                    if(count > 1) {
+                        Success_Save = false;
+                        break;
+                    }
+                 } else {
                     Success_Save = true;
                 }
                 if(Success_Save == true) {

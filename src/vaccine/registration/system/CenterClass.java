@@ -17,6 +17,7 @@ public class CenterClass {
     protected boolean Success_Save = false;
     protected ArrayList<String> Center_Data = new ArrayList<>();
     protected ArrayList<String> Get_Center = new ArrayList<>();
+    protected int count;
     
     CenterClass() {
         Center_ID = 1;
@@ -90,7 +91,7 @@ public class CenterClass {
                 // Check whether input ic and password is existing and matched in text file
                 while ((line = center.readLine()) != null) {
                     line_array = line.split("//");
-                    if (line_array[2].equals(Center_Name)){
+                    if (line_array[1].equals(Center_Name)){
                         Success_Save = false;
                         break;
                     } else {
@@ -140,11 +141,15 @@ public class CenterClass {
                 FileReader center_file = new FileReader("Center.txt");
                 BufferedReader center = new BufferedReader(center_file);
                 //edit line
+                count = 0;
                  while ((line = center.readLine()) != null) {
                     line_array = line.split("//");
-                    if (line_array[2].equals(Center_Name)){
+                    if (line_array[1].equals(Center_Name)){
+                    count = count + 1;
+                    if(count > 1) {
                         Success_Save = false;
                         break;
+                    }
                     } else {
                         Success_Save = true;
                     }
