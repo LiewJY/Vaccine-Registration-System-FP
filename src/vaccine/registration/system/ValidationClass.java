@@ -81,7 +81,7 @@ public class ValidationClass {
             case "vaccine_batch_id"-> "Please fill in alphabet and number only with length \n of 6 for Vaccine Batch ID!";
             case "vaccine_amount"->"Please fill in number only with \nlength 1 to 5 for Vaccine Type!";
             case "date"->"Please select a date that is today or after today!";
-            case ""->"";
+            case "center"->"Please select a center or select another date as date selected has no avaliable center.";
             default -> "";
         };
         return Message;

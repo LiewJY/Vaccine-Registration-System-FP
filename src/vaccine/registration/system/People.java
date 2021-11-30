@@ -1173,12 +1173,11 @@ public class People extends javax.swing.JFrame {
     
     // Logout button
     private void lbl_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_logoutMouseClicked
-    int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout.", "Warning", JOptionPane.YES_NO_OPTION);
+    int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning", JOptionPane.YES_NO_OPTION);
         if (return_value == JOptionPane.YES_OPTION) {
             Login login = new Login();
             login.setVisible(true);
             this.dispose();
-            JOptionPane.showMessageDialog(null, "Logout Success.", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
     	else if (return_value == JOptionPane.NO_OPTION) {
             
