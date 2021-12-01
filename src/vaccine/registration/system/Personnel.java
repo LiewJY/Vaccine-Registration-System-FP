@@ -240,8 +240,11 @@ public class Personnel extends javax.swing.JFrame {
                 int row = tbl_view_people.convertRowIndexToModel(rows);
                 
                 // populte to edit pannel
-                citizen_class.setPeople_ID(Integer.parseInt(people_table_model.getValueAt(row, 0).toString()));
-                noncitizen_class.setPeople_ID(Integer.parseInt(people_table_model.getValueAt(row, 0).toString()));
+                if (people_table_model.getValueAt(row, 3).toString().equals("Malaysia")) {
+                    citizen_class.setPeople_ID(Integer.parseInt(people_table_model.getValueAt(row, 0).toString()));
+                } else {
+                    noncitizen_class.setPeople_ID(Integer.parseInt(people_table_model.getValueAt(row, 0).toString()));
+                }
 
                 txt_edit_people_name.setText(people_table_model.getValueAt(row, 1).toString());
                 txt_edit_people_phone_number.setText(people_table_model.getValueAt(row, 2).toString());
@@ -695,7 +698,7 @@ public class Personnel extends javax.swing.JFrame {
                     date = date_format.parse(appointment_table_model.getValueAt(row, 4).toString());
                     txt_edit_vaccination_appointments_select_date.setDate(date);
                 } catch (ParseException ex) {
-                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 cbo_edit_vaccination_appointments_select_time.setSelectedItem(appointment_table_model.getValueAt(row, 5).toString());
 
@@ -5023,6 +5026,7 @@ public class Personnel extends javax.swing.JFrame {
 
                     //set vaccine id
                     Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
+
                     appointment_class.Add_Vaccine_Id(date_format.format(txt_register_vaccination_appointments_select_date.getDate()), selected_item.getId());
 
                     appointment_class.setAppointment_Time(cbo_register_vaccination_appointments_select_time.getSelectedItem().toString());
@@ -5204,7 +5208,7 @@ public class Personnel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vaccine added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Vaccine();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to add vaccine, a record with same batch number, location and date exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to add vaccine. \nPossible error: \n-A record with same batch number, location and date exist. \n-Invalid Date.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -5240,7 +5244,7 @@ public class Personnel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vaccine updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Vaccine();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n-A record with same batch number, location and date exist", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n-A record with same batch number, location and date exist. \n-Invalid Date.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -5443,10 +5447,10 @@ public class Personnel extends javax.swing.JFrame {
                     for(int a = 0; a < center_class.getCenter_Data().size(); a++) {
                         String[] name = center_class.getCenter_Data().get(a).split("//");
                         //temp = name[1];
-                        System.out.println("ww  " + ww + "name[0]  "  +name[0]);
+                        //System.out.println("ww  " + ww + "name[0]  "  +name[0]);
                         if (name[0].equals(ww)) {
                             temp = name[1];
-                            System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
+                            //System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
                         }
                     }                  
                     //System.out.println("outside  , location id " + data[6] + "  " + temp + "  " + data[2]);
@@ -5475,10 +5479,10 @@ public class Personnel extends javax.swing.JFrame {
                     for(int a = 0; a < center_class.getCenter_Data().size(); a++) {
                         String[] name = center_class.getCenter_Data().get(a).split("//");
                         //temp = name[1];
-                        System.out.println("ww  " + ww + "name[0]  "  +name[0]);
+                        //System.out.println("ww  " + ww + "name[0]  "  +name[0]);
                         if (name[0].equals(ww)) {
                             temp = name[1];
-                            System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
+                            //System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
                         }
                     }                    
                     //System.out.println("outside  , location id " + data[6] + "  " + temp + "  " + data[2]);
@@ -5494,15 +5498,23 @@ public class Personnel extends javax.swing.JFrame {
     }//GEN-LAST:event_cbo_add_center_vaccine_typeActionPerformed
 
     private void cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed
-        Center_ID_and_Details();
-        Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
-        lbl_register_vaccination_appointments_vaccine_type.setText(selected_item.getType());        
+        try {
+            Center_ID_and_Details();
+            Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
+            lbl_register_vaccination_appointments_vaccine_type.setText(selected_item.getType());
+        } catch (NullPointerException e) {
+            
+        }
     }//GEN-LAST:event_cbo_register_vaccination_appointments_select_vaccination_centerActionPerformed
 
     private void cbo_edit_vaccination_appointments_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_edit_vaccination_appointments_select_vaccination_centerActionPerformed
-        Center_ID_and_Details();
-        Center selected_item = (Center) cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem();
-        lbl_edit_vaccination_appointments_vaccine_type.setText(selected_item.getType());
+        try {
+            Center_ID_and_Details();
+            Center selected_item = (Center) cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem();
+            lbl_edit_vaccination_appointments_vaccine_type.setText(selected_item.getType());
+        } catch (NullPointerException e){
+            
+        }
     }//GEN-LAST:event_cbo_edit_vaccination_appointments_select_vaccination_centerActionPerformed
 
     // 

@@ -132,21 +132,21 @@ public class AppointmentClass {
             FileReader vaccine_file = new FileReader("Appointment.txt");
             BufferedReader vaccine = new BufferedReader(vaccine_file);
             // Check ID
-            count = 0;
+            count = 1;
             while ((line = vaccine.readLine()) != null) {
                 line_array = line.split("//");
-                if (line_array[1].equals(String.valueOf(people_class.getPeople_ID()))){
-                    System.out.println("id + 1  get " + people_class.getPeople_ID());
+                //System.out.println("id + 1  get                 " + people_class.getPeople_ID());
+                
+                if (line_array[1].equals(String.valueOf(people_class.getPeople_ID())) ) {
+                    //System.out.println("id + 1  get " + );
                     count = count + 1;
-                } else {
-                    count = 1;
-                    System.out.println("else  get " + people_class.getPeople_ID());
+                    //System.out.println("count           ==============  " + count);
                 }
+
+                    
             }
-//            if ((line = vaccine.readLine()) == null) {
-//                count = 1;
-//            }
             Dose_Numeber = count;
+           // System.out.println("Dose_Numeber              ==============  " + Dose_Numeber);
         } catch (IOException c) {
             c.printStackTrace();
         }
@@ -210,7 +210,7 @@ public class AppointmentClass {
                 // Check ID
                 while ((line = appointment.readLine()) != null) {
                     line_array = line.split("//");
-                    if (!line_array[0].equals(Appointnment_ID)){
+                    if (!line_array[0].equals(String.valueOf(Appointnment_ID))){
                         Success_Save = true;
                     } else {
                         Success_Save = false;
@@ -221,6 +221,7 @@ public class AppointmentClass {
                     if(Dose_Numeber > 2){
                         Success_Save = false;
                     } else {
+
                     //Insert data (not match)
                     add_appointment.append(Appointnment_ID + "//");
                     add_appointment.append(people_class.getPeople_ID() + "//");

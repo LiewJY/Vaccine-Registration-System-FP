@@ -98,53 +98,72 @@ public class CitizenClass extends PeopleClass {
         }
     }
     public void Edit_Account() {
-        String line;
-        String[] line_array;
-        ArrayList<String> temp_data = new ArrayList<>();
-        try { 
-            FileReader people_file = new FileReader("People.txt");
-            BufferedReader people = new BufferedReader(people_file);
-            //edit line
-            count = 0;
-            while ((line = people.readLine()) != null) {
+        ArrayList<String> edit_staff_array = new ArrayList<>();
+        
+        try {
+            FileReader file_reader = new FileReader("People.txt");
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
+
+            String line;
+            String[] line_array;
+
+            while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
-                if (line_array[4].equals(IC_Number)) {
-                    count = count + 1;
-                    if(count > 1) {
-                        Success_Save = false;
-                        break;
-                    }
+                System.out.println(line_array);
+                //String testa = String.valueOf(People_ID);
+                if (line_array[0].equals(String.valueOf(People_ID))) {
+                    edit_staff_array.add(People_ID + "//" + Name + "//" + Phone_Number + "//" 
+                            + Nationality + "//" + IC_Number + "//" + Address + "//" + Password + "//");
+                    System.out.println(edit_staff_array);
                 } else {
-                    Success_Save = true;
-                }
-                if(Success_Save == true) {
-                    if (line_array[0].equals(String.valueOf(People_ID))) {
-                        //Insert data
-                        temp_data.add(People_ID + "//" 
-                                + Name + "//" 
-                                + Phone_Number + "//" 
-                                + Nationality + "//" 
-                                + IC_Number + "//" 
-                                + Address + "//" 
-                                + Password + "//");
-                    } else {
-                        temp_data.add(line);
-                    }
+                    edit_staff_array.add(line);
+                    
                 }
             }
-            people_file.close();
-           } catch (IOException c) {
-            c.printStackTrace();
+
+            file_reader.close();
+        } catch (IOException e) {
+            Success_Save = false;
         }
-        if(Success_Save == true) {
-            try (PrintWriter edit_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt")))) {
-                for (String new_data : temp_data) {
-                    edit_citizen.println(new_data);
+
+        // Validation & write data
+        try {
+            FileReader file_reader = new FileReader("People.txt");
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
+
+            String line;
+            String[] line_array;
+            boolean data_exist = false;
+
+            // Check whether input staff ID, contact number, or email is existing in text file
+            while ((line = buffered_reader.readLine()) != null) {
+                line_array = line.split("//");
+
+                // If staff ID not equals to line_array[0] and contact number equals to line_array[3] or email equals to line_array[4]
+                if (!line_array[0].equals(String.valueOf(People_ID)) && (line_array[4].equals(IC_Number))) {
+                    data_exist = true;
+                    System.out.println(line_array[0] + "  " + line_array[4]);
                 }
-                edit_citizen.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+
+            if (data_exist == true) {                    
+                Success_Save = false;
+            } else if (data_exist == false) {
+                // Write and update staff data
+                try (PrintWriter print_writer = new PrintWriter("People.txt")) {
+                    for (String new_staff_data : edit_staff_array) {
+                        print_writer.println(new_staff_data);
+                    }
+
+                    print_writer.close();
+
+                    Success_Save = true;
+                } catch (IOException e) {
+                    Success_Save = false;
+                }
+            }
+        } catch(IOException e) {
+            Success_Save = false;
         }
     }
    

@@ -1,4 +1,10 @@
-1//CenterA//AddressA//1111111111//Pfizer//
-2//CenterB//AddressB//2222222222//Pfizer//
-3//CenterC//AddressC//3333333333//Sinovac//
-5//CenterA//wewewe//1234567890//Sinovac//
+1//Sunway Medical Center//5, Jalan Lagoon Selatan, Bandar Sunway, 47500 Petaling Jaya, Selangor.//60374919191//Pfizer//
+2//Kuala Lumpur General Hospital//Jalan Pahang, 50586 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//60326155555//Pfizer//
+3//UCSI Univeristy//UCSI Heights, 1, Jalan Puncak Menara Gading, Taman Connaught, 56000 Cheras, Wilayah Persekutuan Kuala Lumpur.//60391018880//Sinovac//
+4//National Stadium Bukit Jalil//Jalan Barat, Bukit Jalil, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//60389920888//Sinovac//
+5//Putra World Trade Centre//41, Jalan Tun Ismail, Chow Kit, 50480 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//60326146999//AstraZeneca//
+6//Ideal Convention Centre Shah Alam//Corporate Tower, Level 5, Jalan Pahat L 15/L, Section 15, 40200 Shah Alam, Selangor.//60350313333//AstraZeneca//
+7//Tengku Ampuan Rahimah Hospital//Jalan Langat, 41200 Klang, Selangor.//60333757000//Pfizer//
+8//Bandar Botanic Health Clinic//Bandar Botanic, 41200 Klang, Selangor.//60333244260//Pfizer//
+9//Wyndham Acmar Klang//1-G-1, Persiaran Bukit Raja 2/KU1, 41150 Klang, Selangor.//60333118888//Sinovac//
+10//Axiata Arena//12345//1234567890//Sinovac//
