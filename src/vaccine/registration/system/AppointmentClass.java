@@ -143,6 +143,9 @@ public class AppointmentClass {
                     System.out.println("else  get " + people_class.getPeople_ID());
                 }
             }
+//            if ((line = vaccine.readLine()) == null) {
+//                count = 1;
+//            }
             Dose_Numeber = count;
         } catch (IOException c) {
             c.printStackTrace();
@@ -186,7 +189,6 @@ public class AppointmentClass {
                 if (line_array[3].equals(date) && line_array[6].equals(center_id)) {
                     avaliable_location.add(line);
                     Vaccine_ID = line_array[0];
-                    System.out.println("added id" + line + "  " + Vaccine_ID);
                 } else {
 
                 }

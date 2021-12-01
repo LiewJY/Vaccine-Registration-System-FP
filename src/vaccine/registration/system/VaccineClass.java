@@ -84,7 +84,6 @@ public class VaccineClass {
                 lastLine = line;
                 line_array = lastLine.split("//");
                 Vaccine_ID = Integer.parseInt(line_array[0]) + 1;
-                System.out.println(Integer.parseInt(line_array[0]) + 1);
             }
         } catch (IOException e) {
             e.printStackTrace();

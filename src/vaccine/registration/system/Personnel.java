@@ -5201,7 +5201,7 @@ public class Personnel extends javax.swing.JFrame {
                 Center selected_item = (Center) cbo_add_vaccine_center_name.getSelectedItem();
                 vaccine_class.Add_Vaccine(selected_item.getId());
                 if(vaccine_class.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Vaccine addded successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vaccine added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Vaccine();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to add vaccine, a record with same batch number, location and date exist.", "Error", JOptionPane.ERROR_MESSAGE);

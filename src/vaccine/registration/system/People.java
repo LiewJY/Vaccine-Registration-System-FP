@@ -6,8 +6,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 import java.text.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class People extends javax.swing.JFrame {
 
@@ -16,6 +18,13 @@ public class People extends javax.swing.JFrame {
     NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
     CenterClass center_class = new CenterClass();
+    VaccineClass vaccine_class = new VaccineClass();
+    AppointmentClass appointment_class = new AppointmentClass();
+    PeopleClass people_class = new PeopleClass();
+    
+    // for formatting date
+    SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
+    Date date = new Date(); 
 
     boolean citizenship;
     
@@ -45,6 +54,14 @@ public class People extends javax.swing.JFrame {
             noncitizen_class.setPeople_ID(people_id);
             citizenship = false;
         }
+//        people_class.setPeople_ID(people_id);
+//        System.out.println("people class id        " + people_class.getPeople_ID() );
+    }
+    
+    public void Clear(){
+        txt_select_date.setCalendar(null);
+        lbl_vaccine_type.setText("");
+        //cbo_select_vaccination_center.setSelectedIndex(-1);
     }
     
     public void View(){
@@ -65,6 +82,110 @@ public class People extends javax.swing.JFrame {
             lbl_view_address.setText(noncitizen_class.getAddress());       
         }
     }
+    public void View_Appointment() {
+        pnl_view_account.setVisible(false);
+        pnl_edit_account.setVisible(false);
+        pnl_view_vaccination_appointment.setVisible(true);
+        pnl_register_vaccination_appointment.setVisible(false);
+        pnl_view_vaccination_status.setVisible(false);
+        
+        // Loop and display data
+        Center_ID_and_Details();
+        Vaccine_ID_and_Details();
+        citizen_class.View_Account();
+        for (int i = 0; i < appointment_class.getAppointment_Data().size(); i++) {
+            String[] data = appointment_class.getAppointment_Data().get(i).split("//");
+            //System.out.println(data);
+            if(String.valueOf(citizen_class.getPeople_ID()).equals(data[1])) {
+                data[1] = String.valueOf(citizen_class.getPeople_ID());
+                //System.out.println(data);
+
+                int index = 2;
+                String key = citizen_class.getName();
+                String[] result = new String[data.length + 1];
+                System.arraycopy(data, 0, result, 0, index);
+                result[index] = key;
+                System.arraycopy(data, index, result, index + 1, data.length - index);
+                data = result;
+
+                index = 3;
+                key = citizen_class.getIC_Number();
+                result = new String[data.length + 1];
+                System.arraycopy(data, 0, result, 0, index);
+                result[index] = key;
+                System.arraycopy(data, index, result, index + 1, data.length - index);
+                data = result;
+            }
+            for (VaccineDetails vac: vaccine_id_and_details) {
+                if(vac.getId().equals(data[4])) {
+                    data[4] = vac.getDate();
+                    int index = 6;
+                    String key = vac.getCenterID();
+                    String[] result = new String[data.length + 1];
+                    System.arraycopy(data, 0, result, 0, index);
+                    result[index] = key;
+                    System.arraycopy(data, index, result, index + 1, data.length - index);
+                    data = result;
+                    
+                    index = 7;
+                    key = vac.getType();
+                    result = new String[data.length + 1];
+                    System.arraycopy(data, 0, result, 0, index);
+                    result[index] = key;
+                    System.arraycopy(data, index, result, index + 1, data.length - index);
+                    data = result;
+                }
+            }
+            for (Center center: center_id_to_name) {
+                if(center.getId().equals(data[6])) {
+                    data[6] = center.getName();
+                }
+            }
+            
+            //System.out.println(data);
+
+        }
+        
+
+        
+        
+        
+        
+    }
+        // for center to have id
+    private class Center {
+        private String id, name, type;
+        public Center(String id, String name, String type) {
+            this.id = id;
+            this.name = name;
+            this.type = type;
+        }
+        public String getId() {
+            return id;
+        }
+        public String getName() {
+            return name;
+        }
+        public String getType() {
+            return type;
+        }
+        public String toString() {
+            return name;
+        }
+    }
+    ArrayList<Center> center_id_to_name = new ArrayList<>();
+    public void Center_ID_and_Details() {
+        //load data
+        center_class.View_Center();
+        center_id_to_name.clear();
+        // Loop and add data
+        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
+            String[] data = center_class.getCenter_Data().get(i).split("//");
+            center_id_to_name.add(new Center(data[0], data[1], data[2]));
+        }
+    }
+    
+    
     
     public void View_Center() {
         //load data
@@ -76,7 +197,6 @@ public class People extends javax.swing.JFrame {
         center_table_model.setColumnIdentifiers(columns);
         //remove id col
         tbl_vaccination_status.removeColumn(tbl_vaccination_status.getColumnModel().getColumn(0));
-
         
         tbl_vaccination_status.setModel(center_table_model);
         center_table_model.setRowCount(0);
@@ -91,11 +211,48 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(true);
-        
 
-        
 
     }
+   
+    private class VaccineDetails {
+        private String id, type,center_id,date;
+        public VaccineDetails(String id,String date, String type, String center_id) {
+            this.id = id;
+            this.type = type;
+            this.date = date;
+            this.center_id = center_id;
+        }
+        public String getId() {
+            return id;
+        }
+        public String getType() {
+            return type;
+        }
+        public String getDate() {
+            return date;
+        }
+        public String getCenterID() {
+            return center_id;
+        }
+        public String toString() {
+            return type;
+        }
+    }
+    ArrayList<VaccineDetails> vaccine_id_and_details = new ArrayList<>();
+    public void Vaccine_ID_and_Details() {
+        //load data
+        vaccine_class.View_Vaccine();
+        vaccine_id_and_details.clear();
+        // Loop and add data
+        for (int i = 0; i <  vaccine_class.getVaccine_Data().size(); i++) {
+            String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
+            vaccine_id_and_details.add(new VaccineDetails(data[0],data[3],data[2],data[6]));
+            System.out.println(data[0] + "  " +  data[1] + "  " +  data[6]);
+        }
+
+    }
+
     
 
 
@@ -904,6 +1061,11 @@ public class People extends javax.swing.JFrame {
 
         txt_select_date.setBackground(new java.awt.Color(255, 255, 255));
         txt_select_date.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        txt_select_date.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txt_select_datePropertyChange(evt);
+            }
+        });
 
         lbl_select_time.setBackground(new java.awt.Color(255, 255, 255));
         lbl_select_time.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -918,6 +1080,11 @@ public class People extends javax.swing.JFrame {
 
         cbo_select_vaccination_center.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         cbo_select_vaccination_center.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vaccination Center" }));
+        cbo_select_vaccination_center.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_select_vaccination_centerActionPerformed(evt);
+            }
+        });
 
         lbl_vaccineType.setBackground(new java.awt.Color(255, 255, 255));
         lbl_vaccineType.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -995,7 +1162,7 @@ public class People extends javax.swing.JFrame {
                 .addGroup(pnl_register_vaccination_appointmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_register_vaccination_appointment_register, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_register_vaccination_appointment_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         pnl_view_vaccination_status.setBackground(new java.awt.Color(255, 255, 255));
@@ -1031,6 +1198,11 @@ public class People extends javax.swing.JFrame {
 
         txt_search_vaccination_status.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_search_vaccination_status.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
+        txt_search_vaccination_status.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_vaccination_statusKeyReleased(evt);
+            }
+        });
 
         tbl_vaccination_status.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbl_vaccination_status.setModel(new javax.swing.table.DefaultTableModel(
@@ -1069,7 +1241,7 @@ public class People extends javax.swing.JFrame {
                 .addComponent(txt_search_vaccination_status, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(scrpnl_vaccination_status, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_containerLayout = new javax.swing.GroupLayout(pnl_container);
@@ -1181,11 +1353,12 @@ public class People extends javax.swing.JFrame {
     
     // Vaccination appointment side bar tab
     private void lbl_vaccination_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentMouseClicked
-        pnl_view_account.setVisible(false);
-        pnl_edit_account.setVisible(false);
-        pnl_view_vaccination_appointment.setVisible(true);
-        pnl_register_vaccination_appointment.setVisible(false);
-        pnl_view_vaccination_status.setVisible(false);
+//        pnl_view_account.setVisible(false);
+//        pnl_edit_account.setVisible(false);
+//        pnl_view_vaccination_appointment.setVisible(true);
+//        pnl_register_vaccination_appointment.setVisible(false);
+//        pnl_view_vaccination_status.setVisible(false);
+        View_Appointment();
     }//GEN-LAST:event_lbl_vaccination_appointmentMouseClicked
 
     
@@ -1225,6 +1398,7 @@ public class People extends javax.swing.JFrame {
     
     // Cancel register vaccination appointment button
     private void btn_register_vaccination_appointment_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_cancelActionPerformed
+        Clear();
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(true);
@@ -1286,7 +1460,7 @@ public class People extends javax.swing.JFrame {
                     pnl_view_vaccination_appointment.setVisible(false);
                     pnl_register_vaccination_appointment.setVisible(false);
                     pnl_view_vaccination_status.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -1297,23 +1471,52 @@ public class People extends javax.swing.JFrame {
     
     // Save register vaccination appointment button
     private void btn_register_vaccination_appointment_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_registerActionPerformed
-        try {
-            SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
-            String select_date = date_format.format(txt_select_date.getDate());
-            String select_time = cbo_select_time.getSelectedItem().toString();
-            String select_vaccination_center = cbo_select_vaccination_center.getSelectedItem().toString();
-            
-            if (cbo_select_time.getSelectedItem().equals("Select Time") || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")) {
+        if (cbo_select_vaccination_center.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "The selected date does not have a center. \nPlease select another date.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if (cbo_select_time.getSelectedItem().equals("Select Time") 
+                    || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center") || 
+                    cbo_select_vaccination_center.getSelectedItem().equals("")) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-                pnl_view_account.setVisible(false);
-                pnl_edit_account.setVisible(false);
-                pnl_view_vaccination_appointment.setVisible(true);
-                pnl_register_vaccination_appointment.setVisible(false);
-                pnl_view_vaccination_status.setVisible(false);
+            }else{
+                if(txt_select_date.getDate().compareTo(date) < 0) {
+                    JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+                } else if (cbo_select_vaccination_center.getSelectedItem().equals("")) {
+                    JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+                else { 
+//                    System.out.println("aa        " + citizen_class.getPeople_ID());
+//                    System.out.println("aa        " + noncitizen_class.getPeople_ID());
+//                    System.out.println("aa        " + people_class.getPeople_ID());
+
+                    appointment_class.calculateAppointnment_ID();
+                    if (citizenship == true){
+                    appointment_class.Check_Exist(citizen_class.getIC_Number());
+                    }
+                    else {
+                    appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
+                    }
+                    appointment_class.Add_Dose();
+
+                    //set vaccine id
+                    Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();
+                    appointment_class.Add_Vaccine_Id(date_format.format(txt_select_date.getDate()), selected_item.getId());
+
+                    appointment_class.setAppointment_Time(cbo_select_time.getSelectedItem().toString());
+                    appointment_class.Add_Dose();
+                    appointment_class.setStatus("Pending");
+                    appointment_class.Add_Appointment();
+
+
+                    if(appointment_class.getSuccess_Save() == true) {
+                        JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        View_Appointment();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to register. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btn_register_vaccination_appointment_registerActionPerformed
 
@@ -1321,7 +1524,56 @@ public class People extends javax.swing.JFrame {
     // Cancel vaccination appointment button
     private void btn_cancel_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_appointmentActionPerformed
         
+        
+        
+        
+        
     }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
+
+    private void txt_search_vaccination_statusKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_vaccination_statusKeyReleased
+        DefaultTableModel center_table_model = (DefaultTableModel) tbl_vaccination_status.getModel();
+        TableRowSorter<DefaultTableModel> search_center = new TableRowSorter<DefaultTableModel>(center_table_model);
+        tbl_vaccination_status.setRowSorter(search_center);
+        search_center.setRowFilter(RowFilter.regexFilter(txt_search_vaccination_status.getText()));
+    }//GEN-LAST:event_txt_search_vaccination_statusKeyReleased
+
+    private void txt_select_datePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_select_datePropertyChange
+        if (txt_select_date.getDate() == null) {
+            cbo_select_vaccination_center.setEnabled(false);
+        } else {
+            cbo_select_vaccination_center.setEnabled(true);
+            
+            appointment_class.Show_Locations(date_format.format(txt_select_date.getDate()));
+            cbo_select_vaccination_center.removeAllItems();
+                center_class.View_Center();
+                DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_select_vaccination_center.getModel();
+                for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
+                    String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
+
+                    String temp = "", ww;
+                    ww = data[6];
+                    for(int a = 0; a < center_class.getCenter_Data().size(); a++) {
+                        String[] name = center_class.getCenter_Data().get(a).split("//");
+                        //temp = name[1];
+                        System.out.println("ww  " + ww + "name[0]  "  +name[0]);
+                        if (name[0].equals(ww)) {
+                            temp = name[1];
+                            System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
+                        }
+                    }                  
+                    //System.out.println("outside  , location id " + data[6] + "  " + temp + "  " + data[2]);
+                    cbo_edit_model.addElement(new Center(data[6], temp, data[2]));
+
+                }
+                cbo_select_vaccination_center.setModel(cbo_edit_model);
+        }
+    }//GEN-LAST:event_txt_select_datePropertyChange
+
+    private void cbo_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_select_vaccination_centerActionPerformed
+        Center_ID_and_Details();
+        Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();
+        lbl_vaccine_type.setText(selected_item.getType());    
+    }//GEN-LAST:event_cbo_select_vaccination_centerActionPerformed
 
     
     // Main method
