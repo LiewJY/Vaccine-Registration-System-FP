@@ -5,39 +5,50 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
 
+
 public class NonCitizenClass extends PeopleClass{
     private String Passport_Number;
     
     NonCitizenClass() {
         Passport_Number = "";
     }
-    //Passport Number
+    
+    // Passport number
     public String getPassport_Number() {
         return Passport_Number;
     }
+    
     public void setPassport_Number(String passport_number) {
         Passport_Number = passport_number;
     }
+    
+    
+    // Register account
     public void Register_Account() {
         String line;
         String[] line_array;
+        boolean data_exist = false;
+        
         try (PrintWriter register_noncitizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", true)))) {
             try { 
-                Success_Save = false;
                 FileReader people_file = new FileReader("People.txt");
                 BufferedReader people = new BufferedReader(people_file);
-                // Check whether input ic and password is existing and matched in text file
+
                 while ((line = people.readLine()) != null) {
                     line_array = line.split("//");
-                    if (line_array[4].equals(Passport_Number)) {
+
+                    if (line_array[0].equals(String.valueOf(People_ID)) || line_array[4].equals(Passport_Number)) {
                         Success_Save = false;
-                        break; 
+                        data_exist = true;
+                        break;
                     } else {
                         Success_Save = true;
+                        data_exist = false;
                     }
                 }
-                if(Success_Save == true) {
-                    //Insert data (not match)
+                
+                if (data_exist == false) {
+                    // Insert data (not match)
                     register_noncitizen.append(People_ID + "//");
                     register_noncitizen.append(Name + "//");
                     register_noncitizen.append(Phone_Number + "//");
@@ -47,6 +58,7 @@ public class NonCitizenClass extends PeopleClass{
                     register_noncitizen.append(Password + "//");
                     register_noncitizen.print("\n");
                     register_noncitizen.close();
+                    Success_Save = true;
                 }
             } catch (IOException c) {
                 c.printStackTrace();
@@ -56,15 +68,20 @@ public class NonCitizenClass extends PeopleClass{
         }
     }
     
+    
+    // Login account
     public void Login_Account() {
         String line;
         String[] line_array;
+        
         try { 
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
+            
             // Check whether input ic and password is existing and matched in text file
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
+                
                 if (!line_array[3].equals("Malaysia") && line_array[4].equals(Passport_Number) && line_array[6].equals(Password)) {
                     People_ID = Integer.parseInt(line_array[0]);
                     Auth = true;
@@ -75,15 +92,21 @@ public class NonCitizenClass extends PeopleClass{
             f.printStackTrace();        
         }
     }
+    
+    
+    // View account
     public void View_Account() {
         String line;
         String[] line_array;
+        
         try { 
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
-            // Check whether input ic and password is existing and matched in text file\
+            
+            // Check whether input ic and password is existing and matched in text file
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
+                
                 if (line_array[0].equals(String.valueOf(People_ID))) {
                     Name = line_array[1];
                     Phone_Number = line_array[2];
@@ -97,6 +120,9 @@ public class NonCitizenClass extends PeopleClass{
             v.printStackTrace();
         }
     }
+    
+    
+    // Edit account
     public void Edit_Account() {
         ArrayList<String> edit_non_citizen = new ArrayList<>();
         
@@ -109,18 +135,13 @@ public class NonCitizenClass extends PeopleClass{
 
             while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
-                System.out.println(line_array);
-                //String testa = String.valueOf(People_ID);
                 if (line_array[0].equals(String.valueOf(People_ID))) {
                     edit_non_citizen.add(People_ID + "//" + Name + "//" + Phone_Number + "//" 
                             + Nationality + "//" + Passport_Number + "//" + Address + "//" + Password + "//");
-                    System.out.println(edit_non_citizen);
                 } else {
                     edit_non_citizen.add(line);
-                    
                 }
             }
-
             file_reader.close();
         } catch (IOException e) {
             Success_Save = false;
@@ -135,11 +156,11 @@ public class NonCitizenClass extends PeopleClass{
             String[] line_array;
             boolean data_exist = false;
 
-            // Check people ic / passport
+            // Check people IC / passport
             while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
 
-                // this not this id check is ic / passport same
+                // Check not this ID & is IC / passport same
                 if (!line_array[0].equals(String.valueOf(People_ID)) && (line_array[4].equals(Passport_Number))) {
                     data_exist = true;
                     System.out.println(line_array[0] + "  " + line_array[4]);
@@ -154,9 +175,7 @@ public class NonCitizenClass extends PeopleClass{
                     for (String new_data : edit_non_citizen) {
                         print_writer.println(new_data);
                     }
-
                     print_writer.close();
-
                     Success_Save = true;
                 } catch (IOException e) {
                     Success_Save = false;
@@ -166,5 +185,4 @@ public class NonCitizenClass extends PeopleClass{
             Success_Save = false;
         }
     }
-    
 }

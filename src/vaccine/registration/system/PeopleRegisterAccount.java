@@ -7,7 +7,7 @@ import javax.swing.*;
 
 
 public class PeopleRegisterAccount extends javax.swing.JFrame {
-    // for validation
+    // For validation
     ValidationClass validation_class = new ValidationClass();
 
     
@@ -23,6 +23,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         cbo_nationality.setSelectedIndex(-1);
     }
     
+    
     // Get all country listing
     public String[] getCountries() {
         String[] countries = new String[Locale.getISOCountries().length];
@@ -35,6 +36,8 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         return countries;
     }
     
+    
+    // Back to login form
     public void viewLogin() {
         this.dispose();
         Login login = new Login();
@@ -42,7 +45,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     }
     
     
-
     // UI
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -236,7 +238,6 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     
     // Register account button
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
-           
         if (txt_name.getText().equals("") || txt_phone_number.getText().equals("") || cbo_nationality.getSelectedItem() == "" || txt_ic_passport_number.getText().equals("") || txt_address.getText().equals("") || txt_password.getPassword().length == 0 || txt_confirm_password.getPassword().length == 0) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateName(txt_name.getText()) == true) {

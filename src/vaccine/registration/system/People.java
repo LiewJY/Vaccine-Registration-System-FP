@@ -16,27 +16,26 @@ import java.util.regex.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class People extends javax.swing.JFrame {
 
-    
+public class People extends javax.swing.JFrame {
     CitizenClass citizen_class = new CitizenClass();
     NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
     CenterClass center_class = new CenterClass();
     VaccineClass vaccine_class = new VaccineClass();
     AppointmentClass appointment_class = new AppointmentClass();
-    //PeopleClass people_class = new PeopleClass();
     
-    // for formatting date
+    
+    // For formatting date
     SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
     Date date = new Date(); 
     
     ArrayList<String[]> Appointment_Data = new ArrayList<>(); 
     
-    //for validation
+    // For validation
     Date appointment_date;
-    
     boolean citizenship;
+    
     
     // People form
     public People() {
@@ -49,6 +48,7 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_status.setVisible(false);
     }
     
+    
     public People(int people_id, boolean citizen) {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -57,6 +57,7 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
+        
         if (citizen == true){
             citizen_class.setPeople_ID(people_id);
             citizenship = true;
@@ -64,14 +65,13 @@ public class People extends javax.swing.JFrame {
             noncitizen_class.setPeople_ID(people_id);
             citizenship = false;
         }
-//        people_class.setPeople_ID(people_id);
-//        System.out.println("people class id        " + people_class.getPeople_ID() );
     }
     
+    
+    // Clear input field
     public void Clear(){
         txt_select_date.setCalendar(null);
         lbl_vaccine_type.setText("");
-        //cbo_select_vaccination_center.setSelectedIndex(-1);
         
         lbl_vaccination_center_1.setText("");
         lbl_center_address_1.setText("");
@@ -88,8 +88,10 @@ public class People extends javax.swing.JFrame {
         lbl_vaccine_type_2.setText("");
     }
     
+    
+    // View account
     public void View(){
-        //insert data
+        // Insert data
         if (citizenship == true){
             citizen_class.View_Account();
             lbl_view_name.setText(citizen_class.getName());
@@ -106,6 +108,9 @@ public class People extends javax.swing.JFrame {
             lbl_view_address.setText(noncitizen_class.getAddress());       
         }
     }
+    
+    
+    // View appointment
     public void View_Appointment() {
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
@@ -121,14 +126,15 @@ public class People extends javax.swing.JFrame {
         int index;
         String key;
         String[] data = null;
+        
         if (citizenship == true){
             citizen_class.View_Account();
+            
             for (int i = 0; i < appointment_class.getAppointment_Data().size(); i++) {
                 data = appointment_class.getAppointment_Data().get(i).split("//");
-                //System.out.println("                                                    " + Arrays.toString(data));
+                
                 if(String.valueOf(citizen_class.getPeople_ID()).equals(data[1])) {
                     data[1] = String.valueOf(citizen_class.getPeople_ID());
-                    //System.out.println("FILETERED               " +  Arrays.toString(data));
 
                     index = 2;
                     key  = citizen_class.getName();
@@ -145,7 +151,6 @@ public class People extends javax.swing.JFrame {
                     result[index] = key;
                     System.arraycopy(data, index, result, index + 1, data.length - index);
                     data = result;
-                    //System.out.println("with ic and name               " +  Arrays.toString(data));
 
                     for (VaccineDetails vac: vaccine_id_and_details) {
                         if(vac.getId().equals(data[4])) {
@@ -165,9 +170,9 @@ public class People extends javax.swing.JFrame {
                             result[index] = key;
                             System.arraycopy(data, index, result, index + 1, data.length - index);
                             data = result;
-                            //System.out.println("with vaccine details              " +  Arrays.toString(data));
                         }
                     }
+                    
                     for (Center center: center_id_to_name) {
                         if(center.getId().equals(data[6])) {
                             data[6] = center.getName();
@@ -191,15 +196,14 @@ public class People extends javax.swing.JFrame {
                     Appointment_Data.add(data);
                 }
             }
-            
         } else {
             noncitizen_class.View_Account();
+            
             for (int n = 0; n < appointment_class.getAppointment_Data().size(); n++) {
                 data = appointment_class.getAppointment_Data().get(n).split("//");
-                //System.out.println("                                                    " + Arrays.toString(data));
+                
                 if(String.valueOf(noncitizen_class.getPeople_ID()).equals(data[1])) {
                     data[1] = String.valueOf(noncitizen_class.getPeople_ID());
-                    //System.out.println("FILETERED               " +  Arrays.toString(data));
 
                     index = 2;
                     key  = noncitizen_class.getName();
@@ -216,7 +220,6 @@ public class People extends javax.swing.JFrame {
                     result[index] = key;
                     System.arraycopy(data, index, result, index + 1, data.length - index);
                     data = result;
-                    //System.out.println("with ic and name               " +  Arrays.toString(data));
 
                     for (VaccineDetails vac: vaccine_id_and_details) {
                         if(vac.getId().equals(data[4])) {
@@ -236,9 +239,9 @@ public class People extends javax.swing.JFrame {
                             result[index] = key;
                             System.arraycopy(data, index, result, index + 1, data.length - index);
                             data = result;
-                            //System.out.println("with vaccine details              " +  Arrays.toString(data));
                         }
                     }
+                    
                     for (Center center: center_id_to_name) {
                         if(center.getId().equals(data[6])) {
                             data[6] = center.getName();
@@ -262,10 +265,7 @@ public class People extends javax.swing.JFrame {
                     Appointment_Data.add(data);
                 }
             }
-        }       
-            System.out.println("                                                    " + citizen_class.getPeople_ID());      
-            System.out.println(" " + noncitizen_class.getPeople_ID() + "ssss      sss");       
-            System.out.println("final      data       " +  Appointment_Data);
+        }
  
         for (String[] display: Appointment_Data) {
             if(display[8].equals("1")) {
@@ -276,12 +276,12 @@ public class People extends javax.swing.JFrame {
                 lbl_time_1.setText(display[5]);
                 lbl_vaccine_type_1.setText(display[7]);
                 appointment_class.setAppointnment_ID(Integer.valueOf(display[0]));
+                
                 try {
                     appointment_date = date_format.parse(display[4]);
                 } catch (ParseException ex) {
                     
-                }
-                System.out.println(appointment_class.getAppointnment_ID() + "    get appoiintment id no 1            " + display[0]);        
+                }       
             } else if(display[8].equals("2")) {
                 lbl_vaccination_center_2.setText(display[6]);
                 lbl_center_address_2.setText(display[10]);
@@ -290,18 +290,19 @@ public class People extends javax.swing.JFrame {
                 lbl_time_2.setText(display[5]);
                 lbl_vaccine_type_2.setText(display[7]);
                 appointment_class.setAppointnment_ID(Integer.valueOf(display[0]));
+                
                 try {
                     appointment_date = date_format.parse(display[4]);
                 } catch (ParseException ex) {
                     
-                }
-                System.out.println(appointment_class.getAppointnment_ID() + "   get appoiintment id no 2            " + display[0]);        
-
+                }     
             }
         }
         System.out.println(appointment_class.getAppointnment_ID() + "   get appoiintment id from class            ");
     }
-        // for center to have id
+    
+    
+    // For center to have id
     private class Center {
         private String id, name, type, contact;
         public Center(String id, String name, String type, String contact) {
@@ -326,11 +327,14 @@ public class People extends javax.swing.JFrame {
             return name;
         }
     }
+    
     ArrayList<Center> center_id_to_name = new ArrayList<>();
+    
     public void Center_ID_and_Details() {
-        //load data
+        // Load data
         center_class.View_Center();
         center_id_to_name.clear();
+        
         // Loop and add data
         for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
             String[] data = center_class.getCenter_Data().get(i).split("//");
@@ -340,20 +344,21 @@ public class People extends javax.swing.JFrame {
     }
     
     
-    
+    // View center
     public void View_Center() {
-        //load data
+        // Load data
         center_class.View_Center();
+        
         // Set column
         String columns[] = {"Center ID", "Center Name", "Center Address", "Contact Number", "Vaccine Type"};
-
         DefaultTableModel center_table_model = (DefaultTableModel)tbl_vaccination_status.getModel();
         center_table_model.setColumnIdentifiers(columns);
-        //remove id col
-        tbl_vaccination_status.removeColumn(tbl_vaccination_status.getColumnModel().getColumn(0));
         
+        // Remove ID column
+        tbl_vaccination_status.removeColumn(tbl_vaccination_status.getColumnModel().getColumn(0));
         tbl_vaccination_status.setModel(center_table_model);
         center_table_model.setRowCount(0);
+        
         // Loop and display data
         for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
             String[] data = center_class.getCenter_Data().get(i).split("//");
@@ -365,53 +370,56 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(true);
-
-
     }
-   
+    
+    
+    // Vaccine details
     private class VaccineDetails {
-        private String id, type,center_id,date;
+        private String id, type, center_id, date;
+        
         public VaccineDetails(String id,String date, String type, String center_id) {
             this.id = id;
             this.type = type;
             this.date = date;
             this.center_id = center_id;
         }
+        
         public String getId() {
             return id;
         }
+        
         public String getType() {
             return type;
         }
+        
         public String getDate() {
             return date;
         }
+        
         public String getCenterID() {
             return center_id;
         }
+        
         public String toString() {
             return type;
         }
     }
+    
     ArrayList<VaccineDetails> vaccine_id_and_details = new ArrayList<>();
+    
     public void Vaccine_ID_and_Details() {
-        //load data
+        // Load data
         vaccine_class.View_Vaccine();
         vaccine_id_and_details.clear();
         // Loop and add data
         for (int i = 0; i <  vaccine_class.getVaccine_Data().size(); i++) {
             String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
             vaccine_id_and_details.add(new VaccineDetails(data[0],data[3],data[2],data[6]));
-            //System.out.println(data[0] + "  " +  data[1] + "  " +  data[6]);
         }
-
     }
 
-    
 
-
-
-    // UIW
+    // UI
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1348,7 +1356,7 @@ public class People extends javax.swing.JFrame {
 
         lbl_search_vaccination_status.setBackground(new java.awt.Color(255, 255, 255));
         lbl_search_vaccination_status.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lbl_search_vaccination_status.setText("Search Vaccination Status (Vaccination Center / Vaccine Type)");
+        lbl_search_vaccination_status.setText("Search Vaccination Status");
 
         txt_search_vaccination_status.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_search_vaccination_status.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
@@ -1476,7 +1484,7 @@ public class People extends javax.swing.JFrame {
     
     // Edit account button
     private void btn_edit_accountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_accountActionPerformed
-        //view data
+        // View data
         if (citizenship == true){
             citizen_class.View_Account();
             txt_edit_name.setText(citizen_class.getName());
@@ -1496,22 +1504,17 @@ public class People extends javax.swing.JFrame {
             txt_edit_password.setText(noncitizen_class.getPassword());
             txt_edit_confirm_password.setText(noncitizen_class.getPassword());
         }
+        
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(true);
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
-        
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
     
     // Vaccination appointment side bar tab
     private void lbl_vaccination_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentMouseClicked
-//        pnl_view_account.setVisible(false);
-//        pnl_edit_account.setVisible(false);
-//        pnl_view_vaccination_appointment.setVisible(true);
-//        pnl_register_vaccination_appointment.setVisible(false);
-//        pnl_view_vaccination_status.setVisible(false);
         View_Appointment();
     }//GEN-LAST:event_lbl_vaccination_appointmentMouseClicked
 
@@ -1538,14 +1541,14 @@ public class People extends javax.swing.JFrame {
     
     // Logout button
     private void lbl_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_logoutMouseClicked
-    int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning", JOptionPane.YES_NO_OPTION);
+        int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning", JOptionPane.YES_NO_OPTION);
+        
         if (return_value == JOptionPane.YES_OPTION) {
             Login login = new Login();
             login.setVisible(true);
             this.dispose();
-        }
-    	else if (return_value == JOptionPane.NO_OPTION) {
-            
+        } else if (return_value == JOptionPane.NO_OPTION) {
+
         }
     }//GEN-LAST:event_lbl_logoutMouseClicked
 
@@ -1580,7 +1583,7 @@ public class People extends javax.swing.JFrame {
         } else if (!txt_edit_password.getText().matches(txt_edit_confirm_password.getText())) {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            if(txt_edit_nationality.getText().equals("Malaysia")) {
+            if (txt_edit_nationality.getText().equals("Malaysia")) {
                 citizen_class.setName(txt_edit_name.getText());
                 citizen_class.setPhone_Number(txt_edit_phone_number.getText());
                 citizen_class.setNationality(txt_edit_nationality.getText());
@@ -1588,7 +1591,8 @@ public class People extends javax.swing.JFrame {
                 citizen_class.setPassword(txt_edit_password.getText());
                 citizen_class.setIC_Number(txt_edit_ic_passport_number.getText()); 
                 citizen_class.Edit_Account();
-                if(citizen_class.getSuccess_Save() == true) {
+                
+                if (citizen_class.getSuccess_Save() == true) {
                     View();
                     pnl_view_account.setVisible(true);
                     pnl_edit_account.setVisible(false);
@@ -1607,7 +1611,8 @@ public class People extends javax.swing.JFrame {
                 noncitizen_class.setPassword(txt_edit_password.getText());
                 noncitizen_class.setPassport_Number(txt_edit_ic_passport_number.getText()); 
                 noncitizen_class.Edit_Account();
-                if(noncitizen_class.getSuccess_Save() == true) {
+                
+                if (noncitizen_class.getSuccess_Save() == true) {
                     View();
                     pnl_view_account.setVisible(true);
                     pnl_edit_account.setVisible(false);
@@ -1629,42 +1634,37 @@ public class People extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The selected date does not have a center. \nPlease select another date.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (cbo_select_time.getSelectedItem().equals("Select Time") 
-                    || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center") || 
-                    cbo_select_vaccination_center.getSelectedItem().equals("")) {
+                    || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")
+                    || cbo_select_vaccination_center.getSelectedItem().equals("")) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
-            }else{
-                if(txt_select_date.getDate().compareTo(date) < 0) {
+            } else {
+                if (txt_select_date.getDate().compareTo(date) < 0) {
                     JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
                 } else if (cbo_select_vaccination_center.getSelectedItem().equals("")) {
                     JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
-                }
-                else { 
+                } else { 
                     appointment_class.calculateAppointnment_ID();
-                    if (citizenship == true){
-                    appointment_class.Check_Exist(citizen_class.getIC_Number());
-                    }
-                    else {
-                    appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
-                    }
+                        if (citizenship == true){
+                            appointment_class.Check_Exist(citizen_class.getIC_Number());
+                        } else {
+                            appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
+                        }
                     appointment_class.Add_Dose();
 
-                    //set vaccine id
+                    // Set vaccine ID
                     Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();
                     appointment_class.Add_Vaccine_Id(date_format.format(txt_select_date.getDate()), selected_item.getId());
-
                     appointment_class.setAppointment_Time(cbo_select_time.getSelectedItem().toString());
                     appointment_class.Add_Dose();
                     appointment_class.setStatus("Pending");
                     appointment_class.Add_Appointment();
 
-
-                    if(appointment_class.getSuccess_Save() == true) {
+                    if (appointment_class.getSuccess_Save() == true) {
                         JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                         View_Appointment();
                     } else {
                         JOptionPane.showMessageDialog(null, "Failed to register. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-
                 }
             }
         }
@@ -1688,16 +1688,14 @@ public class People extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to canceled appointmment.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-            else if (return_value == JOptionPane.NO_OPTION) {
+            } else if (return_value == JOptionPane.NO_OPTION) {
 
             }
         }
-        
-        
-
     }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
 
+    
+    // Search vaccination status
     private void txt_search_vaccination_statusKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_vaccination_statusKeyReleased
         DefaultTableModel center_table_model = (DefaultTableModel) tbl_vaccination_status.getModel();
         TableRowSorter<DefaultTableModel> search_center = new TableRowSorter<DefaultTableModel>(center_table_model);
@@ -1705,38 +1703,39 @@ public class People extends javax.swing.JFrame {
         search_center.setRowFilter(RowFilter.regexFilter(txt_search_vaccination_status.getText()));
     }//GEN-LAST:event_txt_search_vaccination_statusKeyReleased
 
+    
+    // Select date
     private void txt_select_datePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_select_datePropertyChange
         if (txt_select_date.getDate() == null) {
             cbo_select_vaccination_center.setEnabled(false);
         } else {
             cbo_select_vaccination_center.setEnabled(true);
-            
             appointment_class.Show_Locations(date_format.format(txt_select_date.getDate()));
             cbo_select_vaccination_center.removeAllItems();
-                center_class.View_Center();
-                DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_select_vaccination_center.getModel();
-                for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
-                    String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
+            center_class.View_Center();
+            DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_select_vaccination_center.getModel();
+               
+            for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
+                String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
 
-                    String temp = "", ww;
-                    ww = data[6];
-                    for(int a = 0; a < center_class.getCenter_Data().size(); a++) {
-                        String[] name = center_class.getCenter_Data().get(a).split("//");
-                        //temp = name[1];
-                        System.out.println("ww  " + ww + "name[0]  "  +name[0]);
-                        if (name[0].equals(ww)) {
-                            temp = name[1];
-                            System.out.println("indise if, print  name "  +temp + "  id  " + name[0]);
-                        }
-                    }                  
-                    //System.out.println("outside  , location id " + data[6] + "  " + temp + "  " + data[2]);
-                    cbo_edit_model.addElement(new Center(data[6], temp, data[2],data[3]));
-
-                }
-                cbo_select_vaccination_center.setModel(cbo_edit_model);
+                String temp = "", ww;
+                ww = data[6];
+                
+                for (int a = 0; a < center_class.getCenter_Data().size(); a++) {
+                    String[] name = center_class.getCenter_Data().get(a).split("//");
+                    
+                    if (name[0].equals(ww)) {
+                        temp = name[1];
+                    }
+                }                  
+                cbo_edit_model.addElement(new Center(data[6], temp, data[2], data[3]));
+            }
+            cbo_select_vaccination_center.setModel(cbo_edit_model);
         }
     }//GEN-LAST:event_txt_select_datePropertyChange
 
+    
+    // Select vaccination center
     private void cbo_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_select_vaccination_centerActionPerformed
         Center_ID_and_Details();
         Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();

@@ -6,5 +6,4 @@
 6//Ideal Convention Centre Shah Alam//Corporate Tower, Level 5, Jalan Pahat L 15/L, Section 15, 40200 Shah Alam, Selangor.//60350313333//AstraZeneca//
 7//Tengku Ampuan Rahimah Hospital//Jalan Langat, 41200 Klang, Selangor.//60333757000//Pfizer//
 8//Bandar Botanic Health Clinic//Bandar Botanic, 41200 Klang, Selangor.//60333244260//Pfizer//
-9//Wyndham Acmar Klang//1-G-1, Persiaran Bukit Raja 2/KU1, 41150 Klang, Selangor.//60333118888//Sinovac//
-10//Axiata Arena//Address//1234567890//Sinovac//
+9//Wyndham Acmar Klang Hall//1-G-1, Persiaran Bukit Raja 2/KU1, 41150 Klang, Selangor.//60333118888//Sinovac//

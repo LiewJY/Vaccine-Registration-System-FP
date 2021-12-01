@@ -1,15 +1,33 @@
 package vaccine.registration.system;
 
-import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 
-public class Login extends javax.swing.JFrame {
 
-    
+public class Login extends javax.swing.JFrame {
     // Login form
     public Login() {
         initComponents();
+      
+        // Create file if file does not exist
+        try {
+            FileWriter people_file_writer = new FileWriter("People.txt", true);
+            people_file_writer.close();
+            
+            FileWriter personnel_file_writer = new FileWriter("Personnel.txt", true);
+            personnel_file_writer.close();
+                        
+            FileWriter appointment_file_writer = new FileWriter("Appointment.txt", true);
+            appointment_file_writer.close();
+            
+            FileWriter center_file_writer = new FileWriter("Center.txt", true);
+            center_file_writer.close();
+            
+            FileWriter vaccine_file_writer = new FileWriter("Vaccine.txt", true);
+            vaccine_file_writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -45,7 +63,6 @@ public class Login extends javax.swing.JFrame {
         lbl_ic_passport_number.setText("IC / Passport Number");
 
         txt_ic_passport_number.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_ic_passport_number.setText("1");
         txt_ic_passport_number.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         lbl_password.setBackground(new java.awt.Color(255, 255, 255));
@@ -53,7 +70,6 @@ public class Login extends javax.swing.JFrame {
         lbl_password.setText("Password");
 
         txt_password.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txt_password.setText("1");
         txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(219, 219, 219)));
 
         cbo_user_role.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -70,7 +86,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btn_register.setBackground(new java.awt.Color(255, 255, 255));
         btn_register.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_register.setText("Register");
         btn_register.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +170,7 @@ public class Login extends javax.swing.JFrame {
                 personnel_class.setPassword(txt_password.getText());
                 personnel_class.Login_Account();
                 boolean personnel = personnel_class.getAuth();
+                
                 if (personnel == true) {
                     JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new Personnel(personnel_class.getPersonnel_ID()).setVisible(true);
@@ -162,13 +178,14 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                 }
-            // citizen
+            // Citizen
             } else if (cbo_user_role.getSelectedItem() == "People (Citizen)"){
                 CitizenClass citizen_class = new CitizenClass();
                 citizen_class.setIC_Number(txt_ic_passport_number.getText());
                 citizen_class.setPassword(txt_password.getText());
                 citizen_class.Login_Account();
                 boolean citizen = citizen_class.getAuth();
+                
                 if (citizen == true) {
                     JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new People(citizen_class.getPeople_ID(), citizen_class.getCitizen()).setVisible(true);
@@ -176,13 +193,14 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                 }
-            // non- citizen
+            // Non-citizen
             } else if (cbo_user_role.getSelectedItem() == "People (Non-Citizen)"){
                 NonCitizenClass noncitizen_class = new NonCitizenClass();
                 noncitizen_class.setPassport_Number(txt_ic_passport_number.getText());
                 noncitizen_class.setPassword(txt_password.getText());
                 noncitizen_class.Login_Account();
                 boolean non_citizen = noncitizen_class.getAuth();
+                
                 if (non_citizen == true) {
                     JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new People(noncitizen_class.getPeople_ID(), noncitizen_class.getCitizen()).setVisible(true);

@@ -1,27 +1,9 @@
 package vaccine.registration.system;
 
-import java.awt.List;
-import java.io.*;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.ArrayList;
-
-
 public class VaccineRegistrationSystem {
-    
     // Main method to display login screen
     public static void main(String[] args) {
         Login login = new Login();
         login.setVisible(true); 
-//        Personnel aa = new Personnel();
-//        aa.Center_ID_to_Name();
-        
-//        AppointmentClass appoitnment_class = new AppointmentClass();
-//        appoitnment_class.calculateAppoitnment_ID();
     }
 }
-      
-
-    
-
