@@ -134,52 +134,74 @@ public class CenterClass {
     }
     
     public void Edit_Center() {
+        ArrayList<String> edit_staff_array = new ArrayList<>();
+        
+        try {
+            FileReader file_reader = new FileReader("Center.txt");
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
+
             String line;
             String[] line_array;
-            ArrayList<String> temp_data = new ArrayList<>();
-            try { 
-                FileReader center_file = new FileReader("Center.txt");
-                BufferedReader center = new BufferedReader(center_file);
-                //edit line
-                count = 0;
-                 while ((line = center.readLine()) != null) {
-                    line_array = line.split("//");
-                    if (line_array[1].equals(Center_Name)){
-                    count = count + 1;
-                    if(count > 1) {
-                        Success_Save = false;
-                        break;
-                    }
-                    } else {
-                        Success_Save = true;
-                    }
-                    if(Success_Save == true) {
-                        if (line_array[0].equals(String.valueOf(Center_ID))) {
-                            //Insert data
-                            temp_data.add(Center_ID + "//" 
-                                    + Center_Name + "//" 
-                                    + Center_Address + "//" 
-                                    + Center_Contact_Number + "//" 
-                                    + line_array[4] + "//");
-                        } else {
-                            temp_data.add(line);
-                        }
-                    }
+
+            while ((line = buffered_reader.readLine()) != null) {
+                line_array = line.split("//");
+                System.out.println(line_array);
+                if (line_array[0].equals(String.valueOf(Center_ID))) {
+                    edit_staff_array.add(Center_ID + "//" + Center_Name + "//" + Center_Address + "//" 
+                            + Center_Contact_Number + "//" + line_array[4] + "//");
+                    System.out.println(edit_staff_array);
+                } else {
+                    edit_staff_array.add(line);
+                    
                 }
-                center_file.close();
-               } catch (IOException c) {
-                c.printStackTrace();
             }
-        if(Success_Save == true) {
-            try (PrintWriter edit_center = new PrintWriter(new BufferedWriter(new FileWriter("Center.txt")))) {
-                for (String new_data : temp_data) {
-                    edit_center.println(new_data);
-                }
-                edit_center.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            file_reader.close();
+        } catch (IOException e) {
+            Success_Save = false;
         }
+
+        // Validation & write data
+        try {
+            FileReader file_reader = new FileReader("Center.txt");
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
+
+            String line;
+            String[] line_array;
+            boolean data_exist = false;
+
+            // Check people ic / passport
+            while ((line = buffered_reader.readLine()) != null) {
+                line_array = line.split("//");
+
+                // this not this id check is ic / passport same
+                if (!line_array[0].equals(String.valueOf(Center_ID)) && (line_array[1].equals(Center_Name))) {
+                    data_exist = true;
+                    System.out.println(line_array[0] + "  " + line_array[1]);
+                }
+            }
+
+            if (data_exist == true) {                    
+                Success_Save = false;
+            } else if (data_exist == false) {
+                // Write and update staff data
+                try (PrintWriter print_writer = new PrintWriter("Center.txt")) {
+                    for (String new_staff_data : edit_staff_array) {
+                        print_writer.println(new_staff_data);
+                    }
+
+                    print_writer.close();
+
+                    Success_Save = true;
+                } catch (IOException e) {
+                    Success_Save = false;
+                }
+            }
+        } catch(IOException e) {
+            Success_Save = false;
+        }
+        
+
     }
     
     

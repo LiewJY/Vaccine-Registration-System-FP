@@ -135,11 +135,11 @@ public class CitizenClass extends PeopleClass {
             String[] line_array;
             boolean data_exist = false;
 
-            // Check whether input staff ID, contact number, or email is existing in text file
+            // Check people ic / passport
             while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
 
-                // If staff ID not equals to line_array[0] and contact number equals to line_array[3] or email equals to line_array[4]
+                // this not this id check is ic / passport same
                 if (!line_array[0].equals(String.valueOf(People_ID)) && (line_array[4].equals(IC_Number))) {
                     data_exist = true;
                     System.out.println(line_array[0] + "  " + line_array[4]);
