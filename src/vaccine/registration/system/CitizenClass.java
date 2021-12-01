@@ -98,7 +98,7 @@ public class CitizenClass extends PeopleClass {
         }
     }
     public void Edit_Account() {
-        ArrayList<String> edit_staff_array = new ArrayList<>();
+        ArrayList<String> edit_citizen = new ArrayList<>();
         
         try {
             FileReader file_reader = new FileReader("People.txt");
@@ -112,11 +112,11 @@ public class CitizenClass extends PeopleClass {
                 System.out.println(line_array);
                 //String testa = String.valueOf(People_ID);
                 if (line_array[0].equals(String.valueOf(People_ID))) {
-                    edit_staff_array.add(People_ID + "//" + Name + "//" + Phone_Number + "//" 
+                    edit_citizen.add(People_ID + "//" + Name + "//" + Phone_Number + "//" 
                             + Nationality + "//" + IC_Number + "//" + Address + "//" + Password + "//");
-                    System.out.println(edit_staff_array);
+                    System.out.println(edit_citizen);
                 } else {
-                    edit_staff_array.add(line);
+                    edit_citizen.add(line);
                     
                 }
             }
@@ -149,10 +149,10 @@ public class CitizenClass extends PeopleClass {
             if (data_exist == true) {                    
                 Success_Save = false;
             } else if (data_exist == false) {
-                // Write and update staff data
+                // Write and update  data
                 try (PrintWriter print_writer = new PrintWriter("People.txt")) {
-                    for (String new_staff_data : edit_staff_array) {
-                        print_writer.println(new_staff_data);
+                    for (String new_data : edit_citizen) {
+                        print_writer.println(new_data);
                     }
 
                     print_writer.close();

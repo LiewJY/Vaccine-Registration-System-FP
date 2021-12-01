@@ -134,7 +134,7 @@ public class CenterClass {
     }
     
     public void Edit_Center() {
-        ArrayList<String> edit_staff_array = new ArrayList<>();
+        ArrayList<String> edit_center = new ArrayList<>();
         
         try {
             FileReader file_reader = new FileReader("Center.txt");
@@ -147,11 +147,11 @@ public class CenterClass {
                 line_array = line.split("//");
                 System.out.println(line_array);
                 if (line_array[0].equals(String.valueOf(Center_ID))) {
-                    edit_staff_array.add(Center_ID + "//" + Center_Name + "//" + Center_Address + "//" 
+                    edit_center.add(Center_ID + "//" + Center_Name + "//" + Center_Address + "//" 
                             + Center_Contact_Number + "//" + line_array[4] + "//");
-                    System.out.println(edit_staff_array);
+                    System.out.println(edit_center);
                 } else {
-                    edit_staff_array.add(line);
+                    edit_center.add(line);
                     
                 }
             }
@@ -170,11 +170,11 @@ public class CenterClass {
             String[] line_array;
             boolean data_exist = false;
 
-            // Check people ic / passport
+            // Check center name
             while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
 
-                // this not this id check is ic / passport same
+                // this not this id check is center name same
                 if (!line_array[0].equals(String.valueOf(Center_ID)) && (line_array[1].equals(Center_Name))) {
                     data_exist = true;
                     System.out.println(line_array[0] + "  " + line_array[1]);
@@ -184,10 +184,10 @@ public class CenterClass {
             if (data_exist == true) {                    
                 Success_Save = false;
             } else if (data_exist == false) {
-                // Write and update staff data
+                // Write and update  data
                 try (PrintWriter print_writer = new PrintWriter("Center.txt")) {
-                    for (String new_staff_data : edit_staff_array) {
-                        print_writer.println(new_staff_data);
+                    for (String new_data : edit_center) {
+                        print_writer.println(new_data);
                     }
 
                     print_writer.close();
