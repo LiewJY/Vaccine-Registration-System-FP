@@ -3,9 +3,12 @@ package vaccine.registration.system;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Array;
 import javax.swing.*;
 import java.text.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.regex.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,12 +23,14 @@ public class People extends javax.swing.JFrame {
     CenterClass center_class = new CenterClass();
     VaccineClass vaccine_class = new VaccineClass();
     AppointmentClass appointment_class = new AppointmentClass();
-    PeopleClass people_class = new PeopleClass();
+    //PeopleClass people_class = new PeopleClass();
     
     // for formatting date
     SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
     Date date = new Date(); 
-
+    
+    ArrayList<String[]> Appointment_Data = new ArrayList<>(); 
+    
     boolean citizenship;
     
     // People form
@@ -92,73 +97,184 @@ public class People extends javax.swing.JFrame {
         // Loop and display data
         Center_ID_and_Details();
         Vaccine_ID_and_Details();
-        citizen_class.View_Account();
-        for (int i = 0; i < appointment_class.getAppointment_Data().size(); i++) {
-            String[] data = appointment_class.getAppointment_Data().get(i).split("//");
-            //System.out.println(data);
-            if(String.valueOf(citizen_class.getPeople_ID()).equals(data[1])) {
-                data[1] = String.valueOf(citizen_class.getPeople_ID());
-                //System.out.println(data);
+        appointment_class.View_Appointment();
+        Appointment_Data = new ArrayList<>();
+        int index;
+        String key;
+        String[] data = null;
+        if (citizenship == true){
+            citizen_class.View_Account();
+            for (int i = 0; i < appointment_class.getAppointment_Data().size(); i++) {
+                data = appointment_class.getAppointment_Data().get(i).split("//");
+                //System.out.println("                                                    " + Arrays.toString(data));
+                if(String.valueOf(citizen_class.getPeople_ID()).equals(data[1])) {
+                    data[1] = String.valueOf(citizen_class.getPeople_ID());
+                    //System.out.println("FILETERED               " +  Arrays.toString(data));
 
-                int index = 2;
-                String key = citizen_class.getName();
-                String[] result = new String[data.length + 1];
-                System.arraycopy(data, 0, result, 0, index);
-                result[index] = key;
-                System.arraycopy(data, index, result, index + 1, data.length - index);
-                data = result;
-
-                index = 3;
-                key = citizen_class.getIC_Number();
-                result = new String[data.length + 1];
-                System.arraycopy(data, 0, result, 0, index);
-                result[index] = key;
-                System.arraycopy(data, index, result, index + 1, data.length - index);
-                data = result;
-            }
-            for (VaccineDetails vac: vaccine_id_and_details) {
-                if(vac.getId().equals(data[4])) {
-                    data[4] = vac.getDate();
-                    int index = 6;
-                    String key = vac.getCenterID();
+                    index = 2;
+                    key  = citizen_class.getName();
                     String[] result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
                     System.arraycopy(data, index, result, index + 1, data.length - index);
                     data = result;
-                    
-                    index = 7;
-                    key = vac.getType();
+
+                    index = 3;
+                    key  = citizen_class.getIC_Number();
                     result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
                     System.arraycopy(data, index, result, index + 1, data.length - index);
                     data = result;
-                }
-            }
-            for (Center center: center_id_to_name) {
-                if(center.getId().equals(data[6])) {
-                    data[6] = center.getName();
+                    //System.out.println("with ic and name               " +  Arrays.toString(data));
+
+                    for (VaccineDetails vac: vaccine_id_and_details) {
+                        if(vac.getId().equals(data[4])) {
+                            data[4] = vac.getDate();
+                            index = 6;
+                            key = vac.getCenterID();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+
+                            index = 7;
+                            key = vac.getType();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+                            //System.out.println("with vaccine details              " +  Arrays.toString(data));
+                        }
+                    }
+                    for (Center center: center_id_to_name) {
+                        if(center.getId().equals(data[6])) {
+                            data[6] = center.getName();
+                            index = 10;
+                            key = center.getType();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+
+                            index = 11;
+                            key = center.getContact();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+                        }
+                    }
+                    Appointment_Data.add(data);
                 }
             }
             
-            //System.out.println(data);
+        } else {
+                        noncitizen_class.View_Account();
+            for (int n = 0; n < appointment_class.getAppointment_Data().size(); n++) {
+                data = appointment_class.getAppointment_Data().get(n).split("//");
+                //System.out.println("                                                    " + Arrays.toString(data));
+                if(String.valueOf(noncitizen_class.getPeople_ID()).equals(data[1])) {
+                    data[1] = String.valueOf(noncitizen_class.getPeople_ID());
+                    //System.out.println("FILETERED               " +  Arrays.toString(data));
 
+                    index = 2;
+                    key  = noncitizen_class.getName();
+                    String[] result = new String[data.length + 1];
+                    System.arraycopy(data, 0, result, 0, index);
+                    result[index] = key;
+                    System.arraycopy(data, index, result, index + 1, data.length - index);
+                    data = result;
+
+                    index = 3;
+                    key  = noncitizen_class.getPassport_Number();
+                    result = new String[data.length + 1];
+                    System.arraycopy(data, 0, result, 0, index);
+                    result[index] = key;
+                    System.arraycopy(data, index, result, index + 1, data.length - index);
+                    data = result;
+                    //System.out.println("with ic and name               " +  Arrays.toString(data));
+
+                    for (VaccineDetails vac: vaccine_id_and_details) {
+                        if(vac.getId().equals(data[4])) {
+                            data[4] = vac.getDate();
+                            index = 6;
+                            key = vac.getCenterID();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+
+                            index = 7;
+                            key = vac.getType();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+                            //System.out.println("with vaccine details              " +  Arrays.toString(data));
+                        }
+                    }
+                    for (Center center: center_id_to_name) {
+                        if(center.getId().equals(data[6])) {
+                            data[6] = center.getName();
+                            index = 10;
+                            key = center.getType();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+
+                            index = 11;
+                            key = center.getContact();
+                            result = new String[data.length + 1];
+                            System.arraycopy(data, 0, result, 0, index);
+                            result[index] = key;
+                            System.arraycopy(data, index, result, index + 1, data.length - index);
+                            data = result;
+                        }
+                    }
+                    Appointment_Data.add(data);
+                }
+            }
+        }       
+//            System.out.println("                                                    " + citizen_class.getPeople_ID());      
+//            System.out.println(" " + noncitizen_class.getPeople_ID() + "ssss      sss");       
+//            System.out.println("final      data       " +  Arrays.toString(data));
+ 
+        for (String[] display: Appointment_Data) {
+            if(display[8].equals("1")) {
+                lbl_vaccination_center_1.setText(display[6]);
+                lbl_center_address_1.setText(display[10]);
+                lbl_center_contact_number_1.setText(display[11]);
+                lbl_date_1.setText(display[4]);
+                lbl_time_1.setText(display[5]);
+                lbl_vaccine_type_1.setText(display[7]);
+                        
+            } else if(display[8].equals("2")) {
+                lbl_vaccination_center_2.setText(display[6]);
+                lbl_center_address_2.setText(display[10]);
+                lbl_center_contact_number_2.setText(display[11]);
+                lbl_date_2.setText(display[4]);
+                lbl_time_2.setText(display[5]);
+                lbl_vaccine_type_2.setText(display[7]);
+            }
         }
-        
-
-        
-        
-        
-        
     }
         // for center to have id
     private class Center {
-        private String id, name, type;
-        public Center(String id, String name, String type) {
+        private String id, name, type, contact;
+        public Center(String id, String name, String type, String contact) {
             this.id = id;
             this.name = name;
             this.type = type;
+            this.contact = contact;
         }
         public String getId() {
             return id;
@@ -168,6 +284,9 @@ public class People extends javax.swing.JFrame {
         }
         public String getType() {
             return type;
+        }
+        public String getContact() {
+            return contact;
         }
         public String toString() {
             return name;
@@ -181,7 +300,8 @@ public class People extends javax.swing.JFrame {
         // Loop and add data
         for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
             String[] data = center_class.getCenter_Data().get(i).split("//");
-            center_id_to_name.add(new Center(data[0], data[1], data[2]));
+            center_id_to_name.add(new Center(data[0], data[1], data[2], data[3]));
+            System.out.println(data[0] + "  " +  data[1] + "  " +  data[2] + "   " + data[3]);
         }
     }
     
@@ -248,7 +368,7 @@ public class People extends javax.swing.JFrame {
         for (int i = 0; i <  vaccine_class.getVaccine_Data().size(); i++) {
             String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
             vaccine_id_and_details.add(new VaccineDetails(data[0],data[3],data[2],data[6]));
-            System.out.println(data[0] + "  " +  data[1] + "  " +  data[6]);
+            //System.out.println(data[0] + "  " +  data[1] + "  " +  data[6]);
         }
 
     }
@@ -1562,7 +1682,7 @@ public class People extends javax.swing.JFrame {
                         }
                     }                  
                     //System.out.println("outside  , location id " + data[6] + "  " + temp + "  " + data[2]);
-                    cbo_edit_model.addElement(new Center(data[6], temp, data[2]));
+                    cbo_edit_model.addElement(new Center(data[6], temp, data[2],data[3]));
 
                 }
                 cbo_select_vaccination_center.setModel(cbo_edit_model);
