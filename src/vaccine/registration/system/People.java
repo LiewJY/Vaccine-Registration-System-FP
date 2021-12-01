@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -30,6 +32,9 @@ public class People extends javax.swing.JFrame {
     Date date = new Date(); 
     
     ArrayList<String[]> Appointment_Data = new ArrayList<>(); 
+    
+    //for validation
+    Date appointment_date;
     
     boolean citizenship;
     
@@ -67,6 +72,20 @@ public class People extends javax.swing.JFrame {
         txt_select_date.setCalendar(null);
         lbl_vaccine_type.setText("");
         //cbo_select_vaccination_center.setSelectedIndex(-1);
+        
+        lbl_vaccination_center_1.setText("");
+        lbl_center_address_1.setText("");
+        lbl_center_contact_number_1.setText("");
+        lbl_date_1.setText("");
+        lbl_time_1.setText("");
+        lbl_vaccine_type_1.setText("");
+        
+        lbl_vaccination_center_2.setText("");
+        lbl_center_address_2.setText("");
+        lbl_center_contact_number_2.setText("");
+        lbl_date_2.setText("");
+        lbl_time_2.setText("");
+        lbl_vaccine_type_2.setText("");
     }
     
     public void View(){
@@ -174,7 +193,7 @@ public class People extends javax.swing.JFrame {
             }
             
         } else {
-                        noncitizen_class.View_Account();
+            noncitizen_class.View_Account();
             for (int n = 0; n < appointment_class.getAppointment_Data().size(); n++) {
                 data = appointment_class.getAppointment_Data().get(n).split("//");
                 //System.out.println("                                                    " + Arrays.toString(data));
@@ -244,9 +263,9 @@ public class People extends javax.swing.JFrame {
                 }
             }
         }       
-//            System.out.println("                                                    " + citizen_class.getPeople_ID());      
-//            System.out.println(" " + noncitizen_class.getPeople_ID() + "ssss      sss");       
-//            System.out.println("final      data       " +  Arrays.toString(data));
+            System.out.println("                                                    " + citizen_class.getPeople_ID());      
+            System.out.println(" " + noncitizen_class.getPeople_ID() + "ssss      sss");       
+            System.out.println("final      data       " +  Appointment_Data);
  
         for (String[] display: Appointment_Data) {
             if(display[8].equals("1")) {
@@ -256,7 +275,13 @@ public class People extends javax.swing.JFrame {
                 lbl_date_1.setText(display[4]);
                 lbl_time_1.setText(display[5]);
                 lbl_vaccine_type_1.setText(display[7]);
-                        
+                appointment_class.setAppointnment_ID(Integer.valueOf(display[0]));
+                try {
+                    appointment_date = date_format.parse(display[4]);
+                } catch (ParseException ex) {
+                    
+                }
+                System.out.println(appointment_class.getAppointnment_ID() + "    get appoiintment id no 1            " + display[0]);        
             } else if(display[8].equals("2")) {
                 lbl_vaccination_center_2.setText(display[6]);
                 lbl_center_address_2.setText(display[10]);
@@ -264,8 +289,17 @@ public class People extends javax.swing.JFrame {
                 lbl_date_2.setText(display[4]);
                 lbl_time_2.setText(display[5]);
                 lbl_vaccine_type_2.setText(display[7]);
+                appointment_class.setAppointnment_ID(Integer.valueOf(display[0]));
+                try {
+                    appointment_date = date_format.parse(display[4]);
+                } catch (ParseException ex) {
+                    
+                }
+                System.out.println(appointment_class.getAppointnment_ID() + "   get appoiintment id no 2            " + display[0]);        
+
             }
         }
+        System.out.println(appointment_class.getAppointnment_ID() + "   get appoiintment id from class            ");
     }
         // for center to have id
     private class Center {
@@ -1605,10 +1639,6 @@ public class People extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
                 else { 
-//                    System.out.println("aa        " + citizen_class.getPeople_ID());
-//                    System.out.println("aa        " + noncitizen_class.getPeople_ID());
-//                    System.out.println("aa        " + people_class.getPeople_ID());
-
                     appointment_class.calculateAppointnment_ID();
                     if (citizenship == true){
                     appointment_class.Check_Exist(citizen_class.getIC_Number());
@@ -1643,11 +1673,29 @@ public class People extends javax.swing.JFrame {
     
     // Cancel vaccination appointment button
     private void btn_cancel_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_appointmentActionPerformed
+        if(appointment_date.compareTo(date) < 0) {
+            JOptionPane.showMessageDialog(null, "Could not cancel appointment as appointment is today or older.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel your appoitment on " 
+                + date_format.format(appointment_date) + " ?", "Warning", JOptionPane.YES_NO_OPTION);
+        
+            if (return_value == JOptionPane.YES_OPTION) {
+                if(center_class.getSuccess_Save() == true) {
+                    JOptionPane.showMessageDialog(null, "Appointment canceled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    appointment_class.Remove_Appointment();
+                    Clear();
+                    View_Appointment();                
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to canceled appointmment.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else if (return_value == JOptionPane.NO_OPTION) {
+
+            }
+        }
         
         
-        
-        
-        
+
     }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
 
     private void txt_search_vaccination_statusKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_vaccination_statusKeyReleased
