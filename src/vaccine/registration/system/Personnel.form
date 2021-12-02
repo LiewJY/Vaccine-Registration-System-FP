@@ -2486,7 +2486,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_account" pref="2964" max="32767" attributes="0"/>
+                      <Component id="pnl_view_account" pref="2984" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2509,13 +2509,13 @@
               <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_people" pref="779" max="32767" attributes="0"/>
+                      <Component id="pnl_view_people" pref="784" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_appointments" pref="727" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_appointments" pref="732" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccination_center" pref="728" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccination_center" pref="733" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="pnl_view_vaccine" pref="730" max="32767" attributes="0"/>
+                      <Component id="pnl_view_vaccine" pref="735" max="32767" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
