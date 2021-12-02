@@ -172,55 +172,69 @@ public class VaccineClass {
     
     // Edit vaccine
     public void Edit_Vaccine(String center_id) {
-        String line;
-        String[] line_array;
-        ArrayList<String> temp_data = new ArrayList<>();
         
-        try { 
-            FileReader vaccine_file = new FileReader("Vaccine.txt");
-            BufferedReader vaccine = new BufferedReader(vaccine_file);
-            
-            // Edit line
-            while ((line = vaccine.readLine()) != null) {
+        ArrayList<String> edit_vaccine = new ArrayList<>();
+        
+        try {
+            FileReader file_reader = new FileReader("Vaccine.txt");
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
+
+            String line;
+            String[] line_array;
+
+            while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
                 
-                if (line_array[1].equals(Vaccine_Batch_ID) && line_array[2].equals(Vaccine_Type) && line_array[6].equals(center_id) && line_array[3].equals(date) ){
-                    Success_Save = false;
-                    break;
+                if (line_array[0].equals(String.valueOf(Vaccine_ID))) {
+                    edit_vaccine.add(Vaccine_ID + "//" + Vaccine_Batch_ID + "//" + Vaccine_Type + "//" 
+                            + date + "//" + Expiration_Date + "//" + Second_Dose_Gap + "//" + center_id + "//");
                 } else {
-                    Success_Save = true;
+                    edit_vaccine.add(line);
                 }
-                
-                if(Success_Save == true) {
-                    if (line_array[0].equals(String.valueOf(Vaccine_ID))) {
-                        // Insert data
-                        temp_data.add(Vaccine_ID + "//" 
-                                + Vaccine_Batch_ID  + "//" 
-                                + Vaccine_Type  + "//" 
-                                + date  + "//" 
-                                + Expiration_Date   + "//" 
-                                + Second_Dose_Gap   + "//" 
-                                + center_id   + "//");
-                    } else {
-                        temp_data.add(line);
+            }
+            file_reader.close();
+        } catch (IOException e) {
+            Success_Save = false;
+        }
+
+        // Validation & write data
+        try {
+            FileReader file_reader = new FileReader("Vaccine.txt");
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
+
+            String line;
+            String[] line_array;
+            boolean data_exist = false;
+
+            // Check center name
+            while ((line = buffered_reader.readLine()) != null) {
+                line_array = line.split("//");
+
+                // Check not this ID & is center name same
+                if (line_array[1].equals(Vaccine_Batch_ID) && line_array[2].equals(Vaccine_Type) && line_array[6].equals(center_id) && line_array[3].equals(date)) {
+                    data_exist = true;
+                }
+            }
+
+            if (data_exist == true) {                    
+                Success_Save = false;
+            } else if (data_exist == false) {
+                // Write and update data
+                try (PrintWriter print_writer = new PrintWriter("Vaccine.txt")) {
+                    for (String new_data : edit_vaccine) {
+                        print_writer.println(new_data);
                     }
+                    print_writer.close();
+                    Success_Save = true;
+                } catch (IOException e) {
+                    Success_Save = false;
                 }
             }
-            vaccine_file.close();
-        } catch (IOException c) {
-            c.printStackTrace();
+        } catch(IOException e) {
+            Success_Save = false;
         }
-        
-        if(Success_Save == true) {
-            try (PrintWriter edit_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Vaccine.txt")))) {
-                for (String new_data : temp_data) {
-                    edit_vaccine.println(new_data);
-                }
-                edit_vaccine.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+                
+       
     }
 
     

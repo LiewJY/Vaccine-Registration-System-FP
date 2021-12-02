@@ -1515,6 +1515,7 @@ public class People extends javax.swing.JFrame {
     
     // Vaccination appointment side bar tab
     private void lbl_vaccination_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentMouseClicked
+        Clear();
         View_Appointment();
     }//GEN-LAST:event_lbl_vaccination_appointmentMouseClicked
 
@@ -1556,11 +1557,8 @@ public class People extends javax.swing.JFrame {
     // Cancel register vaccination appointment button
     private void btn_register_vaccination_appointment_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_cancelActionPerformed
         Clear();
-        pnl_view_account.setVisible(false);
-        pnl_edit_account.setVisible(false);
-        pnl_view_vaccination_appointment.setVisible(true);
-        pnl_register_vaccination_appointment.setVisible(false);
-        pnl_view_vaccination_status.setVisible(false);
+        View_Appointment();
+
     }//GEN-LAST:event_btn_register_vaccination_appointment_cancelActionPerformed
 
     
@@ -1680,9 +1678,9 @@ public class People extends javax.swing.JFrame {
                 + date_format.format(appointment_date) + " ?", "Warning", JOptionPane.YES_NO_OPTION);
         
             if (return_value == JOptionPane.YES_OPTION) {
-                if(center_class.getSuccess_Save() == true) {
+                appointment_class.Remove_Appointment();
+                if(appointment_class.getSuccess_Save() == true) {
                     JOptionPane.showMessageDialog(null, "Appointment canceled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    appointment_class.Remove_Appointment();
                     Clear();
                     View_Appointment();                
                 } else {

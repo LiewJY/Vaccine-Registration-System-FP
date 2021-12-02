@@ -5011,10 +5011,10 @@ public class Personnel extends javax.swing.JFrame {
     private void btn_register_vaccination_appointments_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointments_registerActionPerformed
         if (cbo_register_vaccination_appointments_select_vaccination_center.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "The selected date does not have a center. \nPlease select another date.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (cbo_register_vaccination_appointments_select_time.getSelectedIndex() == -1 || cbo_register_vaccination_appointments_select_time.getSelectedItem().equals("Select Time")) {
+            JOptionPane.showMessageDialog(null, "Pelase select a time for the appointment.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (txt_register_vaccination_appointments_ic_passport_number.getText().equals("") || cbo_register_vaccination_appointments_select_time.getSelectedItem().equals("Select Time") 
-                    || cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center") || 
-                    cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("")) {
+            if (txt_register_vaccination_appointments_ic_passport_number.getText().equals("") ) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             }else{
                 appointment_class.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
@@ -5044,6 +5044,7 @@ public class Personnel extends javax.swing.JFrame {
                     if (appointment_class.getSuccess_Save() == true) {
                         JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                         View_Appointment();
+                        Clear();
                     } else {
                         JOptionPane.showMessageDialog(null, "Failed to register. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -5118,13 +5119,17 @@ public class Personnel extends javax.swing.JFrame {
     
     // Save add vaccination center button
     private void btn_add_center_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_center_addActionPerformed
-        if (txt_add_center_name.getText().equals("") || txt_add_center_address.getText().equals("") || txt_add_center_contact_number.getText().equals("") || cbo_add_center_vaccine_type.getSelectedItem().equals("Select Vaccine Type")) {
+        if (txt_add_center_name.getText().equals("") || txt_add_center_address.getText().equals("") || txt_add_center_contact_number.getText().equals("")) {
            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateName(txt_add_center_name.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (cbo_add_center_vaccine_type.getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(null, "Please select a vaccine type.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validatePhoneNumber(txt_add_center_contact_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+            System.out.println(cbo_add_center_vaccine_type.getSelectedIndex() );
+            System.out.println(cbo_add_center_vaccine_type.getSelectedItem() );
             center_class.calculateCenter_ID();
             center_class.setCenter_Name(txt_add_center_name.getText());
             center_class.setCenter_Address(txt_add_center_address.getText());

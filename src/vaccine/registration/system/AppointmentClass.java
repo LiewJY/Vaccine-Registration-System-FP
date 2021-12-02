@@ -301,11 +301,11 @@ public class AppointmentClass {
             c.printStackTrace();
         }
         
-        try (PrintWriter edit_vaccine = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
+        try (PrintWriter edit_appointment = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt")))) {
             for (String new_data : temp_data) {
-                edit_vaccine.println(new_data);
+                edit_appointment.println(new_data);
             }
-            edit_vaccine.close();
+            edit_appointment.close();
             Success_Save = true;
         } catch (IOException e) {
             e.printStackTrace();
