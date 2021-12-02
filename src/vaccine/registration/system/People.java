@@ -1601,9 +1601,9 @@ public class People extends javax.swing.JFrame {
                     pnl_view_vaccination_appointment.setVisible(false);
                     pnl_register_vaccination_appointment.setVisible(false);
                     pnl_view_vaccination_status.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 noncitizen_class.setName(txt_edit_name.getText());
@@ -1623,7 +1623,7 @@ public class People extends javax.swing.JFrame {
                     pnl_view_vaccination_status.setVisible(false);
                     JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }         
         }
@@ -1662,11 +1662,11 @@ public class People extends javax.swing.JFrame {
                     appointment_class.Add_Appointment();
 
                     if (appointment_class.getSuccess_Save() == true) {
-                        JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vaccination appointment registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         Clear();
                         View_Appointment();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Failed to register. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Failed to register vaccination appointment. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -1685,11 +1685,11 @@ public class People extends javax.swing.JFrame {
             if (return_value == JOptionPane.YES_OPTION) {
                 appointment_class.Remove_Appointment();
                 if(appointment_class.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Appointment canceled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vaccination appointment canceled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     Clear();
                     View_Appointment();                
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to canceled appointmment.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to cancel vaccination appointmment.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else if (return_value == JOptionPane.NO_OPTION) {
 

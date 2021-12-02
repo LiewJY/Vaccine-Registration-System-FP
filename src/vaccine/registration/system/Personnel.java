@@ -3562,7 +3562,7 @@ public class Personnel extends javax.swing.JFrame {
                 citizen.Register_Account();
                 
                 if(citizen.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "People registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_People();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -3579,7 +3579,7 @@ public class Personnel extends javax.swing.JFrame {
                 non_citizen.Register_Account();
                 
                 if(non_citizen.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "People registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_People();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -3617,7 +3617,7 @@ public class Personnel extends javax.swing.JFrame {
                     View_People();
                     JOptionPane.showMessageDialog(null, "People updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to save edit. \nPossible error: \n A record with the same IC number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to update people. \nPossible error: \nA record with the same IC number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 noncitizen_class.setName(txt_edit_people_name.getText());
@@ -3631,7 +3631,7 @@ public class Personnel extends javax.swing.JFrame {
                     View_People();
                     JOptionPane.showMessageDialog(null, "People updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to save edit.\nPossible error: \n A record with the same Passport number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to update people.\nPossible error: \nA record with the same Passport number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
              }
         }
@@ -3647,9 +3647,9 @@ public class Personnel extends javax.swing.JFrame {
             
             if (appointment_class.getSuccess_Save() == true) {
                 View_Appointment();
-                JOptionPane.showMessageDialog(null, "Appointment deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vaccination appointment removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to deleete.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to remove vacicnation appointment.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else if (return_value == JOptionPane.NO_OPTION) {
             
@@ -3688,11 +3688,11 @@ public class Personnel extends javax.swing.JFrame {
                     appointment_class.Add_Appointment();
 
                     if (appointment_class.getSuccess_Save() == true) {
-                        JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vaccinaton appointment registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         View_Appointment();
                         Clear();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Failed to register. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Failed to register vaccination appointment. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -3728,10 +3728,10 @@ public class Personnel extends javax.swing.JFrame {
                     appointment_class.Update_Appointment();
                     
                     if (appointment_class.getSuccess_Save() == true) {
-                        JOptionPane.showMessageDialog(null, "Appointment updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vaccination appointment updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         View_Appointment();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Failed to save changes.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Failed to update vaccination appointment.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -3748,10 +3748,10 @@ public class Personnel extends javax.swing.JFrame {
             center_class.Remove_Center();
             
             if (center_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Vaccination Center deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vaccination center deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 View_Center();
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to save.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to delete vaccination center.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else if (return_value == JOptionPane.NO_OPTION) {
             
@@ -3778,10 +3778,10 @@ public class Personnel extends javax.swing.JFrame {
             center_class.Add_Center();
             
             if (center_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Center added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vaccination center added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 View_Center();
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to add center, center with the same name exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to add vaccination center, center with the same name exist.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_add_center_addActionPerformed
@@ -3804,9 +3804,9 @@ public class Personnel extends javax.swing.JFrame {
             
             if (center_class.getSuccess_Save() == true) {
                 View_Center();
-                JOptionPane.showMessageDialog(null, "Vaccination Center updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vaccination center updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to save edit. \nPossible error: \n- Same center name exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to update vaccination center. \nPossible error: \n- Same center name exist.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_edit_center_saveActionPerformed
@@ -3820,10 +3820,10 @@ public class Personnel extends javax.swing.JFrame {
             vaccine_class.Remove_Vaccine();
             
             if (vaccine_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Your changes has been saved.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vaccine deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 View_Vaccine();
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to save.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to delete vaccine.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else if (return_value == JOptionPane.NO_OPTION) {
             
@@ -3893,7 +3893,7 @@ public class Personnel extends javax.swing.JFrame {
                 vaccine_class.Edit_Vaccine(selected_item.getId());
                 
                 if (vaccine_class.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Vaccine updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vaccine updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Vaccine();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n- A record with same batch number, location and date exist. \n-Invalid Date.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -3925,9 +3925,9 @@ public class Personnel extends javax.swing.JFrame {
             
             if (personnel_class.getSuccess_Save() == true) {
                 View_Personnel();
-                JOptionPane.showMessageDialog(null, "Personnel details updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Accouont updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to save edit.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }    
     }//GEN-LAST:event_btn_save_editActionPerformed
