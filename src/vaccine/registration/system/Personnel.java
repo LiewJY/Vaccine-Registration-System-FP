@@ -5003,7 +5003,7 @@ public class Personnel extends javax.swing.JFrame {
     private void btn_register_vaccination_appointments_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointments_registerActionPerformed
         if (cbo_register_vaccination_appointments_select_vaccination_center.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "The selected date does not have a center. \nPlease select another date.", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (cbo_register_vaccination_appointments_select_time.getSelectedIndex() == -1) {
+        } else if (cbo_register_vaccination_appointments_select_time.getSelectedIndex() == -1 || cbo_register_vaccination_appointments_select_time.getSelectedItem().equals("Select Time")) {
             JOptionPane.showMessageDialog(null, "Pelase select a time for the appointment.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (txt_register_vaccination_appointments_ic_passport_number.getText().equals("") ) {
@@ -5036,6 +5036,7 @@ public class Personnel extends javax.swing.JFrame {
                     if (appointment_class.getSuccess_Save() == true) {
                         JOptionPane.showMessageDialog(null, "Registration successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                         View_Appointment();
+                        Clear();
                     } else {
                         JOptionPane.showMessageDialog(null, "Failed to register. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
