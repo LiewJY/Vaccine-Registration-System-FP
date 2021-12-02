@@ -1233,7 +1233,7 @@ public class People extends javax.swing.JFrame {
         lbl_select_time.setText("Select Time");
 
         cbo_select_time.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        cbo_select_time.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Time", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM" }));
+        cbo_select_time.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM" }));
 
         lbl_select_vaccination_center.setBackground(new java.awt.Color(255, 255, 255));
         lbl_select_vaccination_center.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -1632,68 +1632,76 @@ public class People extends javax.swing.JFrame {
     
     // Save register vaccination appointment button
     private void btn_register_vaccination_appointment_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_registerActionPerformed
-        if (cbo_select_vaccination_center.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "The selected date does not have a center. \nPlease select another date.", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else {
-            if (cbo_select_time.getSelectedItem().equals("Select Time") 
-                    || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")
-                    || cbo_select_vaccination_center.getSelectedItem().equals("")) {
-                JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        try {    
+            if (cbo_select_vaccination_center.getSelectedIndex() == -1) {
+                JOptionPane.showMessageDialog(null, "The selected date does not have a center. \nPlease select another date.", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                if (txt_select_date.getDate().compareTo(date) < 0) {
-                    JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
-                } else if (cbo_select_vaccination_center.getSelectedItem().equals("")) {
-                    JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
-                } else { 
-                    appointment_class.calculateAppointnment_ID();
-                        if (citizenship == true){
-                            appointment_class.Check_Exist(citizen_class.getIC_Number());
+                if (cbo_select_time.getSelectedItem().equals("Select Time") 
+                        || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")
+                        || cbo_select_vaccination_center.getSelectedItem().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    if (txt_select_date.getDate().compareTo(date) < 0) {
+                        JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+                    } else if (cbo_select_vaccination_center.getSelectedItem().equals("")) {
+                        JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
+                    } else { 
+                        appointment_class.calculateAppointnment_ID();
+                            if (citizenship == true){
+                                appointment_class.Check_Exist(citizen_class.getIC_Number());
+                            } else {
+                                appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
+                            }
+                        appointment_class.Add_Dose();
+
+                        // Set vaccine ID
+                        Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();
+                        appointment_class.Add_Vaccine_Id(date_format.format(txt_select_date.getDate()), selected_item.getId());
+                        appointment_class.setAppointment_Time(cbo_select_time.getSelectedItem().toString());
+                        appointment_class.Add_Dose();
+                        appointment_class.setStatus("Pending");
+                        appointment_class.Add_Appointment();
+
+                        if (appointment_class.getSuccess_Save() == true) {
+                            JOptionPane.showMessageDialog(null, "Vaccination appointment registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            Clear();
+                            View_Appointment();
                         } else {
-                            appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
+                            JOptionPane.showMessageDialog(null, "Failed to register vaccination appointment. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                         }
-                    appointment_class.Add_Dose();
-
-                    // Set vaccine ID
-                    Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();
-                    appointment_class.Add_Vaccine_Id(date_format.format(txt_select_date.getDate()), selected_item.getId());
-                    appointment_class.setAppointment_Time(cbo_select_time.getSelectedItem().toString());
-                    appointment_class.Add_Dose();
-                    appointment_class.setStatus("Pending");
-                    appointment_class.Add_Appointment();
-
-                    if (appointment_class.getSuccess_Save() == true) {
-                        JOptionPane.showMessageDialog(null, "Vaccination appointment registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        Clear();
-                        View_Appointment();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Failed to register vaccination appointment. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btn_register_vaccination_appointment_registerActionPerformed
 
     
     // Cancel vaccination appointment button
     private void btn_cancel_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_appointmentActionPerformed
-        if(appointment_date.compareTo(date) < 0) {
-            JOptionPane.showMessageDialog(null, "Could not cancel appointment as appointment is today or older.", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel your appoitment on " 
-                + date_format.format(appointment_date) + " ?", "Warning", JOptionPane.YES_NO_OPTION);
-        
-            if (return_value == JOptionPane.YES_OPTION) {
-                appointment_class.Remove_Appointment();
-                if(appointment_class.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Vaccination appointment canceled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    Clear();
-                    View_Appointment();                
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to cancel vaccination appointmment.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else if (return_value == JOptionPane.NO_OPTION) {
+        try {
+            if (appointment_date.compareTo(date) < 0) {
+                JOptionPane.showMessageDialog(null, "Could not cancel appointment as appointment is today or older.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel your appoitment on " 
+                    + date_format.format(appointment_date) + " ?", "Warning", JOptionPane.YES_NO_OPTION);
 
+                if (return_value == JOptionPane.YES_OPTION) {
+                    appointment_class.Remove_Appointment();
+                    if(appointment_class.getSuccess_Save() == true) {
+                        JOptionPane.showMessageDialog(null, "Vaccination appointment canceled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        Clear();
+                        View_Appointment();                
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to cancel vaccination appointmment.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else if (return_value == JOptionPane.NO_OPTION) {
+
+                }
             }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "No vaccination appointmment available to cancel.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
 
