@@ -898,7 +898,7 @@ public class Personnel extends javax.swing.JFrame {
         txt_search_people = new javax.swing.JTextField();
         btn_people_register = new javax.swing.JButton();
         btn_people_edit = new javax.swing.JButton();
-        scrpnl_view_people = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
         tbl_view_people = new javax.swing.JTable();
         pnl_register_people = new javax.swing.JPanel();
         pnl_registerPeople = new javax.swing.JPanel();
@@ -941,14 +941,14 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccination_appointments = new javax.swing.JPanel();
         pnl_viewVaccinationAppointments = new javax.swing.JPanel();
         lbl_view_vaccination_appointments = new javax.swing.JLabel();
-        scrpnl_view_vaccination_appointments = new javax.swing.JScrollPane();
-        tbl_view_vaccination_appointments = new javax.swing.JTable();
         lbl_search_vaccination_appointments = new javax.swing.JLabel();
         txt_search_vaccination_appointments = new javax.swing.JTextField();
         btn_vaccination_appointments_register = new javax.swing.JButton();
         btn_vaccination_appointments_edit = new javax.swing.JButton();
         btn_vaccination_appointments_update = new javax.swing.JButton();
         btn_vaccination_appointments_remove = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_view_vaccination_appointments = new javax.swing.JTable();
         pnl_register_vaccination_appointments = new javax.swing.JPanel();
         pnl_registerVaccinationAppointments = new javax.swing.JPanel();
         lbl_registerVaccinationAppointments = new javax.swing.JLabel();
@@ -1020,13 +1020,13 @@ public class Personnel extends javax.swing.JFrame {
         pnl_view_vaccine = new javax.swing.JPanel();
         pnl_viewVaccine = new javax.swing.JPanel();
         lbl_view_vaccine = new javax.swing.JLabel();
-        scrpnl_view_vaccine = new javax.swing.JScrollPane();
-        tbl_view_vaccine = new javax.swing.JTable();
         lbl_search_vaccine = new javax.swing.JLabel();
         txt_search_vaccine = new javax.swing.JTextField();
         btn_vaccine_add = new javax.swing.JButton();
         btn_vaccine_edit = new javax.swing.JButton();
         btn_vaccine_remove = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_view_vaccine = new javax.swing.JTable();
         pnl_add_vaccine = new javax.swing.JPanel();
         pnl_addVaccine = new javax.swing.JPanel();
         lbl_add_vaccine = new javax.swing.JLabel();
@@ -2607,27 +2607,30 @@ public class Personnel extends javax.swing.JFrame {
         tbl_view_people.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbl_view_people.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Title", "Title", "Title", "Title"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         )
 
         {public boolean isCellEditable(int row, int column){return false;}}
 
     );
-    scrpnl_view_people.setViewportView(tbl_view_people);
+    jScrollPane3.setViewportView(tbl_view_people);
 
     javax.swing.GroupLayout pnl_view_peopleLayout = new javax.swing.GroupLayout(pnl_view_people);
     pnl_view_people.setLayout(pnl_view_peopleLayout);
     pnl_view_peopleLayout.setHorizontalGroup(
         pnl_view_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addComponent(pnl_viewPeople, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addGroup(pnl_view_peopleLayout.createSequentialGroup()
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_view_peopleLayout.createSequentialGroup()
             .addGap(40, 40, 40)
-            .addGroup(pnl_view_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(scrpnl_view_people)
+            .addGroup(pnl_view_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jScrollPane3)
                 .addGroup(pnl_view_peopleLayout.createSequentialGroup()
                     .addGroup(pnl_view_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_search_people)
@@ -2650,9 +2653,9 @@ public class Personnel extends javax.swing.JFrame {
             .addGroup(pnl_view_peopleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txt_search_people, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_people_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(scrpnl_view_people, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
-            .addContainerGap())
+            .addGap(18, 18, 18)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(122, Short.MAX_VALUE))
     );
 
     pnl_register_people.setBackground(new java.awt.Color(255, 255, 255));
@@ -3017,24 +3020,6 @@ public class Personnel extends javax.swing.JFrame {
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
-    tbl_view_vaccination_appointments.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-    tbl_view_vaccination_appointments.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null, null, null, null, null},
-            {null, null, null, null, null, null, null, null},
-            {null, null, null, null, null, null, null, null},
-            {null, null, null, null, null, null, null, null}
-        },
-        new String [] {
-            "ID", "Name", "IC / Passport Number", "Date", "Time", "Vaccinaton Center", "Vaccine Type", "Dose"
-        }
-    )
-    {public boolean isCellEditable(int row, int column){return false;}}
-
-    );
-    tbl_view_vaccination_appointments.setPreferredSize(new java.awt.Dimension(800, 64));
-    scrpnl_view_vaccination_appointments.setViewportView(tbl_view_vaccination_appointments);
-
     lbl_search_vaccination_appointments.setBackground(new java.awt.Color(255, 255, 255));
     lbl_search_vaccination_appointments.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
     lbl_search_vaccination_appointments.setText("Search Vaccination Appointment");
@@ -3101,6 +3086,26 @@ public class Personnel extends javax.swing.JFrame {
         }
     });
 
+    jScrollPane1.setBorder(null);
+
+    tbl_view_vaccination_appointments.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+    tbl_view_vaccination_appointments.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        },
+        new String [] {
+            "Title 1", "Title 2", "Title 3", "Title 4"
+        }
+    )
+
+    {public boolean isCellEditable(int row, int column){return false;}}
+
+    );
+    jScrollPane1.setViewportView(tbl_view_vaccination_appointments);
+
     javax.swing.GroupLayout pnl_view_vaccination_appointmentsLayout = new javax.swing.GroupLayout(pnl_view_vaccination_appointments);
     pnl_view_vaccination_appointments.setLayout(pnl_view_vaccination_appointmentsLayout);
     pnl_view_vaccination_appointmentsLayout.setHorizontalGroup(
@@ -3109,10 +3114,10 @@ public class Personnel extends javax.swing.JFrame {
         .addGroup(pnl_view_vaccination_appointmentsLayout.createSequentialGroup()
             .addGap(47, 47, 47)
             .addGroup(pnl_view_vaccination_appointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(scrpnl_view_vaccination_appointments, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
                 .addComponent(lbl_search_vaccination_appointments, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_view_vaccination_appointmentsLayout.createSequentialGroup()
                     .addGroup(pnl_view_vaccination_appointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_search_vaccination_appointments)
                         .addGroup(pnl_view_vaccination_appointmentsLayout.createSequentialGroup()
                             .addComponent(btn_vaccination_appointments_register, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3122,7 +3127,7 @@ public class Personnel extends javax.swing.JFrame {
                             .addComponent(btn_vaccination_appointments_update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(btn_vaccination_appointments_remove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGap(0, 9, Short.MAX_VALUE)))
                     .addGap(2, 2, 2)))
             .addGap(48, 48, 48))
     );
@@ -3141,8 +3146,8 @@ public class Personnel extends javax.swing.JFrame {
                 .addComponent(btn_vaccination_appointments_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_vaccination_appointments_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_vaccination_appointments_update, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(scrpnl_view_vaccination_appointments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
 
@@ -3534,6 +3539,7 @@ public class Personnel extends javax.swing.JFrame {
         }
     });
 
+    tbl_view_vaccination_center.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
     tbl_view_vaccination_center.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
             {null, null, null, null},
@@ -3587,8 +3593,8 @@ public class Personnel extends javax.swing.JFrame {
                 .addComponent(btn_vaccination_center_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_vaccination_center_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(18, 18, 18)
-            .addComponent(scrpnl_view_vaccination_center, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
-            .addGap(49, 49, 49))
+            .addComponent(scrpnl_view_vaccination_center, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(22, Short.MAX_VALUE))
     );
 
     pnl_add_center.setBackground(new java.awt.Color(255, 255, 255));
@@ -3897,22 +3903,6 @@ public class Personnel extends javax.swing.JFrame {
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
-    tbl_view_vaccine.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-    tbl_view_vaccine.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null, null, null, null},
-            {null, null, null, null, null, null, null},
-            {null, null, null, null, null, null, null},
-            {null, null, null, null, null, null, null}
-        },
-        new String [] {
-            "Batch ID", "Type", "Date", "Expiration Date", "Amount", "Center Name", "Second Dose Gap (Weeks)"
-        }
-    ) {public boolean isCellEditable(int row, int column){return false;}}
-    );
-    tbl_view_vaccine.setPreferredSize(new java.awt.Dimension(800, 64));
-    scrpnl_view_vaccine.setViewportView(tbl_view_vaccine);
-
     lbl_search_vaccine.setBackground(new java.awt.Color(255, 255, 255));
     lbl_search_vaccine.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
     lbl_search_vaccine.setText("Search Vaccine");
@@ -3965,6 +3955,24 @@ public class Personnel extends javax.swing.JFrame {
         }
     });
 
+    tbl_view_vaccine.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+    tbl_view_vaccine.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        },
+        new String [] {
+            "Title 1", "Title 2", "Title 3", "Title 4"
+        }
+    )
+
+    {public boolean isCellEditable(int row, int column){return false;}}
+
+    );
+    jScrollPane2.setViewportView(tbl_view_vaccine);
+
     javax.swing.GroupLayout pnl_view_vaccineLayout = new javax.swing.GroupLayout(pnl_view_vaccine);
     pnl_view_vaccine.setLayout(pnl_view_vaccineLayout);
     pnl_view_vaccineLayout.setHorizontalGroup(
@@ -3973,10 +3981,10 @@ public class Personnel extends javax.swing.JFrame {
         .addGroup(pnl_view_vaccineLayout.createSequentialGroup()
             .addGap(47, 47, 47)
             .addGroup(pnl_view_vaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(scrpnl_view_vaccine, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
                 .addComponent(lbl_search_vaccine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_view_vaccineLayout.createSequentialGroup()
                     .addGroup(pnl_view_vaccineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_search_vaccine)
                         .addGroup(pnl_view_vaccineLayout.createSequentialGroup()
                             .addComponent(btn_vaccine_add, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3984,7 +3992,7 @@ public class Personnel extends javax.swing.JFrame {
                             .addComponent(btn_vaccine_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(btn_vaccine_remove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGap(0, 227, Short.MAX_VALUE)))
                     .addGap(2, 2, 2)))
             .addGap(48, 48, 48))
     );
@@ -4002,8 +4010,8 @@ public class Personnel extends javax.swing.JFrame {
                 .addComponent(btn_vaccine_add, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_vaccine_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btn_vaccine_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(scrpnl_view_vaccine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
     );
 
@@ -5651,6 +5659,9 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog_dose;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbl_1st_dose_appointment;
     private javax.swing.JLabel lbl_2nd_dose_appointment;
     private javax.swing.JLabel lbl_addVaccineSecondDoseGap;
@@ -5846,11 +5857,8 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_view_vaccination_status;
     private javax.swing.JPanel pnl_view_vaccine;
     private javax.swing.JScrollPane scrpnl_vaccination_status;
-    private javax.swing.JScrollPane scrpnl_view_people;
     private javax.swing.JScrollPane scrpnl_view_personnel;
-    private javax.swing.JScrollPane scrpnl_view_vaccination_appointments;
     private javax.swing.JScrollPane scrpnl_view_vaccination_center;
-    private javax.swing.JScrollPane scrpnl_view_vaccine;
     private javax.swing.JTable tbl_vaccination_status;
     private javax.swing.JTable tbl_view_people;
     private javax.swing.JTable tbl_view_personnel;
