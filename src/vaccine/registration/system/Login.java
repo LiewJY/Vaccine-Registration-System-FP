@@ -172,7 +172,7 @@ public class Login extends javax.swing.JFrame {
                 boolean personnel = personnel_class.getAuth();
                 
                 if (personnel == true) {
-                    JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new Personnel(personnel_class.getPersonnel_ID()).setVisible(true);
                     this.dispose();
                 } else {
@@ -187,7 +187,7 @@ public class Login extends javax.swing.JFrame {
                 boolean citizen = citizen_class.getAuth();
                 
                 if (citizen == true) {
-                    JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new People(citizen_class.getPeople_ID(), citizen_class.getCitizen()).setVisible(true);
                     this.dispose();
                 } else {
@@ -202,7 +202,7 @@ public class Login extends javax.swing.JFrame {
                 boolean non_citizen = noncitizen_class.getAuth();
                 
                 if (non_citizen == true) {
-                    JOptionPane.showMessageDialog(null, "You have logged in successfully", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new People(noncitizen_class.getPeople_ID(), noncitizen_class.getCitizen()).setVisible(true);
                     this.dispose();
                 } else {

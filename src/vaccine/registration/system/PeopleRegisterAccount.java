@@ -262,7 +262,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 citizen.setIC_Number(txt_ic_passport_number.getText()); 
                 citizen.Register_Account();
                 if(citizen.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Account Created.", "Success", JOptionPane.INFORMATION_MESSAGE); 
+                    JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE); 
                     viewLogin();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -278,7 +278,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 non_citizen.setPassport_Number(txt_ic_passport_number.getText()); 
                 non_citizen.Register_Account();
                 if(non_citizen.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Account Created.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     viewLogin();
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
