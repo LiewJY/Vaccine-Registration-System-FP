@@ -186,7 +186,6 @@ public class AppointmentClass {
 
                 if (line_array[3].equals(date)) {
                     avaliable_location.add(line);
-                    System.out.println("added" + line_array[3]);
                 } else {
                     // Do nothing
                 }

@@ -163,7 +163,6 @@ public class NonCitizenClass extends PeopleClass{
                 // Check not this ID & is IC / passport same
                 if (!line_array[0].equals(String.valueOf(People_ID)) && (line_array[4].equals(Passport_Number))) {
                     data_exist = true;
-                    System.out.println(line_array[0] + "  " + line_array[4]);
                 }
             }
 

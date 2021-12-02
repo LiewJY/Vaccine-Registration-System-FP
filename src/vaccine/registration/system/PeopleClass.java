@@ -103,7 +103,6 @@ public class PeopleClass {
             BufferedReader people = new BufferedReader(people_file);
 
             while ((line = people.readLine()) != null) {
-                System.out.println(line);
                 lastLine = line;
                 line_array = lastLine.split("//");
                 People_ID = Integer.parseInt(line_array[0]) + 1;
