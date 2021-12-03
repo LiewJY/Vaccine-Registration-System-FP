@@ -9,11 +9,9 @@ public class CenterClass {
     private String Center_Name, Center_Address, Center_Contact_Number, Vaccine_Type;
     private int Center_ID;
     
-    // For add function
-    protected boolean Success_Save = false;
-    protected ArrayList<String> Center_Data = new ArrayList<>();
-    protected ArrayList<String> Get_Center = new ArrayList<>();
-    protected int count;
+    // For function
+    private boolean Success_Save = false;
+    private ArrayList<String> Center_Data = new ArrayList<>();
     
     CenterClass() {
         Center_ID = 1;

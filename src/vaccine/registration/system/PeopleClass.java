@@ -15,9 +15,8 @@ public class PeopleClass {
     protected boolean Auth = false;
     protected boolean Citizen;
     
-    // For register function
+    // For function
     protected boolean Success_Save = false;
-    protected int count;
 
     PeopleClass() {
         People_ID = 1;

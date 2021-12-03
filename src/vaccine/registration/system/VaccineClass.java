@@ -16,8 +16,8 @@ public class VaccineClass {
     private String date, Expiration_Date;
     
     // For add function
-    protected boolean Success_Save = false;
-    protected ArrayList<String> Vaccine_Data = new ArrayList<>();
+    private boolean Success_Save = false;
+    private ArrayList<String> Vaccine_Data = new ArrayList<>();
     
     VaccineClass() {
         Vaccine_ID = 1;
