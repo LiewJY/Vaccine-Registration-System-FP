@@ -7,3 +7,4 @@
 7//Tengku Ampuan Rahimah Hospital//Jalan Langat, 41200 Klang, Selangor.//60333757000//Pfizer//
 8//Bandar Botanic Health Clinic//Bandar Botanic, 41200 Klang, Selangor.//60333244260//Pfizer//
 9//Wyndham Acmar Klang Hall//1-G-1, Persiaran Bukit Raja 2/KU1, 41150 Klang, Selangor.//60333118888//Sinovac//
+10//Seri Kembangan Health Clinic//Jalan Besar, Taman Muhibbah, 43300 Seri Kembangan, Selangor.//60389455929//Pfizer//
