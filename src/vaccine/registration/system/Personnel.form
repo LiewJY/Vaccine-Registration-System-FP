@@ -1953,7 +1953,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Manage Vaccination Appointments"/>
+                    <Property name="text" type="java.lang.String" value="Manage Vaccination Appointment"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -2234,7 +2234,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Register Vaccination Appointment (People)"/>
+                    <Property name="text" type="java.lang.String" value="Register Vaccination Appointment"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[440, 26]"/>
                     </Property>
@@ -2541,7 +2541,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Edit Vaccination Appointment (People)"/>
+                    <Property name="text" type="java.lang.String" value="Edit Vaccination Appointment"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[440, 26]"/>
                     </Property>

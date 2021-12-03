@@ -281,7 +281,7 @@ public class Personnel extends javax.swing.JFrame {
         DefaultTableModel center_table_model = (DefaultTableModel)tbl_view_vaccination_center.getModel();
         center_table_model.setColumnIdentifiers(columns);
         
-        // Remove id col
+        // Remove ID column
         tbl_view_vaccination_center.removeColumn(tbl_view_vaccination_center.getColumnModel().getColumn(0));
 
         tbl_view_vaccination_center.setModel(center_table_model);
@@ -1831,7 +1831,7 @@ public class Personnel extends javax.swing.JFrame {
     lbl_view_vaccination_appointments.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
     lbl_view_vaccination_appointments.setForeground(new java.awt.Color(255, 255, 255));
     lbl_view_vaccination_appointments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    lbl_view_vaccination_appointments.setText("Manage Vaccination Appointments");
+    lbl_view_vaccination_appointments.setText("Manage Vaccination Appointment");
 
     javax.swing.GroupLayout pnl_viewVaccinationAppointmentsLayout = new javax.swing.GroupLayout(pnl_viewVaccinationAppointments);
     pnl_viewVaccinationAppointments.setLayout(pnl_viewVaccinationAppointmentsLayout);
@@ -1990,7 +1990,7 @@ public class Personnel extends javax.swing.JFrame {
     lbl_registerVaccinationAppointments.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
     lbl_registerVaccinationAppointments.setForeground(new java.awt.Color(255, 255, 255));
     lbl_registerVaccinationAppointments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    lbl_registerVaccinationAppointments.setText("Register Vaccination Appointment (People)");
+    lbl_registerVaccinationAppointments.setText("Register Vaccination Appointment");
     lbl_registerVaccinationAppointments.setMaximumSize(new java.awt.Dimension(440, 26));
     lbl_registerVaccinationAppointments.setMinimumSize(new java.awt.Dimension(440, 26));
     lbl_registerVaccinationAppointments.setPreferredSize(new java.awt.Dimension(440, 26));
@@ -2144,7 +2144,7 @@ public class Personnel extends javax.swing.JFrame {
     lbl_registerVaccinationAppointments1.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
     lbl_registerVaccinationAppointments1.setForeground(new java.awt.Color(255, 255, 255));
     lbl_registerVaccinationAppointments1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    lbl_registerVaccinationAppointments1.setText("Edit Vaccination Appointment (People)");
+    lbl_registerVaccinationAppointments1.setText("Edit Vaccination Appointment");
     lbl_registerVaccinationAppointments1.setMaximumSize(new java.awt.Dimension(440, 26));
     lbl_registerVaccinationAppointments1.setMinimumSize(new java.awt.Dimension(440, 26));
     lbl_registerVaccinationAppointments1.setPreferredSize(new java.awt.Dimension(440, 26));
@@ -3862,7 +3862,7 @@ public class Personnel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vaccine added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Vaccine();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to add vaccine. \nPossible error: \n- A record with same batch number, location and date exist. \n-Invalid Date.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to add vaccine. \nPossible error: \n- A record with same batch ID, date and center exist. \n- Invalid date.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -3896,11 +3896,10 @@ public class Personnel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Vaccine updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     View_Vaccine();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n- A record with same batch number, location and date exist. \n-Invalid Date.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n- A record with same batch ID, date and center exist. \n- Invalid date.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
-       
     }//GEN-LAST:event_btn_edit_vaccine_saveActionPerformed
     
     
