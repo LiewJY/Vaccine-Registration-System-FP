@@ -333,19 +333,19 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnl_myAccount" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn_edit_account" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_view_address" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_view_nationality" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_view_phone_number" min="-2" pref="400" max="-2" attributes="0"/>
                           <Component id="lbl_view_name" min="-2" pref="400" max="-2" attributes="0"/>
-                          <Component id="lbl_view_ic_passport_number" alignment="0" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_view_ic_passport_number" min="-2" pref="400" max="-2" attributes="0"/>
+                          <Component id="lbl_view_address" min="-2" pref="400" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Component id="pnl_myAccount" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -358,13 +358,13 @@
                       <Component id="lbl_view_phone_number" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="lbl_view_nationality" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lbl_view_address" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="lbl_view_ic_passport_number" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="lbl_view_address" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       <Component id="btn_edit_account" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="131" max="32767" attributes="0"/>
+                      <EmptySpace pref="138" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -459,15 +459,19 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbl_view_address">
+            <Component class="javax.swing.JTextArea" name="lbl_view_address">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="columns" type="int" value="20"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="wrapStyleWord" type="boolean" value="true"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_account">
@@ -683,6 +687,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txt_edit_nationality">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
@@ -708,6 +713,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txt_edit_ic_passport_number">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
@@ -811,6 +817,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_edit_saveActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_edit_cancel">
               <Properties>
@@ -1376,6 +1385,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cancel_appointmentActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1439,7 +1451,7 @@
                           <Component id="btn_register_vaccination_appointment_register" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btn_register_vaccination_appointment_cancel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="117" max="32767" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1514,6 +1526,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="txt_select_datePropertyChange"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_select_time">
               <Properties>
@@ -1532,16 +1547,15 @@
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="9">
-                    <StringItem index="0" value="Select Time"/>
-                    <StringItem index="1" value="9:00 AM"/>
-                    <StringItem index="2" value="10:00 AM"/>
-                    <StringItem index="3" value="11:00 AM"/>
-                    <StringItem index="4" value="12:00 PM"/>
-                    <StringItem index="5" value="2:00 PM"/>
-                    <StringItem index="6" value="3:00 PM"/>
-                    <StringItem index="7" value="4:00 PM"/>
-                    <StringItem index="8" value="5:00 PM"/>
+                  <StringArray count="8">
+                    <StringItem index="0" value="9:00 AM"/>
+                    <StringItem index="1" value="10:00 AM"/>
+                    <StringItem index="2" value="11:00 AM"/>
+                    <StringItem index="3" value="12:00 PM"/>
+                    <StringItem index="4" value="2:00 PM"/>
+                    <StringItem index="5" value="3:00 PM"/>
+                    <StringItem index="6" value="4:00 PM"/>
+                    <StringItem index="7" value="5:00 PM"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1571,6 +1585,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbo_select_vaccination_centerActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1615,6 +1632,9 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_register_vaccination_appointment_registerActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_register_vaccination_appointment_cancel">
               <Properties>
@@ -1668,9 +1688,9 @@
                       <Component id="lbl_search_vaccination_status" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_search_vaccination_status" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="scrpnl_vaccination_status" min="-2" pref="400" max="-2" attributes="0"/>
-                      <EmptySpace pref="151" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="scrpnl_vaccination_status" min="-2" pref="480" max="-2" attributes="0"/>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1729,7 +1749,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Search Vaccination Status (Vaccination Center / Vaccine Type)"/>
+                <Property name="text" type="java.lang.String" value="Search Vaccination Status"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_search_vaccination_status">
@@ -1745,6 +1765,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_search_vaccination_statusKeyReleased"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="scrpnl_vaccination_status">
               <AuxValues>
@@ -1758,12 +1781,8 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
                     </Property>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
-                        <Column editable="true" title="Vaccination Center" type="java.lang.Object"/>
-                        <Column editable="true" title="Vaccine Type" type="java.lang.Object"/>
-                        <Column editable="true" title="No. of Available Vaccine" type="java.lang.Object"/>
-                      </Table>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null},&#xa;        {null, null, null},&#xa;        {null, null, null},&#xa;        {null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Vaccination Center&quot;, &quot;Vaccine Type&quot;, &quot;No. of Available Vaccine&quot;&#xa;    }&#xa;)&#xa;&#xa;{public boolean isCellEditable(int row, int column){return false;}}&#xa;&#xa;" type="code"/>
                     </Property>
                   </Properties>
                 </Component>

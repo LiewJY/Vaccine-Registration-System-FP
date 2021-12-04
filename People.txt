@@ -1,0 +1,10 @@
+1//Natalie//0168764523//Australia//AA1122BB3366//8, Lorong A, Jalan Subang, 45000 Subang Jaya, Selangor.//natalie//
+2//Muhammad Ismail//0148274529//Malaysia//880226148890//1, Jalan Indah 34, Taman Cheras Indah, 56100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//muhammadismail//
+3//Elizabeth Tee//0118726418//Malaysia//951024103792//2-16, Jalan Rebung 6, Bandar Botanik, 41200 Klang, Selangor.//elizabethtee//
+4//Derrick Chan//0165748512//Malaysia//000120102761//28-2, Jalan Seri Merdeka 2, Taman Sri Merdeka, 68000 Ampang, Selangor.//derrickchan//
+5//Mohan//0125675673//Malaysia//850922108365//10, Jalan 20/9, Taman Paramount, 46300 Petaling Jaya, Selangor.//mohan//
+6//Leong Zhi Ying//0172712863//Malaysia//000612148321//8, Jalan 4/95b, Taman Cheras Utama, 56100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//leongzhiying//
+7//Olivia Ng//0146253423//Malaysia//980322148382//42-35, Jalan 32/70a, Desa Sri Hartamas, 50480 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//oliviang//
+8//Michael James//0166213713//Canada//LKAH231595DY//A-10-16, Jalan 3/149e, Taman Sri Endah, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//michaeljames//
+9//Joe Lee//0169832653//Malaysia//010505105678//No. 33, Jalan Batu 11 Cheras, Taman Mutiara, 43000 Cheras, Selangor.//joelee//
+10//Rachael Ng//0146783432//Malaysia//930721106569//11a, Jalan Indah 2/9, Taman Puchong Indah, 47100 Puchong, Selangor//rachaelng//
