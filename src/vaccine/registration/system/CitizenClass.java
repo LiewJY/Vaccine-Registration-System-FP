@@ -3,31 +3,32 @@ package vaccine.registration.system;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.*;
-
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CitizenClass extends PeopleClass {
+
     private String IC_Number;
-   
+
     CitizenClass() {
         IC_Number = "";
     }
-    
+
     // IC number
     public String getIC_Number() {
         return IC_Number;
     }
-    
+
     public void setIC_Number(String ic_number) {
         IC_Number = ic_number;
     }
 
-    
     // Register account
     public void Register_Account() {
         String line;
         String[] line_array;
         boolean data_exist = false;
-        
+
         try (PrintWriter register_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", true)))) {
             try {
                 FileReader people_file = new FileReader("People.txt");
@@ -39,13 +40,13 @@ public class CitizenClass extends PeopleClass {
                     if (line_array[0].equals(String.valueOf(People_ID)) || line_array[4].equals(IC_Number)) {
                         Success_Save = false;
                         data_exist = true;
-                        break; 
+                        break;
                     } else {
                         Success_Save = true;
                         data_exist = false;
                     }
                 }
-                
+
                 if (data_exist == false) {
                     // Insert data (not match)
                     register_citizen.append(People_ID + "//");
@@ -66,46 +67,44 @@ public class CitizenClass extends PeopleClass {
             e.printStackTrace();
         }
     }
-    
-    
+
     // Login account
     public void Login_Account() {
-        String line;
-        String[] line_array;
-        
-        try { 
-            FileReader people_file = new FileReader("People.txt");
-            BufferedReader people = new BufferedReader(people_file);
-            
+        //String line;
+        //String[] line_array;
+
+        try {
+            BufferedReader people = new BufferedReader(new FileReader("People.txt"));
+
             // Check whether input ic and password is existing and matched in text file
-            while ((line = people.readLine()) != null) {
-                line_array = line.split("//");
-                
-                if (line_array[3].equals("Malaysia") && line_array[4].equals(IC_Number) && line_array[6].equals(Password)) {
-                    People_ID = Integer.parseInt(line_array[0]);
-                    Auth = true;
-                    Citizen = true;
-                }
-            }
+            //concept - lampda expresssion (map and filter)
+            people.lines()
+                    .map(l -> l.split("//"))
+                    .filter(line_array -> line_array[3].equals("Malaysia") && line_array[4].equals(IC_Number) && line_array[6].equals(Password))
+                    .findFirst()
+                    .ifPresent(line_array -> {
+                        People_ID = Integer.parseInt(line_array[0]);
+                        Auth = true;
+                        Citizen = true;
+                    });
         } catch (IOException f) {
             f.printStackTrace();
         }
     }
-    
-    
+
     // View account
     public void View_Account() {
         String line;
         String[] line_array;
-        
-        try { 
+
+        try {
             FileReader people_file = new FileReader("People.txt");
             BufferedReader people = new BufferedReader(people_file);
-            
+
             // Check whether input ic and password is existing and matched in text file\
             while ((line = people.readLine()) != null) {
                 line_array = line.split("//");
-                
+
                 if (line_array[0].equals(String.valueOf(People_ID))) {
                     Name = line_array[1];
                     Phone_Number = line_array[2];
@@ -119,12 +118,11 @@ public class CitizenClass extends PeopleClass {
             v.printStackTrace();
         }
     }
-    
-    
+
     // Edit account
     public void Edit_Account() {
         ArrayList<String> edit_citizen = new ArrayList<>();
-        
+
         try {
             FileReader file_reader = new FileReader("People.txt");
             BufferedReader buffered_reader = new BufferedReader(file_reader);
@@ -134,9 +132,9 @@ public class CitizenClass extends PeopleClass {
 
             while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
-                
+
                 if (line_array[0].equals(String.valueOf(People_ID))) {
-                    edit_citizen.add(People_ID + "//" + Name + "//" + Phone_Number + "//" 
+                    edit_citizen.add(People_ID + "//" + Name + "//" + Phone_Number + "//"
                             + Nationality + "//" + IC_Number + "//" + Address + "//" + Password + "//");
                 } else {
                     edit_citizen.add(line);
@@ -166,7 +164,7 @@ public class CitizenClass extends PeopleClass {
                 }
             }
 
-            if (data_exist == true) {                    
+            if (data_exist == true) {
                 Success_Save = false;
             } else if (data_exist == false) {
                 // Write and update data
@@ -180,7 +178,7 @@ public class CitizenClass extends PeopleClass {
                     Success_Save = false;
                 }
             }
-        } catch(IOException e) {
+        } catch (IOException e) {
             Success_Save = false;
         }
     }
