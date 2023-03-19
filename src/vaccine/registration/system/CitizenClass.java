@@ -25,41 +25,27 @@ public class CitizenClass extends PeopleClass {
 
     // Register account
     public void Register_Account() {
-        String line;
-        String[] line_array;
-        boolean data_exist = false;
-
+        boolean data_exist;
         try (PrintWriter register_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", true)))) {
             try {
-                FileReader people_file = new FileReader("People.txt");
-                BufferedReader people = new BufferedReader(people_file);
+                BufferedReader people = new BufferedReader(new FileReader("People.txt"));
+                /*concept - lampda expresssion (map and filter) 
+                hof - map filter 
+            stream processsing - lines method return Stream<String>
+                 */
+                data_exist
+                        = people.lines()
+                                .map(line -> line.split("//"))
+                                .anyMatch(line_element -> line_element[0].equals(String.valueOf(People_ID)) || line_element[4].equals(IC_Number));
 
-                while ((line = people.readLine()) != null) {
-                    line_array = line.split("//");
-
-                    if (line_array[0].equals(String.valueOf(People_ID)) || line_array[4].equals(IC_Number)) {
-                        Success_Save = false;
-                        data_exist = true;
-                        break;
-                    } else {
-                        Success_Save = true;
-                        data_exist = false;
-                    }
-                }
-
-                if (data_exist == false) {
+                if (!data_exist) {
                     // Insert data (not match)
-                    register_citizen.append(People_ID + "//");
-                    register_citizen.append(Name + "//");
-                    register_citizen.append(Phone_Number + "//");
-                    register_citizen.append(Nationality + "//");
-                    register_citizen.append(IC_Number + "//");
-                    register_citizen.append(Address + "//");
-                    register_citizen.append(Password + "//");
+                    register_citizen.append(People_ID + "//" + Name + "//" + Phone_Number + "//" + Nationality + "//" + IC_Number + "//" + Address + "//" + Password + "//");
                     register_citizen.print("\n");
                     register_citizen.close();
                     Success_Save = true;
                 }
+
             } catch (IOException c) {
                 c.printStackTrace();
             }
@@ -70,20 +56,19 @@ public class CitizenClass extends PeopleClass {
 
     // Login account
     public void Login_Account() {
-        //String line;
-        //String[] line_array;
-
+        
         try {
             BufferedReader people = new BufferedReader(new FileReader("People.txt"));
-
             // Check whether input ic and password is existing and matched in text file
-            //concept - lampda expresssion (map and filter)
+            /*concept - lampda expresssion (map and filter)
+            stream processsing - lines method return Stream<String>
+             */
             people.lines()
-                    .map(l -> l.split("//"))
-                    .filter(line_array -> line_array[3].equals("Malaysia") && line_array[4].equals(IC_Number) && line_array[6].equals(Password))
+                    .map(line -> line.split("//"))
+                    .filter(line_element -> line_element[3].equals("Malaysia") && line_element[4].equals(IC_Number) && line_element[6].equals(Password))
                     .findFirst()
-                    .ifPresent(line_array -> {
-                        People_ID = Integer.parseInt(line_array[0]);
+                    .ifPresent(line_element -> {
+                        People_ID = Integer.parseInt(line_element[0]);
                         Auth = true;
                         Citizen = true;
                     });
@@ -94,26 +79,26 @@ public class CitizenClass extends PeopleClass {
 
     // View account
     public void View_Account() {
-        String line;
-        String[] line_array;
-
         try {
-            FileReader people_file = new FileReader("People.txt");
-            BufferedReader people = new BufferedReader(people_file);
+            BufferedReader people = new BufferedReader(new FileReader("People.txt"));
+            // Check whether input ic and password is existing and matched in text file\            
+            /*concept - lampda expresssion (map and filter)
+            hof
+            stream processsing - lines method return Stream<String>
+             */
+            people.lines()
+                    .map(line -> line.split("//"))
+                    .filter(line_element -> line_element[0].equals(String.valueOf(People_ID)))
+                    .findFirst()
+                    .ifPresent(line_element -> {
+                        Name = line_element[1];
+                        Phone_Number = line_element[2];
+                        Nationality = line_element[3];
+                        IC_Number = line_element[4];
+                        Address = line_element[5];
+                        Password = line_element[6];
+                    });
 
-            // Check whether input ic and password is existing and matched in text file\
-            while ((line = people.readLine()) != null) {
-                line_array = line.split("//");
-
-                if (line_array[0].equals(String.valueOf(People_ID))) {
-                    Name = line_array[1];
-                    Phone_Number = line_array[2];
-                    Nationality = line_array[3];
-                    IC_Number = line_array[4];
-                    Address = line_array[5];
-                    Password = line_array[6];
-                }
-            }
         } catch (IOException v) {
             v.printStackTrace();
         }
@@ -124,13 +109,11 @@ public class CitizenClass extends PeopleClass {
         ArrayList<String> edit_citizen = new ArrayList<>();
 
         try {
-            FileReader file_reader = new FileReader("People.txt");
-            BufferedReader buffered_reader = new BufferedReader(file_reader);
+            BufferedReader buffered_reader = new BufferedReader(new FileReader("People.txt"));
 
             String line;
             String[] line_array;
-
-            while ((line = buffered_reader.readLine()) != null) {
+         while ((line = buffered_reader.readLine()) != null) {
                 line_array = line.split("//");
 
                 if (line_array[0].equals(String.valueOf(People_ID))) {
@@ -140,7 +123,7 @@ public class CitizenClass extends PeopleClass {
                     edit_citizen.add(line);
                 }
             }
-            file_reader.close();
+            //file_reader.close();
         } catch (IOException e) {
             Success_Save = false;
         }

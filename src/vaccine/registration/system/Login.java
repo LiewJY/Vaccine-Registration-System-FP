@@ -1,35 +1,38 @@
 package vaccine.registration.system;
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
-
 public class Login extends javax.swing.JFrame {
+
     // Login form
     public Login() {
         initComponents();
-      
+
+        txt_ic_passport_number.setText("880226148890");
+        txt_password.setText("muhammadismail");
         // Create file if file does not exist
         try {
             FileWriter people_file_writer = new FileWriter("People.txt", true);
             people_file_writer.close();
-            
+
             FileWriter personnel_file_writer = new FileWriter("Personnel.txt", true);
             personnel_file_writer.close();
-                        
+
             FileWriter appointment_file_writer = new FileWriter("Appointment.txt", true);
             appointment_file_writer.close();
-            
+
             FileWriter center_file_writer = new FileWriter("Center.txt", true);
             center_file_writer.close();
-            
+
             FileWriter vaccine_file_writer = new FileWriter("Vaccine.txt", true);
             vaccine_file_writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     // UI
     @SuppressWarnings("unchecked")
@@ -80,6 +83,7 @@ public class Login extends javax.swing.JFrame {
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Log In");
         btn_login.setBorder(null);
+        btn_login.setOpaque(true);
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -150,7 +154,6 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // Register account button
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         PeopleRegisterAccount register = new PeopleRegisterAccount();
@@ -158,19 +161,18 @@ public class Login extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btn_registerActionPerformed
 
-    
     // Login button
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         if (txt_ic_passport_number.getText().equals("") || txt_password.getPassword().length == 0 || cbo_user_role.getSelectedItem().equals("Select User Role")) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            if(cbo_user_role.getSelectedItem() == "Personnel") {
+            if (cbo_user_role.getSelectedItem() == "Personnel") {
                 PersonnelClass personnel_class = new PersonnelClass();
                 personnel_class.setIC_Number(txt_ic_passport_number.getText());
                 personnel_class.setPassword(txt_password.getText());
                 personnel_class.Login_Account();
                 boolean personnel = personnel_class.getAuth();
-                
+
                 if (personnel == true) {
                     JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new Personnel(personnel_class.getPersonnel_ID()).setVisible(true);
@@ -178,29 +180,29 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                 }
-            // Citizen
-            } else if (cbo_user_role.getSelectedItem() == "People (Citizen)"){
-                CitizenClass citizen_class = new CitizenClass();
-                citizen_class.setIC_Number(txt_ic_passport_number.getText());
-                citizen_class.setPassword(txt_password.getText());
-                citizen_class.Login_Account();
-                boolean citizen = citizen_class.getAuth();
-                
-                if (citizen == true) {
-                    JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                    new People(citizen_class.getPeople_ID(), citizen_class.getCitizen()).setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                // Citizen
+            } else if (cbo_user_role.getSelectedItem() == "People (Citizen)") {
+                CitizenController cc = new CitizenController();
+                try {
+                    AuthRecord auth = cc.Login_Account(txt_ic_passport_number.getText(), txt_password.getText());
+                    if (auth.Auth() == true) {
+                        JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                        new People(auth.People_ID(), auth.Citizen()).setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            // Non-citizen
-            } else if (cbo_user_role.getSelectedItem() == "People (Non-Citizen)"){
+
+            } else if (cbo_user_role.getSelectedItem() == "People (Non-Citizen)") {
                 NonCitizenClass noncitizen_class = new NonCitizenClass();
                 noncitizen_class.setPassport_Number(txt_ic_passport_number.getText());
                 noncitizen_class.setPassword(txt_password.getText());
                 noncitizen_class.Login_Account();
                 boolean non_citizen = noncitizen_class.getAuth();
-                
+
                 if (non_citizen == true) {
                     JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                     new People(noncitizen_class.getPeople_ID(), noncitizen_class.getCitizen()).setVisible(true);
@@ -214,7 +216,6 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
-    
     // Main method
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -248,7 +249,7 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
