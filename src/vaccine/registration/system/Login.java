@@ -11,8 +11,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
 
-        txt_ic_passport_number.setText("880226148890");
-        txt_password.setText("muhammadismail");
+        txt_ic_passport_number.setText("901212101234");
+        txt_password.setText("jasonchen");
         // Create file if file does not exist
         try {
             FileWriter people_file_writer = new FileWriter("People.txt", true);

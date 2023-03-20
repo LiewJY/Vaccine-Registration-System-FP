@@ -11,7 +11,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -39,6 +42,7 @@ public class CitizenController {
                 .findFirst();
     }
 
+    //register
     public boolean Register_Account(CitizenRecord newCitizenRecord) throws IOException {
         boolean data_exist;
         PrintWriter register_citizen = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", true)));
@@ -58,15 +62,46 @@ public class CitizenController {
             return true;
         }
         return false;
-
     }
 
+    //Edit account
+    public boolean Edit_Account(CitizenRecord editCitizenRecord) throws IOException {
+        List<CitizenRecord> citizenList = new ArrayList<>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("People.txt"));
+        citizenList = bufferedReader.lines()
+                .map(line -> {
+                    String[] data = line.split("//");
+                    return new CitizenRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6]);
+                })
+                .collect(Collectors.toList());
+        bufferedReader.close();
 
+        // Update data
+        boolean dataExist = citizenList.stream()
+                .anyMatch(citizen -> citizen.People_ID() == editCitizenRecord.People_ID() && citizen.IC_Number().equals(editCitizenRecord.IC_Number()));
+        if (!dataExist) {
+            return false;
+        } else {
+            List<CitizenRecord> updatedCitizenList = citizenList.stream()
+                    .map(citizen -> {
+                        if (citizen.People_ID() == editCitizenRecord.People_ID()) {
+                            return new CitizenRecord(editCitizenRecord.People_ID(), editCitizenRecord.Name(), editCitizenRecord.Phone_Number(), editCitizenRecord.Nationality(), editCitizenRecord.IC_Number(), editCitizenRecord.Address(), editCitizenRecord.Password());
+                        } else {
+                            return citizen;
+                        }
+                    })
+                    .collect(Collectors.toList());
+            // Write data
+            PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter("People.txt", false)));
+            updatedCitizenList.stream()
+                    .forEach(citizen -> {
+                        printWriter.printf("%s//%s//%s//%s//%s//%s//%s//\n", citizen.People_ID(), citizen.Name(), citizen.Phone_Number(), citizen.Nationality(), citizen.IC_Number(), citizen.Address(), citizen.Password());
+                    });
+            printWriter.close();
+            return true;
+        }
 
-
-
-
-
+    }
 
     public int calculatePeople_ID() throws FileNotFoundException {
         BufferedReader reader = new BufferedReader(new FileReader("People.txt"));
@@ -76,23 +111,6 @@ public class CitizenController {
                         .reduce((first, second) -> second)
                         .get()
                         .People_ID();
-
-        // FileController fc = new FileController();
-        // fc.fileAccess("People.txt");
-        //         System.out.println(fc.fileAccess("People.txt"));
-        //.map(data -> new CitizenRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6]));
-//                
-//                
-//                
-//                .map(data -> new CitizenRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]))
-//                .reduce((first, second) -> second)
-//                .get()
-//                .People_ID();
-        //read data to collection 
-        // List<PeopleRecord> people = Files.lines(Paths.get("People.txt"))
-        // .map(line -> line.split("//"))
-        // .map(data -> new PeopleRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]))
-        // .collect(Collectors.toList());
         return id + 1;
     }
 

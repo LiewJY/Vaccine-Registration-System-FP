@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import javax.swing.*;
 import java.text.*;
@@ -20,7 +21,7 @@ import javax.swing.table.TableRowSorter;
 
 public class People extends javax.swing.JFrame {
 
-    CitizenClass citizen_class = new CitizenClass();
+    //CitizenClass citizen_class = new CitizenClass();
     NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
     CenterClass center_class = new CenterClass();
@@ -70,7 +71,7 @@ public class People extends javax.swing.JFrame {
             People_ID = people_id;
 
         } else {
-            noncitizen_class.setPeople_ID(people_id);
+            //noncitizen_class.setPeople_ID(people_id);
             citizenship = false;
         }
     }
@@ -135,16 +136,20 @@ public class People extends javax.swing.JFrame {
         String[] data = null;
 
         if (citizenship == true) {
-            citizen_class.View_Account();
+            try {
+                cr = cc.View_Account(People_ID);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             for (int i = 0; i < appointment_class.getAppointment_Data().size(); i++) {
                 data = appointment_class.getAppointment_Data().get(i).split("//");
 
-                if (String.valueOf(citizen_class.getPeople_ID()).equals(data[1])) {
-                    data[1] = String.valueOf(citizen_class.getPeople_ID());
+                if (String.valueOf(People_ID).equals(data[1])) {
+                    data[1] = String.valueOf(People_ID);
 
                     index = 2;
-                    key = citizen_class.getName();
+                    key = cr.get().Name();
                     String[] result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -152,7 +157,7 @@ public class People extends javax.swing.JFrame {
                     data = result;
 
                     index = 3;
-                    key = citizen_class.getIC_Number();
+                    key = cr.get().IC_Number();
                     result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -1603,53 +1608,59 @@ public class People extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (txt_edit_nationality.getText().equals("Malaysia")) {
-                citizen_class.setName(txt_edit_name.getText());
-                citizen_class.setPhone_Number(txt_edit_phone_number.getText());
-                citizen_class.setNationality(txt_edit_nationality.getText());
-                citizen_class.setAddress(txt_edit_address.getText());
-                citizen_class.setPassword(txt_edit_password.getText());
-                citizen_class.setIC_Number(txt_edit_ic_passport_number.getText());
-                citizen_class.Edit_Account();
-
-                if (citizen_class.getSuccess_Save() == true) {
-                    try {
-                        View();
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+//                citizen_class.setName(txt_edit_name.getText());
+//                citizen_class.setPhone_Number(txt_edit_phone_number.getText());
+//                citizen_class.setNationality(txt_edit_nationality.getText());
+//                citizen_class.setAddress(txt_edit_address.getText());
+//                citizen_class.setPassword(txt_edit_password.getText());
+//                citizen_class.setIC_Number(txt_edit_ic_passport_number.getText());
+//                citizen_class.Edit_Account();
+                //CitizenRecord edit;
+                CitizenRecord edit = new CitizenRecord(People_ID, txt_edit_name.getText(), txt_edit_phone_number.getText(), txt_edit_nationality.getText(), txt_edit_ic_passport_number.getText(), txt_edit_address.getText(), txt_edit_password.getText());
+                try {
+                    if (cc.Edit_Account(edit)) {
+                        try {
+                            View();
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        pnl_view_account.setVisible(true);
+                        pnl_edit_account.setVisible(false);
+                        pnl_view_vaccination_appointment.setVisible(false);
+                        pnl_register_vaccination_appointment.setVisible(false);
+                        pnl_view_vaccination_status.setVisible(false);
+                        JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                    pnl_view_account.setVisible(true);
-                    pnl_edit_account.setVisible(false);
-                    pnl_view_vaccination_appointment.setVisible(false);
-                    pnl_register_vaccination_appointment.setVisible(false);
-                    pnl_view_vaccination_status.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (IOException ex) {
+                    Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
             } else {
-                noncitizen_class.setName(txt_edit_name.getText());
-                noncitizen_class.setPhone_Number(txt_edit_phone_number.getText());
-                noncitizen_class.setNationality(txt_edit_nationality.getText());
-                noncitizen_class.setAddress(txt_edit_address.getText());
-                noncitizen_class.setPassword(txt_edit_password.getText());
-                noncitizen_class.setPassport_Number(txt_edit_ic_passport_number.getText());
-                noncitizen_class.Edit_Account();
-
-                if (noncitizen_class.getSuccess_Save() == true) {
-                    try {
-                        View();
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    pnl_view_account.setVisible(true);
-                    pnl_edit_account.setVisible(false);
-                    pnl_view_vaccination_appointment.setVisible(false);
-                    pnl_register_vaccination_appointment.setVisible(false);
-                    pnl_view_vaccination_status.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+//                noncitizen_class.setName(txt_edit_name.getText());
+//                noncitizen_class.setPhone_Number(txt_edit_phone_number.getText());
+//                noncitizen_class.setNationality(txt_edit_nationality.getText());
+//                noncitizen_class.setAddress(txt_edit_address.getText());
+//                noncitizen_class.setPassword(txt_edit_password.getText());
+//                noncitizen_class.setPassport_Number(txt_edit_ic_passport_number.getText());
+//                noncitizen_class.Edit_Account();
+//
+//                if (noncitizen_class.getSuccess_Save() == true) {
+//                    try {
+//                        View();
+//                    } catch (FileNotFoundException ex) {
+//                        Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                    pnl_view_account.setVisible(true);
+//                    pnl_edit_account.setVisible(false);
+//                    pnl_view_vaccination_appointment.setVisible(false);
+//                    pnl_register_vaccination_appointment.setVisible(false);
+//                    pnl_view_vaccination_status.setVisible(false);
+//                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
+//                }
             }
         }
     }//GEN-LAST:event_btn_edit_saveActionPerformed
@@ -1672,7 +1683,7 @@ public class People extends javax.swing.JFrame {
                     } else {
                         appointment_class.calculateAppointnment_ID();
                         if (citizenship == true) {
-                            appointment_class.Check_Exist(citizen_class.getIC_Number());
+                            appointment_class.Check_Exist(cc.View_Account(People_ID).get().IC_Number());
                         } else {
                             appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
                         }
@@ -1698,6 +1709,8 @@ public class People extends javax.swing.JFrame {
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_register_vaccination_appointment_registerActionPerformed
 
