@@ -1,4 +1,5 @@
 1//Sunway Medical Center//5, Jalan Lagoon Selatan, Bandar Sunway, 47500 Petaling Jaya, Selangor.//60374919191//Pfizer//
+2//Kuala Lumpur General Hospital//Jalan Pahang, 50586 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//60326155555//Pfizer//
 3//UCSI University//UCSI Heights, 1, Jalan Puncak Menara Gading, Taman Connaught, 56000 Cheras, Wilayah Persekutuan Kuala Lumpur.//60391018880//Sinovac//
 4//National Stadium Bukit Jalil//Jalan Barat, Bukit Jalil, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//60389920888//Sinovac//
 5//Putra World Trade Centre//41, Jalan Tun Ismail, Chow Kit, 50480 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur.//60326146999//AstraZeneca//

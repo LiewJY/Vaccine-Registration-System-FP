@@ -37,7 +37,8 @@ public class Personnel extends javax.swing.JFrame {
     PersonnelController personnelController = new PersonnelController();
     PeopleController peopleController = new PeopleController();
     NonCitizenController nonCitizenController = new NonCitizenController();
-    int People_ID, Personnel_ID;
+    VaccineController vaccineController = new VaccineController();
+    int People_ID, Personnel_ID, Vaccine_ID;
     CenterRecord centerRecord;
     Optional<PersonnelRecord> personnelRecord;
 
@@ -306,8 +307,13 @@ public class Personnel extends javax.swing.JFrame {
                 int row = tbl_view_vaccination_center.convertRowIndexToModel(rows);
 
                 // For deleting
-                centerRecord = new CenterRecord(Integer.parseInt(center_table_model.getValueAt(row, 0).toString()), center_table_model.getValueAt(row, 1).toString(), center_table_model.getValueAt(row, 2).toString(), center_table_model.getValueAt(row, 3).toString(), center_table_model.getValueAt(row, 4).toString());
-                // Populate to edit panel
+                centerRecord = new CenterRecord(Integer.parseInt(center_table_model.getValueAt(row, 0).toString()),
+                        center_table_model.getValueAt(row, 1).toString(),
+                        center_table_model.getValueAt(row, 2).toString(),
+                        center_table_model.getValueAt(row, 3).toString(),
+                        center_table_model.getValueAt(row, 4).toString());
+
+// Populate to edit panel
                 lbl_edit_center_id.setText(center_table_model.getValueAt(row, 0).toString());
                 txt_edit_center_name.setText(center_table_model.getValueAt(row, 1).toString());
                 txt_edit_center_address.setText(center_table_model.getValueAt(row, 2).toString());
@@ -465,7 +471,7 @@ public class Personnel extends javax.swing.JFrame {
         }
     }
 
-    // View vaccine
+// View vaccine
     public void View_Vaccine() throws FileNotFoundException {
         // Populate the center dropdowns
         //center_class.View_Center();
@@ -489,8 +495,7 @@ public class Personnel extends javax.swing.JFrame {
         btn_vaccine_remove.setEnabled(false);
 
         // Load data
-        vaccine_class.View_Vaccine();
-
+        //vaccine_class.View_Vaccine();
         // Set column
         String columns[] = {"ID", "Batch ID", "Type", "Date", "Expiration Date", "Second Dose Gap (weeks)", "Center Name"};
 
@@ -506,9 +511,8 @@ public class Personnel extends javax.swing.JFrame {
         // Loop and display data
         Center_ID_and_Details();
 
-        for (int i = 0; i < vaccine_class.getVaccine_Data().size(); i++) {
-            String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
-
+        for (VaccineRecord vaccineRecord : vaccineController.View_Vaccine()) {
+            String[] data = {Integer.toString(vaccineRecord.Vaccine_ID()), vaccineRecord.Vaccine_Batch_ID(), vaccineRecord.Vaccine_Type(), vaccineRecord.date(), vaccineRecord.Expiration_Date(), Integer.toString(vaccineRecord.Second_Dose_Gap()), Integer.toString(vaccineRecord.Center_ID())};
             for (Center center : center_id_to_name) {
                 if (center.getId().equals(data[6])) {
                     data[6] = center.getName();
@@ -527,7 +531,8 @@ public class Personnel extends javax.swing.JFrame {
                 int row = tbl_view_vaccine.convertRowIndexToModel(rows);
 
                 // For deleting
-                vaccine_class.setVaccine_ID(Integer.parseInt(vaccine_table_model.getValueAt(row, 0).toString()));
+                //vaccine_class.setVaccine_ID(Integer.parseInt(vaccine_table_model.getValueAt(row, 0).toString()));
+                Vaccine_ID = Integer.parseInt(vaccine_table_model.getValueAt(row, 0).toString());
 
                 // Populate to edit panel
                 txt_edit_vaccine_batch_id.setText(vaccine_table_model.getValueAt(row, 1).toString());
@@ -3636,7 +3641,7 @@ public class Personnel extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "People registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         View_People();
                     } else {
-                  JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
@@ -3929,24 +3934,24 @@ public class Personnel extends javax.swing.JFrame {
             } else if (validation_class.validateVaccineBatchID(txt_add_vaccine_batch_id.getText()) == true) {
                 JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                vaccine_class.calcualte_Vaccine_ID();
-                vaccine_class.setVaccine_Batch_ID(txt_add_vaccine_batch_id.getText());
-                vaccine_class.setVaccine_Type(cbo_add_vaccine_type.getSelectedItem().toString());
-                vaccine_class.setdate(date_format.format(txt_add_vaccine_date.getDate()));
-                vaccine_class.setExpiration_Date(date_format.format(txt_add_vaccine_expiration_date.getDate()));
-                vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_add_vaccine_second_dose_gap.getText()));
-                Center selected_item = (Center) cbo_add_vaccine_center_name.getSelectedItem();
-                vaccine_class.Add_Vaccine(selected_item.getId());
-
-                if (vaccine_class.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Vaccine added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    try {
-                        View_Vaccine();
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    Center selected_item = (Center) cbo_add_vaccine_center_name.getSelectedItem();
+                    VaccineRecord add = new VaccineRecord(vaccineController.calcualte_Vaccine_ID(), txt_add_vaccine_batch_id.getText(), cbo_add_vaccine_type.getSelectedItem().toString(), date_format.format(txt_add_vaccine_date.getDate()), date_format.format(txt_add_vaccine_expiration_date.getDate()), Integer.parseInt(lbl_add_vaccine_second_dose_gap.getText()), Integer.parseInt(selected_item.getId()));
+                    if (vaccineController.Add_Vaccine(add)) {
+                        JOptionPane.showMessageDialog(null, "Vaccine added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        try {
+                            View_Vaccine();
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to add vaccine. \nPossible error: \n- A record with same batch ID, date and center exist. \n- Invalid date.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to add vaccine. \nPossible error: \n- A record with same batch ID, date and center exist. \n- Invalid date.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -3967,23 +3972,29 @@ public class Personnel extends javax.swing.JFrame {
             } else if (validation_class.validateVaccineBatchID(txt_edit_vaccine_batch_id.getText()) == true) {
                 JOptionPane.showMessageDialog(null, validation_class.validationMessage("vaccine_batch_id"), "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                vaccine_class.setVaccine_Batch_ID(txt_edit_vaccine_batch_id.getText());
-                vaccine_class.setVaccine_Type(cbo_edit_vaccine_type.getSelectedItem().toString());
-                vaccine_class.setdate(date_format.format(txt_edit_vaccine_date.getDate()));
-                vaccine_class.setExpiration_Date(date_format.format(txt_edit_vaccine_expiration_date.getDate()));
-                vaccine_class.setSecond_Dose_Gap(Integer.parseInt(lbl_edit_vaccine_second_dose_gap.getText()));
                 Center selected_item = (Center) cbo_edit_vaccine_center_name.getSelectedItem();
-                vaccine_class.Edit_Vaccine(selected_item.getId());
 
-                if (vaccine_class.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Vaccine updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    try {
-                        View_Vaccine();
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                VaccineRecord edit = new VaccineRecord(Vaccine_ID,
+                        txt_edit_vaccine_batch_id.getText(),
+                        cbo_edit_vaccine_type.getSelectedItem().toString(),
+                        date_format.format(txt_edit_vaccine_date.getDate()),
+                        date_format.format(txt_edit_vaccine_expiration_date.getDate()),
+                        Integer.parseInt(lbl_edit_vaccine_second_dose_gap.getText()),
+                        Integer.parseInt(selected_item.getId())
+                );
+                try {
+                    if (vaccineController.Edit_Vaccine(edit)) {
+                        JOptionPane.showMessageDialog(null, "Vaccine updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        try {
+                            View_Vaccine();
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n- A record with same batch ID, date and center exist. \n- Invalid date.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update vaccine. \nPossible error: \n- A record with same batch ID, date and center exist. \n- Invalid date.", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (IOException ex) {
+                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

@@ -16,8 +16,7 @@ public class VaccineRegistrationSystem {
 //        CitizenController cc = new CitizenController();
 //        //cc.View_Account(2);
 //        System.out.println(cc.View_Account(1));
-        CenterController cc = new CenterController();
-        cc.Remove_Center(2);
+
 
         Login login = new Login();
         login.setVisible(true);

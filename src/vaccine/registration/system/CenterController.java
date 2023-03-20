@@ -48,8 +48,6 @@ public class CenterController {
                         .map(data -> new CenterRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4]))
                         .anyMatch(location -> location.Center_Name().equals(newCenterRecord.Center_Name()));
 
-        System.out.println(newCenterRecord.Center_Name());
-
         if (!data_exist) {
             // Insert data (not match)
             add_center.append(newCenterRecord.Center_ID() + "//" + newCenterRecord.Center_Name() + "//" + newCenterRecord.Center_Address() + "//" + newCenterRecord.Center_Contact_Number() + "//" + newCenterRecord.Vaccine_Type() + "//");
@@ -84,8 +82,8 @@ public class CenterController {
 
         // Update data
         boolean dataExist = centerList.stream()
-                .anyMatch(center -> center.Center_ID() == editCenterRecord.Center_ID() && !center.Center_Name().equals(editCenterRecord.Center_Name()));
-        if (!dataExist) {
+                .anyMatch(center -> center.Center_ID() == editCenterRecord.Center_ID() && center.Center_Name().equals(editCenterRecord.Center_Name()));
+        if (dataExist) {
             return false;
         } else {
             List<CenterRecord> updateCenterList = centerList.stream()
@@ -109,14 +107,14 @@ public class CenterController {
     }
 
     // Remove center
-    public boolean Remove_Center(int a) throws IOException {
+    public boolean Remove_Center(int center_id) throws IOException {
         List<CenterRecord> centerList = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader("Center.txt"));
         centerList = bufferedReader.lines()
                 .map(line -> {
                     String[] data = line.split("//");
                     return new CenterRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4]);
-                }).filter(center -> center.Center_ID() != a
+                }).filter(center -> center.Center_ID() != center_id
         )
                 .collect(Collectors.toList());
         bufferedReader.close();
