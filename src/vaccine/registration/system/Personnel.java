@@ -31,8 +31,10 @@ public class Personnel extends javax.swing.JFrame {
     Date date = new Date();
 
     //for functional 
-    CitizenController cc = new CitizenController();
+    CitizenController citizenController = new CitizenController();
+    CenterController centerController = new CenterController();
     int People_ID;
+    CenterRecord centerRecord;
 
     // Personnel form
     public Personnel() {
@@ -265,13 +267,10 @@ public class Personnel extends javax.swing.JFrame {
     }
 
     // View center
-    public void View_Center() {
+    public void View_Center() throws FileNotFoundException {
         // Disable button no selected row
         btn_vaccination_center_edit.setEnabled(false);
         btn_vaccination_center_remove.setEnabled(false);
-
-        // Load data
-        center_class.View_Center();
 
         // Set column
         String columns[] = {"Center ID", "Center Name", "Center Address", "Contact Number", "Vaccine Type"};
@@ -286,8 +285,8 @@ public class Personnel extends javax.swing.JFrame {
         center_table_model.setRowCount(0);
 
         // Loop and display data
-        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
-            String[] data = center_class.getCenter_Data().get(i).split("//");
+        for (CenterRecord centerRecord : centerController.View_Center()) {
+            String[] data = {Integer.toString(centerRecord.Center_ID()), centerRecord.Center_Name(), centerRecord.Center_Address(), centerRecord.Center_Contact_Number(), centerRecord.Vaccine_Type()};
             center_table_model.addRow(data);
         }
 
@@ -301,9 +300,7 @@ public class Personnel extends javax.swing.JFrame {
                 int row = tbl_view_vaccination_center.convertRowIndexToModel(rows);
 
                 // For deleting
-                center_class.setCenter_ID(Integer.parseInt(center_table_model.getValueAt(row, 0).toString()));
-                center_class.setCenter_Name(center_table_model.getValueAt(row, 1).toString());
-
+                centerRecord = new CenterRecord(Integer.parseInt(center_table_model.getValueAt(row, 0).toString()), center_table_model.getValueAt(row, 1).toString(), center_table_model.getValueAt(row, 2).toString(), center_table_model.getValueAt(row, 3).toString(), center_table_model.getValueAt(row, 4).toString());
                 // Populate to edit panel
                 lbl_edit_center_id.setText(center_table_model.getValueAt(row, 0).toString());
                 txt_edit_center_name.setText(center_table_model.getValueAt(row, 1).toString());
@@ -3414,7 +3411,11 @@ public class Personnel extends javax.swing.JFrame {
 
     // Vaccination center side bar tab
     private void lbl_vaccination_centerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_centerMouseClicked
-        View_Center();
+        try {
+            View_Center();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lbl_vaccination_centerMouseClicked
 
     // Add vaccination center button
@@ -3455,7 +3456,11 @@ public class Personnel extends javax.swing.JFrame {
 
     // Cancel edit vaccination center button
     private void btn_edit_center_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_center_cancelActionPerformed
-        View_Center();
+        try {
+            View_Center();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_edit_center_cancelActionPerformed
 
     // Vaccine side bar tab
@@ -3530,7 +3535,11 @@ public class Personnel extends javax.swing.JFrame {
 
     // Cancel add vaccination center button
     private void btn_add_center_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_center_cancelActionPerformed
-        View_Center();
+        try {
+            View_Center();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_add_center_cancelActionPerformed
 
     // Save register people button
@@ -3553,8 +3562,8 @@ public class Personnel extends javax.swing.JFrame {
         } else {
             if (cbo_register_people_nationality.getSelectedItem() == "Malaysia") {
                 try {
-                    CitizenRecord register = new CitizenRecord(cc.calculatePeople_ID(), txt_register_people_name.getText(), txt_register_people_phone_number.getText(), cbo_register_people_nationality.getSelectedItem().toString(), txt_register_people_ic_passport_number.getText(), txt_register_people_address.getText(), txt_register_people_password.getText());
-                    if (cc.Register_Account(register)) {
+                    CitizenRecord register = new CitizenRecord(citizenController.calculatePeople_ID(), txt_register_people_name.getText(), txt_register_people_phone_number.getText(), cbo_register_people_nationality.getSelectedItem().toString(), txt_register_people_ic_passport_number.getText(), txt_register_people_address.getText(), txt_register_people_password.getText());
+                    if (citizenController.Register_Account(register)) {
                         JOptionPane.showMessageDialog(null, "People registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         View_People();
                     } else {
@@ -3612,7 +3621,7 @@ public class Personnel extends javax.swing.JFrame {
 //                citizen_class.Edit_Account();
                 CitizenRecord edit = new CitizenRecord(People_ID, txt_edit_people_name.getText(), txt_edit_people_phone_number.getText(), cbo_edit_people_nationality.getSelectedItem().toString(), txt_edit_people_ic_passport_number.getText(), txt_edit_people_address.getText(), txt_edit_people_password.getText());
                 try {
-                    if (cc.Edit_Account(edit)) {
+                    if (citizenController.Edit_Account(edit)) {
                         View_People();
                         JOptionPane.showMessageDialog(null, "People updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     } else {
@@ -3740,17 +3749,24 @@ public class Personnel extends javax.swing.JFrame {
     // Remove vaccination center button
     private void btn_vaccination_center_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vaccination_center_removeActionPerformed
         int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove the record with name "
-                + center_class.getCenter_Name() + " ?", "Warning", JOptionPane.YES_NO_OPTION);
+                + centerRecord.Center_Name() + " ?", "Warning", JOptionPane.YES_NO_OPTION);
 
         if (return_value == JOptionPane.YES_OPTION) {
-            center_class.Remove_Center();
-
-            if (center_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Vaccination center deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                View_Center();
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to delete vaccination center.", "Error", JOptionPane.ERROR_MESSAGE);
+            try {
+                if (centerController.Remove_Center(centerRecord.Center_ID())) {
+                    JOptionPane.showMessageDialog(null, "Vaccination center deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        View_Center();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to delete vaccination center.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         } else if (return_value == JOptionPane.NO_OPTION) {
 
         }
@@ -3767,18 +3783,18 @@ public class Personnel extends javax.swing.JFrame {
         } else if (validation_class.validatePhoneNumber(txt_add_center_contact_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            center_class.calculateCenter_ID();
-            center_class.setCenter_Name(txt_add_center_name.getText());
-            center_class.setCenter_Address(txt_add_center_address.getText());
-            center_class.setCenter_Contact_Number(txt_add_center_contact_number.getText());
-            center_class.setVaccine_Type(cbo_add_center_vaccine_type.getSelectedItem().toString());
-            center_class.Add_Center();
-
-            if (center_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Vaccination center added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                View_Center();
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to add vaccination center, center with the same name exist.", "Error", JOptionPane.ERROR_MESSAGE);
+            try {
+                CenterRecord new_center = new CenterRecord(centerController.calculateCenter_ID(), txt_add_center_name.getText(), txt_add_center_address.getText(), txt_add_center_contact_number.getText(), cbo_add_center_vaccine_type.getSelectedItem().toString());
+                if (centerController.Add_Center(new_center)) {
+                    JOptionPane.showMessageDialog(null, "Vaccination center added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    View_Center();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to add vaccination center, center with the same name exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btn_add_center_addActionPerformed
@@ -3792,17 +3808,20 @@ public class Personnel extends javax.swing.JFrame {
         } else if (validation_class.validatePhoneNumber(txt_edit_center_contact_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            center_class.setCenter_ID(Integer.parseInt(lbl_edit_center_id.getText()));
-            center_class.setCenter_Name(txt_edit_center_name.getText());
-            center_class.setCenter_Address(txt_edit_center_address.getText());
-            center_class.setCenter_Contact_Number(txt_edit_center_contact_number.getText());
-            center_class.Edit_Center();
-
-            if (center_class.getSuccess_Save() == true) {
-                View_Center();
-                JOptionPane.showMessageDialog(null, "Vaccination center updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to update vaccination center. \nPossible error: \n- Same center name exist.", "Error", JOptionPane.ERROR_MESSAGE);
+            CenterRecord edit = new CenterRecord(Integer.parseInt(lbl_edit_center_id.getText()), txt_edit_center_name.getText(), txt_edit_center_address.getText(), txt_edit_center_contact_number.getText(), lbl_edit_center_vaccine_type.getText());
+            try {
+                if (centerController.Edit_Center(edit)) {
+                    try {
+                        View_Center();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Vaccination center updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to update vaccination center. \nPossible error: \n- Same center name exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btn_edit_center_saveActionPerformed
