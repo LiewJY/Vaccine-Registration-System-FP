@@ -8,6 +8,6 @@ package vaccine.registration.system;
  *
  * @author liewjy
  */
+    record PersonnelAuthRecord(Boolean Auth, Integer Personnel_ID) {
 
-record PersonnelRecord(int Personnel_ID, String Name, String Phone_Number, String Nationality, String IC_Number, String Address, String Password) {
 }

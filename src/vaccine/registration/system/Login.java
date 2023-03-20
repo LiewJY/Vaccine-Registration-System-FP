@@ -167,18 +167,24 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (cbo_user_role.getSelectedItem() == "Personnel") {
-                PersonnelClass personnel_class = new PersonnelClass();
-                personnel_class.setIC_Number(txt_ic_passport_number.getText());
-                personnel_class.setPassword(txt_password.getText());
-                personnel_class.Login_Account();
-                boolean personnel = personnel_class.getAuth();
-
-                if (personnel == true) {
-                    JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                    new Personnel(personnel_class.getPersonnel_ID()).setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+//                PersonnelClass personnel_class = new PersonnelClass();
+//                personnel_class.setIC_Number(txt_ic_passport_number.getText());
+//                personnel_class.setPassword(txt_password.getText());
+//                personnel_class.Login_Account();
+//                boolean personnel = personnel_class.getAuth();
+                PersonnelController personnelController = new PersonnelController();
+                PersonnelAuthRecord auth;
+                try {
+                    auth = personnelController.Login_Account(txt_ic_passport_number.getText(), txt_password.getText());
+                    if (auth.Auth()) {
+                        JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                        new Personnel(auth.Personnel_ID()).setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 // Citizen
             } else if (cbo_user_role.getSelectedItem() == "People (Citizen)") {

@@ -1517,16 +1517,17 @@ public class People extends javax.swing.JFrame {
             try {
                 //citizen_class.View_Account();
                 cr = cc.View_Account(People_ID);
+                txt_edit_name.setText(cr.get().Name());
+                txt_edit_phone_number.setText(cr.get().Phone_Number());
+                txt_edit_nationality.setText(cr.get().Nationality());
+                txt_edit_ic_passport_number.setText(cr.get().IC_Number());
+                txt_edit_address.setText(cr.get().Address());
+                txt_edit_password.setText(cr.get().Password());
+                txt_edit_confirm_password.setText(cr.get().Password());
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
             }
-            txt_edit_name.setText(cr.get().Name());
-            txt_edit_phone_number.setText(cr.get().Phone_Number());
-            txt_edit_nationality.setText(cr.get().Nationality());
-            txt_edit_ic_passport_number.setText(cr.get().IC_Number());
-            txt_edit_address.setText(cr.get().Address());
-            txt_edit_password.setText(cr.get().Password());
-            txt_edit_confirm_password.setText(cr.get().Password());
+
         } else {
 //            noncitizen_class.View_Account();
 //            txt_edit_name.setText(noncitizen_class.getName());

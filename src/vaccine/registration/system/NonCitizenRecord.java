@@ -8,6 +8,6 @@ package vaccine.registration.system;
  *
  * @author liewjy
  */
+record NonCitizenRecord(int People_ID, String Name, String Phone_Number, String Nationality, String Passport_Number, String Address, String Password) {
 
-record PersonnelRecord(int Personnel_ID, String Name, String Phone_Number, String Nationality, String IC_Number, String Address, String Password) {
 }

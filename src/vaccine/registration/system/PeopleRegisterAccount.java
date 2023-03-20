@@ -15,7 +15,9 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
     ValidationClass validation_class = new ValidationClass();
 
     //for functional 
-    CitizenController cc = new CitizenController();
+    CitizenController citizenController = new CitizenController();
+    NonCitizenController nonCitizenController = new NonCitizenController();
+    PeopleController peopleController = new PeopleController();
 
     // People Register Account form
     public PeopleRegisterAccount() {
@@ -254,37 +256,34 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         } else {
             if (cbo_nationality.getSelectedItem() == "Malaysia") {
                 try {
-                    CitizenRecord register = new CitizenRecord(cc.calculatePeople_ID(), txt_name.getText(), txt_phone_number.getText(), cbo_nationality.getSelectedItem().toString(), txt_ic_passport_number.getText(), txt_address.getText(), txt_password.getText());
-                    if (cc.Register_Account(register)) {
+                    CitizenRecord register = new CitizenRecord(peopleController.calculatePeople_ID(), txt_name.getText(), txt_phone_number.getText(), cbo_nationality.getSelectedItem().toString(), txt_ic_passport_number.getText(), txt_address.getText(), txt_password.getText());
+                    if (citizenController.Register_Account(register)) {
                         JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         viewLogin();
                     } else {
-                    JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-
-                    }catch (FileNotFoundException ex) {
+                        JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (FileNotFoundException ex) {
                     Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
-                }catch (IOException ex) {
+                } catch (IOException ex) {
                     Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                }else {
-//                NonCitizenClass non_citizen = new NonCitizenClass();
-//                non_citizen.calculatePeople_ID();
-//                non_citizen.setName(txt_name.getText());
-//                non_citizen.setPhone_Number(txt_phone_number.getText());
-//                non_citizen.setNationality(cbo_nationality.getSelectedItem().toString());
-//                non_citizen.setAddress(txt_address.getText());
-//                non_citizen.setPassword(txt_password.getText());
-//                non_citizen.setPassport_Number(txt_ic_passport_number.getText());
-//                non_citizen.Register_Account();
-//                if (non_citizen.getSuccess_Save() == true) {
-//                    JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-//                    viewLogin();
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
+            } else {
+                try {
+                    NonCitizenRecord register = new NonCitizenRecord(peopleController.calculatePeople_ID(), txt_name.getText(), txt_phone_number.getText(), cbo_nationality.getSelectedItem().toString(), txt_ic_passport_number.getText(), txt_address.getText(), txt_password.getText());
+                    if (nonCitizenController.Register_Account(register)) {
+                    JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        viewLogin();
+                    } else {
+                    JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            }
+        }
     }//GEN-LAST:event_btn_registerActionPerformed
 
     // Main method

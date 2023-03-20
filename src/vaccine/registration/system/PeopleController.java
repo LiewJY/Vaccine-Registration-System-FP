@@ -25,16 +25,10 @@ public class PeopleController {
         BufferedReader reader = new BufferedReader(new FileReader("People.txt"));
         Integer id
         = reader.lines().map(line -> line.split("//"))
-                .map(data -> new PeopleRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]))
+                .map(data -> new PeopleRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6]))
                 .reduce((first, second) -> second)
                 .get()
                 .People_ID();
-        //read data to collection 
-        // List<PeopleRecord> people = Files.lines(Paths.get("People.txt"))
-        // .map(line -> line.split("//"))
-        // .map(data -> new PeopleRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5]))
-        // .collect(Collectors.toList());
-   
         return id + 1;
     }
 
