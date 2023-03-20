@@ -24,7 +24,7 @@ public class People extends javax.swing.JFrame {
     //CitizenClass citizen_class = new CitizenClass();
     NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
-    CenterClass center_class = new CenterClass();
+    //CenterClass center_class = new CenterClass();
     VaccineClass vaccine_class = new VaccineClass();
     AppointmentClass appointment_class = new AppointmentClass();
 
@@ -43,6 +43,7 @@ public class People extends javax.swing.JFrame {
     Optional<CitizenRecord> cr;
     //or 
     int People_ID;
+    CenterController centerController = new CenterController();
 
     // People form
     public People() {
@@ -119,7 +120,7 @@ public class People extends javax.swing.JFrame {
     }
 
     // View appointment
-    public void View_Appointment() {
+    public void View_Appointment() throws FileNotFoundException {
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(true);
@@ -347,22 +348,22 @@ public class People extends javax.swing.JFrame {
 
     ArrayList<Center> center_id_to_name = new ArrayList<>();
 
-    public void Center_ID_and_Details() {
+    public void Center_ID_and_Details() throws FileNotFoundException {
         // Load data
-        center_class.View_Center();
+        //center_class.View_Center();
         center_id_to_name.clear();
 
         // Loop and add data
-        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
-            String[] data = center_class.getCenter_Data().get(i).split("//");
+        for (CenterRecord centerRecord : centerController.View_Center()) {
+            String[] data = {Integer.toString(centerRecord.Center_ID()), centerRecord.Center_Name(), centerRecord.Center_Address(), centerRecord.Center_Contact_Number(), centerRecord.Vaccine_Type()};
             center_id_to_name.add(new Center(data[0], data[1], data[2], data[3]));
         }
     }
 
     // View center
-    public void View_Center() {
+    public void View_Center() throws FileNotFoundException {
         // Load data
-        center_class.View_Center();
+        //center_class.View_Center();
 
         // Set column
         String columns[] = {"Center ID", "Center Name", "Center Address", "Contact Number", "Vaccine Type"};
@@ -375,8 +376,8 @@ public class People extends javax.swing.JFrame {
         center_table_model.setRowCount(0);
 
         // Loop and display data
-        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
-            String[] data = center_class.getCenter_Data().get(i).split("//");
+        for (CenterRecord centerRecord : centerController.View_Center()) {
+            String[] data = {Integer.toString(centerRecord.Center_ID()), centerRecord.Center_Name(), centerRecord.Center_Address(), centerRecord.Center_Contact_Number(), centerRecord.Vaccine_Type()};
             center_table_model.addRow(data);
         }
 
@@ -1547,7 +1548,11 @@ public class People extends javax.swing.JFrame {
     // Vaccination appointment side bar tab
     private void lbl_vaccination_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentMouseClicked
         Clear();
-        View_Appointment();
+        try {
+            View_Appointment();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lbl_vaccination_appointmentMouseClicked
 
     // Register vaccination appointment button
@@ -1585,13 +1590,21 @@ public class People extends javax.swing.JFrame {
     // Cancel register vaccination appointment button
     private void btn_register_vaccination_appointment_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_cancelActionPerformed
         Clear();
-        View_Appointment();
+        try {
+            View_Appointment();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btn_register_vaccination_appointment_cancelActionPerformed
 
     // Vaccination status side bar tab
     private void lbl_vaccination_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_statusMouseClicked
-        View_Center();
+        try {
+            View_Center();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lbl_vaccination_statusMouseClicked
 
     // Save edit account button
@@ -1738,6 +1751,8 @@ public class People extends javax.swing.JFrame {
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No vaccination appointmment available to cancel.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
 
@@ -1758,7 +1773,7 @@ public class People extends javax.swing.JFrame {
                 cbo_select_vaccination_center.setEnabled(true);
                 appointment_class.Show_Locations(date_format.format(txt_select_date.getDate()));
                 cbo_select_vaccination_center.removeAllItems();
-                center_class.View_Center();
+                //center_class.View_Center();
                 DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel) cbo_select_vaccination_center.getModel();
 
                 for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
@@ -1767,8 +1782,8 @@ public class People extends javax.swing.JFrame {
                     String temp = "", ww;
                     ww = data[6];
 
-                    for (int a = 0; a < center_class.getCenter_Data().size(); a++) {
-                        String[] name = center_class.getCenter_Data().get(a).split("//");
+                    for (CenterRecord centerRecord : centerController.View_Center()) {
+                        String[] name = {Integer.toString(centerRecord.Center_ID()), centerRecord.Center_Name(), centerRecord.Center_Address(), centerRecord.Center_Contact_Number(), centerRecord.Vaccine_Type()};
 
                         if (name[0].equals(ww)) {
                             temp = name[1];
@@ -1780,12 +1795,18 @@ public class People extends javax.swing.JFrame {
             }
         } catch (NullPointerException e) {
 
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txt_select_datePropertyChange
 
     // Select vaccination center
     private void cbo_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_select_vaccination_centerActionPerformed
-        Center_ID_and_Details();
+        try {
+            Center_ID_and_Details();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();
         lbl_vaccine_type.setText(selected_item.getType());
     }//GEN-LAST:event_cbo_select_vaccination_centerActionPerformed
