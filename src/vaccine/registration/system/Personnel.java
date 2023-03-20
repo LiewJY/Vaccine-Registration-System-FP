@@ -3611,8 +3611,6 @@ public class Personnel extends javax.swing.JFrame {
 //                citizen_class.setIC_Number(txt_edit_people_ic_passport_number.getText());
 //                citizen_class.Edit_Account();
                 CitizenRecord edit = new CitizenRecord(People_ID, txt_edit_people_name.getText(), txt_edit_people_phone_number.getText(), cbo_edit_people_nationality.getSelectedItem().toString(), txt_edit_people_ic_passport_number.getText(), txt_edit_people_address.getText(), txt_edit_people_password.getText());
-                System.out.println(edit);
-
                 try {
                     if (cc.Edit_Account(edit)) {
                         View_People();
