@@ -22,7 +22,7 @@ import javax.swing.table.TableRowSorter;
 public class People extends javax.swing.JFrame {
 
     //CitizenClass citizen_class = new CitizenClass();
-    NonCitizenClass noncitizen_class = new NonCitizenClass();
+    //NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
     //CenterClass center_class = new CenterClass();
     VaccineClass vaccine_class = new VaccineClass();
@@ -39,8 +39,10 @@ public class People extends javax.swing.JFrame {
     boolean citizenship;
 
     //for record
-    CitizenController cc = new CitizenController();
-    Optional<CitizenRecord> cr;
+    CitizenController citizenController = new CitizenController();
+    Optional<CitizenRecord> citizenRecord;
+    NonCitizenController nonCitizenController = new NonCitizenController();
+    Optional<NonCitizenRecord> nonCitizenRecord;
     //or 
     int People_ID;
     CenterController centerController = new CenterController();
@@ -102,13 +104,13 @@ public class People extends javax.swing.JFrame {
     public void View() throws FileNotFoundException {
         // Insert data
         if (citizenship == true) {
-            cr = cc.View_Account(People_ID);
+            citizenRecord = citizenController.View_Account(People_ID);
 //            citizen_class.View_Account();
-            lbl_view_name.setText(cr.get().Name());
-            lbl_view_phone_number.setText(cr.get().Phone_Number());
-            lbl_view_nationality.setText(cr.get().Nationality());
-            lbl_view_ic_passport_number.setText(cr.get().IC_Number());
-            lbl_view_address.setText(cr.get().Address());
+            lbl_view_name.setText(citizenRecord.get().Name());
+            lbl_view_phone_number.setText(citizenRecord.get().Phone_Number());
+            lbl_view_nationality.setText(citizenRecord.get().Nationality());
+            lbl_view_ic_passport_number.setText(citizenRecord.get().IC_Number());
+            lbl_view_address.setText(citizenRecord.get().Address());
         } else {
 //            noncitizen_class.View_Account();
 //            lbl_view_name.setText(noncitizen_class.getName());
@@ -138,7 +140,7 @@ public class People extends javax.swing.JFrame {
 
         if (citizenship == true) {
             try {
-                cr = cc.View_Account(People_ID);
+                citizenRecord = citizenController.View_Account(People_ID);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -150,7 +152,7 @@ public class People extends javax.swing.JFrame {
                     data[1] = String.valueOf(People_ID);
 
                     index = 2;
-                    key = cr.get().Name();
+                    key = citizenRecord.get().Name();
                     String[] result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -158,7 +160,7 @@ public class People extends javax.swing.JFrame {
                     data = result;
 
                     index = 3;
-                    key = cr.get().IC_Number();
+                    key = citizenRecord.get().IC_Number();
                     result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -210,16 +212,15 @@ public class People extends javax.swing.JFrame {
                 }
             }
         } else {
-            noncitizen_class.View_Account();
-
+            nonCitizenRecord = nonCitizenController.View_Account(People_ID);
             for (int n = 0; n < appointment_class.getAppointment_Data().size(); n++) {
                 data = appointment_class.getAppointment_Data().get(n).split("//");
 
-                if (String.valueOf(noncitizen_class.getPeople_ID()).equals(data[1])) {
-                    data[1] = String.valueOf(noncitizen_class.getPeople_ID());
+                if (String.valueOf(nonCitizenRecord.get().People_ID()).equals(data[1])) {
+                    data[1] = String.valueOf(nonCitizenRecord.get().People_ID());
 
                     index = 2;
-                    key = noncitizen_class.getName();
+                    key = nonCitizenRecord.get().Name();
                     String[] result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -227,7 +228,7 @@ public class People extends javax.swing.JFrame {
                     data = result;
 
                     index = 3;
-                    key = noncitizen_class.getPassport_Number();
+                    key = nonCitizenRecord.get().Passport_Number();
                     result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -1516,27 +1517,32 @@ public class People extends javax.swing.JFrame {
         if (citizenship == true) {
             try {
                 //citizen_class.View_Account();
-                cr = cc.View_Account(People_ID);
-                txt_edit_name.setText(cr.get().Name());
-                txt_edit_phone_number.setText(cr.get().Phone_Number());
-                txt_edit_nationality.setText(cr.get().Nationality());
-                txt_edit_ic_passport_number.setText(cr.get().IC_Number());
-                txt_edit_address.setText(cr.get().Address());
-                txt_edit_password.setText(cr.get().Password());
-                txt_edit_confirm_password.setText(cr.get().Password());
+                citizenRecord = citizenController.View_Account(People_ID);
+                txt_edit_name.setText(citizenRecord.get().Name());
+                txt_edit_phone_number.setText(citizenRecord.get().Phone_Number());
+                txt_edit_nationality.setText(citizenRecord.get().Nationality());
+                txt_edit_ic_passport_number.setText(citizenRecord.get().IC_Number());
+                txt_edit_address.setText(citizenRecord.get().Address());
+                txt_edit_password.setText(citizenRecord.get().Password());
+                txt_edit_confirm_password.setText(citizenRecord.get().Password());
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
-//            noncitizen_class.View_Account();
-//            txt_edit_name.setText(noncitizen_class.getName());
-//            txt_edit_phone_number.setText(noncitizen_class.getPhone_Number());
-//            txt_edit_nationality.setText(noncitizen_class.getNationality());
-//            txt_edit_ic_passport_number.setText(noncitizen_class.getPassport_Number());
-//            txt_edit_address.setText(noncitizen_class.getAddress());
-//            txt_edit_password.setText(noncitizen_class.getPassword());
-//            txt_edit_confirm_password.setText(noncitizen_class.getPassword());
+            try {
+                //citizen_class.View_Account();
+                nonCitizenRecord = nonCitizenController.View_Account(People_ID);
+                txt_edit_name.setText(nonCitizenRecord.get().Name());
+                txt_edit_phone_number.setText(nonCitizenRecord.get().Phone_Number());
+                txt_edit_nationality.setText(nonCitizenRecord.get().Nationality());
+                txt_edit_ic_passport_number.setText(nonCitizenRecord.get().Passport_Number());
+                txt_edit_address.setText(nonCitizenRecord.get().Address());
+                txt_edit_password.setText(nonCitizenRecord.get().Password());
+                txt_edit_confirm_password.setText(nonCitizenRecord.get().Password());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         pnl_view_account.setVisible(false);
@@ -1622,17 +1628,9 @@ public class People extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (txt_edit_nationality.getText().equals("Malaysia")) {
-//                citizen_class.setName(txt_edit_name.getText());
-//                citizen_class.setPhone_Number(txt_edit_phone_number.getText());
-//                citizen_class.setNationality(txt_edit_nationality.getText());
-//                citizen_class.setAddress(txt_edit_address.getText());
-//                citizen_class.setPassword(txt_edit_password.getText());
-//                citizen_class.setIC_Number(txt_edit_ic_passport_number.getText());
-//                citizen_class.Edit_Account();
-                //CitizenRecord edit;
                 CitizenRecord edit = new CitizenRecord(People_ID, txt_edit_name.getText(), txt_edit_phone_number.getText(), txt_edit_nationality.getText(), txt_edit_ic_passport_number.getText(), txt_edit_address.getText(), txt_edit_password.getText());
                 try {
-                    if (cc.Edit_Account(edit)) {
+                    if (citizenController.Edit_Account(edit)) {
                         try {
                             View();
                         } catch (FileNotFoundException ex) {
@@ -1652,29 +1650,27 @@ public class People extends javax.swing.JFrame {
                 }
 
             } else {
-//                noncitizen_class.setName(txt_edit_name.getText());
-//                noncitizen_class.setPhone_Number(txt_edit_phone_number.getText());
-//                noncitizen_class.setNationality(txt_edit_nationality.getText());
-//                noncitizen_class.setAddress(txt_edit_address.getText());
-//                noncitizen_class.setPassword(txt_edit_password.getText());
-//                noncitizen_class.setPassport_Number(txt_edit_ic_passport_number.getText());
-//                noncitizen_class.Edit_Account();
-//
-//                if (noncitizen_class.getSuccess_Save() == true) {
-//                    try {
-//                        View();
-//                    } catch (FileNotFoundException ex) {
-//                        Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                    pnl_view_account.setVisible(true);
-//                    pnl_edit_account.setVisible(false);
-//                    pnl_view_vaccination_appointment.setVisible(false);
-//                    pnl_register_vaccination_appointment.setVisible(false);
-//                    pnl_view_vaccination_status.setVisible(false);
-//                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
+
+                NonCitizenRecord edit = new NonCitizenRecord(People_ID, txt_edit_name.getText(), txt_edit_phone_number.getText(), txt_edit_nationality.getText(), txt_edit_ic_passport_number.getText(), txt_edit_address.getText(), txt_edit_password.getText());
+                try {
+                    if (nonCitizenController.Edit_Account(edit)) {
+                        try {
+                            View();
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        pnl_view_account.setVisible(true);
+                        pnl_edit_account.setVisible(false);
+                        pnl_view_vaccination_appointment.setVisible(false);
+                        pnl_register_vaccination_appointment.setVisible(false);
+                        pnl_view_vaccination_status.setVisible(false);
+                        JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_btn_edit_saveActionPerformed
@@ -1697,9 +1693,9 @@ public class People extends javax.swing.JFrame {
                     } else {
                         appointment_class.calculateAppointnment_ID();
                         if (citizenship == true) {
-                            appointment_class.Check_Exist(cc.View_Account(People_ID).get().IC_Number());
+                            appointment_class.Check_Exist(citizenController.View_Account(People_ID).get().IC_Number());
                         } else {
-                            appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
+                            appointment_class.Check_Exist(nonCitizenController.View_Account(People_ID).get().Passport_Number());
                         }
                         appointment_class.Add_Dose();
 

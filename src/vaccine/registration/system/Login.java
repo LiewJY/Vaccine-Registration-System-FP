@@ -188,33 +188,39 @@ public class Login extends javax.swing.JFrame {
                 }
                 // Citizen
             } else if (cbo_user_role.getSelectedItem() == "People (Citizen)") {
-                CitizenController cc = new CitizenController();
+                CitizenController citizenController = new CitizenController();
                 try {
-                    AuthRecord auth = cc.Login_Account(txt_ic_passport_number.getText(), txt_password.getText());
+                    AuthRecord auth = citizenController.Login_Account(txt_ic_passport_number.getText(), txt_password.getText());
                     if (auth.Auth() == true) {
                         JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                         new People(auth.People_ID(), auth.Citizen()).setVisible(true);
                         this.dispose();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Failed to login! IC Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             } else if (cbo_user_role.getSelectedItem() == "People (Non-Citizen)") {
-                NonCitizenClass noncitizen_class = new NonCitizenClass();
-                noncitizen_class.setPassport_Number(txt_ic_passport_number.getText());
-                noncitizen_class.setPassword(txt_password.getText());
-                noncitizen_class.Login_Account();
-                boolean non_citizen = noncitizen_class.getAuth();
+//                NonCitizenClass noncitizen_class = new NonCitizenClass();
+//                noncitizen_class.setPassport_Number(txt_ic_passport_number.getText());
+//                noncitizen_class.setPassword(txt_password.getText());
+//                noncitizen_class.Login_Account();
+//                boolean non_citizen = noncitizen_class.getAuth();
 
-                if (non_citizen == true) {
-                    JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                    new People(noncitizen_class.getPeople_ID(), noncitizen_class.getCitizen()).setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                NonCitizenController nonCitizenController = new NonCitizenController();
+                try {
+                    AuthRecord auth = nonCitizenController.Login_Account(txt_ic_passport_number.getText(), txt_password.getText());
+                    if (auth.Auth() == true) {
+                        JOptionPane.showMessageDialog(null, "You have logged in successfully.", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                        new People(auth.People_ID(), auth.Citizen()).setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to login! Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else if (cbo_user_role.getSelectedItem() == "") {
                 JOptionPane.showMessageDialog(null, "Failed to login! IC / Passport Number or Password or User Role \ndoes not match. Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
