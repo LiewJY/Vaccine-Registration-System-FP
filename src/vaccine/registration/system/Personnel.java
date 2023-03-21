@@ -23,7 +23,7 @@ public class Personnel extends javax.swing.JFrame {
     //CitizenClass citizen_class = new CitizenClass();
     //NonCitizenClass noncitizen_class = new NonCitizenClass();
     //CenterClass center_class = new CenterClass();
-    VaccineClass vaccine_class = new VaccineClass();
+    //VaccineClass vaccine_class = new VaccineClass();
     AppointmentClass appointment_class = new AppointmentClass();
     //PeopleClass people_class = new PeopleClass();
 
@@ -459,14 +459,23 @@ public class Personnel extends javax.swing.JFrame {
 
     ArrayList<VaccineDetails> vaccine_id_and_details = new ArrayList<>();
 
-    public void Vaccine_ID_and_Details() {
+    public void Vaccine_ID_and_Details() throws FileNotFoundException {
         // Load data
-        vaccine_class.View_Vaccine();
+        //vaccine_class.View_Vaccine();
         vaccine_id_and_details.clear();
 
         // Loop and add data
-        for (int i = 0; i < vaccine_class.getVaccine_Data().size(); i++) {
-            String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
+               // for (CenterRecord centerRecord : centerController.View_Center()) {
+
+        for (VaccineRecord vacccineRecord : vaccineController.View_Vaccine()) {
+            String[] data = {String.valueOf(vacccineRecord.Vaccine_ID()),
+            vacccineRecord.Vaccine_Batch_ID(),
+            vacccineRecord.Vaccine_Type(),
+            vacccineRecord.date(),
+            vacccineRecord.Expiration_Date(),
+            String.valueOf(vacccineRecord.Second_Dose_Gap()),
+            String.valueOf(vacccineRecord.Center_ID())};
+            System.out.println(data[0] + " " + data[3] + " " + data[2] + " " + data[6]);
             vaccine_id_and_details.add(new VaccineDetails(data[0], data[3], data[2], data[6]));
         }
     }
@@ -3899,17 +3908,19 @@ public class Personnel extends javax.swing.JFrame {
         int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove the record?", "Warning", JOptionPane.YES_NO_OPTION);
 
         if (return_value == JOptionPane.YES_OPTION) {
-            vaccine_class.Remove_Vaccine();
-
-            if (vaccine_class.getSuccess_Save() == true) {
-                JOptionPane.showMessageDialog(null, "Vaccine deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                try {
-                    View_Vaccine();
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                if (vaccineController.Remove_Vaccine(Vaccine_ID)) {
+                    JOptionPane.showMessageDialog(null, "Vaccine deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        View_Vaccine();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to delete vaccine.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to delete vaccine.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+                Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (return_value == JOptionPane.NO_OPTION) {
 

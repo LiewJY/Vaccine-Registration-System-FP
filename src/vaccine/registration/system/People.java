@@ -25,7 +25,7 @@ public class People extends javax.swing.JFrame {
     //NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
     //CenterClass center_class = new CenterClass();
-    VaccineClass vaccine_class = new VaccineClass();
+    //VaccineClass vaccine_class = new VaccineClass();
     AppointmentClass appointment_class = new AppointmentClass();
 
     // For formatting date
@@ -43,7 +43,7 @@ public class People extends javax.swing.JFrame {
     Optional<CitizenRecord> citizenRecord;
     NonCitizenController nonCitizenController = new NonCitizenController();
     Optional<NonCitizenRecord> nonCitizenRecord;
-    //or 
+    VaccineController vaccineController = new VaccineController();
     int People_ID;
     CenterController centerController = new CenterController();
 
@@ -424,13 +424,13 @@ public class People extends javax.swing.JFrame {
 
     ArrayList<VaccineDetails> vaccine_id_and_details = new ArrayList<>();
 
-    public void Vaccine_ID_and_Details() {
+    public void Vaccine_ID_and_Details() throws FileNotFoundException {
         // Load data
-        vaccine_class.View_Vaccine();
+        //vaccine_class.View_Vaccine();
         vaccine_id_and_details.clear();
         // Loop and add data
-        for (int i = 0; i < vaccine_class.getVaccine_Data().size(); i++) {
-            String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
+        for (VaccineRecord vaccineRecord : vaccineController.View_Vaccine()) {
+            String[] data = {Integer.toString(vaccineRecord.Vaccine_ID()), vaccineRecord.Vaccine_Batch_ID(), vaccineRecord.Vaccine_Type(), vaccineRecord.date(), vaccineRecord.Expiration_Date(), Integer.toString(vaccineRecord.Second_Dose_Gap()), Integer.toString(vaccineRecord.Center_ID())};
             vaccine_id_and_details.add(new VaccineDetails(data[0], data[3], data[2], data[6]));
         }
     }

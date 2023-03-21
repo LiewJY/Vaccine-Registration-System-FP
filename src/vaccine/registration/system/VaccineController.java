@@ -107,7 +107,7 @@ public class VaccineController {
         vaccineList = bufferedReader.lines()
                 .map(line -> line.split("//"))
                 .map(data -> new VaccineRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], Integer.parseInt(data[5]), Integer.parseInt(data[6])))
-                .filter(center -> center.Center_ID() != vaccine_id
+                .filter(vac -> vac.Vaccine_ID() != vaccine_id
                 )
                 .collect(Collectors.toList());
         bufferedReader.close();
