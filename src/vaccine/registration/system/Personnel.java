@@ -39,7 +39,7 @@ public class Personnel extends javax.swing.JFrame {
     NonCitizenController nonCitizenController = new NonCitizenController();
     VaccineController vaccineController = new VaccineController();
     AppointmentController appointmentController = new AppointmentController();
-    int People_ID, Personnel_ID, Vaccine_ID;
+    int People_ID, Personnel_ID, Vaccine_ID, Appointment_ID;
     CenterRecord centerRecord;
     Optional<PersonnelRecord> personnelRecord;
 
@@ -681,8 +681,8 @@ public class Personnel extends javax.swing.JFrame {
                 int row = tbl_view_vaccination_appointments.convertRowIndexToModel(rows);
 
                 // For deleting
-                appointment_class.setAppointnment_ID(Integer.parseInt(appointment_table_model.getValueAt(row, 0).toString()));
-
+                //appointment_class.setAppointnment_ID();
+                Appointment_ID = Integer.parseInt(appointment_table_model.getValueAt(row, 0).toString());
                 // Vaccine ID
                 appointment_class.setAppointment_Time(appointment_table_model.getValueAt(row, 5).toString());
 
@@ -3753,17 +3753,21 @@ public class Personnel extends javax.swing.JFrame {
         int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to remove the record?", "Warning", JOptionPane.YES_NO_OPTION);
 
         if (return_value == JOptionPane.YES_OPTION) {
-            appointment_class.Remove_Appointment();
-
-            if (appointment_class.getSuccess_Save() == true) {
-                try {
-                    View_Appointment();
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                //appointment_class.Remove_Appointment();
+                
+                if (appointmentController.Remove_Appointment(Appointment_ID)) {
+                    try {
+                        View_Appointment();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Vaccination appointment removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to remove vacicnation appointment.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                JOptionPane.showMessageDialog(null, "Vaccination appointment removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to remove vacicnation appointment.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+                Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else if (return_value == JOptionPane.NO_OPTION) {
 
@@ -3782,7 +3786,7 @@ public class Personnel extends javax.swing.JFrame {
             } else {
                 try {
                     //appointment_class.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
-                    
+
                     CheckExistRecord check = appointmentController.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
                     if (!check.isExist()) {
                         JOptionPane.showMessageDialog(null, "Cannot find people!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -3793,7 +3797,7 @@ public class Personnel extends javax.swing.JFrame {
                     } else {
                         appointment_class.calculateAppointnment_ID();
                         appointment_class.Add_Dose();
-                        
+
                         // Set vaccine ID
                         Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
                         appointment_class.Add_Vaccine_Id(date_format.format(txt_register_vaccination_appointments_select_date.getDate()), selected_item.getId());
@@ -3801,7 +3805,7 @@ public class Personnel extends javax.swing.JFrame {
                         appointment_class.Add_Dose();
                         appointment_class.setStatus("Pending");
                         appointment_class.Add_Appointment();
-                        
+
                         if (appointment_class.getSuccess_Save() == true) {
                             JOptionPane.showMessageDialog(null, "Vaccinaton appointment registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                             try {
@@ -4386,7 +4390,7 @@ public class Personnel extends javax.swing.JFrame {
 
     private void lbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_dataMouseClicked
         // TODO add your handling code here:
-         new Chart().setVisible(true);
+        new Chart().setVisible(true);
     }//GEN-LAST:event_lbl_dataMouseClicked
 
     // Main method
