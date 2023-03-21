@@ -4386,6 +4386,7 @@ public class Personnel extends javax.swing.JFrame {
 
     private void lbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_dataMouseClicked
         // TODO add your handling code here:
+         new Chart().setVisible(true);
     }//GEN-LAST:event_lbl_dataMouseClicked
 
     // Main method
