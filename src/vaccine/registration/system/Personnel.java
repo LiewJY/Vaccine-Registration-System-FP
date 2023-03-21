@@ -739,6 +739,8 @@ public class Personnel extends javax.swing.JFrame {
         lbl_vaccine = new javax.swing.JLabel();
         pnl_logout = new javax.swing.JPanel();
         lbl_logout = new javax.swing.JLabel();
+        pnl_data = new javax.swing.JPanel();
+        lbl_data = new javax.swing.JLabel();
         pnl_container = new javax.swing.JPanel();
         pnl_view_account = new javax.swing.JPanel();
         pnl_myAccount = new javax.swing.JPanel();
@@ -1091,6 +1093,30 @@ public class Personnel extends javax.swing.JFrame {
             .addComponent(lbl_logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
+        pnl_data.setBackground(new java.awt.Color(127, 163, 198));
+        pnl_data.setFocusTraversalPolicyProvider(true);
+
+        lbl_data.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        lbl_data.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_data.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_data.setText("Chart");
+        lbl_data.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_dataMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_dataLayout = new javax.swing.GroupLayout(pnl_data);
+        pnl_data.setLayout(pnl_dataLayout);
+        pnl_dataLayout.setHorizontalGroup(
+            pnl_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_data, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnl_dataLayout.setVerticalGroup(
+            pnl_dataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_data, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnl_sidenavLayout = new javax.swing.GroupLayout(pnl_sidenav);
         pnl_sidenav.setLayout(pnl_sidenavLayout);
         pnl_sidenavLayout.setHorizontalGroup(
@@ -1104,6 +1130,7 @@ public class Personnel extends javax.swing.JFrame {
             .addComponent(pnl_vaccination_appointments, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnl_vaccination_center, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnl_vaccine, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnl_data, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnl_sidenavLayout.setVerticalGroup(
             pnl_sidenavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1120,6 +1147,8 @@ public class Personnel extends javax.swing.JFrame {
                 .addComponent(pnl_vaccination_center, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(pnl_vaccine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(pnl_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(pnl_logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -3306,7 +3335,7 @@ public class Personnel extends javax.swing.JFrame {
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addComponent(pnl_sidenav, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
-        .addComponent(pnl_container, javax.swing.GroupLayout.PREFERRED_SIZE, 793, Short.MAX_VALUE)
+        .addComponent(pnl_container, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
     );
 
     pack();
@@ -4355,6 +4384,10 @@ public class Personnel extends javax.swing.JFrame {
         pnl_edit_vaccine.setVisible(false);
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
+    private void lbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_dataMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_dataMouseClicked
+
     // Main method
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -4451,6 +4484,7 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_add_vaccine_expiration_date;
     private javax.swing.JLabel lbl_add_vaccine_second_dose_gap;
     private javax.swing.JLabel lbl_add_vaccine_type;
+    private javax.swing.JLabel lbl_data;
     private javax.swing.JLabel lbl_editAccount;
     private javax.swing.JLabel lbl_editCenterId;
     private javax.swing.JLabel lbl_editPeople;
@@ -4531,6 +4565,7 @@ public class Personnel extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_add_center;
     private javax.swing.JPanel pnl_add_vaccine;
     private javax.swing.JPanel pnl_container;
+    private javax.swing.JPanel pnl_data;
     private javax.swing.JPanel pnl_editAccount;
     private javax.swing.JPanel pnl_editCenter;
     private javax.swing.JPanel pnl_editPeople;
