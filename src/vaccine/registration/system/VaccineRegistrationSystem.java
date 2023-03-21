@@ -16,7 +16,8 @@ public class VaccineRegistrationSystem {
 //        CitizenController cc = new CitizenController();
 //        //cc.View_Account(2);
 //        System.out.println(cc.View_Account(1));
-
+//        AppointmentController ac = new AppointmentController();
+//        ac.Check_Exist("880226148890");
 
         Login login = new Login();
         login.setVisible(true);

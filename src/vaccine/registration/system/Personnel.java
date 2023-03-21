@@ -38,6 +38,7 @@ public class Personnel extends javax.swing.JFrame {
     PeopleController peopleController = new PeopleController();
     NonCitizenController nonCitizenController = new NonCitizenController();
     VaccineController vaccineController = new VaccineController();
+    AppointmentController appointmentController = new AppointmentController();
     int People_ID, Personnel_ID, Vaccine_ID;
     CenterRecord centerRecord;
     Optional<PersonnelRecord> personnelRecord;
@@ -465,16 +466,15 @@ public class Personnel extends javax.swing.JFrame {
         vaccine_id_and_details.clear();
 
         // Loop and add data
-               // for (CenterRecord centerRecord : centerController.View_Center()) {
-
+        // for (CenterRecord centerRecord : centerController.View_Center()) {
         for (VaccineRecord vacccineRecord : vaccineController.View_Vaccine()) {
             String[] data = {String.valueOf(vacccineRecord.Vaccine_ID()),
-            vacccineRecord.Vaccine_Batch_ID(),
-            vacccineRecord.Vaccine_Type(),
-            vacccineRecord.date(),
-            vacccineRecord.Expiration_Date(),
-            String.valueOf(vacccineRecord.Second_Dose_Gap()),
-            String.valueOf(vacccineRecord.Center_ID())};
+                vacccineRecord.Vaccine_Batch_ID(),
+                vacccineRecord.Vaccine_Type(),
+                vacccineRecord.date(),
+                vacccineRecord.Expiration_Date(),
+                String.valueOf(vacccineRecord.Second_Dose_Gap()),
+                String.valueOf(vacccineRecord.Center_ID())};
             System.out.println(data[0] + " " + data[3] + " " + data[2] + " " + data[6]);
             vaccine_id_and_details.add(new VaccineDetails(data[0], data[3], data[2], data[6]));
         }
@@ -589,8 +589,7 @@ public class Personnel extends javax.swing.JFrame {
         btn_vaccination_appointments_remove.setEnabled(false);
 
         // Load data
-        appointment_class.View_Appointment();
-
+        //appointment_class.View_Appointment();
         // Set column
         String columns[] = {"ID", "People ID", "Name", "IC / Passport Number", "Date", "Time", "Center Name", "Type", "Dose", "Status"};
 
@@ -608,9 +607,16 @@ public class Personnel extends javax.swing.JFrame {
         Center_ID_and_Details();
         People_ID_and_Details();
         Vaccine_ID_and_Details();
+        // for (CenterRecord centerRecord : centerController.View_Center()) {
 
-        for (int i = 0; i < appointment_class.getAppointment_Data().size(); i++) {
-            String[] data = appointment_class.getAppointment_Data().get(i).split("//");
+        for (AppointmentRecord appointmentRecord : appointmentController.View_Appointment()) {
+            String[] data = {String.valueOf(appointmentRecord.Appointnment_ID()),
+                String.valueOf(appointmentRecord.People_ID()),
+                String.valueOf(appointmentRecord.Vaccine_ID()),
+                appointmentRecord.Appointment_Time(),
+                appointmentRecord.Dose_Number(),
+                appointmentRecord.Status()
+            };
 
             for (PeopleDetails peopledetails : people_id_and_details) {
                 if (peopledetails.getId().equals(data[1])) {
@@ -3745,37 +3751,42 @@ public class Personnel extends javax.swing.JFrame {
             if (txt_register_vaccination_appointments_ic_passport_number.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                appointment_class.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
-
-                if (appointment_class.getExist() == false) {
-                    JOptionPane.showMessageDialog(null, "Cannot find people!", "Warning", JOptionPane.WARNING_MESSAGE);
-                } else if (txt_register_vaccination_appointments_select_date.getDate().compareTo(date) < 0) {
-                    JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
-                } else if (cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("")) {
-                    JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    appointment_class.calculateAppointnment_ID();
-                    appointment_class.Add_Dose();
-
-                    // Set vaccine ID
-                    Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
-                    appointment_class.Add_Vaccine_Id(date_format.format(txt_register_vaccination_appointments_select_date.getDate()), selected_item.getId());
-                    appointment_class.setAppointment_Time(cbo_register_vaccination_appointments_select_time.getSelectedItem().toString());
-                    appointment_class.Add_Dose();
-                    appointment_class.setStatus("Pending");
-                    appointment_class.Add_Appointment();
-
-                    if (appointment_class.getSuccess_Save() == true) {
-                        JOptionPane.showMessageDialog(null, "Vaccinaton appointment registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        try {
-                            View_Appointment();
-                        } catch (FileNotFoundException ex) {
-                            Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        Clear();
+                try {
+                    //appointment_class.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
+                    
+                    CheckExistRecord check = appointmentController.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
+                    if (!check.isExist()) {
+                        JOptionPane.showMessageDialog(null, "Cannot find people!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    } else if (txt_register_vaccination_appointments_select_date.getDate().compareTo(date) < 0) {
+                        JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
+                    } else if (cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("")) {
+                        JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Failed to register vaccination appointment. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
+                        appointment_class.calculateAppointnment_ID();
+                        appointment_class.Add_Dose();
+                        
+                        // Set vaccine ID
+                        Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
+                        appointment_class.Add_Vaccine_Id(date_format.format(txt_register_vaccination_appointments_select_date.getDate()), selected_item.getId());
+                        appointment_class.setAppointment_Time(cbo_register_vaccination_appointments_select_time.getSelectedItem().toString());
+                        appointment_class.Add_Dose();
+                        appointment_class.setStatus("Pending");
+                        appointment_class.Add_Appointment();
+                        
+                        if (appointment_class.getSuccess_Save() == true) {
+                            JOptionPane.showMessageDialog(null, "Vaccinaton appointment registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            try {
+                                View_Appointment();
+                            } catch (FileNotFoundException ex) {
+                                Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            Clear();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Failed to register vaccination appointment. \nPossible issue: \n- More than 2 appointment for this people.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

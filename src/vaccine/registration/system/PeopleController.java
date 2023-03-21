@@ -23,7 +23,7 @@ public class PeopleController {
 
     public int calculatePeople_ID() throws FileNotFoundException, IOException {
         BufferedReader reader = new BufferedReader(new FileReader("People.txt"));
-        Integer id
+        int id
         = reader.lines().map(line -> line.split("//"))
                 .map(data -> new PeopleRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6]))
                 .reduce((first, second) -> second)
