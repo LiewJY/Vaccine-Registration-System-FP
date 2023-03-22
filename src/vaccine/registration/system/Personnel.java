@@ -3869,12 +3869,13 @@ public class Personnel extends javax.swing.JFrame {
                         //appointmentController.Add_Vaccine_Id(findVaccineID);
                         
                         AppointmentRecord edit = new AppointmentRecord(
-                                appointmentController.calculateAppointnment_ID(),
+                                Appointment_ID,
                                 check.People_ID(),
                                 appointmentController.Add_Vaccine_Id(findVaccineID),
                                 cbo_edit_vaccination_appointments_select_time.getSelectedItem().toString(),
                                 appointmentController.Add_Dose(check.People_ID()),
                                 "Pending");
+                        
 
                         //put in record later
 //                        appointment_class.setAppointment_Time(cbo_edit_vaccination_appointments_select_time.getSelectedItem().toString());
@@ -3886,7 +3887,7 @@ public class Personnel extends javax.swing.JFrame {
 
                         //appointment_class.Update_Appointment();
 
-                        if (appointmentController.Add_Appointment(edit)) {
+                        if (appointmentController.Update_Appointment(edit)) {
                             JOptionPane.showMessageDialog(null, "Vaccination appointment updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                             try {
                                 View_Appointment();

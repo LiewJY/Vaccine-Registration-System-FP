@@ -202,4 +202,44 @@ public class AppointmentController {
         return false;
     }
 
+    //edit appointment
+    public boolean Update_Appointment(AppointmentRecord editAppointmentRecord) throws IOException {
+
+        List<AppointmentRecord> appointmentList = new ArrayList<>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("Appointment.txt"));
+        appointmentList = bufferedReader.lines()
+                .map(line -> line.split("//"))
+                .map(data -> new AppointmentRecord(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]), data[5]))
+                .collect(Collectors.toList());
+        bufferedReader.close();
+
+        // Update data
+        boolean dataExist = appointmentList.stream()
+                .anyMatch(appointment -> appointment.Appointnment_ID() == appointment.Appointnment_ID());
+
+        if (!dataExist) {
+            return false;
+        } else {
+            List<AppointmentRecord> updateAppointmentList = appointmentList.stream()
+                    .map(app -> {
+                        if (app.Appointnment_ID() == editAppointmentRecord.Appointnment_ID()) {
+                            return new AppointmentRecord(editAppointmentRecord.Appointnment_ID(), editAppointmentRecord.People_ID(), 
+                            editAppointmentRecord.Vaccine_ID(), editAppointmentRecord.Appointment_Time(), app.Dose_Number(), app.Status());
+                        } else {
+                            return app;
+                        }
+                    })
+                    .collect(Collectors.toList());
+            // Write data
+            PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt", false)));
+            updateAppointmentList.stream()
+                    .forEach(appointment -> {
+                        printWriter.printf("%s//%s//%s//%s//%s//%s//\n", appointment.Appointnment_ID(), appointment.People_ID(), appointment.Vaccine_ID(), appointment.Appointment_Time(), appointment.Dose_Number(), appointment.Status());
+                    });
+            printWriter.close();
+            return true;
+        }
+    }
+
+
 }
