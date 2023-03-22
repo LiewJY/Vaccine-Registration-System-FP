@@ -44,7 +44,6 @@ public class VaccineController {
                         .map(data -> new VaccineRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], Integer.parseInt(data[5]), Integer.parseInt(data[6])))
                         .anyMatch(vac -> vac.Center_ID() == newVaccineRecord.Center_ID() && vac.Vaccine_Batch_ID().equals(newVaccineRecord.Vaccine_Batch_ID()) && vac.Vaccine_Type().equals(newVaccineRecord.Vaccine_Type()) && vac.date().equals(newVaccineRecord.date()));
 
-        //System.out.println(newVaccineRecord.Center_Name());
         if (!data_exist) {
             // Insert data (not match)
             add_vaccine.append(newVaccineRecord.Vaccine_ID() + "//" + newVaccineRecord.Vaccine_Batch_ID() + "//" + newVaccineRecord.Vaccine_Type() + "//" + newVaccineRecord.date() + "//" + newVaccineRecord.Expiration_Date() + "//" + newVaccineRecord.Second_Dose_Gap() + "//" + newVaccineRecord.Center_ID() + "//");
@@ -107,8 +106,7 @@ public class VaccineController {
         vaccineList = bufferedReader.lines()
                 .map(line -> line.split("//"))
                 .map(data -> new VaccineRecord(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], Integer.parseInt(data[5]), Integer.parseInt(data[6])))
-                .filter(vac -> vac.Vaccine_ID() != vaccine_id
-                )
+                .filter(vac -> vac.Vaccine_ID() != vaccine_id)
                 .collect(Collectors.toList());
         bufferedReader.close();
         // Write data

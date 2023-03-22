@@ -8,7 +8,5 @@ package vaccine.registration.system;
  *
  * @author liewjy
  */
-record AppointmentRecord(int Appointnment_ID, int People_ID, int Vaccine_ID, String Appointment_Time, int Dose_Number, String Status) {
-    
-
+record AddVaccineIDRecord(String date, String Center_ID) {
 }
