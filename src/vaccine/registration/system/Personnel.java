@@ -314,7 +314,7 @@ public class Personnel extends javax.swing.JFrame {
                         center_table_model.getValueAt(row, 3).toString(),
                         center_table_model.getValueAt(row, 4).toString());
 
-// Populate to edit panel
+                // Populate to edit panel
                 lbl_edit_center_id.setText(center_table_model.getValueAt(row, 0).toString());
                 txt_edit_center_name.setText(center_table_model.getValueAt(row, 1).toString());
                 txt_edit_center_address.setText(center_table_model.getValueAt(row, 2).toString());
@@ -4390,7 +4390,12 @@ public class Personnel extends javax.swing.JFrame {
 
     private void lbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_dataMouseClicked
         // TODO add your handling code here:
-        new Chart().setVisible(true);
+        //new Chart().setVisible(true);
+        
+        
+        
+        
+        
     }//GEN-LAST:event_lbl_dataMouseClicked
 
     // Main method
