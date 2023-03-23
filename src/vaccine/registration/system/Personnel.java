@@ -4469,7 +4469,7 @@ public class Personnel extends javax.swing.JFrame {
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(Integer.parseInt(data.pendingOne()), "Pending", "1st Dose");
-        dataset.setValue(Integer.parseInt(data.CompletedOne()), "Conpleted", "1st Dose");
+        dataset.setValue(Integer.parseInt(data.CompletedOne()), "Completed", "1st Dose");
         dataset.setValue(Integer.parseInt(data.pendingTwo()), "Pending", "2nd Dose");
        dataset.setValue(Integer.parseInt(data.CompletedTwo()), "Completed", "2nd Dose");
 
