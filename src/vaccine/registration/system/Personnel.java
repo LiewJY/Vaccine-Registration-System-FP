@@ -1,5 +1,6 @@
 package vaccine.registration.system;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
@@ -15,6 +16,15 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Personnel extends javax.swing.JFrame {
 
@@ -3755,7 +3765,7 @@ public class Personnel extends javax.swing.JFrame {
         if (return_value == JOptionPane.YES_OPTION) {
             try {
                 //appointment_class.Remove_Appointment();
-                
+
                 if (appointmentController.Remove_Appointment(Appointment_ID)) {
                     try {
                         View_Appointment();
@@ -4391,11 +4401,24 @@ public class Personnel extends javax.swing.JFrame {
     private void lbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_dataMouseClicked
         // TODO add your handling code here:
         //new Chart().setVisible(true);
-        
-        
-        
-        
-        
+        System.out.println("Sssssss");
+
+        ChartController data = new ChartController();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.setValue(Integer.parseInt(data.pendingOne()), "Pending", "1st Dose");
+        dataset.setValue(Integer.parseInt(data.CompletedOne()), "Conpleted", "1st Dose");
+        dataset.setValue(Integer.parseInt(data.pendingTwo()), "Pending", "2nd Dose");
+       dataset.setValue(Integer.parseInt(data.CompletedTwo()), "Completed", "2nd Dose");
+
+        JFreeChart chart = ChartFactory.createBarChart("Vaccination", "Status", "Number of people", dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setBackgroundPaint(Color.white);
+        ChartFrame frame = new ChartFrame("Frame", chart);
+        frame.setVisible(true);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
     }//GEN-LAST:event_lbl_dataMouseClicked
 
     // Main method

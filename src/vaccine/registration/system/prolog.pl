@@ -31,10 +31,10 @@ has_pending_1_status(vaccine_record(_, Dose, Status)) :-
     Dose = '1'.
 
 % Count the completed one dose vaccine numbers
-count_complete_1_vaccine_records(VaccineRecords, Count) :-
+count_completed_1_vaccine_records(VaccineRecords, Count) :-
     get_vaccine_records(VaccineRecords),
-    include(has_completed_1_status, VaccineRecords, PendingRecords),
-    length(PendingRecords, Count).
+    include(has_completed_1_status, VaccineRecords, CompletedRecords),
+    length(CompletedRecords, Count).
 
 has_completed_1_status(vaccine_record(_, Dose, Status)) :-
     Status = 'Completed',
@@ -43,7 +43,7 @@ has_completed_1_status(vaccine_record(_, Dose, Status)) :-
 % Count the pending two dose vaccine numbers
 count_pending_2_vaccine_records(VaccineRecords, Count) :-
     get_vaccine_records(VaccineRecords),
-    include(has_pending_1_status, VaccineRecords, PendingRecords),
+    include(has_pending_2_status, VaccineRecords, PendingRecords),
     length(PendingRecords, Count).
 
 has_pending_2_status(vaccine_record(_, Dose, Status)) :-
@@ -51,10 +51,10 @@ has_pending_2_status(vaccine_record(_, Dose, Status)) :-
     Dose = '2'.
 
 % Count the completed two dose vaccine numbers
-count_complete_2_vaccine_records(VaccineRecords, Count) :-
+count_completed_2_vaccine_records(VaccineRecords, Count) :-
     get_vaccine_records(VaccineRecords),
-    include(has_completed_1_status, VaccineRecords, PendingRecords),
-    length(PendingRecords, Count).
+    include(has_completed_2_status, VaccineRecords, CompletedRecords),
+    length(CompletedRecords, Count).
 
 has_completed_2_status(vaccine_record(_, Dose, Status)) :-
     Status = 'Completed',
