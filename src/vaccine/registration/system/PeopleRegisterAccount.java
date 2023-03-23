@@ -1,16 +1,24 @@
 package vaccine.registration.system;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.*;
 import javax.swing.*;
 
-
 public class PeopleRegisterAccount extends javax.swing.JFrame {
+
     // For validation
     ValidationClass validation_class = new ValidationClass();
 
-    
+    //for functional 
+    CitizenController citizenController = new CitizenController();
+    NonCitizenController nonCitizenController = new NonCitizenController();
+    PeopleController peopleController = new PeopleController();
+
     // People Register Account form
     public PeopleRegisterAccount() {
         initComponents();
@@ -22,8 +30,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         cbo_nationality.setModel(cbo);
         cbo_nationality.setSelectedIndex(-1);
     }
-    
-    
+
     // Get all country listing
     public String[] getCountries() {
         String[] countries = new String[Locale.getISOCountries().length];
@@ -32,19 +39,17 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
             Locale obj = new Locale("", countryCodes[i]);
             countries[i] = obj.getDisplayCountry();
         }
-        Arrays.sort(countries); 
+        Arrays.sort(countries);
         return countries;
     }
-    
-    
+
     // Back to login form
     public void viewLogin() {
         this.dispose();
         Login login = new Login();
         login.setVisible(true);
     }
-    
-    
+
     // UI
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -132,13 +137,13 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         btn_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register.setText("Register");
         btn_register.setBorder(null);
+        btn_register.setOpaque(true);
         btn_register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_registerActionPerformed(evt);
             }
         });
 
-        btn_back_to_login.setBackground(new java.awt.Color(255, 255, 255));
         btn_back_to_login.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btn_back_to_login.setText("Back to Log In");
         btn_back_to_login.addActionListener(new java.awt.event.ActionListener() {
@@ -229,65 +234,58 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // Back to login button
     private void btn_back_to_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_to_loginActionPerformed
         viewLogin();
     }//GEN-LAST:event_btn_back_to_loginActionPerformed
 
-    
     // Register account button
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         if (txt_name.getText().equals("") || txt_phone_number.getText().equals("") || cbo_nationality.getSelectedItem() == "" || txt_ic_passport_number.getText().equals("") || txt_address.getText().equals("") || txt_password.getPassword().length == 0 || txt_confirm_password.getPassword().length == 0) {
-           JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateName(txt_name.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validatePhoneNumber(txt_phone_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("phone_number"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateICPassportNumber(txt_ic_passport_number.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("ic_passport_number"), "Warning", JOptionPane.WARNING_MESSAGE);
-        }else if (cbo_nationality.getSelectedIndex() == -1) {
+        } else if (cbo_nationality.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Please Select your nationality", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (!txt_password.getText().matches(txt_confirm_password.getText())) {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            if(cbo_nationality.getSelectedItem() == "Malaysia") {
-                CitizenClass citizen = new CitizenClass();
-                citizen.calculatePeople_ID();
-                citizen.setName(txt_name.getText());
-                citizen.setPhone_Number(txt_phone_number.getText());
-                citizen.setNationality(cbo_nationality.getSelectedItem().toString());
-                citizen.setAddress(txt_address.getText());
-                citizen.setPassword(txt_password.getText());
-                citizen.setIC_Number(txt_ic_passport_number.getText()); 
-                citizen.Register_Account();
-                if(citizen.getSuccess_Save() == true) {
-                    JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE); 
-                    viewLogin();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+            if (cbo_nationality.getSelectedItem() == "Malaysia") {
+                try {
+                    CitizenRecord register = new CitizenRecord(peopleController.calculatePeople_ID(), txt_name.getText(), txt_phone_number.getText(), cbo_nationality.getSelectedItem().toString(), txt_ic_passport_number.getText(), txt_address.getText(), txt_password.getText());
+                    if (citizenController.Register_Account(register)) {
+                        JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        viewLogin();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to register account with the same IC Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                NonCitizenClass non_citizen = new NonCitizenClass();
-                non_citizen.calculatePeople_ID();
-                non_citizen.setName(txt_name.getText());
-                non_citizen.setPhone_Number(txt_phone_number.getText());
-                non_citizen.setNationality(cbo_nationality.getSelectedItem().toString());
-                non_citizen.setAddress(txt_address.getText());
-                non_citizen.setPassword(txt_password.getText());
-                non_citizen.setPassport_Number(txt_ic_passport_number.getText()); 
-                non_citizen.Register_Account();
-                if(non_citizen.getSuccess_Save() == true) {
+                try {
+                    NonCitizenRecord register = new NonCitizenRecord(peopleController.calculatePeople_ID(), txt_name.getText(), txt_phone_number.getText(), cbo_nationality.getSelectedItem().toString(), txt_ic_passport_number.getText(), txt_address.getText(), txt_password.getText());
+                    if (nonCitizenController.Register_Account(register)) {
                     JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    viewLogin();
-                } else {
+                        viewLogin();
+                    } else {
                     JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }//GEN-LAST:event_btn_registerActionPerformed
 
-    
     // Main method
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -324,7 +322,7 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back_to_login;
     private javax.swing.JButton btn_register;

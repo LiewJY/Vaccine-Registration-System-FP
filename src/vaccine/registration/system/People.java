@@ -3,6 +3,8 @@ package vaccine.registration.system;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import javax.swing.*;
 import java.text.*;
@@ -10,33 +12,41 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-
 public class People extends javax.swing.JFrame {
-    CitizenClass citizen_class = new CitizenClass();
-    NonCitizenClass noncitizen_class = new NonCitizenClass();
+
+    //CitizenClass citizen_class = new CitizenClass();
+    //NonCitizenClass noncitizen_class = new NonCitizenClass();
     ValidationClass validation_class = new ValidationClass();
-    CenterClass center_class = new CenterClass();
-    VaccineClass vaccine_class = new VaccineClass();
+    //CenterClass center_class = new CenterClass();
+    //VaccineClass vaccine_class = new VaccineClass();
     AppointmentClass appointment_class = new AppointmentClass();
-    
-    
+
     // For formatting date
     SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
-    Date date = new Date(); 
-    
-    ArrayList<String[]> Appointment_Data = new ArrayList<>(); 
-    
+    Date date = new Date();
+
+    ArrayList<String[]> Appointment_Data = new ArrayList<>();
+
     // For validation
     Date appointment_date;
     boolean citizenship;
-    
-    
+
+    //for record
+    CitizenController citizenController = new CitizenController();
+    Optional<CitizenRecord> citizenRecord;
+    NonCitizenController nonCitizenController = new NonCitizenController();
+    Optional<NonCitizenRecord> nonCitizenRecord;
+    VaccineController vaccineController = new VaccineController();
+    int People_ID;
+    CenterController centerController = new CenterController();
+
     // People form
     public People() {
         initComponents();
@@ -47,8 +57,7 @@ public class People extends javax.swing.JFrame {
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
     }
-    
-    
+
     public People(int people_id, boolean citizen) {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -57,30 +66,32 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
-        
-        if (citizen == true){
-            citizen_class.setPeople_ID(people_id);
+
+        if (citizen == true) {
+            //citizen_class.setPeople_ID(people_id);
             citizenship = true;
+            //funcitonal
+            People_ID = people_id;
+
         } else {
-            noncitizen_class.setPeople_ID(people_id);
+            //noncitizen_class.setPeople_ID(people_id);
             citizenship = false;
         }
     }
-    
-    
+
     // Clear input field
-    public void Clear(){
+    public void Clear() {
         txt_select_date.setCalendar(null);
         lbl_vaccine_type.setText("");
         cbo_select_time.setSelectedIndex(-1);
-        
+
         lbl_vaccination_center_1.setText("");
         lbl_center_address_1.setText("");
         lbl_center_contact_number_1.setText("");
         lbl_date_1.setText("");
         lbl_time_1.setText("");
         lbl_vaccine_type_1.setText("");
-        
+
         lbl_vaccination_center_2.setText("");
         lbl_center_address_2.setText("");
         lbl_center_contact_number_2.setText("");
@@ -88,37 +99,36 @@ public class People extends javax.swing.JFrame {
         lbl_time_2.setText("");
         lbl_vaccine_type_2.setText("");
     }
-    
-    
+
     // View account
-    public void View(){
+    public void View() throws FileNotFoundException {
         // Insert data
-        if (citizenship == true){
-            citizen_class.View_Account();
-            lbl_view_name.setText(citizen_class.getName());
-            lbl_view_phone_number.setText(citizen_class.getPhone_Number());
-            lbl_view_nationality.setText(citizen_class.getNationality());
-            lbl_view_ic_passport_number.setText(citizen_class.getIC_Number());
-            lbl_view_address.setText(citizen_class.getAddress());
+        if (citizenship == true) {
+            citizenRecord = citizenController.View_Account(People_ID);
+//            citizen_class.View_Account();
+            lbl_view_name.setText(citizenRecord.get().Name());
+            lbl_view_phone_number.setText(citizenRecord.get().Phone_Number());
+            lbl_view_nationality.setText(citizenRecord.get().Nationality());
+            lbl_view_ic_passport_number.setText(citizenRecord.get().IC_Number());
+            lbl_view_address.setText(citizenRecord.get().Address());
         } else {
-            noncitizen_class.View_Account();
-            lbl_view_name.setText(noncitizen_class.getName());
-            lbl_view_phone_number.setText(noncitizen_class.getPhone_Number());
-            lbl_view_nationality.setText(noncitizen_class.getNationality());
-            lbl_view_ic_passport_number.setText(noncitizen_class.getPassport_Number());
-            lbl_view_address.setText(noncitizen_class.getAddress());       
+//            noncitizen_class.View_Account();
+//            lbl_view_name.setText(noncitizen_class.getName());
+//            lbl_view_phone_number.setText(noncitizen_class.getPhone_Number());
+//            lbl_view_nationality.setText(noncitizen_class.getNationality());
+//            lbl_view_ic_passport_number.setText(noncitizen_class.getPassport_Number());
+//            lbl_view_address.setText(noncitizen_class.getAddress());
         }
     }
-    
-    
+
     // View appointment
-    public void View_Appointment() {
+    public void View_Appointment() throws FileNotFoundException {
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(true);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(false);
-        
+
         // Loop and display data
         Center_ID_and_Details();
         Vaccine_ID_and_Details();
@@ -127,18 +137,22 @@ public class People extends javax.swing.JFrame {
         int index;
         String key;
         String[] data = null;
-        
-        if (citizenship == true){
-            citizen_class.View_Account();
-            
+
+        if (citizenship == true) {
+            try {
+                citizenRecord = citizenController.View_Account(People_ID);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             for (int i = 0; i < appointment_class.getAppointment_Data().size(); i++) {
                 data = appointment_class.getAppointment_Data().get(i).split("//");
-                
-                if(String.valueOf(citizen_class.getPeople_ID()).equals(data[1])) {
-                    data[1] = String.valueOf(citizen_class.getPeople_ID());
+
+                if (String.valueOf(People_ID).equals(data[1])) {
+                    data[1] = String.valueOf(People_ID);
 
                     index = 2;
-                    key  = citizen_class.getName();
+                    key = citizenRecord.get().Name();
                     String[] result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -146,15 +160,15 @@ public class People extends javax.swing.JFrame {
                     data = result;
 
                     index = 3;
-                    key  = citizen_class.getIC_Number();
+                    key = citizenRecord.get().IC_Number();
                     result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
                     System.arraycopy(data, index, result, index + 1, data.length - index);
                     data = result;
 
-                    for (VaccineDetails vac: vaccine_id_and_details) {
-                        if(vac.getId().equals(data[4])) {
+                    for (VaccineDetails vac : vaccine_id_and_details) {
+                        if (vac.getId().equals(data[4])) {
                             data[4] = vac.getDate();
                             index = 6;
                             key = vac.getCenterID();
@@ -173,9 +187,9 @@ public class People extends javax.swing.JFrame {
                             data = result;
                         }
                     }
-                    
-                    for (Center center: center_id_to_name) {
-                        if(center.getId().equals(data[6])) {
+
+                    for (Center center : center_id_to_name) {
+                        if (center.getId().equals(data[6])) {
                             data[6] = center.getName();
                             index = 10;
                             key = center.getType();
@@ -198,16 +212,15 @@ public class People extends javax.swing.JFrame {
                 }
             }
         } else {
-            noncitizen_class.View_Account();
-            
+            nonCitizenRecord = nonCitizenController.View_Account(People_ID);
             for (int n = 0; n < appointment_class.getAppointment_Data().size(); n++) {
                 data = appointment_class.getAppointment_Data().get(n).split("//");
-                
-                if(String.valueOf(noncitizen_class.getPeople_ID()).equals(data[1])) {
-                    data[1] = String.valueOf(noncitizen_class.getPeople_ID());
+
+                if (String.valueOf(nonCitizenRecord.get().People_ID()).equals(data[1])) {
+                    data[1] = String.valueOf(nonCitizenRecord.get().People_ID());
 
                     index = 2;
-                    key  = noncitizen_class.getName();
+                    key = nonCitizenRecord.get().Name();
                     String[] result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
@@ -215,15 +228,15 @@ public class People extends javax.swing.JFrame {
                     data = result;
 
                     index = 3;
-                    key  = noncitizen_class.getPassport_Number();
+                    key = nonCitizenRecord.get().Passport_Number();
                     result = new String[data.length + 1];
                     System.arraycopy(data, 0, result, 0, index);
                     result[index] = key;
                     System.arraycopy(data, index, result, index + 1, data.length - index);
                     data = result;
 
-                    for (VaccineDetails vac: vaccine_id_and_details) {
-                        if(vac.getId().equals(data[4])) {
+                    for (VaccineDetails vac : vaccine_id_and_details) {
+                        if (vac.getId().equals(data[4])) {
                             data[4] = vac.getDate();
                             index = 6;
                             key = vac.getCenterID();
@@ -242,9 +255,9 @@ public class People extends javax.swing.JFrame {
                             data = result;
                         }
                     }
-                    
-                    for (Center center: center_id_to_name) {
-                        if(center.getId().equals(data[6])) {
+
+                    for (Center center : center_id_to_name) {
+                        if (center.getId().equals(data[6])) {
                             data[6] = center.getName();
                             index = 10;
                             key = center.getType();
@@ -267,9 +280,9 @@ public class People extends javax.swing.JFrame {
                 }
             }
         }
- 
-        for (String[] display: Appointment_Data) {
-            if(display[8].equals("1")) {
+
+        for (String[] display : Appointment_Data) {
+            if (display[8].equals("1")) {
                 lbl_vaccination_center_1.setText(display[6]);
                 lbl_center_address_1.setText(display[10]);
                 lbl_center_contact_number_1.setText(display[11]);
@@ -277,13 +290,13 @@ public class People extends javax.swing.JFrame {
                 lbl_time_1.setText(display[5]);
                 lbl_vaccine_type_1.setText(display[7]);
                 appointment_class.setAppointnment_ID(Integer.valueOf(display[0]));
-                
+
                 try {
                     appointment_date = date_format.parse(display[4]);
                 } catch (ParseException ex) {
-                    
-                }       
-            } else if(display[8].equals("2")) {
+
+                }
+            } else if (display[8].equals("2")) {
                 lbl_vaccination_center_2.setText(display[6]);
                 lbl_center_address_2.setText(display[10]);
                 lbl_center_contact_number_2.setText(display[11]);
@@ -291,132 +304,136 @@ public class People extends javax.swing.JFrame {
                 lbl_time_2.setText(display[5]);
                 lbl_vaccine_type_2.setText(display[7]);
                 appointment_class.setAppointnment_ID(Integer.valueOf(display[0]));
-                
+
                 try {
                     appointment_date = date_format.parse(display[4]);
                 } catch (ParseException ex) {
-                    
-                }     
+
+                }
             }
         }
     }
-    
-    
+
     // For center to have id
     private class Center {
+
         private String id, name, type, contact;
+
         public Center(String id, String name, String type, String contact) {
             this.id = id;
             this.name = name;
             this.type = type;
             this.contact = contact;
         }
+
         public String getId() {
             return id;
         }
+
         public String getName() {
             return name;
         }
+
         public String getType() {
             return type;
         }
+
         public String getContact() {
             return contact;
         }
+
         public String toString() {
             return name;
         }
     }
-    
+
     ArrayList<Center> center_id_to_name = new ArrayList<>();
-    
-    public void Center_ID_and_Details() {
+
+    public void Center_ID_and_Details() throws FileNotFoundException {
         // Load data
-        center_class.View_Center();
+        //center_class.View_Center();
         center_id_to_name.clear();
-        
+
         // Loop and add data
-        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
-            String[] data = center_class.getCenter_Data().get(i).split("//");
+        for (CenterRecord centerRecord : centerController.View_Center()) {
+            String[] data = {Integer.toString(centerRecord.Center_ID()), centerRecord.Center_Name(), centerRecord.Center_Address(), centerRecord.Center_Contact_Number(), centerRecord.Vaccine_Type()};
             center_id_to_name.add(new Center(data[0], data[1], data[2], data[3]));
         }
     }
-    
-    
+
     // View center
-    public void View_Center() {
+    public void View_Center() throws FileNotFoundException {
         // Load data
-        center_class.View_Center();
-        
+        //center_class.View_Center();
+
         // Set column
         String columns[] = {"Center ID", "Center Name", "Center Address", "Contact Number", "Vaccine Type"};
-        DefaultTableModel center_table_model = (DefaultTableModel)tbl_vaccination_status.getModel();
+        DefaultTableModel center_table_model = (DefaultTableModel) tbl_vaccination_status.getModel();
         center_table_model.setColumnIdentifiers(columns);
-        
+
         // Remove ID column
         tbl_vaccination_status.removeColumn(tbl_vaccination_status.getColumnModel().getColumn(0));
         tbl_vaccination_status.setModel(center_table_model);
         center_table_model.setRowCount(0);
-        
+
         // Loop and display data
-        for (int i = 0; i < center_class.getCenter_Data().size(); i++) {
-            String[] data = center_class.getCenter_Data().get(i).split("//");
+        for (CenterRecord centerRecord : centerController.View_Center()) {
+            String[] data = {Integer.toString(centerRecord.Center_ID()), centerRecord.Center_Name(), centerRecord.Center_Address(), centerRecord.Center_Contact_Number(), centerRecord.Vaccine_Type()};
             center_table_model.addRow(data);
         }
-        
+
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
         pnl_register_vaccination_appointment.setVisible(false);
         pnl_view_vaccination_status.setVisible(true);
     }
-    
-    
+
     // Vaccine details
     private class VaccineDetails {
+
         private String id, type, center_id, date;
-        
-        public VaccineDetails(String id,String date, String type, String center_id) {
+
+        public VaccineDetails(String id, String date, String type, String center_id) {
             this.id = id;
             this.type = type;
             this.date = date;
             this.center_id = center_id;
         }
-        
+
         public String getId() {
             return id;
         }
-        
+
         public String getType() {
             return type;
         }
-        
+
         public String getDate() {
             return date;
         }
-        
+
         public String getCenterID() {
             return center_id;
         }
-        
+
         public String toString() {
             return type;
         }
     }
-    
+
     ArrayList<VaccineDetails> vaccine_id_and_details = new ArrayList<>();
-    
-    public void Vaccine_ID_and_Details() {
+
+    public void Vaccine_ID_and_Details() throws FileNotFoundException {
         // Load data
-        vaccine_class.View_Vaccine();
+        //vaccine_class.View_Vaccine();
         vaccine_id_and_details.clear();
         // Loop and add data
-        for (int i = 0; i <  vaccine_class.getVaccine_Data().size(); i++) {
-            String[] data = vaccine_class.getVaccine_Data().get(i).split("//");
-            vaccine_id_and_details.add(new VaccineDetails(data[0],data[3],data[2],data[6]));
+        for (VaccineRecord vaccineRecord : vaccineController.View_Vaccine()) {
+            String[] data = {Integer.toString(vaccineRecord.Vaccine_ID()), vaccineRecord.Vaccine_Batch_ID(), vaccineRecord.Vaccine_Type(), vaccineRecord.date(), vaccineRecord.Expiration_Date(), Integer.toString(vaccineRecord.Second_Dose_Gap()), Integer.toString(vaccineRecord.Center_ID())};
+            vaccine_id_and_details.add(new VaccineDetails(data[0], data[3], data[2], data[6]));
         }
     }
-
 
     // UI
     @SuppressWarnings("unchecked")
@@ -707,6 +724,7 @@ public class People extends javax.swing.JFrame {
         btn_edit_account.setForeground(new java.awt.Color(255, 255, 255));
         btn_edit_account.setText("Edit Account");
         btn_edit_account.setBorder(null);
+        btn_edit_account.setOpaque(true);
         btn_edit_account.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_edit_accountActionPerformed(evt);
@@ -831,6 +849,7 @@ public class People extends javax.swing.JFrame {
         btn_edit_save.setForeground(new java.awt.Color(255, 255, 255));
         btn_edit_save.setText("Save");
         btn_edit_save.setBorder(null);
+        btn_edit_save.setOpaque(true);
         btn_edit_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_edit_saveActionPerformed(evt);
@@ -842,6 +861,7 @@ public class People extends javax.swing.JFrame {
         btn_edit_cancel.setForeground(new java.awt.Color(255, 255, 255));
         btn_edit_cancel.setText("Cancel");
         btn_edit_cancel.setBorder(null);
+        btn_edit_cancel.setOpaque(true);
         btn_edit_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_edit_cancelActionPerformed(evt);
@@ -1054,6 +1074,7 @@ public class People extends javax.swing.JFrame {
         btn_register_appointment.setForeground(new java.awt.Color(255, 255, 255));
         btn_register_appointment.setText("Register Appointment");
         btn_register_appointment.setBorder(null);
+        btn_register_appointment.setOpaque(true);
         btn_register_appointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_register_appointmentActionPerformed(evt);
@@ -1065,6 +1086,7 @@ public class People extends javax.swing.JFrame {
         btn_cancel_appointment.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancel_appointment.setText("Cancel Appointment");
         btn_cancel_appointment.setBorder(null);
+        btn_cancel_appointment.setOpaque(true);
         btn_cancel_appointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancel_appointmentActionPerformed(evt);
@@ -1260,6 +1282,7 @@ public class People extends javax.swing.JFrame {
         btn_register_vaccination_appointment_register.setForeground(new java.awt.Color(255, 255, 255));
         btn_register_vaccination_appointment_register.setText("Register");
         btn_register_vaccination_appointment_register.setBorder(null);
+        btn_register_vaccination_appointment_register.setOpaque(true);
         btn_register_vaccination_appointment_register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_register_vaccination_appointment_registerActionPerformed(evt);
@@ -1271,6 +1294,7 @@ public class People extends javax.swing.JFrame {
         btn_register_vaccination_appointment_cancel.setForeground(new java.awt.Color(255, 255, 255));
         btn_register_vaccination_appointment_cancel.setText("Cancel");
         btn_register_vaccination_appointment_cancel.setBorder(null);
+        btn_register_vaccination_appointment_cancel.setOpaque(true);
         btn_register_vaccination_appointment_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_register_vaccination_appointment_cancelActionPerformed(evt);
@@ -1473,10 +1497,13 @@ public class People extends javax.swing.JFrame {
     setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // My account side bar tab
     private void lbl_my_accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_my_accountMouseClicked
-        View();
+        try {
+            View();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
         pnl_view_account.setVisible(true);
         pnl_edit_account.setVisible(false);
         pnl_view_vaccination_appointment.setVisible(false);
@@ -1484,30 +1511,40 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_status.setVisible(false);
     }//GEN-LAST:event_lbl_my_accountMouseClicked
 
-    
     // Edit account button
     private void btn_edit_accountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_accountActionPerformed
         // View data
-        if (citizenship == true){
-            citizen_class.View_Account();
-            txt_edit_name.setText(citizen_class.getName());
-            txt_edit_phone_number.setText(citizen_class.getPhone_Number());
-            txt_edit_nationality.setText(citizen_class.getNationality());
-            txt_edit_ic_passport_number.setText(citizen_class.getIC_Number());
-            txt_edit_address.setText(citizen_class.getAddress());
-            txt_edit_password.setText(citizen_class.getPassword());
-            txt_edit_confirm_password.setText(citizen_class.getPassword());
+        if (citizenship == true) {
+            try {
+                //citizen_class.View_Account();
+                citizenRecord = citizenController.View_Account(People_ID);
+                txt_edit_name.setText(citizenRecord.get().Name());
+                txt_edit_phone_number.setText(citizenRecord.get().Phone_Number());
+                txt_edit_nationality.setText(citizenRecord.get().Nationality());
+                txt_edit_ic_passport_number.setText(citizenRecord.get().IC_Number());
+                txt_edit_address.setText(citizenRecord.get().Address());
+                txt_edit_password.setText(citizenRecord.get().Password());
+                txt_edit_confirm_password.setText(citizenRecord.get().Password());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         } else {
-            noncitizen_class.View_Account();
-            txt_edit_name.setText(noncitizen_class.getName());
-            txt_edit_phone_number.setText(noncitizen_class.getPhone_Number());
-            txt_edit_nationality.setText(noncitizen_class.getNationality());
-            txt_edit_ic_passport_number.setText(noncitizen_class.getPassport_Number());
-            txt_edit_address.setText(noncitizen_class.getAddress());
-            txt_edit_password.setText(noncitizen_class.getPassword());
-            txt_edit_confirm_password.setText(noncitizen_class.getPassword());
+            try {
+                //citizen_class.View_Account();
+                nonCitizenRecord = nonCitizenController.View_Account(People_ID);
+                txt_edit_name.setText(nonCitizenRecord.get().Name());
+                txt_edit_phone_number.setText(nonCitizenRecord.get().Phone_Number());
+                txt_edit_nationality.setText(nonCitizenRecord.get().Nationality());
+                txt_edit_ic_passport_number.setText(nonCitizenRecord.get().Passport_Number());
+                txt_edit_address.setText(nonCitizenRecord.get().Address());
+                txt_edit_password.setText(nonCitizenRecord.get().Password());
+                txt_edit_confirm_password.setText(nonCitizenRecord.get().Password());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
         pnl_view_account.setVisible(false);
         pnl_edit_account.setVisible(true);
         pnl_view_vaccination_appointment.setVisible(false);
@@ -1515,14 +1552,16 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_status.setVisible(false);
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
-    
     // Vaccination appointment side bar tab
     private void lbl_vaccination_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_appointmentMouseClicked
         Clear();
-        View_Appointment();
+        try {
+            View_Appointment();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lbl_vaccination_appointmentMouseClicked
 
-    
     // Register vaccination appointment button
     private void btn_register_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_appointmentActionPerformed
         pnl_view_account.setVisible(false);
@@ -1532,7 +1571,6 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_status.setVisible(false);
     }//GEN-LAST:event_btn_register_appointmentActionPerformed
 
-    
     // Cancel edit account button
     private void btn_edit_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_cancelActionPerformed
         Clear();
@@ -1543,11 +1581,10 @@ public class People extends javax.swing.JFrame {
         pnl_view_vaccination_status.setVisible(false);
     }//GEN-LAST:event_btn_edit_cancelActionPerformed
 
-    
     // Logout button
     private void lbl_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_logoutMouseClicked
         int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Warning", JOptionPane.YES_NO_OPTION);
-        
+
         if (return_value == JOptionPane.YES_OPTION) {
             Login login = new Login();
             login.setVisible(true);
@@ -1557,25 +1594,30 @@ public class People extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lbl_logoutMouseClicked
 
-    
     // Cancel register vaccination appointment button
     private void btn_register_vaccination_appointment_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_cancelActionPerformed
         Clear();
-        View_Appointment();
+        try {
+            View_Appointment();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btn_register_vaccination_appointment_cancelActionPerformed
 
-    
     // Vaccination status side bar tab
     private void lbl_vaccination_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_vaccination_statusMouseClicked
-        View_Center();
+        try {
+            View_Center();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lbl_vaccination_statusMouseClicked
 
-    
     // Save edit account button
     private void btn_edit_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_saveActionPerformed
         if (txt_edit_name.getText().equals("") || txt_edit_phone_number.getText().equals("") || txt_edit_address.getText().equals("") || txt_edit_password.getPassword().length == 0 || txt_edit_confirm_password.getPassword().length == 0) {
-           JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validateName(txt_edit_name.getText()) == true) {
             JOptionPane.showMessageDialog(null, validation_class.validationMessage("name"), "Warning", JOptionPane.WARNING_MESSAGE);
         } else if (validation_class.validatePhoneNumber(txt_edit_phone_number.getText()) == true) {
@@ -1586,57 +1628,60 @@ public class People extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (txt_edit_nationality.getText().equals("Malaysia")) {
-                citizen_class.setName(txt_edit_name.getText());
-                citizen_class.setPhone_Number(txt_edit_phone_number.getText());
-                citizen_class.setNationality(txt_edit_nationality.getText());
-                citizen_class.setAddress(txt_edit_address.getText());
-                citizen_class.setPassword(txt_edit_password.getText());
-                citizen_class.setIC_Number(txt_edit_ic_passport_number.getText()); 
-                citizen_class.Edit_Account();
-                
-                if (citizen_class.getSuccess_Save() == true) {
-                    View();
-                    pnl_view_account.setVisible(true);
-                    pnl_edit_account.setVisible(false);
-                    pnl_view_vaccination_appointment.setVisible(false);
-                    pnl_register_vaccination_appointment.setVisible(false);
-                    pnl_view_vaccination_status.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
+                CitizenRecord edit = new CitizenRecord(People_ID, txt_edit_name.getText(), txt_edit_phone_number.getText(), txt_edit_nationality.getText(), txt_edit_ic_passport_number.getText(), txt_edit_address.getText(), txt_edit_password.getText());
+                try {
+                    if (citizenController.Edit_Account(edit)) {
+                        try {
+                            View();
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        pnl_view_account.setVisible(true);
+                        pnl_edit_account.setVisible(false);
+                        pnl_view_vaccination_appointment.setVisible(false);
+                        pnl_register_vaccination_appointment.setVisible(false);
+                        pnl_view_vaccination_status.setVisible(false);
+                        JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
             } else {
-                noncitizen_class.setName(txt_edit_name.getText());
-                noncitizen_class.setPhone_Number(txt_edit_phone_number.getText());
-                noncitizen_class.setNationality(txt_edit_nationality.getText());
-                noncitizen_class.setAddress(txt_edit_address.getText());
-                noncitizen_class.setPassword(txt_edit_password.getText());
-                noncitizen_class.setPassport_Number(txt_edit_ic_passport_number.getText()); 
-                noncitizen_class.Edit_Account();
-                
-                if (noncitizen_class.getSuccess_Save() == true) {
-                    View();
-                    pnl_view_account.setVisible(true);
-                    pnl_edit_account.setVisible(false);
-                    pnl_view_vaccination_appointment.setVisible(false);
-                    pnl_register_vaccination_appointment.setVisible(false);
-                    pnl_view_vaccination_status.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                NonCitizenRecord edit = new NonCitizenRecord(People_ID, txt_edit_name.getText(), txt_edit_phone_number.getText(), txt_edit_nationality.getText(), txt_edit_ic_passport_number.getText(), txt_edit_address.getText(), txt_edit_password.getText());
+                try {
+                    if (nonCitizenController.Edit_Account(edit)) {
+                        try {
+                            View();
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        pnl_view_account.setVisible(true);
+                        pnl_edit_account.setVisible(false);
+                        pnl_view_vaccination_appointment.setVisible(false);
+                        pnl_register_vaccination_appointment.setVisible(false);
+                        pnl_view_vaccination_status.setVisible(false);
+                        JOptionPane.showMessageDialog(null, "Account updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to update account.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }         
+            }
         }
     }//GEN-LAST:event_btn_edit_saveActionPerformed
 
-    
     // Save register vaccination appointment button
     private void btn_register_vaccination_appointment_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register_vaccination_appointment_registerActionPerformed
-        try {    
+        try {
             if (cbo_select_vaccination_center.getSelectedIndex() == -1) {
                 JOptionPane.showMessageDialog(null, "The selected date does not have a center. \nPlease select another date.", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                if (cbo_select_time.getSelectedItem().equals("Select Time") 
+                if (cbo_select_time.getSelectedItem().equals("Select Time")
                         || cbo_select_vaccination_center.getSelectedItem().equals("Select Vaccination Center")
                         || cbo_select_vaccination_center.getSelectedItem().equals("")) {
                     JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -1645,13 +1690,13 @@ public class People extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, validation_class.validationMessage("date"), "Warning", JOptionPane.WARNING_MESSAGE);
                     } else if (cbo_select_vaccination_center.getSelectedItem().equals("")) {
                         JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
-                    } else { 
+                    } else {
                         appointment_class.calculateAppointnment_ID();
-                            if (citizenship == true){
-                                appointment_class.Check_Exist(citizen_class.getIC_Number());
-                            } else {
-                                appointment_class.Check_Exist(noncitizen_class.getPassport_Number());
-                            }
+                        if (citizenship == true) {
+                            appointment_class.Check_Exist(citizenController.View_Account(People_ID).get().IC_Number());
+                        } else {
+                            appointment_class.Check_Exist(nonCitizenController.View_Account(People_ID).get().Passport_Number());
+                        }
                         appointment_class.Add_Dose();
 
                         // Set vaccine ID
@@ -1674,25 +1719,26 @@ public class People extends javax.swing.JFrame {
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_register_vaccination_appointment_registerActionPerformed
 
-    
     // Cancel vaccination appointment button
     private void btn_cancel_appointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancel_appointmentActionPerformed
         try {
             if (appointment_date.compareTo(date) < 0) {
                 JOptionPane.showMessageDialog(null, "Could not cancel appointment as appointment is today or older.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel your appoitment on " 
-                    + date_format.format(appointment_date) + " ?", "Warning", JOptionPane.YES_NO_OPTION);
+                int return_value = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel your appoitment on "
+                        + date_format.format(appointment_date) + " ?", "Warning", JOptionPane.YES_NO_OPTION);
 
                 if (return_value == JOptionPane.YES_OPTION) {
                     appointment_class.Remove_Appointment();
-                    if(appointment_class.getSuccess_Save() == true) {
+                    if (appointment_class.getSuccess_Save() == true) {
                         JOptionPane.showMessageDialog(null, "Vaccination appointment canceled successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         Clear();
-                        View_Appointment();                
+                        View_Appointment();
                     } else {
                         JOptionPane.showMessageDialog(null, "Failed to cancel vaccination appointmment.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -1702,10 +1748,11 @@ public class People extends javax.swing.JFrame {
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No vaccination appointmment available to cancel.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_cancel_appointmentActionPerformed
 
-    
     // Search vaccination status
     private void txt_search_vaccination_statusKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_vaccination_statusKeyReleased
         DefaultTableModel center_table_model = (DefaultTableModel) tbl_vaccination_status.getModel();
@@ -1714,7 +1761,6 @@ public class People extends javax.swing.JFrame {
         search_center.setRowFilter(RowFilter.regexFilter(txt_search_vaccination_status.getText()));
     }//GEN-LAST:event_txt_search_vaccination_statusKeyReleased
 
-    
     // Select date
     private void txt_select_datePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_select_datePropertyChange
         try {
@@ -1724,8 +1770,8 @@ public class People extends javax.swing.JFrame {
                 cbo_select_vaccination_center.setEnabled(true);
                 appointment_class.Show_Locations(date_format.format(txt_select_date.getDate()));
                 cbo_select_vaccination_center.removeAllItems();
-                center_class.View_Center();
-                DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel)cbo_select_vaccination_center.getModel();
+                //center_class.View_Center();
+                DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel) cbo_select_vaccination_center.getModel();
 
                 for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
                     String[] data = appointment_class.getAvaliableLocation().get(i).split("//");
@@ -1733,31 +1779,35 @@ public class People extends javax.swing.JFrame {
                     String temp = "", ww;
                     ww = data[6];
 
-                    for (int a = 0; a < center_class.getCenter_Data().size(); a++) {
-                        String[] name = center_class.getCenter_Data().get(a).split("//");
+                    for (CenterRecord centerRecord : centerController.View_Center()) {
+                        String[] name = {Integer.toString(centerRecord.Center_ID()), centerRecord.Center_Name(), centerRecord.Center_Address(), centerRecord.Center_Contact_Number(), centerRecord.Vaccine_Type()};
 
                         if (name[0].equals(ww)) {
                             temp = name[1];
                         }
-                    }                  
+                    }
                     cbo_edit_model.addElement(new Center(data[6], temp, data[2], data[3]));
                 }
                 cbo_select_vaccination_center.setModel(cbo_edit_model);
             }
         } catch (NullPointerException e) {
-            
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txt_select_datePropertyChange
 
-    
     // Select vaccination center
     private void cbo_select_vaccination_centerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_select_vaccination_centerActionPerformed
-        Center_ID_and_Details();
+        try {
+            Center_ID_and_Details();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(People.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Center selected_item = (Center) cbo_select_vaccination_center.getSelectedItem();
-        lbl_vaccine_type.setText(selected_item.getType());    
+        lbl_vaccine_type.setText(selected_item.getType());
     }//GEN-LAST:event_cbo_select_vaccination_centerActionPerformed
 
-    
     // Main method
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1792,7 +1842,7 @@ public class People extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancel_appointment;
     private javax.swing.JButton btn_edit_account;

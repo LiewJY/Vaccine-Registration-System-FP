@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 
+
 public class PeopleClass {
     protected int People_ID;
     protected String Phone_Number, Name, Nationality, Address, Password;
