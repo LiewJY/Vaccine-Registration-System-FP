@@ -111,43 +111,7 @@ public class AppointmentController {
             return true;
         }
     }
-
-    //update appointment
-    public boolean Update_Appointment(EditAppointmentRecord editAppointmentRecord) throws IOException {
-        List<AppointmentRecord> appointmentList = new ArrayList<>();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("Appointment.txt"));
-        appointmentList = bufferedReader.lines()
-                .map(line -> line.split("//"))
-                .map(data -> new AppointmentRecord(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]), data[5]))
-                .collect(Collectors.toList());
-        bufferedReader.close();
-
-        // Update data
-        boolean dataExist = appointmentList.stream()
-                .anyMatch(appointment -> appointment.Appointnment_ID() == editAppointmentRecord.Appointment_ID());
-        if (!dataExist) {
-            return false;
-        } else {
-            List<AppointmentRecord> updateAppointmentList = appointmentList.stream()
-                    .map(appointment -> {
-                        if (appointment.Appointnment_ID() == editAppointmentRecord.Appointment_ID()) {
-                            return new AppointmentRecord(editAppointmentRecord.Appointment_ID(), editAppointmentRecord.People_ID(), editAppointmentRecord.Vaccine_ID(), editAppointmentRecord.Appointment_Time(), appointment.Dose_Number(), appointment.Status());
-                        } else {
-                            return appointment;
-                        }
-                    })
-                    .collect(Collectors.toList());
-            // Write data
-            PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter("Appointment.txt", false)));
-            updateAppointmentList.stream()
-                    .forEach(appointment -> {
-                        printWriter.printf("%s//%s//%s//%s//%s//%s//\n", appointment.Appointnment_ID(), appointment.People_ID(), appointment.Vaccine_ID(), appointment.Appointment_Time(), appointment.Dose_Number(), appointment.Status());
-                    });
-            printWriter.close();
-            return true;
-        }
-    }
-
+  
     // Add vaccine ID
     public int Add_Vaccine_Id(AddVaccineIDRecord addVaccineIDRecord) throws FileNotFoundException {
         BufferedReader reader = new BufferedReader(new FileReader("Vaccine.txt"));

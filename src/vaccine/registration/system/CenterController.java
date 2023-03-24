@@ -83,7 +83,7 @@ public class CenterController {
         // Update data
         boolean dataExist = centerList.stream()
                 .anyMatch(center -> center.Center_ID() == editCenterRecord.Center_ID() && center.Center_Name().equals(editCenterRecord.Center_Name()));
-        if (dataExist) {
+        if (!dataExist) {
             return false;
         } else {
             List<CenterRecord> updateCenterList = centerList.stream()
