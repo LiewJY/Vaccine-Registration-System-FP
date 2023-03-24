@@ -16,7 +16,7 @@ public class ChartController {
     String path = "src/vaccine/registration/system/prolog.pl";
     public String pendingOne() {
         if (connect(path)) {
-            String qs = "count_pending_1_vaccine_records(VaccineRecords, Count).";
+            String qs = "count_pending_1_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
             System.out.println("pending 1 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
@@ -26,7 +26,7 @@ public class ChartController {
 
     public String CompletedOne() {
         if (connect(path)) {
-            String qs = "count_completed_1_vaccine_records(VaccineRecords, Count).";
+            String qs = "count_completed_1_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
             System.out.println("completed 1 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
@@ -36,7 +36,7 @@ public class ChartController {
     
         public String pendingTwo() {
         if (connect(path)) {
-            String qs = "count_pending_2_vaccine_records(VaccineRecords, Count).";
+            String qs = "count_pending_2_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
             System.out.println("pending 2 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
@@ -46,7 +46,7 @@ public class ChartController {
 
     public String CompletedTwo() {
         if (connect(path)) {
-            String qs = "count_completed_2_vaccine_records(VaccineRecords, Count).";
+            String qs = "count_completed_2_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
             System.out.println("completed 2 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
