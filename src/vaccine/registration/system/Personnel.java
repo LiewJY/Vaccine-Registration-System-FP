@@ -29,13 +29,6 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class Personnel extends javax.swing.JFrame {
 
     ValidationClass validation_class = new ValidationClass();
-    //PersonnelClass personnel_class = new PersonnelClass();
-    //CitizenClass citizen_class = new CitizenClass();
-    //NonCitizenClass noncitizen_class = new NonCitizenClass();
-    //CenterClass center_class = new CenterClass();
-    //VaccineClass vaccine_class = new VaccineClass();
-    //AppointmentClass appointment_class = new AppointmentClass();
-    //PeopleClass people_class = new PeopleClass();
 
     // For formatting date
     SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");
@@ -52,7 +45,6 @@ public class Personnel extends javax.swing.JFrame {
     int People_ID, Personnel_ID, Vaccine_ID, Appointment_ID;
     CenterRecord centerRecord;
     Optional<PersonnelRecord> personnelRecord;
-    //appointment
     String Appointment_Time;
 
     // Personnel form
@@ -93,7 +85,6 @@ public class Personnel extends javax.swing.JFrame {
         pnl_add_vaccine.setVisible(false);
         pnl_edit_vaccine.setVisible(false);
         Personnel_ID = personnel_id;
-        //personnel_class.setPersonnel_ID(personnel_id);
     }
 
     // Clear input fields
@@ -225,7 +216,6 @@ public class Personnel extends javax.swing.JFrame {
         btn_people_edit.setEnabled(false);
 
         // Set column
-        //personnel_class.View_People();
         String columns[] = {"People ID", "Name", "Phone Number", "Nationality", "IC / Passport Number", "Address", "Password"};
 
         DefaultTableModel people_table_model = (DefaultTableModel) tbl_view_people.getModel();
@@ -385,7 +375,6 @@ public class Personnel extends javax.swing.JFrame {
 
     public void Center_ID_and_Details() throws FileNotFoundException {
         // Load data
-        //center_class.View_Center();
         center_id_to_name.clear();
 
         // Loop and add data
@@ -427,7 +416,6 @@ public class Personnel extends javax.swing.JFrame {
 
     public void People_ID_and_Details() throws FileNotFoundException {
         // Load data
-        //personnel_class.View_People();
         people_id_and_details.clear();
 
         // Loop and add data
@@ -474,11 +462,9 @@ public class Personnel extends javax.swing.JFrame {
 
     public void Vaccine_ID_and_Details() throws FileNotFoundException {
         // Load data
-        //vaccine_class.View_Vaccine();
         vaccine_id_and_details.clear();
 
         // Loop and add data
-        // for (CenterRecord centerRecord : centerController.View_Center()) {
         for (VaccineRecord vaccineRecord : vaccineController.View_Vaccine()) {
             String[] data = {String.valueOf(vaccineRecord.Vaccine_ID()),
                 vaccineRecord.Vaccine_Batch_ID(),
@@ -494,7 +480,6 @@ public class Personnel extends javax.swing.JFrame {
 // View vaccine
     public void View_Vaccine() throws FileNotFoundException {
         // Populate the center dropdowns
-        //center_class.View_Center();
         cbo_add_vaccine_center_name.removeAllItems();
         cbo_edit_vaccine_center_name.removeAllItems();
 
@@ -515,7 +500,6 @@ public class Personnel extends javax.swing.JFrame {
         btn_vaccine_remove.setEnabled(false);
 
         // Load data
-        //vaccine_class.View_Vaccine();
         // Set column
         String columns[] = {"ID", "Batch ID", "Type", "Date", "Expiration Date", "Second Dose Gap (weeks)", "Center Name"};
 
@@ -551,7 +535,6 @@ public class Personnel extends javax.swing.JFrame {
                 int row = tbl_view_vaccine.convertRowIndexToModel(rows);
 
                 // For deleting
-                //vaccine_class.setVaccine_ID(Integer.parseInt(vaccine_table_model.getValueAt(row, 0).toString()));
                 Vaccine_ID = Integer.parseInt(vaccine_table_model.getValueAt(row, 0).toString());
 
                 // Populate to edit panel
@@ -600,7 +583,6 @@ public class Personnel extends javax.swing.JFrame {
         btn_vaccination_appointments_remove.setEnabled(false);
 
         // Load data
-        //appointment_class.View_Appointment();
         // Set column
         String columns[] = {"ID", "People ID", "Name", "IC / Passport Number", "Date", "Time", "Center Name", "Type", "Dose", "Status"};
 
@@ -618,7 +600,6 @@ public class Personnel extends javax.swing.JFrame {
         Center_ID_and_Details();
         People_ID_and_Details();
         Vaccine_ID_and_Details();
-        // for (CenterRecord centerRecord : centerController.View_Center()) {
 
         for (AppointmentRecord appointmentRecord : appointmentController.View_Appointment()) {
             String[] data = {String.valueOf(appointmentRecord.Appointnment_ID()),
@@ -692,13 +673,9 @@ public class Personnel extends javax.swing.JFrame {
                 int row = tbl_view_vaccination_appointments.convertRowIndexToModel(rows);
 
                 // For deleting
-                //appointment_class.setAppointnment_ID();
                 Appointment_ID = Integer.parseInt(appointment_table_model.getValueAt(row, 0).toString());
                 // Vaccine ID
-                //appointment_class.setAppointment_Time(appointment_table_model.getValueAt(row, 5).toString());
                 Appointment_Time = appointment_table_model.getValueAt(row, 5).toString();
-                // People_ID = Integer.parseInt(appointment_table_model.getValueAt(row, 1).toString());
-                //Vaccine_ID = Integer.parseInt(appointment_table_model.getValueAt(row, 1).toString());
 
                 // Populte to edit panel
                 txt_edit_vaccination_appointments_ic_passport_number.setText(appointment_table_model.getValueAt(row, 3).toString());
@@ -3728,13 +3705,6 @@ public class Personnel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Password not match.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (cbo_edit_people_nationality.getSelectedItem() == "Malaysia") {
-//                citizen_class.setName(txt_edit_people_name.getText());
-//                citizen_class.setPhone_Number(txt_edit_people_phone_number.getText());
-//                citizen_class.setNationality(cbo_edit_people_nationality.getSelectedItem().toString());
-//                citizen_class.setAddress(txt_edit_people_address.getText());
-//                citizen_class.setPassword(txt_edit_people_password.getText());
-//                citizen_class.setIC_Number(txt_edit_people_ic_passport_number.getText());
-//                citizen_class.Edit_Account();
                 CitizenRecord edit = new CitizenRecord(People_ID, txt_edit_people_name.getText(), txt_edit_people_phone_number.getText(), cbo_edit_people_nationality.getSelectedItem().toString(), txt_edit_people_ic_passport_number.getText(), txt_edit_people_address.getText(), txt_edit_people_password.getText());
                 try {
                     if (citizenController.Edit_Account(edit)) {
@@ -3747,19 +3717,17 @@ public class Personnel extends javax.swing.JFrame {
                     Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-//                noncitizen_class.setName(txt_edit_people_name.getText());
-//                noncitizen_class.setPhone_Number(txt_edit_people_phone_number.getText());
-//                noncitizen_class.setNationality(cbo_edit_people_nationality.getSelectedItem().toString());
-//                noncitizen_class.setAddress(txt_edit_people_address.getText());
-//                noncitizen_class.setPassword(txt_edit_people_password.getText());
-//                noncitizen_class.setPassport_Number(txt_edit_people_ic_passport_number.getText());
-//                noncitizen_class.Edit_Account();
-//                if (noncitizen_class.getSuccess_Save() == true) {
-//                    View_People();
-//                    JOptionPane.showMessageDialog(null, "People updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Failed to update people.\nPossible error: \nA record with the same Passport number exist.", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
+                NonCitizenRecord edit = new NonCitizenRecord(People_ID, txt_edit_people_name.getText(), txt_edit_people_phone_number.getText(), cbo_edit_people_nationality.getSelectedItem().toString(), txt_edit_people_ic_passport_number.getText(), txt_edit_people_address.getText(), txt_edit_people_password.getText());
+                try {
+                    if (nonCitizenController.Edit_Account(edit)) {
+                        View_People();
+                        JOptionPane.showMessageDialog(null, "People updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to update people.\nPossible error: \nA record with the same Passport number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(Personnel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_btn_edit_people_saveActionPerformed
@@ -3770,8 +3738,6 @@ public class Personnel extends javax.swing.JFrame {
 
         if (return_value == JOptionPane.YES_OPTION) {
             try {
-                //appointment_class.Remove_Appointment();
-
                 if (appointmentController.Remove_Appointment(Appointment_ID)) {
                     try {
                         View_Appointment();
@@ -3801,8 +3767,6 @@ public class Personnel extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                 try {
-                    //appointment_class.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
-
                     CheckExistRecord check = appointmentController.Check_Exist(txt_register_vaccination_appointments_ic_passport_number.getText());
                     if (!check.isExist()) {
                         JOptionPane.showMessageDialog(null, "Cannot find people!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -3811,16 +3775,7 @@ public class Personnel extends javax.swing.JFrame {
                     } else if (cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("")) {
                         JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        //appointment_class.calculateAppointnment_ID();
-                        //appointment_class.Add_Dose();
-
-                        // Set vaccine ID
                         Center selected_item = (Center) cbo_register_vaccination_appointments_select_vaccination_center.getSelectedItem();
-                        //appointment_class.Add_Vaccine_Id(date_format.format(txt_register_vaccination_appointments_select_date.getDate()), selected_item.getId());
-                        //appointment_class.setAppointment_Time(cbo_register_vaccination_appointments_select_time.getSelectedItem().toString());
-                        //appointment_class.Add_Dose();
-                      //  appointment_class.setStatus("Pending");
-                      //  appointment_class.Add_Appointment();
                         AddVaccineIDRecord vaccineID = new AddVaccineIDRecord(date_format.format(txt_register_vaccination_appointments_select_date.getDate()), selected_item.getId());
                         AppointmentRecord add = new AppointmentRecord(
                                 appointmentController.calculateAppointnment_ID(),
@@ -3862,7 +3817,6 @@ public class Personnel extends javax.swing.JFrame {
             } else {
                 try {
                     CheckExistRecord check = appointmentController.Check_Exist(txt_edit_vaccination_appointments_ic_passport_number.getText());
-                    //appointment_class.Check_Exist(txt_edit_vaccination_appointments_ic_passport_number.getText());
 
                     if (!check.isExist()) {
                         JOptionPane.showMessageDialog(null, "Cannot find people!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -3871,13 +3825,9 @@ public class Personnel extends javax.swing.JFrame {
                     } else if (cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem().equals("")) {
                         JOptionPane.showMessageDialog(null, validation_class.validationMessage("center"), "Warning", JOptionPane.WARNING_MESSAGE);
                     } else {
-                        // Set vaccine id
                         Center selected_item = (Center) cbo_edit_vaccination_appointments_select_vaccination_center.getSelectedItem();
-                        //appointment_class.Add_Vaccine_Id(date_format.format(txt_edit_vaccination_appointments_select_date.getDate()), selected_item.getId());
+                        AddVaccineIDRecord findVaccineID = new AddVaccineIDRecord(date_format.format(txt_edit_vaccination_appointments_select_date.getDate()), selected_item.getId());
 
-                        AddVaccineIDRecord findVaccineID = new AddVaccineIDRecord(date_format.format(txt_edit_vaccination_appointments_select_date.getDate()),selected_item.getId());
-                        //appointmentController.Add_Vaccine_Id(findVaccineID);
-                        
                         AppointmentRecord edit = new AppointmentRecord(
                                 Appointment_ID,
                                 check.People_ID(),
@@ -3885,17 +3835,6 @@ public class Personnel extends javax.swing.JFrame {
                                 cbo_edit_vaccination_appointments_select_time.getSelectedItem().toString(),
                                 appointmentController.Add_Dose(check.People_ID()),
                                 "Pending");
-                        
-
-                        //put in record later
-//                        appointment_class.setAppointment_Time(cbo_edit_vaccination_appointments_select_time.getSelectedItem().toString());
-//
-//                        appointment_class.Add_Dose();
-//
-//                        appointment_class.setStatus("Pending");
-//                        //todo 
-
-                        //appointment_class.Update_Appointment();
 
                         if (appointmentController.Update_Appointment(edit)) {
                             JOptionPane.showMessageDialog(null, "Vaccination appointment updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -4153,7 +4092,6 @@ public class Personnel extends javax.swing.JFrame {
             lbl_add_vaccine_second_dose_gap.setText("2");
 
             // Populate the center dropdowns
-            //center_class.View_Center();
             cbo_add_vaccine_center_name.removeAllItems();
 
             DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel) cbo_add_vaccine_center_name.getModel();
@@ -4176,7 +4114,6 @@ public class Personnel extends javax.swing.JFrame {
             lbl_add_vaccine_second_dose_gap.setText("2");
 
             // Populate the center dropdowns
-            //center_class.View_Center();
             cbo_add_vaccine_center_name.removeAllItems();
 
             DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel) cbo_add_vaccine_center_name.getModel();
@@ -4200,7 +4137,6 @@ public class Personnel extends javax.swing.JFrame {
             lbl_add_vaccine_second_dose_gap.setText("12");
 
             // Populate the center dropdowns
-            //center_class.View_Center();
             cbo_add_vaccine_center_name.removeAllItems();
 
             DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel) cbo_add_vaccine_center_name.getModel();
@@ -4229,7 +4165,6 @@ public class Personnel extends javax.swing.JFrame {
             lbl_add_vaccine_second_dose_gap.setText("2");
 
             // Populate the center dropdowns
-            //center_class.View_Center();
             cbo_edit_vaccine_center_name.removeAllItems();
 
             DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel) cbo_edit_vaccine_center_name.getModel();
@@ -4252,7 +4187,6 @@ public class Personnel extends javax.swing.JFrame {
             lbl_add_vaccine_second_dose_gap.setText("2");
 
             // Populate the center dropdowns
-            //center_class.View_Center();
             cbo_edit_vaccine_center_name.removeAllItems();
 
             DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel) cbo_edit_vaccine_center_name.getModel();
@@ -4275,7 +4209,6 @@ public class Personnel extends javax.swing.JFrame {
             lbl_add_vaccine_second_dose_gap.setText("12");
 
             // Populate the center dropdowns
-            //center_class.View_Center();
             cbo_edit_vaccine_center_name.removeAllItems();
 
             DefaultComboBoxModel cbo_add_model = (DefaultComboBoxModel) cbo_edit_vaccine_center_name.getModel();
@@ -4320,13 +4253,10 @@ public class Personnel extends javax.swing.JFrame {
         } else {
             cbo_register_vaccination_appointments_select_vaccination_center.setEnabled(true);
 
-            //appointment_class.Show_Locations(date_format.format(txt_register_vaccination_appointments_select_date.getDate()));
             cbo_register_vaccination_appointments_select_vaccination_center.removeAllItems();
-            //center_class.View_Center();
             DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel) cbo_register_vaccination_appointments_select_vaccination_center.getModel();
             try {
                 for (VaccineRecord vaccineRecord : appointmentController.Show_Locations(date_format.format(txt_register_vaccination_appointments_select_date.getDate()))) {
-                    //for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
                     String[] data = {String.valueOf(vaccineRecord.Vaccine_ID()),
                         vaccineRecord.Vaccine_Batch_ID(),
                         vaccineRecord.Vaccine_Type(),
@@ -4362,14 +4292,11 @@ public class Personnel extends javax.swing.JFrame {
             cbo_edit_vaccination_appointments_select_vaccination_center.setEnabled(false);
         } else {
             cbo_edit_vaccination_appointments_select_vaccination_center.setEnabled(true);
-            //appointment_class.Show_Locations(date_format.format(txt_edit_vaccination_appointments_select_date.getDate()));
             cbo_edit_vaccination_appointments_select_vaccination_center.removeAllItems();
-            //center_class.View_Center();
             DefaultComboBoxModel cbo_edit_model = (DefaultComboBoxModel) cbo_edit_vaccination_appointments_select_vaccination_center.getModel();
 
             try {
                 for (VaccineRecord vaccineRecord : appointmentController.Show_Locations(date_format.format(txt_edit_vaccination_appointments_select_date.getDate()))) {
-                    //for (int i = 0; i < appointment_class.getAvaliableLocation().size(); i++) {
                     String[] data = {String.valueOf(vaccineRecord.Vaccine_ID()),
                         vaccineRecord.Vaccine_Batch_ID(),
                         vaccineRecord.Vaccine_Type(),
@@ -4430,7 +4357,6 @@ public class Personnel extends javax.swing.JFrame {
     private void btn_edit_accountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_accountActionPerformed
         try {
             // View data
-//        personnel_class.View_Account();
             personnelRecord = personnelController.View_Account(Personnel_ID);
             txt_edit_name.setText(personnelRecord.get().Name());
             txt_edit_phone_number.setText(personnelRecord.get().Phone_Number());
@@ -4461,22 +4387,18 @@ public class Personnel extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_edit_accountActionPerformed
 
     private void lbl_dataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_dataMouseClicked
-        // TODO add your handling code here:
-        //new Chart().setVisible(true);
-        System.out.println("Sssssss");
-
         ChartController data = new ChartController();
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(Integer.parseInt(data.pendingOne()), "Pending", "1st Dose");
         dataset.setValue(Integer.parseInt(data.CompletedOne()), "Completed", "1st Dose");
         dataset.setValue(Integer.parseInt(data.pendingTwo()), "Pending", "2nd Dose");
-       dataset.setValue(Integer.parseInt(data.CompletedTwo()), "Completed", "2nd Dose");
+        dataset.setValue(Integer.parseInt(data.CompletedTwo()), "Completed", "2nd Dose");
 
-        JFreeChart chart = ChartFactory.createBarChart("Vaccination", "Status", "Number of people", dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        JFreeChart chart = ChartFactory.createBarChart("Vaccination", "Status", "Number of people", dataset, PlotOrientation.HORIZONTAL, true, true, false);
         CategoryPlot p = chart.getCategoryPlot();
         p.setBackgroundPaint(Color.white);
-        ChartFrame frame = new ChartFrame("Frame", chart);
+        ChartFrame frame = new ChartFrame("Vaccine Registraton System", chart);
         frame.setVisible(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 

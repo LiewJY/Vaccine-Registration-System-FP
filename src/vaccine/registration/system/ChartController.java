@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package vaccine.registration.system;
 
 import org.jpl7.Query;
 import org.jpl7.Term;
 
-/**
- *
- * @author liewj
- */
+
 public class ChartController {
 
     String path = "src/vaccine/registration/system/prolog.pl";
@@ -18,7 +12,6 @@ public class ChartController {
         if (connect(path)) {
             String qs = "count_pending_1_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
-            System.out.println("pending 1 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
         }
         return null;
@@ -28,7 +21,6 @@ public class ChartController {
         if (connect(path)) {
             String qs = "count_completed_1_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
-            System.out.println("completed 1 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
         }
         return null;
@@ -38,7 +30,6 @@ public class ChartController {
         if (connect(path)) {
             String qs = "count_pending_2_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
-            System.out.println("pending 2 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
         }
         return null;
@@ -48,7 +39,6 @@ public class ChartController {
         if (connect(path)) {
             String qs = "count_completed_2_vaccination_status_records(VaccinationStatusRecords, Count).";
             Query q1 = new Query(qs);
-            System.out.println("completed 2 " + q1.oneSolution().get("Count"));
             return q1.oneSolution().get("Count").toString();
         }
         return null;

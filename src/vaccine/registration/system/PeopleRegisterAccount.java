@@ -272,10 +272,10 @@ public class PeopleRegisterAccount extends javax.swing.JFrame {
                 try {
                     NonCitizenRecord register = new NonCitizenRecord(peopleController.calculatePeople_ID(), txt_name.getText(), txt_phone_number.getText(), cbo_nationality.getSelectedItem().toString(), txt_ic_passport_number.getText(), txt_address.getText(), txt_password.getText());
                     if (nonCitizenController.Register_Account(register)) {
-                    JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Account registered successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                         viewLogin();
                     } else {
-                    JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Failed to register account with the same Passport Number exist.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(PeopleRegisterAccount.class.getName()).log(Level.SEVERE, null, ex);

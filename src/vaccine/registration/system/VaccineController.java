@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vaccine.registration.system;
 
 import java.io.BufferedReader;
@@ -15,10 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author liewjy
- */
 public class VaccineController {
 
     // Calculate vaccine ID
@@ -113,7 +105,7 @@ public class VaccineController {
         PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter("Vaccine.txt", false)));
         vaccineList.stream()
                 .forEach(vaccine -> {
-                  printWriter.printf("%s//%s//%s//%s//%s//%s//%s//\n", vaccine.Vaccine_ID(), vaccine.Vaccine_Batch_ID(), vaccine.Vaccine_Type(), vaccine.date(), vaccine.Expiration_Date(), vaccine.Second_Dose_Gap(), vaccine.Center_ID());
+                    printWriter.printf("%s//%s//%s//%s//%s//%s//%s//\n", vaccine.Vaccine_ID(), vaccine.Vaccine_Batch_ID(), vaccine.Vaccine_Type(), vaccine.date(), vaccine.Expiration_Date(), vaccine.Second_Dose_Gap(), vaccine.Center_ID());
                 });
         printWriter.close();
         return true;

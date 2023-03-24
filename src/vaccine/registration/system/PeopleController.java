@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vaccine.registration.system;
 
 import java.io.BufferedReader;
@@ -16,10 +12,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- *
- * @author liewjy
- */
 public class PeopleController {
 
     Function<Integer, Integer> idIncrement = x -> x + 1;

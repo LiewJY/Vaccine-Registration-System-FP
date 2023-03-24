@@ -11,8 +11,6 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
 
-        txt_ic_passport_number.setText("901212101234");
-        txt_password.setText("jasonchen");
         // Create file if file does not exist
         try {
             FileWriter people_file_writer = new FileWriter("People.txt", true);
@@ -167,11 +165,6 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill in all details!", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             if (cbo_user_role.getSelectedItem() == "Personnel") {
-//                PersonnelClass personnel_class = new PersonnelClass();
-//                personnel_class.setIC_Number(txt_ic_passport_number.getText());
-//                personnel_class.setPassword(txt_password.getText());
-//                personnel_class.Login_Account();
-//                boolean personnel = personnel_class.getAuth();
                 PersonnelController personnelController = new PersonnelController();
                 PersonnelAuthRecord auth;
                 try {
@@ -203,11 +196,6 @@ public class Login extends javax.swing.JFrame {
                 }
 
             } else if (cbo_user_role.getSelectedItem() == "People (Non-Citizen)") {
-//                NonCitizenClass noncitizen_class = new NonCitizenClass();
-//                noncitizen_class.setPassport_Number(txt_ic_passport_number.getText());
-//                noncitizen_class.setPassword(txt_password.getText());
-//                noncitizen_class.Login_Account();
-//                boolean non_citizen = noncitizen_class.getAuth();
 
                 NonCitizenController nonCitizenController = new NonCitizenController();
                 try {
